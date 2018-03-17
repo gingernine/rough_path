@@ -18,9 +18,9 @@
 	\begin{screen}
 		\begin{thm}
 			Haar関数系$(H_{pm},\ p \in \N,\ 1 \leq m \leq 2^p)$に
-			$H_{00} = 1$を加えたものを$\mathbb{H}$とおくと，$\mathbb{H}$は
+			$H_{00} \equiv 1$を加えたものを$\mathbb{H}$とおくと，$\mathbb{H}$は
 			$\Lp{2}{[0,1],\lambda}$における完全正規直交基底である．
-			\label{thm:Haar_functions_orthogonal_basis}
+			\label{thm:Haar_functions_orthonormal_basis}
 		\end{thm}
 	\end{screen}
 	
@@ -33,41 +33,40 @@
 		$f = 0$が成り立つことを示す．
 		\begin{description}
 			\item[第一段]
-				$p \geq 0$に対し$\mathfrak{I}_p \coloneqq \Set{ \left[ \frac{i-1}{2^{p+1}}, \frac{i}{2^{p+1}} \right)}{ i = 1,2,\cdots,2^{p+1} }$とおき，
+				$p \in \N$に対し$\mathfrak{I}_p \coloneqq \Set{ \left[ \frac{i-1}{2^{p+1}}, \frac{i}{2^{p+1}} \right)}{ i = 1,2,\cdots,2^{p+1} }$とおき，
 				\begin{align}
 					\mathfrak{B}_p \coloneqq \sgmalg{\mathfrak{I}_p}
 				\end{align}
-				によりフィルトレーション$\left( \mathfrak{B}_p \right)_p$を定めれば，$\borel{[0,1]} = \cup_p \mathfrak{B}_p$が成り立つ．実際，
-				$\subset$の関係は$[0,1]$の開集合が$[(i-1)/2^{p+1},i/2^{p+1})$型の区間の可算和で表現できることにより従う．
+				によりフィルトレーション$\left( \mathfrak{B}_p \right)_{p \in \N}$を定めれば，$\borel{[0,1]} = \vee_{p \in \N} \mathfrak{B}_p$が成り立つ．
+				実際，$\subset$の関係は$[0,1]$の開集合が$\cup_{p \in \N} \mathfrak{I}_p$の元の可算和で表現できることにより従う．
 				
 			\item[第二段]
-				任意の$p \in \N_0$に対して
+				任意の$p \in \N$に対して
 				\begin{align}
 					\cexp{f}{\mathfrak{B}_p} = \sum_{i=1}^{2^{p+1}} 2^{p+1} \Biggl( \int_{\left[ \frac{i-1}{2^{p+1}}, \frac{i}{2^{p+1}} \right)} f \dx\lambda
 						\Biggr) \defunc_{\left[ \frac{i-1}{2^{p+1}}, \frac{i}{2^{p+1}} \right)}
 					,\quad \mbox{$\lambda$-a.e.}
-					\label{eq:thm_Haar_functions_orthogonal_basis_1}
+					\label{eq:thm_Haar_functions_orthonormal_basis_1}
  				\end{align}
  				が成り立つことを示す．実際，右辺を$g_p$と表せば
  				\begin{align}
  					\{\emptyset\} \cup \mathfrak{I}_p \subset
  					\Set{E \in \mathfrak{B}_p}{\int_E \cexp{f}{\mathfrak{B}_p} \dx\lambda = \int_E g_p \dx\lambda}
- 					\label{eq:thm_Haar_functions_orthogonal_basis_2}
+ 					\label{eq:thm_Haar_functions_orthonormal_basis_2}
  				\end{align}
  				が従うから，Dynkin族定理により$\Set{E \in \mathfrak{B}_p}{\int_E \cexp{f}{\mathfrak{B}_p} \dx\lambda = \int_E g_p \dx\lambda} = \mathfrak{B}_p$となる．
- 				そして$\cexp{f}{\mathfrak{B}_p},g_p$ともに$\mathfrak{B}_p$-可測であるから(\refeq{eq:thm_Haar_functions_orthogonal_basis_1})が得られる．
+ 				そして$\cexp{f}{\mathfrak{B}_p},g_p$ともに$\mathfrak{B}_p$-可測であるから(\refeq{eq:thm_Haar_functions_orthonormal_basis_1})が得られる．
  				
 			\item[第三段]
-				$\inprod<f,H_{pm}> = 0\ (\forall H_{pm} \in \mathbb{H})$ならば
-				$g_p(t) \longrightarrow 0\ (p \longrightarrow \infty,\ \forall t \in [0,1])$
-				が出る．実際，
+				$\inprod<f,H_{pm}> = 0\ (\forall H_{pm} \in \mathbb{H})$が満たされているとき
+				$g_p \equiv 0\ (\forall p \in \N)$が出る．先ず
 				\begin{align}
 					0 = \inprod<f,H_{pm}> 
 					= \sqrt{2^{p+1}} \int_{\left[ \frac{m-1}{2^{p+1}}, \frac{2m-1}{2^{p+2}} \right)} f \dx\lambda
 						-  \sqrt{2^{p+1}} \int_{\left[ \frac{2m-1}{2^{p+2}}, \frac{m}{2^{p+1}} \right)} f \dx\lambda
 					,\quad (\forall p,m)
 				\end{align}
-				が満たされているから
+				により$\inprod<f,\defunc_{\left[ \frac{m-1}{2^{p+1}}, \frac{2m-1}{2^{p+2}} \right)}> = $
 				\begin{align}
 					\int_{\left[ \frac{m-1}{2^{p+1}}, \frac{m}{2^{p+1}} \right)} f \dx\lambda
 					&= 2 \int_{\left[ \frac{2m-2}{2^{p+2}}, \frac{2m-1}{2^{p+2}} \right)} f \dx\lambda \\
@@ -76,11 +75,9 @@
 					&= 2^k \int_{\left[ \frac{2^km-2^k}{2^{p+k+1}}, \frac{2^km-2^k+1}{2^{p+k+1}} \right)} f \dx\lambda \\
 					&= \cdots
 				\end{align}
-				が従い，H\Ddot{o}lderの不等式より
-				\begin{align}
-					\left| \int_{\left[ \frac{m-1}{2^{p+1}}, \frac{m}{2^{p+1}} \right)} f \dx\lambda \right|
-					= \left| 2^k \int_{\left[ \frac{2^km-2^k}{2^{p+k+1}}, \frac{2^km-2^k+1}{2^{p+k+1}} \right)} f \dx\lambda \right|
-					\leq \frac{\Norm{f}{}}{2^{p+1}} 
-				\end{align}
+				一方で(\refeq{eq:thm_Haar_functions_orthonormal_basis_1})の左辺は，マルチンゲール収束定理により
+				$\lambda$-a.e.に$\cexp{f}{\mathfrak{B}_p} \longrightarrow f\ (p \longrightarrow \infty)$が成り立つ．
+				以上より$f \equiv 0$が得られる．
+				\QED
 		\end{description}
 	\end{prf}
