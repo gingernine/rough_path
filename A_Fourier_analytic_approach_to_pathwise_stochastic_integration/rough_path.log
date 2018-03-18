@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  17 MAR 2018 21:41
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  18 MAR 2018 19:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -479,27 +479,54 @@ LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 
 ]
 第2章
-(./texfiles/Haar_functions_orthonormal_basis.tex
+(./texfiles/p_var_integral.tex
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 2.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 2.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 2.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 2.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 2.
- [3
+(Font)              scaled to size 13.67995pt on input line 1.
+)
+(./texfiles/Haar_functions_orthonormal_basis.tex
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 58.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 58.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 58.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 58.
 
-]) [4] (./rough_path.aux) ) 
+
+LaTeX Warning: Reference `eq:thm_Haar_functions_orthonormal_basis_1' on page 3 
+undefined on input line 58.
+
+[3
+
+]
+
+LaTeX Warning: Reference `eq:thm_Haar_functions_orthonormal_basis_1' on page 4 
+undefined on input line 78.
+
+) [4] (./rough_path.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3322 strings out of 493621
- 43545 string characters out of 6150087
- 109719 words of memory out of 5000000
- 6838 multiletter control sequences out of 15000+600000
- 37780 words of font info for 138 fonts, out of 8000000 for 9000
+ 3329 strings out of 493621
+ 43661 string characters out of 6150087
+ 107685 words of memory out of 5000000
+ 6841 multiletter control sequences out of 15000+600000
+ 38369 words of font info for 139 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  27i,19n,26p,255b,446s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on rough_path.dvi (5 pages, 11184 bytes).
+Output written on rough_path.dvi (5 pages, 11312 bytes).

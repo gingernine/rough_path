@@ -1,3 +1,4 @@
 \contentsline {chapter}{\numberline {第1章}Notation}{2}
 \contentsline {chapter}{\numberline {第2章}Preliminaries}{3}
-\contentsline {section}{\numberline {2.1}Ciesielski同型}{3}
+\contentsline {section}{\numberline {2.1}p-variation}{3}
+\contentsline {section}{\numberline {2.2}Ciesielski同型}{3}
