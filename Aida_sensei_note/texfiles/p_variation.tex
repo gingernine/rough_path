@@ -1,0 +1,193 @@
+以下，$x \in \R^d$に対して，各成分を$x^i\ (1 \leq i \leq d)$とし
+$x = (x^1,\cdots,x^d)$と表す．
+また実数の$d \times m$行列$f$を$f=(f_{kj})$と表す．
+$C^1 = C^1([0,T] \rightarrow \R^d)$とおく．
+ただし端点においては片側微分を考える．
+区間$[0,T]$の分割を
+$D = \{0 = t_0 < t_1 < \cdots < t_N = T\}$で表現し
+$|D| \coloneqq \max{1 \leq i \leq N}{\left| t_i - t_{i-1} \right|}$とおく．
+また$\sup{D}{\cdots}$などと書く場合は，任意の分割数，分点で構成される全ての$D$にわたる上限を考える．
+
+\begin{screen}
+	\begin{thm}
+		任意の$x \in C^1,\ f \in C_b^\infty(\R^d,L(\R^d \rightarrow \R^m))$に対し，
+		次の極限が確定する:
+		\begin{align}
+			\lim_{|D| \to 0}
+			\sum_{i=1}^{N} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
+			\in \R^m.
+		\end{align}
+	\end{thm}
+\end{screen}
+
+\begin{prf}
+	$x = (x^1,\cdots,x^d),
+	f = (f_{kj})_{1 \leq k \leq m,1 \leq j \leq d}$と書けば，
+	\begin{align}
+		\sum_{i=1}^{N} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
+	\end{align}
+	の第$k\ (1 \leq k \leq m)$成分は
+	\begin{align}
+		\sum_{j=1}^{d} \sum_{i=1}^{N} f_{kj}(x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}})
+	\end{align}
+	と表現できる．従って
+	\begin{align}
+		\lim_{|D| \to 0} \sum_{i=1}^{N} f_{kj}(x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}})
+	\end{align}
+	が確定すれば各成分の極限が確定し主張を得る．
+	$x$が$C^1$級なので$x^j$も$C^1$級である．また
+	$f_{kj}:\R^d \longrightarrow \R$も$C_b^\infty$に属する．
+	分割$D$に対し
+	\begin{align}
+		S_D \coloneqq \sum_{i=1}^{N} M_i(t_i - t_{i-1}), \\
+		S_d \coloneqq \sum_{i=1}^{N} m_i(t_i - t_{i-1})
+	\end{align}
+	とおき，
+	\begin{align}
+		S \coloneqq \inf{D}{S_D},
+		\quad s \coloneqq \sup{D}{s_D}
+	\end{align}
+	とおけば，
+	\begin{align}
+		s_D \leq s \leq S \leq S_D,
+		\quad s_D \leq \Sigma_D \leq S_D
+	\end{align}
+	が成立する．$s = S$なら$\Sigma_D \longrightarrow S$が従う．
+\end{prf}
+
+\begin{screen}
+	\begin{dfn}
+		$I_{0,T}(x)$の定義．
+	\end{dfn}
+\end{screen}
+
+$C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
+\begin{align}
+	\Norm{x}{\infty} &\coloneqq \sup{t \in [0,T]}{|x(t)|},
+	\quad \Norm{x'}{\infty} \coloneqq \sup{t \in [0,T]}{|x'(t)|}, \\
+	\Norm{x}{C^1} &\coloneqq
+	\Norm{x}{\infty} + \Norm{x}{\infty}.
+\end{align}
+
+\begin{screen}
+	\begin{thm}
+		$x \longmapsto I_{0,T}(x)$は連続である．
+	\end{thm}
+\end{screen}
+
+\begin{prf}
+	$C^1$は次のノルムでBanach空間になる．ゆえに
+	$x \longmapsto I_{0,T}(x)$は距離空間から距離空間への対応であり
+	点列連続性と連続性が一致するから，
+	$x_n \longrightarrow x$なら$I_{0,T}(x_n) \longrightarrow I_{0,T}(x)$
+	が従うことを示せばよい．実際，$f,x$の連続性より
+	\begin{align}
+		\sum_{i=1}^{N} f(x^{(n)}_{s_{i-1}})(x^{(n)}_{t_i} - x^{(n)}_{t_{i-1}})
+		\longrightarrow \sum_{i=1}^{N} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
+	\end{align}
+	が成り立つ．
+\end{prf}
+
+\begin{screen}
+	\begin{dfn}[$p$-variation]
+		$[0,T]$上の$\R^d$値関数$x$に対し$p$-variationノルムを次で定める:
+		\begin{align}
+			\Norm{x}{p}
+			\coloneqq \left\{ \sup{D}{\sum_{i=1}^{N} 
+				\left| x_{t_i} - x_{t_{i-1}} \right|^p }\right\}^{1/p}.
+		\end{align}
+		また線形空間$B_{p,T}(\R^d)$を
+		\begin{align}
+			B_{p,T}(\R^d)
+			\coloneqq \Set{x:[0,T] \longrightarrow \R^d}{x_0=0,\ x:\mbox{continuous},\ \Norm{x}{p} < \infty}
+		\end{align}
+		により定める．
+	\end{dfn}
+\end{screen}
+
+\begin{screen}
+	\begin{thm}
+		$\tilde{C}^1 \coloneqq \Set{x \in C^1}{x_0 = 0}$とおくと，
+		$\tilde{C}^1 \subset B_{p,T}(\R^d)$が成り立つ．
+	\end{thm}
+\end{screen}
+
+\begin{prf}
+	$x \in \tilde{C}^1$に対して
+	\begin{align}
+		M \coloneqq \sum_{j=1}^{d} \sup{x \in [0,T]}{|x^j(t)|}
+	\end{align}
+	とおけば，$x'$の連続性より$M < \infty$が定まる．
+	平均値の定理より，$|D| < 1$を満たす分割$D$に対して
+	\begin{align}
+		\left\{ \sum_{i=1}^{N} |x_{t_i} - x_{t_{i-1}}|^p \right\}^{1/p}
+		\leq \left\{ \sum_{i=1}^{N} \Norm{x}{C^1}^p (t_i - t_{i-1})^p \right\}^{1/p}
+		\leq M T < \infty
+	\end{align}
+	が成立し$\Norm{x}{p} \leq MT < \infty$が従う
+	\footnote{
+		$S_D \geq 0$ならば$(\sup{D}S_D)^{1/p} = \sup{D}S_D^{1/p}$が成り立つ．
+	}
+	．
+\end{prf}
+
+\begin{screen}
+	\begin{thm}
+		$B_{p,T}(\R^d)$はBanach空間である．
+	\end{thm}
+\end{screen}
+
+\begin{prf}
+	$(x^n)_{n=1}^{\infty} \subset B_{p,T}(\R^d)$をCauchy列とする．
+	つまり任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
+	\begin{align}
+		\Norm{x^n - x^m}{p}
+		= \left\{ \sup{D}{\sum_{i=1}^{N} 
+		\left| \left( x^n_{t_i} - x^m_{t_i} \right) 
+		- \left(x^n_{t_{i-1}} - x^m_{t_{i-1}} \right) \right|^p }\right\}^{1/p} < \epsilon,
+		\quad (n,m > n_\epsilon)
+	\end{align}
+	を満たす．いま，任意の$t \in [0,T]$に対して$[0,T]$の分割$\{0=t_0 \leq t \leq T\}$
+	を考えれば
+	\begin{align}
+		|x^n_t - x^m_t| < \epsilon,
+		\quad (n,m > n_\epsilon)
+	\end{align}
+	が得られ，実数の完備性より或る$x_t \in \R^d$が存在して
+	\begin{align}
+		|x^n_t - x_t| < \epsilon
+		\quad (n > n_\epsilon)
+	\end{align}
+	を満たす．実際，もし或る$n > n_\epsilon$で$|x^n_t - x_t| \eqqcolon \alpha \geq \epsilon$
+	が成り立つと，任意の$m > n_\epsilon$に対して
+	\begin{align}
+		|x^m_t - x_t| \geq |x^n_t - x_t| - |x^n_t - x^m_t| > \alpha - \epsilon
+	\end{align}
+	が従い$x^m_t \longrightarrow x_t$に反する．
+	ゆえに収束は$t$に関して一様であり，$t \longmapsto x_t$は0出発かつ連続である．
+	あとは$\Norm{x^n - x}{p} \longrightarrow 0\ (n \longrightarrow \infty)$であればよい．
+\end{prf}
+
+\begin{screen}
+	\begin{thm}
+		$C^1$空間において，$\Norm{}{C^1}$で定まる位相は
+		$\Norm{}{p}$で定まる位相より強い．
+		特に，$B_{p,T}(\R^d)$上で考える写像$x \longmapsto I_{p,T}(x)$は
+		$\Norm{\cdot}{p}$の定める位相により連続である．
+	\end{thm}
+\end{screen}
+
+\begin{prf}
+	任意の$x \in \tilde{C}^1$に対して
+	\begin{align}
+		\Norm{x}{p} \leq T \Norm{x}{C^1}
+	\end{align}
+	を満たすことを証明する．実際，任意の分割$D$に対して
+	\begin{align}
+		\sum_{i=1}^{N} |x_{t_i} - x_{t_{i-1}}|
+		\leq \sum_{i=1}^{N} \Norm{x}{C^1} (t_i - t_{i-1})
+		= T \Norm{x}{C^1}
+	\end{align}
+	が成り立つ．
+	\QED
+\end{prf}
