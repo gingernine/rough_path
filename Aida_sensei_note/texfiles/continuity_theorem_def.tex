@@ -1,0 +1,17 @@
+$C^1$パス$[0,T] \longrightarrow \R^d$に対し$f(x) = (f_j^i(x))$の積分を
+\begin{align}
+	I_{s,t} (x)
+	\coloneqq \int_s^t f(x_u)\ dx_u
+	= \left( \sum_{j=1}^d \int_s^t f_j^i(x_u)\ dx^j_u \right)_i
+\end{align}
+により定める．
+このとき次が成り立つ
+\begin{align}
+	I_{s,t}(x)_i
+	&= \sum_{j=1}^d \int_s^t f_j^i(x_u)\ dx_u \\
+	&= \sum_{j=1}^d \int_s^t f_j^i(x_s) + f_j^i(x_u) - f_j^i(x_s)\ dx_u \\
+	&= \sum_{j=1}^d \int_s^t f_j^i(x_s) 
+		+ \sum_{k=1}^d  \left\{ \int_0^1 \partial_k f_j^i(x_s + \theta(x_u - x_s))\ d\theta \right\} (x^k_u - x^k_s)\ dx_u \\
+	&= \sum_{j=1}^d \int_s^t f_j^i(x_s) + \sum_{k=1}^d  \left\{ \int_0^1 \partial_k f_j^i(x_s)\ d\theta \right\} (x^k_u - x^k_s)\ dx_u \\
+		&\quad + \sum_{j=1}^d \int_s^t \sum_{k=1}^d  \left\{ \int_0^1 \partial_k f_j^i(x_s + \theta(x_u - x_s)) - \partial_k f_j^i(x_s)\ d\theta \right\} (x^k_u - x^k_s)\ dx_u \\
+\end{align}
