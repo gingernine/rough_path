@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  6 APR 2018 21:51
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  8 APR 2018 09:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,49 +451,42 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 23.90964pt on input line 129.
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 (Font)              scaled to size 23.63593pt on input line 129.
- (./Aida_sensei_note.toc)
+ (./Aida_sensei_note.toc
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 1.
+)
 \tf@toc=\write5
 \openout5 = `Aida_sensei_note.toc'.
 
 
-[1
-
-]
-第1章
+(./texfiles/p_variation.tex
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 131.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 131.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 131.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 19.9311pt on input line 131.
+(Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 19.70294pt on input line 131.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 132.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 132.
-[2
-
-]
-第2章
-(./texfiles/p_variation.tex [3
-
-] [4]
+(Font)              scaled to size 13.67995pt on input line 1.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 128.
+(Font)              scaled to size 6.72699pt on input line 16.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 128.
-) (./texfiles/continuity_theorem_def.tex
-[5]) [6] (./Aida_sensei_note.aux) ) 
+(Font)              scaled to size 5.76599pt on input line 27.
+ [1
+
+] [2] [3]) (./texfiles/continuity_theorem_def.tex) (./texfiles/proof_of_continu
+ity_theorem.tex [4]) [5] (./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
- 3315 strings out of 493621
- 43351 string characters out of 6150087
- 110673 words of memory out of 5000000
- 6828 multiletter control sequences out of 15000+600000
+ 3316 strings out of 493621
+ 43442 string characters out of 6150087
+ 111670 words of memory out of 5000000
+ 6826 multiletter control sequences out of 15000+600000
  36339 words of font info for 134 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,15n,26p,238b,378s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (7 pages, 20288 bytes).
+Output written on Aida_sensei_note.dvi (6 pages, 27044 bytes).

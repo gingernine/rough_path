@@ -1,58 +1,89 @@
-以下，$x \in \R^d$に対して，各成分を$x^i\ (1 \leq i \leq d)$とし
-$x = (x^1,\cdots,x^d)$と表す．
-また実数の$d \times m$行列$f$を$f=(f_{kj})$と表す．
-$C^1 = C^1([0,T] \rightarrow \R^d)$とおく．
-ただし端点においては片側微分を考える．
-区間$[0,T]$の分割を
-$D = \{0 = t_0 < t_1 < \cdots < t_N = T\}$で表現し
-$|D| \coloneqq \max{1 \leq i \leq N}{\left| t_i - t_{i-1} \right|}$とおく．
-また$\sup{D}{\cdots}$などと書く場合は，任意の分割数，分点で構成される全ての$D$にわたる上限を考える．
+\section{導入}
+	以下，$x \in \R^d$について成分を込めて表現する場合は
+	$x = (x^1,\cdots,x^d)$と書き，
+	実$m \times d$行列$a$については$a=(a^i_j)_{1 \leq i \leq m,1 \leq j \leq d}$と表す．
+	また$T > 0$を固定し$C^1 = C^1([0,T] \rightarrow \R^d)$とおく．
+	ただし端点においては片側微分を考える．
+	区間$[s,t] \subset [0,T]$の分割を
+	$D = \{s = t_0 < t_1 < \cdots < t_N = t\}$で表現し
+	$|D| \coloneqq \max{1 \leq i \leq N}{\left| t_i - t_{i-1} \right|}$とおく．
+	また$[s,t]$の分割の全体を$\delta[s,t]$と書く．
 
-\begin{screen}
-	\begin{thm}
-		任意の$x \in C^1,\ f \in C_b^\infty(\R^d,L(\R^d \rightarrow \R^m))$に対し，
-		次の極限が確定する:
+	\begin{screen}
+		\begin{thm}[Riemann-Stieltjes積分]
+			$[s,t] \subset [0,T]$とし，$D \in \delta[s,t]$についてのみ考えるとき，
+			任意の$x \in C^1,\ f \in C(\R^d,L(\R^d \rightarrow \R^m))$\footnotemark
+			に対して
+			次の極限が確定する:
+			\begin{align}
+				\lim_{|D| \to 0}
+				\sum_{D} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
+				\in \R^m.
+			\end{align}
+			ここで$s_{i-1}$は区間$[t_{i-1},t_i]$に属する任意の点である．
+			極限は$s_{i-1}$の取り方にも依存しない．
+		\end{thm}
+	\end{screen}
+	\footnotetext{
+		極限の存在を保証する条件としては，$f$の有界性と微分可能性は必要ない．
+	}
+	\begin{prf}
+		各$x^j$は$C^1$-級であるから，平均値の定理より
+		$\sum_{D} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})$
+		の第$k$成分を
 		\begin{align}
-			\lim_{|D| \to 0}
-			\sum_{i=1}^{N} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
-			\in \R^m.
+			\sum_{j=1}^{d} \sum_{D} f^k_j (x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}})
+			= \sum_{j=1}^{d} \sum_{D} f^k_j (x_{s_{i-1}}) \frac{d}{dt}x^j(\xi_{i-1,j})(t_i - t_{i-1}),
+			\quad ({}^\exists \xi_{i-1,j} \in [t_{i-1},t_i])
 		\end{align}
-	\end{thm}
-\end{screen}
-
-\begin{prf}
-	$x = (x^1,\cdots,x^d),
-	f = (f_{kj})_{1 \leq k \leq m,1 \leq j \leq d}$と書けば，
-	\begin{align}
-		\sum_{i=1}^{N} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
-	\end{align}
-	の第$k\ (1 \leq k \leq m)$成分は
-	\begin{align}
-		\sum_{j=1}^{d} \sum_{i=1}^{N} f_{kj}(x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}})
-	\end{align}
-	と表現できる．従って
-	\begin{align}
-		\lim_{|D| \to 0} \sum_{i=1}^{N} f_{kj}(x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}})
-	\end{align}
-	が確定すれば各成分の極限が確定し主張を得る．
-	$x$が$C^1$級なので$x^j$も$C^1$級である．また
-	$f_{kj}:\R^d \longrightarrow \R$も$C_b^\infty$に属する．
-	分割$D$に対し
-	\begin{align}
-		S_D \coloneqq \sum_{i=1}^{N} M_i(t_i - t_{i-1}), \\
-		S_d \coloneqq \sum_{i=1}^{N} m_i(t_i - t_{i-1})
-	\end{align}
-	とおき，
-	\begin{align}
-		S \coloneqq \inf{D}{S_D},
-		\quad s \coloneqq \sup{D}{s_D}
-	\end{align}
-	とおけば，
-	\begin{align}
-		s_D \leq s \leq S \leq S_D,
-		\quad s_D \leq \Sigma_D \leq S_D
-	\end{align}
-	が成立する．$s = S$なら$\Sigma_D \longrightarrow S$が従う．
+		と表現できる．各$j,k$について
+		\begin{align}
+			\lim_{|D| \to 0} \sum_{D} f^k_j (x_{s_{i-1}}) \frac{d}{dt}x^j(\xi_{i-1,j})(t_i - t_{i-1})
+		\end{align}
+		が確定すれば，第$k$成分の極限が確定し定理の主張を得る．
+		いま，$t \longrightarrow f^k_j(x_t)$及び$t \longmapsto (d/dt)x^j_t$は（[s,t]上一様）連続であるから，
+		分割$D$による各区間$[t_{i-1},t_i]$において次の最大最小値が定まる:
+		\begin{align}
+			M_{i-1} \coloneqq \sup{t_{i-1} \leq t \leq t_i} f^k_j(x_t)\frac{d}{dt}x^j_t,
+			\quad m_{i-1} \coloneqq \inf{t_{i-1} \leq t \leq t_i} f^k_j(x_t)\frac{d}{dt}x^j_t.
+		\end{align}
+		ここで
+		\begin{align}
+			S_D \coloneqq \sum_{D} M_{i-1}(t_i - t_{i-1}),
+			\quad s_D \coloneqq \sum_{D} m_{i-1}(t_i - t_{i-1}),
+			\quad \Sigma_D \coloneqq \sum_{D} f^k_j (x_{s_{i-1}}) \frac{d}{dt}x^j(\xi_{i-1})(t_i - t_{i-1})
+		\end{align}
+		とおいて
+		\begin{align}
+			S \coloneqq \inf{D \in \delta[s,t]}{S_D},
+			\quad s \coloneqq \sup{D \in \delta[s,t]}{s_D}
+		\end{align}
+		を定めれば
+		\begin{align}
+			s_D \leq s \leq S \leq S_D,
+			\quad s_D \leq \Sigma_D \leq S_D
+		\end{align}
+		が満たされる．実際，任意の$D_1,D_2 \in \delta[s,t]$に対して，
+		分割の合併を$D_3$とすれば
+		\begin{align}
+			s_{D_1} \leq s_{D_3} \leq S_{D_3} \leq S_{D_2}
+		\end{align}
+		が成立し$s \leq S_D\ (\forall D \in \delta[s,t])$すなわち$s \leq S$が出る．
+		一方で一様連続性から
+		\begin{align}
+			0 \leq S - s \leq S_D - s_D = \sum_D (M_{i-1} - m_{i-1})(t_i - t_{i-1})
+			\longrightarrow 0
+			\quad (|D| \longrightarrow 0)
+		\end{align}
+		が従い$s = S$を得る．以上より
+		\begin{align}
+			|S - \Sigma_D| \leq |S - S_D| + |S_D - \Sigma_D|
+			\leq |S - S_D| + |S_D - s_D|
+			\longrightarrow 0
+			\quad (|D| \longrightarrow 0)
+		\end{align}
+		が成り立つ．
+		\QED
 \end{prf}
 
 \begin{screen}

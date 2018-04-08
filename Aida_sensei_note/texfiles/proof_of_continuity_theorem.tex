@@ -1,0 +1,44 @@
+\section{連続性定理の証明}
+	\begin{screen}
+		\begin{dfn}[control function]
+			関数$\omega:\Delta_T \longrightarrow [0,\infty)$
+			が任意の$0 \leq s \leq u \leq t \leq T$に対して
+			\begin{align}
+				\omega(s,u) + \omega(u,t) \leq \omega(s,t)
+			\end{align}
+			を満たすとき，$\omega$をcontrol functionと呼ぶ．
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[control functionの例]
+			以下の関数$\omega:\Delta_T \longrightarrow [0,\infty)$はcontrol functionである．
+			\begin{description}
+				\item[(1)] $\omega \coloneqq \left( \omega_1^{1/p} + \omega_2^{1/p} \right)^p,
+					\quad (p \geq 1,\ \omega_1,\omega_2:\mbox{control function}).$
+				\item[(2)] $\omega:(s,t) \longmapsto \Norm{X^1}{p:[s,t]}^p,
+					\quad (p \geq 1,\ x \in B_{p,T}(\R^d)).$
+				\item[(3)]
+			\end{description}
+		\end{thm}
+	\end{screen}
+	
+	\begin{thm}\mbox{}
+		\begin{description}
+			\item[(1)]
+			\item[(2)] 任意の$D_1 \in \delta[s,u],D_2 \in \delta[u,t]$に対して
+				合併$D_1 \cup D_2$は$[s,t]$の分割であるから，
+				\begin{align}
+					\sum_{D_1}\left| x_{t_i} - x_{t_{i-1}} \right|^p
+					+ \sum_{D_2}\left| x_{t_i} - x_{t_{i-1}} \right|^p
+					\leq \sup{D \in \delta[s,t]}{\sum_{D} \left| x_{t_i} - x_{t_{i-1}} \right|^p}
+					= \Norm{X^1}{p:[s,t]}^p
+				\end{align}
+				が成り立つ．左辺の$D_1,D_2$の取り方は独立であるから，それぞれに対し上限を取れば
+				\begin{align}
+					\Norm{X^1}{p:[s,u]}^p + \Norm{X^1}{p:[u,t]}^p
+					\leq \Norm{X^1}{p:[s,t]}^p
+				\end{align}
+				が得られる．
+		\end{description}
+	\end{thm}
