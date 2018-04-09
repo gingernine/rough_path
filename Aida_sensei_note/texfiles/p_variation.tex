@@ -7,20 +7,24 @@
 	区間$[s,t] \subset [0,T]$の分割を
 	$D = \{s = t_0 < t_1 < \cdots < t_N = t\}$で表現し
 	$|D| \coloneqq \max{1 \leq i \leq N}{\left| t_i - t_{i-1} \right|}$とおく．
-	また$[s,t]$の分割の全体を$\delta[s,t]$と書く．
+	また$[s,t]$の分割の全体を$\delta[s,t]$と書く．また
+	\begin{align}
+		\sum_D = \sum_{i=1}^{N}
+	\end{align}
+	と書く．
 
 	\begin{screen}
 		\begin{thm}[Riemann-Stieltjes積分]\label{thm:existence_of_Riemann_Stieltjes_integral}
 			$[s,t] \subset [0,T]$とし，$D \in \delta[s,t]$についてのみ考えるとき，
 			任意の$x \in C^1,\ f \in C(\R^d,L(\R^d \rightarrow \R^m))$
-			に対して次の極限が確定する:\footnotemark
+			に対して次の極限が存在する:\footnotemark
 			\begin{align}
 				\lim_{|D| \to 0}
 				\sum_{D} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
 				\in \R^m.
 			\end{align}
-			ここで$s_{i-1}$は区間$[t_{i-1},t_i]$に属する任意の点である．
-			極限は$s_{i-1}$の取り方にも依存しない．
+			ここで$s_{i-1}$は区間$[t_{i-1},t_i]$に属する任意の点であり，
+			極限は$s_{i-1}$の取り方に依らず確定する．
 		\end{thm}
 	\end{screen}
 	\footnotetext{
@@ -100,8 +104,8 @@
 		\begin{align}
 			I_{s,t}(x) = \int_s^t f(x_u)\ dx_u 
 			&\coloneqq \lim_{|D| \to 0}
-				\sum_{D} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}}), \\
-			\biggl( \int_s^t f(x_u)\ dx_u \biggr)_k
+				\sum_{D} f(x_{t_{i-1}})(x_{t_i} - x_{t_{i-1}}), \\
+			\left[ \int_s^t f(x_u)\ dx_u \right]^k
 			&= \sum_{j=1}^d \int_s^t f^k_j(x_u)\ dx^j_u,
 			\quad (k = 1,\cdots,m).
 		\end{align}
@@ -138,7 +142,7 @@
 				\label{eq:thm_linearity_of_Riemann_Stieltjes_integral_1}
 			\end{align}
 			が成り立つことを示せばよい．
-			以下，分割$D$に対するRiemann和$\sum_D f^k_j(x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}})$を$\Sigma_D$と略記する．
+			以下，分割$D$に対するRiemann和$\sum_D f^k_j(x_{t_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}})$を$\Sigma_D$と略記する．
 			定理\ref{thm:existence_of_Riemann_Stieltjes_integral}より，
 			任意の$\epsilon > 0$に対して或る$\delta > 0$が存在し，
 			\begin{align}
@@ -202,54 +206,55 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 	\end{description}
 	任意の分割$D \in \delta[s,t]$に対し，平均値の定理を使うと以下のように式変形される:
 	\begin{align}
-		&\left| \sum_D f^k_j(x^{(n)}_{s_{i-1}})(x^{(n),j}_{t_i} - x^{(n),j}_{t_{i-1}})
-			- \sum_D f^k_j(x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}}) \right| \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			+ f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right.\\
-			&\qquad \left.- f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			- f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-			&\qquad + \sum_D \left|f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			- f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}).
+		&\left| \sum_D f^k_j(x^{(n)}_{t_{i-1}})(x^{(n),j}_{t_i} - x^{(n),j}_{t_{i-1}})
+			- \sum_D f^k_j(x_{t_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}}) \right| \\
+		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
+			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
+		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
+			+ f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right.\\
+			&\qquad \left.- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
+			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
+		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
+			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
+			&\qquad + \sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
+			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}).
 	\end{align}
 	ここで最終式第二項については
 	\begin{align}
-		&\sum_D \left|f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			- f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
+		&\sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
+			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
 		&\qquad \leq \sum_D \Norm{f^k_j}{\infty} \Norm{x^{(n)} - x}{C^1} (t_i - t_{i-1})
 		= \Norm{f^k_j}{\infty} \Norm{x^{(n)} - x}{C^1}(t - s)
 	\end{align}
 	が成り立ち，第一項については
 	\begin{align}
-		&\sum_D \left| f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_{i-1},j} \right.\\
-			&\qquad + f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_{i-1},j}
-			- f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_{i-1},j} \\
-			&\qquad + f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_{i-1},j}
-			- f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \\
-			&\qquad + f^k_j(x^{(n)}_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			\left. - f^k_j(x_{s_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
+		&\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
+			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
+		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
+			- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_{i-1},j} \right.\\
+			&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_{i-1},j}
+			- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_{i-1},j} \\
+			&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_{i-1},j}
+			- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \\
+			&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
+			\left. - f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
 		\leq &2\Norm{f^k_j}{\infty} \Norm{x^{(n)} - x}{C^1}(t - s)
 			+ \Norm{f^k_j}{\infty}(t-s) \sup{|\xi - \eta| \leq |D|}{\left|x^j_\xi - x^j_\eta \right|} \\
 			&\qquad + \Norm{x}{C^1}(t-s)\sup{t \in [0,T]}{\left|f^k_j(x^{(n)}_t) - f^k_j(x_t) \right|}
 	\end{align}
-	とできる．
+	とできる．いま，
 \end{prf}
 
 \begin{screen}
 	\begin{dfn}[$p$-variation]
 		$[0,T]$上の$\R^d$値関数$x$に対し，$p$-variationを次で定める:
 		\begin{align}
-			\Norm{x}{p}
-			\coloneqq \left\{ \sup{D \in \delta[0,T]}{\sum_{D} 
+			\Norm{x}{p,[s,t]}
+			\coloneqq \left\{ \sup{D \in \delta[s,t]}{\sum_{D} 
 				\left| x_{t_i} - x_{t_{i-1}} \right|^p }\right\}^{1/p}.
 		\end{align}
-		また線形空間$B_{p,T}(\R^d)$を
+		特に，$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と表記する．また$p \geq 1$として，
+		線形空間$B_{p,T}(\R^d)$を
 		\begin{align}
 			B_{p,T}(\R^d)
 			\coloneqq \Set{x:[0,T] \longrightarrow \R^d}{x_0=0,\ x:\mbox{continuous},\ \Norm{x}{p} < \infty}
@@ -258,82 +263,139 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 	\end{dfn}
 \end{screen}
 
+次の結果により，$0 < p < 1$に対し$B_{p,T}(\R^d)$を定めても
+$0$の定数関数のみの空間でしかない．
 \begin{screen}
-	\begin{thm}
-		$\tilde{C}^1 \coloneqq \Set{x \in C^1}{x_0 = 0}$とおくと，
-		$\tilde{C}^1 \subset B_{p,T}(\R^d)$が成り立つ．
+	\begin{thm}[$0 < p < 1$に対して有界$p$-variationなら定数]
+		$x:[0,T] \longrightarrow \R^d$を連続関数とする．
+		このとき，$p \in (0, 1)$に対し$\Norm{x}{p} < \infty$が成り立つなら$x$は定数関数である．
 	\end{thm}
 \end{screen}
 
 \begin{prf}
-	$x \in \tilde{C}^1$に対して
+	$t \in [0,T]$を任意に取り固定する．このとき全ての$D \in \delta[0,t]$に対して，
 	\begin{align}
-		M \coloneqq \sum_{j=1}^{d} \sup{x \in [0,T]}{|x^j(t)|}
+		|x_t - x_0| \leq \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|
+		&\leq \max{D}{\left| x_{t_i} - x_{t_{i-1}} \right|^{1-p}} 
+			\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \\
+		&\leq \max{D}{\left| x_{t_i} - x_{t_{i-1}} \right|^{1-p}} \Norm{x}{p}
 	\end{align}
-	とおけば，$x'$の連続性より$M < \infty$が定まる．
-	平均値の定理より，$|D| < 1$を満たす分割$D$に対して
-	\begin{align}
-		\left\{ \sum_{i=1}^{N} |x_{t_i} - x_{t_{i-1}}|^p \right\}^{1/p}
-		\leq \left\{ \sum_{i=1}^{N} \Norm{x}{C^1}^p (t_i - t_{i-1})^p \right\}^{1/p}
-		\leq M T < \infty
-	\end{align}
-	が成立し$\Norm{x}{p} \leq MT < \infty$が従う
-	\footnote{
-		$S_D \geq 0$ならば$(\sup{D}S_D)^{1/p} = \sup{D}S_D^{1/p}$が成り立つ．
-	}
-	．
+	が成り立ち，$x$の一様連続性から右辺は$|D| \longrightarrow 0$で$0$に収束し，
+	$x_t = x_0$が従う．
+	\QED
+\end{prf}
+
+\begin{screen}
+	\begin{thm}$[s,t] \subset [0,T]$とする．
+		\begin{description}
+			$x \in C^1$ならば$\Norm{x}{p,[s,t]} < \infty$が成り立つ．
+			ただちに，$p$-variationは線形空間$C^1$においてノルムとなる．
+		\end{description}
+	\end{thm}
+\end{screen}
+
+\begin{prf}\mbox{}
+	\begin{description}
+		\item[$p = 1$の場合]
+			平均値の定理より，任意の$D \in \delta[s,t]$に対し
+			\begin{align}
+				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|
+				\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|
+				\leq \sum_D \sum_{j=1}^d \Norm{x}{C^1}(t_i - t_{i-1})
+				= d\Norm{x}{C^1}(t - s) < \infty
+			\end{align}
+			が成り立ち$\Norm{x}{1} < \infty$が従う．
+		
+		\item[$p > 1$の場合] $q$を$p$の共役指数とする．
+			任意の$D \in \delta[s,t]$に対し，H\Ddot{o}lderの不等式より
+			\begin{align}
+				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p
+				&\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|^p
+				= \sum_D \sum_{j=1}^d \left| \int_{t_{i-1}}^{t_i} \tfrac{d}{dt} x^j_{u}\ du \right|^p \\
+				&\qquad \leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
+					\biggl( \int_{t_{i-1}}^{t_i} \left| \tfrac{d}{dt} x^j_{u} \right|^q\ du \biggr)^{p/q}
+				\leq d\Norm{x}{C^1}^p(t - s)^p
+			\end{align}
+			が成立し，$\Norm{x}{p} < \infty$が従う．
+			\QED
+	\end{description}
 \end{prf}
 
 \begin{screen}
 	\begin{thm}
-		$B_{p,T}(\R^d)$はBanach空間である．
+		$B_{p,T}(\R^d)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
 	\end{thm}
 \end{screen}
 
-\begin{prf}
-	$(x^n)_{n=1}^{\infty} \subset B_{p,T}(\R^d)$をCauchy列とする．
-	つまり任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
-	\begin{align}
-		\Norm{x^n - x^m}{p}
-		= \left\{ \sup{D}{\sum_{i=1}^{N} 
-		\left| \left( x^n_{t_i} - x^m_{t_i} \right) 
-		- \left(x^n_{t_{i-1}} - x^m_{t_{i-1}} \right) \right|^p }\right\}^{1/p} < \epsilon,
-		\quad (n,m > n_\epsilon)
-	\end{align}
-	を満たす．いま，任意の$t \in [0,T]$に対して$[0,T]$の分割$\{0=t_0 \leq t \leq T\}$
-	を考えれば
-	\begin{align}
-		|x^n_t - x^m_t| < \epsilon,
-		\quad (n,m > n_\epsilon)
-	\end{align}
-	が得られ，実数の完備性より或る$x_t \in \R^d$が存在して
-	\begin{align}
-		|x^n_t - x_t| < \epsilon
-		\quad (n > n_\epsilon)
-	\end{align}
-	を満たす．実際，もし或る$n > n_\epsilon$で$|x^n_t - x_t| \eqqcolon \alpha \geq \epsilon$
-	が成り立つと，任意の$m > n_\epsilon$に対して
-	\begin{align}
-		|x^m_t - x_t| \geq |x^n_t - x_t| - |x^n_t - x^m_t| > \alpha - \epsilon
-	\end{align}
-	が従い$x^m_t \longrightarrow x_t$に反する．
-	ゆえに収束は$t$に関して一様であり，$t \longmapsto x_t$は0出発かつ連続である．
-	あとは$\Norm{x^n - x}{p} \longrightarrow 0\ (n \longrightarrow \infty)$であればよい．
+\begin{prf}\mbox{}
+	\begin{description}
+		\item[第一段]
+			$\Norm{\cdot}{p}$がノルムであることについて，
+			とくに三角不等式はMinkowskiの不等式より出る．
+			
+		\item[第二段] $(x^n)_{n=1}^{\infty} \subset B_{p,T}(\R^d)$をCauchy列とすれば，
+			任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
+			\begin{align}
+				\Norm{x^n - x^m}{p}
+				= \left\{ \sup{D \in \delta[0,T]}{\sum_{D} 
+				\left| \left( x^n_{t_i} - x^m_{t_i} \right) 
+				- \left(x^n_{t_{i-1}} - x^m_{t_{i-1}} \right) \right|^p }\right\}^{1/p} < \epsilon,
+				\quad (n,m > n_\epsilon)
+			\end{align}
+			を満たす．いま，任意の$t \in [0,T]$に対して$[0,T]$の分割$D = \{0 \leq t \leq T\}$
+			を考えれば
+			\begin{align}
+				|x^n_t - x^m_t| < \epsilon,
+				\quad (n,m > n_\epsilon)
+			\end{align}
+			が得られ，実数の完備性より或る$x_t \in \R^d$が存在して
+			\begin{align}
+				|x^n_t - x_t| < \epsilon
+				\quad (n > n_\epsilon)
+			\end{align}
+			を満たす．
+			\footnote{
+				実際，もし或る$n > n_\epsilon$で$|x^n_t - x_t| \eqqcolon \alpha \geq \epsilon$
+				が成り立つと，任意の$m > n_\epsilon$に対して
+				\begin{align}
+					|x^m_t - x_t| \geq |x^n_t - x_t| - |x^n_t - x^m_t| > \alpha - \epsilon
+				\end{align}
+				が従い$x^m_t \longrightarrow x_t$に反する．
+			}
+			この収束は$t$に関して一様であるから，$t \longmapsto x_t$は0出発かつ連続である．
+			
+		\item[第三段] $\Norm{x^n - x}{p} \longrightarrow 0\ (n \longrightarrow \infty)$を示す．
+			前段によれば，任意の$D \in \delta[0,T]$に対し
+			\begin{align}
+				\sum_D \left| (x^m_{t_i} - x^n_{t_i}) - (x^m_{t_{i-1}} - x^n_{t_{i-1}}) \right|^p
+				< \epsilon^p,
+				\quad (n,m > n_\epsilon)
+			\end{align}
+			が成り立っている．$D$はせいぜい有限個の分割であるから，$m \longrightarrow \infty$として
+			\begin{align}
+				\sum_D \left| (x_{t_i} - x^n_{t_i}) - (x_{t_{i-1}} - x^n_{t_{i-1}}) \right|^p
+				< \epsilon^p,
+				\quad (n > n_\epsilon)
+			\end{align}
+			が従い，$D$の任意性より$\Norm{x^n - x}{p} < \epsilon\ (n > n_\epsilon)$を得る．
+			\QED
+	\end{description}
 \end{prf}
 
 \begin{screen}
 	\begin{thm}
-		$C^1$空間において，$\Norm{}{C^1}$で定まる位相は
-		$\Norm{}{p}$で定まる位相より強い．
+		$C^1$において，$\Norm{\cdot}{C^1}$で定まる位相は
+		$\Norm{\cdot}{p}$で定まる位相より強い．
 	\end{thm}
 \end{screen}
 
 \begin{prf}
-	任意の$x \in \tilde{C}^1$に対して
+	任意の$x \in C^1$に対し
 	\begin{align}
 		\Norm{x}{p} \leq T \Norm{x}{C^1}
 	\end{align}
-	を満たすことを証明する．実際，任意の分割$D$に対して
+	が成り立てば，$\Norm{\cdot}{p}$による開集合は$\Norm{\cdot}{C^1}$による開集合である．
+	実際，
 	\begin{align}
 		\sum_{i=1}^{N} |x_{t_i} - x_{t_{i-1}}|
 		\leq \sum_{i=1}^{N} \Norm{x}{C^1} (t_i - t_{i-1})
