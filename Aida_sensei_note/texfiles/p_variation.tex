@@ -1,17 +1,17 @@
 \section{導入}
-	以下，$x \in \R^d$について成分を込めて表現する場合は
-	$x = (x^1,\cdots,x^d)$と書き，
-	実$m \times d$行列$a$については$a=(a^i_j)_{1 \leq i \leq m,1 \leq j \leq d}$と表す．
+	以下，$d$次元ベクトル$x \in \R^d$と$(m, d)$行列$a \in \R^m \otimes \R^d$について，
+	成分を込めて表現する場合は
+	$x = (x^1,\cdots,x^d),\ a=(a^i_j)_{1 \leq i \leq m,1 \leq j \leq d}$と書く．
 	また$T > 0$を固定し$C^1 = C^1([0,T] \rightarrow \R^d)$とおく．
-	ただし端点においては片側微分を考える．
+	（端点においては片側微分を考える．）
 	区間$[s,t] \subset [0,T]$の分割を
-	$D = \{s = t_0 < t_1 < \cdots < t_N = t\}$で表現し
-	$|D| \coloneqq \max{1 \leq i \leq N}{\left| t_i - t_{i-1} \right|}$とおく．
-	また$[s,t]$の分割の全体を$\delta[s,t]$と書く．また
+	$D = \{s = t_0 < t_1 < \cdots < t_N = t\}$で表現し，
+	分割の全体を$\delta[s,t]$とおく．
+	$|D|$により$\max{1 \leq i \leq N}{\left| t_i - t_{i-1} \right|}$を表し，
 	\begin{align}
 		\sum_D = \sum_{i=1}^{N}
 	\end{align}
-	と書く．
+	と略記する．
 
 	\begin{screen}
 		\begin{thm}[Riemann-Stieltjes積分]\label{thm:existence_of_Riemann_Stieltjes_integral}
@@ -38,25 +38,25 @@
 			&\sum_{j=1}^{d} \sum_{D} f^k_j (x_{s_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}}) 
 				\label{eq:thm_existence_of_Riemann_Stieltjes_integral}\\
 			&\qquad 
-			= \sum_{j=1}^{d} \sum_{D} f^k_j (x_{s_{i-1}}) \tfrac{d}{dt}x^j(\xi_{i-1,j})(t_i - t_{i-1}),
-			\quad ({}^\exists \xi_{i-1,j} \in [t_{i-1},t_i])
+			= \sum_{j=1}^{d} \sum_{D} f^k_j (x_{s_{i-1}}) \tfrac{d}{dt}x^j_{\xi_i}(t_i - t_{i-1}),
+			\quad ({}^\exists \xi_i \in [t_{i-1},t_i])
 		\end{align}
 		と表現できる．各$j,k$について
 		\begin{align}
-			\lim_{|D| \to 0} \sum_{D} f^k_j (x_{s_{i-1}}) \tfrac{d}{dt}x^j(\xi_{i-1,j})(t_i - t_{i-1})
+			\lim_{|D| \to 0} \sum_{D} f^k_j (x_{s_{i-1}}) \tfrac{d}{dt}x^j_{\xi_i}(t_i - t_{i-1})
 		\end{align}
 		が確定すれば，第$k$成分の極限が確定し定理の主張を得る．
 		いま，$t \longrightarrow f^k_j(x_t)$及び$t \longmapsto (d/dt)x^j_t$は（$[s,t]$上一様）連続であるから，
 		分割$D$による各区間$[t_{i-1},t_i]$において次の最大最小値が定まる:
 		\begin{align}
-			M_{i-1} \coloneqq \sup{t_{i-1} \leq t \leq t_i} f^k_j(x_t)\tfrac{d}{dt}x^j_t,
-			\quad m_{i-1} \coloneqq \inf{t_{i-1} \leq t \leq t_i} f^k_j(x_t)\tfrac{d}{dt}x^j_t.
+			M_i \coloneqq \sup{t_{i-1} \leq t \leq t_i} f^k_j(x_t)\tfrac{d}{dt}x^j_t,
+			\quad m_i \coloneqq \inf{t_{i-1} \leq t \leq t_i} f^k_j(x_t)\tfrac{d}{dt}x^j_t.
 		\end{align}
 		ここで
 		\begin{align}
-			S_D \coloneqq \sum_{D} M_{i-1}(t_i - t_{i-1}),
-			\quad s_D \coloneqq \sum_{D} m_{i-1}(t_i - t_{i-1}),
-			\quad \Sigma_D \coloneqq \sum_{D} f^k_j (x_{s_{i-1}}) \tfrac{d}{dt}x^j(\xi_{i-1})(t_i - t_{i-1})
+			S_D \coloneqq \sum_{D} M_i(t_i - t_{i-1}),
+			\quad s_D \coloneqq \sum_{D} m_i(t_i - t_{i-1}),
+			\quad \Sigma_D \coloneqq \sum_{D} f^k_j (x_{s_{i-1}}) \tfrac{d}{dt}x^j_{\xi_i}(t_i - t_{i-1})
 		\end{align}
 		とおいて
 		\begin{align}
@@ -76,7 +76,7 @@
 		が成立し$s \leq S_D\ (\forall D \in \delta[s,t])$すなわち$s \leq S$が出る．
 		一方で一様連続性から
 		\begin{align}
-			0 \leq S - s \leq S_D - s_D = \sum_D (M_{i-1} - m_{i-1})(t_i - t_{i-1})
+			0 \leq S - s \leq S_D - s_D = \sum_D (M_i - m_i)(t_i - t_{i-1})
 			\longrightarrow 0
 			\quad (|D| \longrightarrow 0)
 		\end{align}
@@ -93,7 +93,7 @@
 
 上の証明において，各$k,j$ごとに定まる極限$S$を
 \begin{align}
-	S = \int_s^t f^k_j(x_u)\ dx^j_u
+	\int_s^t f^k_j(x_u)\ dx^j_u
 \end{align}
 と書く．
 
@@ -102,7 +102,7 @@
 		$x \in C^1$と$f \in C(\R^d,L(\R^d \rightarrow \R^m))$に対して，
 		$[s,t] \subset [0,T]$におけるRiemann-Stieltjes積分を次で表現する:
 		\begin{align}
-			I_{s,t}(x) = \int_s^t f(x_u)\ dx_u 
+			I^f_{s,t}(x) = \int_s^t f(x_u)\ dx_u 
 			&\coloneqq \lim_{|D| \to 0}
 				\sum_{D} f(x_{t_{i-1}})(x_{t_i} - x_{t_{i-1}}), \\
 			\left[ \int_s^t f(x_u)\ dx_u \right]^k
@@ -114,19 +114,13 @@
 \end{screen}
 
 \begin{screen}
-	\begin{thm}[Riemann-Stieltjes積分の線型性]
+	\begin{thm}[$I$の加法性・線型性]
 	\label{thm:linearity_of_Riemann_Stieltjes_integral}
-		$x \in C^1,\ f \in C(\R^d,L(\R^d \rightarrow \R^m))$とする．
+		任意の$x \in C^1,\ f,g \in C(\R^d,L(\R^d \rightarrow \R^m)),\ \alpha,\beta \in \R$に対して次が成立する:
 		\begin{description}
-			\item[(1)] 任意の$0 \leq s < u < t \leq T$に対し
-				$I_{s,u}(x) + I_{u,t}(x) = I_{s,t}(x)$が成り立つ．
-				
-			\item[(2)] $\alpha,\beta \in \R$と$g \in C(\R^d,L(\R^d \rightarrow \R^m))$に対して
-				\begin{align}
-					\int_s^t \alpha f(x_u) + \beta g(x_u)\ dx_u
-					= \alpha \int_s^t f(x_u)\ dx_u + \beta \int_s^t g(x_u)\ dx_u.
-				\end{align}
-				が成り立つ．
+			\item[(1)] $I^f_{s,u}(x) + I^f_{u,t}(x) = I^f_{s,t}(x)$,
+			
+			\item[(2)] $I^{(\alpha f + \beta g)}_{s,t}(x) = \alpha I^f_{s,t}(x) + \beta I^g_{s,t}(x)$.
 		\end{description}
 	\end{thm}
 \end{screen}
@@ -171,7 +165,8 @@
 			\end{align}
 			が従い(\refeq{eq:thm_linearity_of_Riemann_Stieltjes_integral_1})を得る．
 		
-		\item[(2)]
+		\item[(2)] 略．
+		\QED
 	\end{description}
 \end{prf}
 $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
@@ -181,68 +176,103 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 	\quad \Norm{x}{C^1} \coloneqq
 	\Norm{x}{\infty} + \Norm{x'}{\infty}.
 \end{align}
-以降，$C^1$には$\Norm{\cdot}{C^1}$によりノルム位相を導入する．
 
 \begin{screen}
-	\begin{thm}[有界な$f$のStieltjes積分は$x$に関し連続]
-		$[s,t] \subset [0,T]$とする．$x \in C^1$と$f \in C_b(\R^d,L(\R^d \rightarrow \R^m))$により定める
-		$I_{s,t}(x)$について，$C^1 \ni x \longmapsto I_{s,t}(x) \in \R^m$は連続である．
+	\begin{thm}[$I_{s,t}$は$x$に関し連続]\label{thm:T_s_t_continuous_w_r_t_C1_norm}
+		$[s,t] \subset [0,T]$とし，$C^1$には$\Norm{\cdot}{C^1}$でノルム位相を入れる．
+		このとき，$f \in C(\R^d,L(\R^d \rightarrow \R^m))$に対し
+		$C^1 \ni x \longmapsto I^f_{s,t}(x) \in \R^m$は連続である．
 	\end{thm}
 \end{screen}
 
 \begin{prf}
 	$C^1$の各点は可算な基本近傍系を持つから
 	$x \longmapsto I_{0,T}(x)$の点列連続性と連続性は一致する．
-	すなわち$x^{(n)} \longrightarrow x$なら$I_{0,T}(x^{(n)}) \longrightarrow I_{0,T}(x)$
+	すなわち$x^{(n)} \longrightarrow x$なら$I^f_{0,T}(x^{(n)}) \longrightarrow I^f_{0,T}(x)$
 	が従うことを示せばよい．今回も各$j,k$について
 	\begin{align}
 		\int_s^t f^k_j(x^{(n)}_u)\ dx^{(n),j}_u
 		\longrightarrow \int_s^t f^k_j(x_u)\ dx^j_u,
 		\quad (n \longrightarrow \infty)
+		\label{eq:thm_T_s_t_continuous_w_r_t_C1_norm}
 	\end{align}
 	が成り立つことを示せば十分である．
 	\begin{description}
-		\item[第一段]
+		\item[第一段] $t \longmapsto x_t$の連続性より$x([0,T])$は$\R^d$のコンパクト集合であるから，
+			$t \longmapsto f(x_t)$は$[0,T]$上で有界である．
+			ここで$M \coloneqq \sup{t \in [0,T]}{|f(x_t)|}$とおく．
+			
+		\item[第二段]
+			任意の分割$D \in \delta[s,t]$に対し，平均値の定理を使うと以下のように式変形される:
+			\begin{align}
+				&\left| \sum_D f^k_j(x^{(n)}_{t_{i-1}})(x^{(n),j}_{t_i} - x^{(n),j}_{t_{i-1}})
+					- \sum_D f^k_j(x_{t_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}}) \right| \\
+				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}) \\
+				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
+					+ f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right.\\
+					&\qquad \left.- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}) \\
+				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right|(t_i - t_{i-1}) \\
+					&\qquad + \sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}).
+			\end{align}
+			ここで最終式第二項については
+			\begin{align}
+				&\sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}) \\
+				&\qquad \leq \sum_D M \Norm{x^{(n)} - x}{C^1} (t_i - t_{i-1})
+				= M (t - s) \Norm{x^{(n)} - x}{C^1}
+			\end{align}
+			が成り立ち，第一項については
+			\begin{align}
+				&\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right|(t_i - t_{i-1}) \\
+				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
+					- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_i} \right.\\
+					&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_i}
+					- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_i} \\
+					&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_i}
+					- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \\
+					&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
+					\left. - f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right|(t_i - t_{i-1}) \\
+				\leq &2M (t - s) \Norm{x^{(n)} - x}{C^1}
+					+ M(t-s) \sup{|\xi - \eta| \leq |D|}{\left|x^j_\xi - x^j_\eta \right|} \\
+					&\qquad + \Norm{x}{C^1}(t-s)\sup{t \in [0,T]}{\left|f^k_j(x^{(n)}_t) - f^k_j(x_t) \right|}
+			\end{align}
+			とできる．いま，任意に$\epsilon > 0$を取れば，或る$\epsilon > \delta > 0$が存在して
+			$v,w \in x([0,T]),\ |v - w| < \delta$なら$|f^k_j(v) - f^k_j(w)| < \epsilon$
+			が成り立つ（一様連続）．すなわち$\Norm{x^{(n)} - x}{C^1} < \delta$なら
+			\begin{align}
+				\sup{t \in [0,T]}{\left|f^k_j(x^{(n)}_t) - f^k_j(x_t) \right|} < \epsilon
+			\end{align}
+			が成立する．$\Norm{x^{(n)} - x}{C^1} \longrightarrow 0$の仮定より，
+			或る自然数$N$が存在して$\Norm{x^{(n)} - x}{C^1} < \delta\ (n > N)$が満たされるから，
+			ここで$n > N$を任意に一つ選び固定する．
+		
+		\item[第三段] 定理\ref{thm:existence_of_Riemann_Stieltjes_integral}より，前段の$\epsilon$に対し或る$\delta_1 > 0$が存在して，
+			$|D| < \delta_1$なら
+			\begin{align}
+				&\left| \int_s^t f^k_j(x^{(n)}_u)\ dx^{(n),j}_u
+					- \sum_D f^k_j(x^{(n)}_{t_{i-1}})(x^{(n)}_{t_i} - x^{(n)}_{t_{i-1}}) \right| < \epsilon, \\
+				&\left| \int_s^t f^k_j(x_u)\ dx^j_u
+					- \sum_D f^k_j(x_{t_{i-1}})(x_{t_i} - x_{t_{i-1}}) \right| < \epsilon, \\
+			\end{align}
+			が成り立つ．一方で$x^j$は一様連続であるから，或る$\delta_2 > 0$が存在して
+			$|D| < \delta_2$なら
+			\begin{align}
+				\sup{|\xi - \eta| \leq |D|}{\left|x^j_\xi - x^j_\eta \right|} < \epsilon
+			\end{align}
+			が満たされる．よって$|D| < \delta \wedge \delta_1 \wedge \delta_2$ならば
+			\begin{align}
+				\left| \int_s^t f^k_j(x^{(n)}_u)\ dx^{(n),j}_u
+					- \int_s^t f^k_j(x_u)\ dx^j_u \right|
+				< \left[2 + 4M(t-s) + \Norm{x}{C^1}(t-s) \right] \epsilon
+			\end{align}
+			が出る．$n > N$は任意であったから(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm})が従う．
+			\QED
 	\end{description}
-	任意の分割$D \in \delta[s,t]$に対し，平均値の定理を使うと以下のように式変形される:
-	\begin{align}
-		&\left| \sum_D f^k_j(x^{(n)}_{t_{i-1}})(x^{(n),j}_{t_i} - x^{(n),j}_{t_{i-1}})
-			- \sum_D f^k_j(x_{t_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}}) \right| \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			+ f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right.\\
-			&\qquad \left.- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-			&\qquad + \sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}).
-	\end{align}
-	ここで最終式第二項については
-	\begin{align}
-		&\sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		&\qquad \leq \sum_D \Norm{f^k_j}{\infty} \Norm{x^{(n)} - x}{C^1} (t_i - t_{i-1})
-		= \Norm{f^k_j}{\infty} \Norm{x^{(n)} - x}{C^1}(t - s)
-	\end{align}
-	が成り立ち，第一項については
-	\begin{align}
-		&\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_{i-1},j} 
-			- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_{i-1},j} \right.\\
-			&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_{i-1},j}
-			- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_{i-1},j} \\
-			&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_{i-1},j}
-			- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \\
-			&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j}
-			\left. - f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_{i-1},j} \right|(t_i - t_{i-1}) \\
-		\leq &2\Norm{f^k_j}{\infty} \Norm{x^{(n)} - x}{C^1}(t - s)
-			+ \Norm{f^k_j}{\infty}(t-s) \sup{|\xi - \eta| \leq |D|}{\left|x^j_\xi - x^j_\eta \right|} \\
-			&\qquad + \Norm{x}{C^1}(t-s)\sup{t \in [0,T]}{\left|f^k_j(x^{(n)}_t) - f^k_j(x_t) \right|}
-	\end{align}
-	とできる．いま，
 \end{prf}
 
 \begin{screen}
@@ -285,41 +315,14 @@ $0$の定数関数のみの空間でしかない．
 	\QED
 \end{prf}
 
-\begin{screen}
-	\begin{thm}$[s,t] \subset [0,T]$とする．
-		\begin{description}
-			$x \in C^1$ならば$\Norm{x}{p,[s,t]} < \infty$が成り立つ．
-			ただちに，$p$-variationは線形空間$C^1$においてノルムとなる．
-		\end{description}
-	\end{thm}
-\end{screen}
-
-\begin{prf}\mbox{}
-	\begin{description}
-		\item[$p = 1$の場合]
-			平均値の定理より，任意の$D \in \delta[s,t]$に対し
-			\begin{align}
-				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|
-				\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|
-				\leq \sum_D \sum_{j=1}^d \Norm{x}{C^1}(t_i - t_{i-1})
-				= d\Norm{x}{C^1}(t - s) < \infty
-			\end{align}
-			が成り立ち$\Norm{x}{1} < \infty$が従う．
-		
-		\item[$p > 1$の場合] $q$を$p$の共役指数とする．
-			任意の$D \in \delta[s,t]$に対し，H\Ddot{o}lderの不等式より
-			\begin{align}
-				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p
-				&\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|^p
-				= \sum_D \sum_{j=1}^d \left| \int_{t_{i-1}}^{t_i} \tfrac{d}{dt} x^j_{u}\ du \right|^p \\
-				&\qquad \leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
-					\biggl( \int_{t_{i-1}}^{t_i} \left| \tfrac{d}{dt} x^j_{u} \right|^q\ du \biggr)^{p/q}
-				\leq d\Norm{x}{C^1}^p(t - s)^p
-			\end{align}
-			が成立し，$\Norm{x}{p} < \infty$が従う．
-			\QED
-	\end{description}
-\end{prf}
+$p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta[s,t]$に対し
+\begin{align}
+	\left\{ \sum_D \left| (x_{t_i} + y_{t_i}) - (x_{t_{i-1}} + y_{t_{i-1}}) \right|^p \right\}^{1/p}
+	&\leq \left\{ \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \right\}^{1/p}
+		+ \left\{ \sum_D \left| y_{t_i} - y_{t_{i-1}} \right|^p \right\}^{1/p} \\
+	&\leq \Norm{x}{p,[s,t]} + \Norm{y}{p,[s,t]}
+\end{align}
+が成り立ち$\Norm{x + y}{p,[s,t]} \leq \Norm{x}{p,[s,t]} + \Norm{y}{p,[s,t]}$を得る．
 
 \begin{screen}
 	\begin{thm}
@@ -329,11 +332,7 @@ $0$の定数関数のみの空間でしかない．
 
 \begin{prf}\mbox{}
 	\begin{description}
-		\item[第一段]
-			$\Norm{\cdot}{p}$がノルムであることについて，
-			とくに三角不等式はMinkowskiの不等式より出る．
-			
-		\item[第二段] $(x^n)_{n=1}^{\infty} \subset B_{p,T}(\R^d)$をCauchy列とすれば，
+		\item[第一段] $(x^n)_{n=1}^{\infty} \subset B_{p,T}(\R^d)$をCauchy列とすれば，
 			任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
 			\begin{align}
 				\Norm{x^n - x^m}{p}
@@ -353,18 +352,9 @@ $0$の定数関数のみの空間でしかない．
 				|x^n_t - x_t| < \epsilon
 				\quad (n > n_\epsilon)
 			\end{align}
-			を満たす．
-			\footnote{
-				実際，もし或る$n > n_\epsilon$で$|x^n_t - x_t| \eqqcolon \alpha \geq \epsilon$
-				が成り立つと，任意の$m > n_\epsilon$に対して
-				\begin{align}
-					|x^m_t - x_t| \geq |x^n_t - x_t| - |x^n_t - x^m_t| > \alpha - \epsilon
-				\end{align}
-				が従い$x^m_t \longrightarrow x_t$に反する．
-			}
-			この収束は$t$に関して一様であるから，$t \longmapsto x_t$は0出発かつ連続である．
+			を満たす．この収束は$t$に関して一様であるから，$t \longmapsto x_t$は0出発かつ連続である．
 			
-		\item[第三段] $\Norm{x^n - x}{p} \longrightarrow 0\ (n \longrightarrow \infty)$を示す．
+		\item[第二段] $\Norm{x^n - x}{p} \longrightarrow 0\ (n \longrightarrow \infty)$を示す．
 			前段によれば，任意の$D \in \delta[0,T]$に対し
 			\begin{align}
 				\sum_D \left| (x^m_{t_i} - x^n_{t_i}) - (x^m_{t_{i-1}} - x^n_{t_{i-1}}) \right|^p
@@ -383,24 +373,55 @@ $0$の定数関数のみの空間でしかない．
 \end{prf}
 
 \begin{screen}
-	\begin{thm}
-		$C^1$において，$\Norm{\cdot}{C^1}$で定まる位相は
-		$\Norm{\cdot}{p}$で定まる位相より強い．
+	\begin{thm}\label{thm:C1_p_variation_topology}
+		$p \geq 1$とする．また$x_0 = 0$を満たす$x \in C^1$の全体が作る線形空間を$\tilde{C}^1$とおく．
+		\begin{description}
+			\item[(1)] $x \in C^1$ならば$\Norm{x}{p} < \infty$が成り立つ．
+				ただちに，$\Norm{\cdot}{p}$は$\tilde{C}^1$においてノルムとなる．
+			\item[(2)] $\tilde{C}^1$において，$\Norm{\cdot}{C^1}$で導入する位相は
+				$\Norm{\cdot}{p}$で導入する位相より強い．
+		\end{description}
 	\end{thm}
 \end{screen}
 
-\begin{prf}
-	任意の$x \in C^1$に対し
-	\begin{align}
-		\Norm{x}{p} \leq T \Norm{x}{C^1}
-	\end{align}
-	が成り立てば，$\Norm{\cdot}{p}$による開集合は$\Norm{\cdot}{C^1}$による開集合である．
-	実際，
-	\begin{align}
-		\sum_{i=1}^{N} |x_{t_i} - x_{t_{i-1}}|
-		\leq \sum_{i=1}^{N} \Norm{x}{C^1} (t_i - t_{i-1})
-		= T \Norm{x}{C^1}
-	\end{align}
-	が成り立つ．
+\begin{prf}\mbox{}
+	\begin{description}
+		\item[$p = 1$の場合]
+			平均値の定理より，任意の$D \in \delta[0,T]$に対し
+			\begin{align}
+				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|
+				\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|
+				\leq \sum_D \sum_{j=1}^d \Norm{x}{C^1}(t_i - t_{i-1})
+				= d\Norm{x}{C^1}T < \infty
+			\end{align}
+			が成り立ち$\Norm{x}{1} < \infty$が従う．
+		
+		\item[$p > 1$の場合] $q$を$p$の共役指数とする．
+			任意の$D \in \delta[0,T]$に対し，H\Ddot{o}lderの不等式より
+			\begin{align}
+				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p
+				&\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|^p
+				= \sum_D \sum_{j=1}^d \left| \int_{t_{i-1}}^{t_i} \tfrac{d}{dt} x^j_{u}\ du \right|^p \\
+				&\qquad \leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
+					\biggl( \int_{t_{i-1}}^{t_i} \left| \tfrac{d}{dt} x^j_{u} \right|^q\ du \biggr)^{p/q}
+				\leq d\Norm{x}{C^1}^p T^p
+			\end{align}
+			が成立し，$\Norm{x}{p} < \infty$が従う．
+	\end{description}
+	以上より，$p \geq 1$ならば$\Norm{x}{p} \leq dT\Norm{x}{C^1}\ (x \in C^1)$が成り立ち(2)の主張を得る．
 	\QED
 \end{prf}
+
+	以上が会田先生の資料のIntroductionの部分の補完である．
+	次節の考察対象は主に定理\ref{thm:T_s_t_continuous_w_r_t_C1_norm}と
+	定理\ref{thm:C1_p_variation_topology}に関係する．
+	定理\ref{thm:T_s_t_continuous_w_r_t_C1_norm}によれば，
+	$C^1$に$\Norm{\cdot}{C^1}$でノルム位相を導入した場合，
+	$f \in C(\R^d,L(\R^d \rightarrow \R^m))$に対して
+	$C^1 \ni x \longmapsto I^f_{s,t}(x)$は連続である．
+	一方で定理\ref{thm:T_s_t_continuous_w_r_t_C1_norm}によれば，
+	0出発$C^1$-パス空間$\tilde{C}^1$に$\Norm{\cdot}{p}$でノルム位相を導入した場合，
+	$\tilde{C}^1 \ni x \longmapsto I^f_{s,t}(x)$が連続であるという
+	保証はない．しかし，次節以後の結果により，
+	$1 \leq p < 3$かつ$f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$が満たされているなら
+	$\tilde{C}^1 \ni x \longmapsto I^f_{s,t}(x)$は或る意味での連続性を持つ．
