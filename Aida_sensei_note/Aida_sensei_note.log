@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  10 APR 2018 12:22
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  10 APR 2018 15:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,19 +485,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--1
 
  []
 
-)
-Underfull \hbox (badness 10000) in paragraph at lines 54--134
-
- []
-
-[9] (./Aida_sensei_note.aux) ) 
+) [9] (./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
  3326 strings out of 493621
  43880 string characters out of 6150087
- 118748 words of memory out of 5000000
+ 116748 words of memory out of 5000000
  6836 multiletter control sequences out of 15000+600000
  36339 words of font info for 134 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,15n,26p,242b,378s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (10 pages, 61796 bytes).
+Output written on Aida_sensei_note.dvi (10 pages, 59936 bytes).
