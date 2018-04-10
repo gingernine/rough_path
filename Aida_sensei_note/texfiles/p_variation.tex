@@ -114,13 +114,15 @@
 \end{screen}
 
 \begin{screen}
-	\begin{thm}[$I$の加法性・線型性]
+	\begin{thm}[$I$の加法性・線型性・絶対値]
 	\label{thm:linearity_of_Riemann_Stieltjes_integral}
 		任意の$x \in C^1,\ f,g \in C(\R^d,L(\R^d \rightarrow \R^m)),\ \alpha,\beta \in \R$に対して次が成立する:
 		\begin{description}
 			\item[(1)] $I^f_{s,u}(x) + I^f_{u,t}(x) = I^f_{s,t}(x)$,
 			
 			\item[(2)] $I^{(\alpha f + \beta g)}_{s,t}(x) = \alpha I^f_{s,t}(x) + \beta I^g_{s,t}(x)$.
+			
+			\item[(3)] $\left| I^f_{s,t}(x) \right| \leq \int_s^t |f(x_u)| |\dot{x}_u|\ du$.
 		\end{description}
 	\end{thm}
 \end{screen}
@@ -178,7 +180,7 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 \end{align}
 
 \begin{screen}
-	\begin{thm}[$I_{s,t}$は$x$に関し連続]\label{thm:T_s_t_continuous_w_r_t_C1_norm}
+	\begin{thm}[$\Norm{\cdot}{C^1}$に関する連続性]\label{thm:T_s_t_continuous_w_r_t_C1_norm}
 		$[s,t] \subset [0,T]$とし，$C^1$には$\Norm{\cdot}{C^1}$でノルム位相を入れる．
 		このとき，$f \in C(\R^d,L(\R^d \rightarrow \R^m))$に対し
 		$C^1 \ni x \longmapsto I^f_{s,t}(x) \in \R^m$は連続である．
@@ -187,75 +189,75 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 
 \begin{prf}
 	$C^1$の各点は可算な基本近傍系を持つから
-	$x \longmapsto I_{0,T}(x)$の点列連続性と連続性は一致する．
-	すなわち$x^{(n)} \longrightarrow x$なら$I^f_{0,T}(x^{(n)}) \longrightarrow I^f_{0,T}(x)$
+	$x \longmapsto I_{s,t}(x)$の点列連続性と連続性は一致する．
+	すなわち$x^n \longrightarrow x$なら$I^f_{s,t}(x^n) \longrightarrow I^f_{s,t}(x)$
 	が従うことを示せばよい．今回も各$j,k$について
 	\begin{align}
-		\int_s^t f^k_j(x^{(n)}_u)\ dx^{(n),j}_u
+		\int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
 		\longrightarrow \int_s^t f^k_j(x_u)\ dx^j_u,
 		\quad (n \longrightarrow \infty)
 		\label{eq:thm_T_s_t_continuous_w_r_t_C1_norm}
 	\end{align}
 	が成り立つことを示せば十分である．
 	\begin{description}
-		\item[第一段] $t \longmapsto x_t$の連続性より$x([0,T])$は$\R^d$のコンパクト集合であるから，
-			$t \longmapsto f(x_t)$は$[0,T]$上で有界である．
-			ここで$M \coloneqq \sup{t \in [0,T]}{|f(x_t)|}$とおく．
+		\item[第一段] $t \longmapsto x_t$の連続性より$x([s,t])$は$\R^d$のコンパクト集合であるから，
+			$t \longmapsto f(x_t)$は$[s,t]$上で有界である．
+			ここで$M \coloneqq \sup{t \in [s,t]}{|f(x_t)|}$とおく．
 			
 		\item[第二段]
 			任意の分割$D \in \delta[s,t]$に対し，平均値の定理を使うと以下のように式変形される:
 			\begin{align}
-				&\left| \sum_D f^k_j(x^{(n)}_{t_{i-1}})(x^{(n),j}_{t_i} - x^{(n),j}_{t_{i-1}})
+				&\left| \sum_D f^k_j(x^n_{t_{i-1}})(x^{n,j}_{t_i} - x^{n,j}_{t_{i-1}})
 					- \sum_D f^k_j(x_{t_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}}) \right| \\
-				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
+				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\xi_i} 
 					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
-					+ f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right.\\
-					&\qquad \left.- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
+				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\xi_i} 
+					+ f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i} \right.\\
+					&\qquad \left.- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i}
 					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
-					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right|(t_i - t_{i-1}) \\
-					&\qquad + \sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
+				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\xi_i} 
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i} \right|(t_i - t_{i-1}) \\
+					&\qquad + \sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i}
 					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}).
 			\end{align}
 			ここで最終式第二項については
 			\begin{align}
-				&\sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
+				&\sum_D \left|f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i}
 					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^j_{\eta_i} \right|(t_i - t_{i-1}) \\
-				&\qquad \leq \sum_D M \Norm{x^{(n)} - x}{C^1} (t_i - t_{i-1})
-				= M (t - s) \Norm{x^{(n)} - x}{C^1}
+				&\qquad \leq \sum_D M \Norm{x^n - x}{C^1} (t_i - t_{i-1})
+				= M (t - s) \Norm{x^n - x}{C^1}
 			\end{align}
 			が成り立ち，第一項については
 			\begin{align}
-				&\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
-					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &\sum_D \left| f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\xi_i} 
-					- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_i} \right.\\
-					&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_i}
-					- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_i} \\
-					&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_i}
-					- f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \\
-					&\qquad + f^k_j(x^{(n)}_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i}
-					\left. - f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{(n),j}_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &2M (t - s) \Norm{x^{(n)} - x}{C^1}
+				&\sum_D \left| f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\xi_i} 
+					- f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i} \right|(t_i - t_{i-1}) \\
+				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\xi_i} 
+					- f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_i} \right.\\
+					&\qquad + f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\xi_i}
+					- f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_i} \\
+					&\qquad + f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{j}_{\eta_i}
+					- f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i} \\
+					&\qquad + f^k_j(x^n_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i}
+					\left. - f^k_j(x_{t_{i-1}}) \tfrac{d}{dt}x^{n,j}_{\eta_i} \right|(t_i - t_{i-1}) \\
+				\leq &2M (t - s) \Norm{x^n - x}{C^1}
 					+ M(t-s) \sup{|\xi - \eta| \leq |D|}{\left|x^j_\xi - x^j_\eta \right|} \\
-					&\qquad + \Norm{x}{C^1}(t-s)\sup{t \in [0,T]}{\left|f^k_j(x^{(n)}_t) - f^k_j(x_t) \right|}
+					&\qquad + \Norm{x}{C^1}(t-s)\sup{t \in [0,T]}{\left|f^k_j(x^n_t) - f^k_j(x_t) \right|}
 			\end{align}
 			とできる．いま，任意に$\epsilon > 0$を取れば，或る$\epsilon > \delta > 0$が存在して
-			$v,w \in x([0,T]),\ |v - w| < \delta$なら$|f^k_j(v) - f^k_j(w)| < \epsilon$
+			$v,w \in x([s,t]),\ |v - w| < \delta$なら$|f^k_j(v) - f^k_j(w)| < \epsilon$
 			が成り立つ（一様連続）．すなわち$\Norm{x^{(n)} - x}{C^1} < \delta$なら
 			\begin{align}
-				\sup{t \in [0,T]}{\left|f^k_j(x^{(n)}_t) - f^k_j(x_t) \right|} < \epsilon
+				\sup{t \in [s,t]}{\left|f^k_j(x^n_t) - f^k_j(x_t) \right|} < \epsilon
 			\end{align}
-			が成立する．$\Norm{x^{(n)} - x}{C^1} \longrightarrow 0$の仮定より，
-			或る自然数$N$が存在して$\Norm{x^{(n)} - x}{C^1} < \delta\ (n > N)$が満たされるから，
+			が成立する．$\Norm{x^n - x}{C^1} \longrightarrow 0$の仮定より，
+			或る自然数$N$が存在して$\Norm{x^n - x}{C^1} < \delta\ (n > N)$が満たされるから，
 			ここで$n > N$を任意に一つ選び固定する．
 		
 		\item[第三段] 定理\ref{thm:existence_of_Riemann_Stieltjes_integral}より，前段の$\epsilon$に対し或る$\delta_1 > 0$が存在して，
 			$|D| < \delta_1$なら
 			\begin{align}
-				&\left| \int_s^t f^k_j(x^{(n)}_u)\ dx^{(n),j}_u
-					- \sum_D f^k_j(x^{(n)}_{t_{i-1}})(x^{(n)}_{t_i} - x^{(n)}_{t_{i-1}}) \right| < \epsilon, \\
+				&\left| \int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
+					- \sum_D f^k_j(x^n_{t_{i-1}})(x^n_{t_i} - x^n_{t_{i-1}}) \right| < \epsilon, \\
 				&\left| \int_s^t f^k_j(x_u)\ dx^j_u
 					- \sum_D f^k_j(x_{t_{i-1}})(x_{t_i} - x_{t_{i-1}}) \right| < \epsilon, \\
 			\end{align}
@@ -266,7 +268,7 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 			\end{align}
 			が満たされる．よって$|D| < \delta \wedge \delta_1 \wedge \delta_2$ならば
 			\begin{align}
-				\left| \int_s^t f^k_j(x^{(n)}_u)\ dx^{(n),j}_u
+				\left| \int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
 					- \int_s^t f^k_j(x_u)\ dx^j_u \right|
 				< \left[2 + 4M(t-s) + \Norm{x}{C^1}(t-s) \right] \epsilon
 			\end{align}
@@ -293,7 +295,7 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 	\end{dfn}
 \end{screen}
 
-次の結果により，$0 < p < 1$に対し$B_{p,T}(\R^d)$を定めても
+次の結果によれば，$0 < p < 1$に対し$B_{p,T}(\R^d)$を定めても
 $0$の定数関数のみの空間でしかない．
 \begin{screen}
 	\begin{thm}[$0 < p < 1$に対して有界$p$-variationなら定数]
@@ -330,7 +332,7 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 	\end{thm}
 \end{screen}
 
-\begin{prf}\mbox{}
+\begin{prf}完備性を示す．
 	\begin{description}
 		\item[第一段] $(x^n)_{n=1}^{\infty} \subset B_{p,T}(\R^d)$をCauchy列とすれば，
 			任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
