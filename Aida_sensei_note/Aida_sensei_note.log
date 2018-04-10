@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  10 APR 2018 11:58
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  10 APR 2018 12:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -479,9 +479,18 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
  [1
 
 ] [2] [3] [4] [5] [6])
-(./texfiles/continuity_theorem_def.tex [7])
-(./texfiles/proof_of_continuity_theorem.tex [8]) [9] (./Aida_sensei_note.aux) )
- 
+(./texfiles/continuity_theorem_def.tex [7] [8])
+(./texfiles/proof_of_continuity_theorem.tex
+Underfull \hbox (badness 10000) in paragraph at lines 80--1
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 54--134
+
+ []
+
+[9] (./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
  3326 strings out of 493621
  43880 string characters out of 6150087
@@ -490,4 +499,5 @@ Here is how much of TeX's memory you used:
  36339 words of font info for 134 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,15n,26p,242b,378s stack positions out of 5000i,500n,10000p,500000b,80000s
-Output written on Aida_sensei_note.dvi (10 pages, 60644 bytes).
+
+Output written on Aida_sensei_note.dvi (10 pages, 61796 bytes).
