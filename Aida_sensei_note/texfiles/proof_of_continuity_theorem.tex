@@ -111,6 +111,20 @@
 		\begin{description}
 			\item[(1)] 
 				\begin{align}
+					&\left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\}
+					- \left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \\
+					&= \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i} - x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \\
+						&\qquad - \left\{ \int_0^1 (\nabla f)(y_{t_{i-1}} + \theta (y_{t_i} - y_{t_{i-1}}))\ d\theta \right\} Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
+					&= \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i} - x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes \left( X^1_{t_i,t_{i+1}} -  Y^1_{t_i,t_{i+1}}\right) \\
+						&\qquad + \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i} - x_{t_{i-1}}))\ d\theta \right\} \left( X^1_{t_{i-1},t_i} - Y^1_{t_{i-1},t_i} \right) \otimes Y^1_{t_i,t_{i+1}} \\
+						&\qquad + \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)\left( x_{t_{i-1}} + r(x_{t_i} - x_{t_{i-1}})\right)\ dr\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
+						&\qquad + (\nabla f)(x_{t_{i-1}})Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}}
+							- (\nabla f)(y_{t_{i-1}})Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
+						&\qquad - \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)\left( y_{t_{i-1}} + r(y_{t_i} - y_{t_{i-1}})\right)\ dr\ d\theta \right\} Y^1_{t_{i-1},t_i} \otimes Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
+					&= 
+				\end{align}
+				が成り立つ一方で
+				\begin{align}
 					\left| \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right|
 					&= \left| f(x_s)X^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
 					&\leq \left| f(x_s)X^1_{s,t} - f(x_s)Y^1_{s,t} \right|
@@ -121,5 +135,6 @@
 					&\leq M\left| X^1_{s,t} - Y^1_{s,t} \right|
 						+ M' d \left| X^1_{0,s} - Y^1_{0,s}\right| \left| Y^1_{s,t} \right|
 				\end{align}
+				も成立する．
 		\end{description}
 	\end{prf}
