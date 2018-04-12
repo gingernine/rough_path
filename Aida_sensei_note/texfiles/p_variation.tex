@@ -41,10 +41,17 @@
 			= \sum_{j=1}^{d} \sum_{D} f^k_j (x_{s_{i-1}}) \dot{x}^j_{\xi_i}(t_i - t_{i-1}),
 			\quad ({}^\exists \xi_i \in [t_{i-1},t_i])
 		\end{align}
-		と表現できる．各$j,k$について
+		と表現できる．いま，各$j,k$について
 		\begin{align}
 			\lim_{|D| \to 0} \sum_{D} f^k_j (x_{s_{i-1}}) \dot{x}^j_{\xi_i}(t_i - t_{i-1})
 		\end{align}
+		は通常の連続関数のRiemann積分
+		\begin{align}
+			\int_s^t f^k_j (x_u) \dot{x}^j_u\ du
+		\end{align}
+		に収束するから定理が成立する. 
+		\QED
+		\begin{comment}
 		が確定すれば，第$k$成分の極限が確定し定理の主張を得る．
 		いま，$t \longrightarrow f^k_j(x_t)$及び$t \longmapsto (d/dt)x^j_t$は（$[s,t]$上一様）連続であるから，
 		分割$D$による各区間$[t_{i-1},t_i]$において次の最大最小値が定まる:
@@ -88,14 +95,9 @@
 			\quad (|D| \longrightarrow 0)
 		\end{align}
 		が成り立つ．
+		\end{comment}
 		\QED
 \end{prf}
-
-上の証明において，各$k,j$ごとに定まる極限$S$を
-\begin{align}
-	\int_s^t f^k_j(x_u)\ dx^j_u
-\end{align}
-と書く．
 
 \begin{screen}
 	\begin{dfn}[$C^1$-級のパスに対する汎関数]
@@ -113,6 +115,7 @@
 	\end{dfn}
 \end{screen}
 
+\begin{comment}
 \begin{screen}
 	\begin{thm}[$I$の加法性・線型性・絶対値]
 	\label{thm:linearity_of_Riemann_Stieltjes_integral}
@@ -171,6 +174,8 @@
 		\QED
 	\end{description}
 \end{prf}
+
+\end{comment}
 $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 \begin{align}
 	\Norm{x}{\infty} \coloneqq \sup{t \in [0,T]}{|x(t)|},
@@ -285,8 +290,8 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 			\coloneqq \left\{ \sup{D \in \delta[s,t]}{\sum_{D} 
 				\left| x_{t_i} - x_{t_{i-1}} \right|^p }\right\}^{1/p}.
 		\end{align}
-		特に，$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と表記する．また$p \geq 1$として，
-		線形空間$B_{p,T}(\R^d)$を
+		特に，$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と表記する．
+		また$p \geq 1$として，線形空間$B_{p,T}(\R^d)$を
 		\begin{align}
 			B_{p,T}(\R^d)
 			\coloneqq \Set{x:[0,T] \longrightarrow \R^d}{x_0=0,\ x:\mbox{continuous},\ \Norm{x}{p} < \infty}
@@ -401,11 +406,13 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 		\item[$p > 1$の場合] $q$を$p$の共役指数とする．
 			任意の$D \in \delta[0,T]$に対し，H\Ddot{o}lderの不等式より
 			\begin{align}
-				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p
-				&\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|^p
+				&\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p
+				\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|^p
 				= \sum_D \sum_{j=1}^d \left| \int_{t_{i-1}}^{t_i} \dot{x}^j_{u}\ du \right|^p \\
 				&\qquad \leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
 					\biggl( \int_{t_{i-1}}^{t_i} | \dot{x}^j_{u} |^q\ du \biggr)^{p/q}
+				\leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
+					\biggl( \Norm{x}{C^1}^p \int_{0}^{T} du \biggr)^{p/q}
 				\leq d\Norm{x}{C^1}^p T^p
 			\end{align}
 			が成立し，$\Norm{x}{p} < \infty$が従う．

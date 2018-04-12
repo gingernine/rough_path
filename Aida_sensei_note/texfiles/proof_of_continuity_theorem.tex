@@ -5,8 +5,21 @@
 			が任意の$0 \leq s \leq u \leq t \leq T$に対して
 			\begin{align}
 				\omega(s,u) + \omega(u,t) \leq \omega(s,t)
+				\label{eq:control_function_subadditivity}
 			\end{align}
 			を満たすとき，$\omega$をcontrol functionと呼ぶ．
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{dfn}[ノルム空間値写像の$p$-variation]
+			$(V,\Norm{\cdot}{})$をノルム空間とするとき，$p \geq 1,\ [s,t] \subset [0,T]
+			,\ \psi:\Delta_T \longrightarrow V$に対して
+			\begin{align}
+				\Norm{\psi}{p,[s,t]}
+				\coloneqq \left\{ \sup{D \in \delta[s,t]}{ \sum_D \Norm{\psi_{t_{i-1},t_i}}{}^p} \right\}^{1/p}
+			\end{align}
+			と定める．特に$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と書く．
 		\end{dfn}
 	\end{screen}
 	
@@ -18,10 +31,13 @@
 					\quad (p \geq 1,\ \omega_1,\omega_2:\mbox{control function}).$
 				\item[(2)] $\omega:(s,t) \longmapsto \Norm{X^1}{p:[s,t]}^p,
 					\quad (p \geq 1,\ x \in B_{p,T}(\R^d)).$
-				\item[(3)]
+				\item[(3)] $\omega:(s,t) \longmapsto \Norm{X^2}{p:[s,t]}^p,
+					\quad (p \geq 1,\ x \in C^1).$
 			\end{description}
 		\end{thm}
 	\end{screen}
+	
+	行列$a = (a_j^i)$のノルムは$\Norm{a}{} = \sqrt{\sum_{i,j}|a_j^i|^2}$として考える．
 	
 	\begin{thm}\mbox{}
 		\begin{description}
@@ -40,6 +56,70 @@
 					\leq \Norm{X^1}{p:[s,t]}^p
 				\end{align}
 				が得られる．
+				
+			\item[(3)] 任意の$[s,t] \subset [0,T]$に対して
+				$\Norm{X^2}{p:[s,t]}^p < \infty$が成立することを示せば，あとは
+				(2)と同様の理由により(\refeq{eq:control_function_subadditivity})が従う．
+				$p \geq 1$かつ$x \in C^1$の下では，$D = \{s=t_0 < \cdots < t_N = t\}$に対し
+				\begin{align}
+					\Norm{X^2_{t_{i-1},t_i}}{}
+					&\leq \sum_{k,j=1}^d \left| \int_{t_{i-1}}^{t_i} (x^k_u - x^k_{t_{i-1}})\ dx^j_u \right|
+					\leq \sum_{k,j=1}^d \int_{t_{i-1}}^{t_i} \Norm{x}{C^1}^2(u-t_{i-1})\ du \\
+					&\leq d^2 \Norm{x}{C^1}^2 \left\{ \int_{t_{i-1}}^{t_i} (u-s)\ du \right\}^{1/p}
+						\left\{ \int_{t_{i-1}}^{t_i} (u-s)\ du \right\}^{1-1/p} \\
+					&\leq d^2 \Norm{x}{C^1}^2 \left\{ \int_{t_{i-1}}^{t_i} (u-s)\ du \right\}^{1/p}
+						\left\{ \int_s^t (u-s)\ du \right\}^{1-1/p}
+				\end{align}
+				が成り立つから，
+				\begin{align}
+					&\sum_D \Norm{X^2_{t_{i-1},t_i}}{}^p
+					\leq \sum_D d^{2p}\Norm{x}{C^1}^{2p} \left\{ \frac{1}{2}(t-s)^2 \right\}^{p-1}
+						\int_{t_{i-1}}^{t_i} (u-s)\ du \\
+					&\qquad= d^{2p}\Norm{x}{C^1}^{2p} \left\{ \frac{1}{2}(t-s)^2 \right\}^{p-1}
+						\int_s^t (u-s)\ du
+					= d^{2p}\Norm{x}{C^1}^{2p} \left\{ \frac{1}{2}(t-s)^2 \right\}^p
+				\end{align}
+				により$\Norm{X^2}{p:[s,t]}^p < \infty$を得る．
+				\QED
 		\end{description}
 	\end{thm}
 	
+	\begin{screen}
+		\begin{lem}
+			
+		\end{lem}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[(1)] $D = \{s=t_0 < \cdots < t_N = t\}\ (N \geq 2)$に対し，
+				$D_{-1} \coloneqq D \backslash \{i\}$とおく．同様に
+				$D_{-2} \coloneqq D_{-1} \backslash \{i'\}$と続けて
+				$D_{-k}\ (k=1,2,\cdots,N-1)$を構成する．
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{lem}
+			\begin{description}
+				\item[(1)]
+				\item[(2)]
+			\end{description}
+		\end{lem}
+	\end{screen}
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[(1)] 
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right|
+					&= \left| f(x_s)X^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
+					&\leq \left| f(x_s)X^1_{s,t} - f(x_s)Y^1_{s,t} \right|
+						+ \left| f(x_s)Y^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
+					&\leq M\left| X^1_{s,t} - Y^1_{s,t} \right|
+						+ \left| \left\{ \int_0^1 (\nabla f)(y_s + \theta(x_s - y_s))\ d\theta \right\}
+						(x_s - y_s) \otimes Y^1_{s,t} \right| \\
+					&\leq M\left| X^1_{s,t} - Y^1_{s,t} \right|
+						+ M' d \left| X^1_{0,s} - Y^1_{0,s}\right| \left| Y^1_{s,t} \right|
+				\end{align}
+		\end{description}
+	\end{prf}
