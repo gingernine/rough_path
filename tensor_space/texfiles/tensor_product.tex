@@ -1,0 +1,25 @@
+\section{テンソル積の導入}
+	$\K = \C$または$\R$と考える．$E,F$を$\K$上の線形空間とするとき，
+	テンソル積$E \otimes F$を定めたい．
+	
+	\begin{align}
+		\Lambda(E \times F) 
+		\coloneqq \K^{\oplus(E \times F)}
+		&= \Set{b:E \times F \longrightarrow \K}{\mbox{有限個の$(e,f) \in E \times F$を除いて$b(e,f)=0$．}} \\
+		&= \bigoplus_{i \in E \times F} X_i,
+		\quad (X_i = \K,\ \forall i \in E \times F)
+	\end{align}
+	により$\Lambda(E \times F)$を定める．また$(e,f) \in E \times F$に対する定義関数
+	\begin{align}
+		\defunc_{\{(e,f)\}} (g,h) = 
+		\begin{cases}
+			1, & (e,f) = (g,h), \\
+			0, & (e,f) \neq (g,h)
+		\end{cases}
+	\end{align}
+	は$\defunc_{\{(e,f)\}} \in \Lambda(E \times F)$を満たす．
+	$\Lambda(E \times F)$が$\K$-線形空間をなすことにより
+	\begin{align}
+		\Lambda_0(E \times F) \coloneqq
+		%\span{\Set{\defunc_{\{(e+e',f)\}}}{}}
+	\end{align}

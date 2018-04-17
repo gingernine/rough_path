@@ -5,31 +5,31 @@
 			\begin{align}
 				\Delta_T &\coloneqq \Set{(s,t)}{0 \leq s \leq t \leq T}, \\
 				X^1 &:\Delta_T \longrightarrow \R^d\ \left( (s,t) \longmapsto X^1_{s,t} = x_t - x_s \right), \\
-				X^2 &:\Delta_T \longrightarrow \R^m \otimes \R^d\ \left( (s,t) \longmapsto X^2_{s,t} = \int_s^t (x_u - x_s) \otimes dx_u \right), \\
-				\tilde{I}^f_{s,t}(x) &\coloneqq f(x_s)X^1_{s,t} = f(x_s)(x_t - x_s), \\
-				J^f_{s,t}(x) &\coloneqq f(x_s)X^1_{s,t} + (\nabla f)(x_s)X^2_{s,t}, \\
+				X^2 &:\Delta_T \longrightarrow \R^d \otimes \R^d\ \left( (s,t) \longmapsto X^2_{s,t} = \int_s^t (x_u - x_s) \otimes dx_u \right), \\
+				\tilde{I}_{s,t}(x) &\coloneqq f(x_s)X^1_{s,t} = f(x_s)(x_t - x_s), \\
+				J_{s,t}(x) &\coloneqq f(x_s)X^1_{s,t} + (\nabla f)(x_s)X^2_{s,t}, \\
 					&\quad \mbox{where\ } \left[ (\nabla f)(x_s)X^2_{s,t} \right]^i = \sum_{j,k=1}^d \partial_k f^i_j(x_s) \int_s^t \left(x^k_u - x^k_s \right)\ dx^j_u.
 			\end{align}
 		\end{dfn}
 	\end{screen}
 	
 	\begin{screen}
-		\begin{thm}
+		\begin{thm}\label{thm:Riemann_Stieltjes_approximation}
 			$[s,t] \subset [0,T],\ x \in C^1,\ f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$とする．$D \in \delta[s,t]$に対し
 			\begin{align}
-				\tilde{I}^f_{s,t}(x,D) \coloneqq \sum_D \tilde{I}^f_{t_{i-1},t_i}(x),
-				\quad J^f_{s,t}(x,D) \coloneqq \sum_D J^f_{t_{i-1},t_i}(x)
+				\tilde{I}_{s,t}(x,D) \coloneqq \sum_D \tilde{I}_{t_{i-1},t_i}(x),
+				\quad J_{s,t}(x,D) \coloneqq \sum_D J_{t_{i-1},t_i}(x)
 			\end{align}
 			を定めるとき，次が成立する:
 			\begin{align}
-				I^f_{s,t}(x) = \lim_{|D| \to 0} \tilde{I}^f_{s,t}(x,D)
-				= \lim_{|D| \to 0} J^f_{s,t}(x,D).
+				I_{s,t}(x) = \lim_{|D| \to 0} \tilde{I}_{s,t}(x,D)
+				= \lim_{|D| \to 0} J_{s,t}(x,D).
 			\end{align}
 		\end{thm}
 	\end{screen}
 	
 	\begin{prf}
-		第一の等号は$I^f_{s,t}(x)$の定義によるから，第二の等号を証明する．各$1 \leq i \leq m$について
+		第一の等号は$I_{s,t}(x)$の定義によるから，第二の等号を証明する．各$1 \leq i \leq m$について
 		\begin{align}
 			\left[ I_{s,t}(x) \right]^i
 			&= \sum_{j=1}^d \int_s^t f_j^i(x_u)\ dx^j_u \\
@@ -39,7 +39,7 @@
 			&= \sum_{j=1}^d \int_s^t f_j^i(x_s)\ dx^j_u + \sum_{j,k=1}^d \partial_k f_j^i(x_s) \int_s^t (x^k_u - x^k_s)\ dx^j_u \\
 				&\quad + \sum_{j,k=1}^d \int_s^t 
 				\left\{ \int_0^1 \partial_k f_j^i(x_s + \theta(x_u - x_s)) - \partial_k f_j^i(x_s)\ d\theta \right\} (x^k_u - x^k_s)\ dx^j_u, \\
-			&= \left[ J^f_{s,t}(x) \right]^i
+			&= \left[ J_{s,t}(x) \right]^i
 				+ \sum_{j,k,\ell=1}^d \int_s^t 
 				\left\{ \int_0^1 \left( \int_0^\theta \partial_\ell \partial_k f_j^i(x_s + r(x_u - x_s))\ dr\right) d\theta \right\} (x^\ell_u - x^\ell_s)(x^k_u - x^k_s)\ dx^j_u
 		\end{align}
@@ -68,13 +68,17 @@
 		\QED
 	\end{prf}
 	
-	
 	\begin{screen}
-		\begin{thm}[$1 \leq p < 2$の場合の連続性定理]
-		\end{thm}
-	\end{screen}
-	
-	\begin{screen}
-		\begin{thm}[$2 \leq p < 3$の場合の連続性定理]
+		\begin{thm}[$2 \leq p < 3$の場合の連続性定理]\label{thm:continuity_theorem_2}
+			$2 \leq p < 3,\ x,y \in C^1,\ f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)), 0 < R < \infty$とし，$x_0 = y_0$を仮定する．
+			任意の$\epsilon > 0$に対して
+			\begin{align}
+				&\Norm{X^1}{p},\Norm{Y^1}{p},\Norm{X^2}{p/2},\Norm{Y^2}{p/2} \leq R < \infty,\\
+				&\Norm{X^1 - Y^1}{p},\Norm{X^2 - Y^2}{p/2} \leq \epsilon
+			\end{align}
+			が満たされている場合，或る定数$C = C(p,R,f)$が存在して次が成り立つ:
+			\begin{align}
+				\left| I_{s,t}(x) - I_{s,t}(y) \right| \leq \epsilon C.
+			\end{align}
 		\end{thm}
 	\end{screen}

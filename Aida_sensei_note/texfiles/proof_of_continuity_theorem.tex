@@ -2,7 +2,7 @@
 	\begin{screen}
 		\begin{dfn}[control function]
 			関数$\omega:\Delta_T \longrightarrow [0,\infty)$
-			が任意の$0 \leq s \leq u \leq t \leq T$に対して
+			が連続かつ任意の$0 \leq s \leq u \leq t \leq T$に対して
 			\begin{align}
 				\omega(s,u) + \omega(u,t) \leq \omega(s,t)
 				\label{eq:control_function_subadditivity}
@@ -24,11 +24,11 @@
 	\end{screen}
 	
 	\begin{screen}
-		\begin{thm}[control functionの例]
+		\begin{thm}[control functionの例]\label{thm:examples_of_control_functions}
 			以下の関数$\omega:\Delta_T \longrightarrow [0,\infty)$はcontrol functionである．
 			\begin{description}
-				\item[(1)] $\omega \coloneqq \left( \omega_1^{1/p} + \omega_2^{1/p} \right)^p,
-					\quad (p \geq 1,\ \omega_1,\omega_2:\mbox{control function}).$
+				\item[(1)] $\omega \coloneqq \left( \omega_1^r + \omega_2^r \right)^{1/r},
+					\quad (0 < r \leq 1,\ \omega_1,\omega_2:\mbox{control function}).$
 				\item[(2)] $\omega:(s,t) \longmapsto \Norm{X^1}{p:[s,t]}^p,
 					\quad (p \geq 1,\ x \in B_{p,T}(\R^d)).$
 				\item[(3)] $\omega:(s,t) \longmapsto \Norm{X^2}{p:[s,t]}^p,
@@ -37,7 +37,7 @@
 		\end{thm}
 	\end{screen}
 	
-	行列$a = (a_j^i)$のノルムは$\Norm{a}{} = \sqrt{\sum_{i,j}|a_j^i|^2}$として考える．
+	行列$a = (a_j^i)$のノルムは$|a| = \sqrt{\sum_{i,j}|a_j^i|^2}$として考える．
 	
 	\begin{thm}\mbox{}
 		\begin{description}
@@ -58,8 +58,8 @@
 				が得られる．
 				
 			\item[(3)] 任意の$[s,t] \subset [0,T]$に対して
-				$\Norm{X^2}{p:[s,t]}^p < \infty$が成立することを示せば，あとは
-				(2)と同様の理由により(\refeq{eq:control_function_subadditivity})が従う．
+				$\Norm{X^2}{p:[s,t]}^p < \infty$を示せば，あとは
+				上と同じ理由により(\refeq{eq:control_function_subadditivity})が成り立つ．
 				$p \geq 1$かつ$x \in C^1$の下では，$D = \{s=t_0 < \cdots < t_N = t\}$に対し
 				\begin{align}
 					\Norm{X^2_{t_{i-1},t_i}}{}
@@ -85,24 +85,310 @@
 	\end{thm}
 	
 	\begin{screen}
-		\begin{lem}
+		\begin{lem}[division point]\label{lem:control_function_min}
+			$\omega$を$\Delta_T$上のcontrol functionとする．
+			$D = \{s = t_0 < t_1 < \cdots < t_N= t\}$について，$N \geq 2$の場合
+			或る$1 \leq i \leq N-1$が存在して次を満たす:
+			\begin{align}
+				\omega(t_{i-1},t_{i+1})
+				\leq \frac{2 \omega(s,t)}{N-1}.
+			\end{align}
+			以後この$t_i$を$D$のdivision pointと呼ぶ．
+		\end{lem}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[$1 \leq p < 2$の場合の連続性定理]\label{thm:continuity_theorem_1}
+			$1 \leq p < 2$とし，
+			$x_0 = y_0$を満たす$x,y \in C^1$と$f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)),\ 0 < \epsilon, R < \infty$を任意に取る．
+			このとき，
+			\begin{align}
+				\Norm{X^1}{p},\Norm{Y^1}{p} \leq R,
+				\quad \Norm{X^1 - Y^1}{p} \leq \epsilon
+			\end{align}
+			なら，或る定数$C = C(p,R,f)$が存在し，任意の$0 \leq s \leq t \leq T$に対して次が成立する:
+			\begin{align}
+				\left| I_{s,t}(x) - I_{s,t}(y) \right| \leq \epsilon C.
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		\begin{description}\mbox{}
+			\item[第一段]
+				control function $\omega$を
+				\begin{align}
+					\omega(\alpha,\beta) = \Norm{X^1}{p,[\alpha,\beta]}^p + \Norm{Y^1}{p,[\alpha,\beta]}^p + \epsilon^{-p} \Norm{X^1 - Y^1}{p,[\alpha,\beta]}^p,
+					\quad ((\alpha,\beta) \in \Delta_T)
+				\end{align}
+				により定める．任意に$[s,t] \subset [0,T]$を固定し
+				$D = \{s=t_0 < \cdots, t_N=t\} \in \delta[s,t]\ (N \geq 2)$を取れば
+				division point $t_{i_1}$が存在する．
+				$D_{-1} \coloneqq D \backslash \{t_{i_1}\}$と定め，再びdivision point $t_{i_2}$を除き
+				$D_{-2} \coloneqq D_{-1} \backslash \{t_{i_2}\}$と定める．繰り返せば
+				$t_{i_k},D_{-k}\ (k=1,\cdots,N-1)$が得られ，
+				\begin{align}
+					\tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(y,D)
+					&= \sum_{k=0}^{N-2} \left[ \left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\} - 
+						\left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \right] \label{eq:continuity_theorem_1_1}\\
+					&\qquad + \left\{ \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right\}	\label{eq:continuity_theorem_1_2}
+				\end{align}
+				と表現できる．ただし$D = D_{-0}$と見做す．
 			
+			\item[第二段]
+				式(\refeq{eq:continuity_theorem_1_1})について，或る定数$C_1$が存在して
+				\begin{align}
+					|(\refeq{eq:continuity_theorem_1_1})| \leq \epsilon C_1
+					\label{eq:continuity_theorem_1_3}
+				\end{align}
+				が成り立つことを示す．ここで
+				\begin{align}
+					M \coloneqq
+						\sup{\substack{x \in \R^d \\ 1 \leq i \leq m \\ 1 \leq j \leq d}}{|f^i_j(x)|} 
+						+ \sup{\substack{x \in \R^d \\ 1 \leq i \leq m \\ 1 \leq j,k \leq d}}{|\partial_k f^i_j(x)|}
+						+ \sup{\substack{x \in \R^d \\ 1 \leq i \leq m \\ 1 \leq j,k,v \leq d}}{|\partial_v \partial_k f^i_j(x)|}
+				\end{align}
+				とおく．各$k = 0,1,\cdots,N-2$に対し
+				\begin{align}
+					&\left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\} - 
+						\left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \\
+					&=	\left\{ f(x_{t_{i_k}}) - f(x_{t_{i_k-1}}) \right\} X^1_{t_{i_k},t_{i_k+1}}
+						- \left\{ f(y_{t_{i_k}}) - f(y_{t_{i_k-1}}) \right\} Y^1_{t_{i_k},t_{i_k+1}} \\
+					&= \left\{ f(x_{t_{i_k}}) - f(x_{t_{i_k-1}}) \right\} \left( X^1_{t_{i_k},t_{i_k+1}} - Y^1_{t_{i_k},t_{i_k+1}} \right) \\
+						&\quad +\left\{ f(x_{t_{i_k}}) - f(x_{t_{i_k-1}}) \right\} Y^1_{t_{i_k},t_{i_k+1}} - \left\{ f(y_{t_{i_k}}) - f(y_{t_{i_k-1}}) \right\} Y^1_{t_{i_k},t_{i_k+1}} \\
+					&= \int_0^1 (\nabla f)( x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1} ))
+						X^1_{t_{i_k-1},t_{i_k}} \otimes \left( X^1_{t_{i_k},t_{i_k+1}} - Y^1_{t_{i_k},t_{i_k+1}} \right)\ d\theta \\
+						&\quad + \int_0^1 (\nabla f)( x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1} ))
+						X^1_{t_{i_k-1},t_{i_k}} \otimes Y^1_{t_{i_k},t_{i_k+1}}\ d\theta \\
+						&\quad - \int_0^1 (\nabla f)( y_{t_{i_k}-1}+\theta ( y_{t_{i_k}}-y_{t_{i_k}-1} ))
+						Y^1_{t_{i_k-1},t_{i_k}} \otimes Y^1_{t_{i_k},t_{i_k+1}}\ d\theta \\
+					&= \int_0^1 (\nabla f)( x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1} ))
+						X^1_{t_{i_k-1},t_{i_k}} \otimes \left( X^1_{t_{i_k},t_{i_k+1}} - Y^1_{t_{i_k},t_{i_k+1}} \right)\ d\theta \\
+						&\quad + \int_0^1 (\nabla f)( x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1} ))
+						\left( X^1_{t_{i_k-1},t_{i_k}} - Y^1_{t_{i_k-1},t_{i_k}} \right) \otimes Y^1_{t_{i_k},t_{i_k+1}}\ d\theta \\
+						&\quad + \int_0^1 (\nabla f)( x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1} ))
+						Y^1_{t_{i_k-1},t_{i_k}} \otimes Y^1_{t_{i_k},t_{i_k+1}}\ d\theta \\
+						&\quad - \int_0^1 (\nabla f)( y_{t_{i_k}-1}+\theta ( y_{t_{i_k}}-y_{t_{i_k}-1} ))
+						Y^1_{t_{i_k-1},t_{i_k}} \otimes Y^1_{t_{i_k},t_{i_k+1}}\ d\theta \\
+					&= \int_0^1 (\nabla f)( x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1} ))
+						X^1_{t_{i_k-1},t_{i_k}} \otimes \left( X^1_{t_{i_k},t_{i_k+1}} - Y^1_{t_{i_k},t_{i_k+1}} \right)\ d\theta \\
+						&\quad + \int_0^1 (\nabla f)( x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1} ))
+						\left( X^1_{t_{i_k-1},t_{i_k}} - Y^1_{t_{i_k-1},t_{i_k}} \right) \otimes Y^1_{t_{i_k},t_{i_k+1}}\ d\theta \\
+						&\quad + \int_0^1 \int_0^1 (\nabla^2 f)( \tilde{y} + r(\tilde{x} - \tilde{y})) 
+						\left( X^1_{0,t_{i_k}-1} - Y^1_{0,t_{i_k}-1} \right) \otimes Y^1_{t_{i_k-1},t_{i_k}} \otimes Y^1_{t_{i_k},t_{i_k+1}}\ dr\ d\theta\ \footnotemark \\
+						&\quad + \int_0^1 \int_0^1 (\nabla^2 f)( \tilde{y} + r(\tilde{x} - \tilde{y})) 
+						\theta \left( X^1_{t_{i_k}-1,t_{i_k}} - Y^1_{t_{i_k}-1,t_{i_k}} \right) \otimes Y^1_{t_{i_k-1},t_{i_k}} \otimes Y^1_{t_{i_k},t_{i_k+1}}\ dr\ d\theta
+				\end{align}
+				\footnotetext{
+					$\tilde{x} = x_{t_{i_k}-1}+\theta ( x_{t_{i_k}}-x_{t_{i_k}-1}),\ \tilde{y} = y_{t_{i_k}-1}+\theta ( y_{t_{i_k}}-y_{t_{i_k}-1})$とおいた．
+					また$x_0 = y_0$の仮定より$x_{t_{i_k}-1} - y_{t_{i_k}-1} = X^1_{0,t_{i_k}-1} - Y^1_{0,t_{i_k}-1}$が出る．
+				}
+				が成り立つ．補題\ref{lem:control_function_min}より
+				\begin{align}
+					&\left| X^1_{t_{i_k}-1,t_{i_k}} \right|, \left| Y^1_{t_{i_k}-1,t_{i_k}} \right| \leq \omega(t_{i_k}-1,t_{i_k})^{1/p} \leq \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}, \\
+					&\left| X^1_{t_{i_k},t_{i_k}+1} \right|, \left| Y^1_{t_{i_k},t_{i_k}+1} \right| \leq \omega(t_{i_k},t_{i_k}+1)^{1/p} \leq \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}, \\
+					&\left| X^1_{t_{i_k}-1,t_{i_k}} - Y^1_{t_{i_k}-1,t_{i_k}} \right| \leq \epsilon \omega(t_{i_k}-1,t_{i_k})^{1/p} \leq \epsilon \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}, \\
+					&\left| X^1_{t_{i_k},t_{i_k}+1} - Y^1_{t_{i_k},t_{i_k}+1} \right| \leq \epsilon \omega(t_{i_k},t_{i_k}+1)^{1/p} \leq \epsilon \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}
+				\end{align}
+				が満たされ，また
+				\begin{align}
+					\left| X^1_{0,t_{i_k}-1} - Y^1_{0,t_{i_k}-1} \right|
+					\leq \epsilon \omega(0,T)^{1/p}
+					\leq \epsilon \left( 2 R^p + 1 \right)^{1/p}
+				\end{align}
+				でもあるから，
+				\begin{align}
+					&\left| \left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\} - 
+						\left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \right| \\
+					&\leq md M \left|X^1_{t_{i_k}-1,t_{i_k}}\right|\left| X^1_{t_{i_k},t_{i_k}+1} - Y^1_{t_{i_k},t_{i_k}+1} \right| \\
+						&\quad + md M \left| X^1_{t_{i_k}-1,t_{i_k}} - Y^1_{t_{i_k}-1,t_{i_k}} \right| \left| Y^1_{t_{i_k},t_{i_k}+1} \right| \\
+						&\quad + md^2 M \left| X^1_{0,t_{i_k}-1} - Y^1_{0,t_{i_k}-1} \right| \left| Y^1_{t_{i_k}-1,t_{i_k}} \right|\left| Y^1_{t_{i_k},t_{i_k}+1} \right| \\
+						&\quad + md^2 M \left| X^1_{t_{i_k}-1,t_{i_k}} - Y^1_{t_{i_k}-1,t_{i_k}} \right| \left| Y^1_{t_{i_k}-1,t_{i_k}} \right|\left| Y^1_{t_{i_k},t_{i_k}+1} \right| \\
+					&\leq \epsilon md^2M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p} \\
+					&\leq \epsilon md^2M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] 2^{2/p} \left( 2 R^p + 1 \right)^{2/p} \left( \frac{1}{N-k-1} \right)^{2/p}
+				\end{align}
+				を得る．
+				\begin{align}
+					C_1' \coloneqq  md^2M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] 2^{2/p} \left( 2 R^p + 1 \right)^{2/p}
+				\end{align}
+				と定めれば
+				\begin{align}
+					|(\refeq{eq:continuity_theorem_1_1})| \leq
+					\sum_{k=0}^{N-2} \epsilon C_1' \left( \frac{1}{N-k-1} \right)^{2/p}
+					< \epsilon C_1' \zeta \biggl( \frac{2}{p} \biggr)
+				\end{align}
+				が成立し，$p < 2$より$\zeta(2/p) < \infty$であるから
+				$C_1 \coloneqq C_1' \zeta(2/p)$とおいて(\refeq{eq:continuity_theorem_1_3})が従う．
+			
+			\item[第三段]
+				$x_0 = y_0$の仮定により
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right|
+					&= \left| f(x_s)X^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
+					&\leq \left| f(x_s)X^1_{s,t} - f(x_s)Y^1_{s,t} \right|
+						+ \left| f(x_s)Y^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
+					&\leq mdM \left| X^1_{s,t} - Y^1_{s,t} \right|
+						+ \left| \left\{ \int_0^1 (\nabla f)(y_s + \theta(x_s - y_s))\ d\theta \right\}
+						(x_s - y_s) \otimes Y^1_{s,t} \right| \\
+					&\leq mdM \left| X^1_{s,t} - Y^1_{s,t} \right|
+						+ m d^2 M \left| X^1_{0,s} - Y^1_{0,s}\right| \left| Y^1_{s,t} \right| \\
+					&\leq M \epsilon \omega(s,t)^{1/p} + m d^2 M \epsilon \omega(0,s)^{1/p} \omega(s,t)^{1/p} \\
+					&\leq \epsilon C_2 
+				\end{align}
+				が成立する．ここで$C_2 = mdM \left( 2 R^p + 1 \right)^{1/p} + m d^2 M \left( 2 R^p + 1 \right)^{2/p}$とした．
+				
+			\item[第四段]
+				第二段と第三段より，任意の$D \in \delta[s,t]$に対し
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(y,D) \right|
+					\leq \epsilon (C_1 + C_2)
+				\end{align}
+				が満たされる．定理\ref{thm:Riemann_Stieltjes_approximation}により
+				$|D| \longrightarrow 0$として
+				\begin{align}
+					\left| I_{s,t}(x) - I_{s,t}(y) \right|
+					\leq \epsilon (C_1 + C_2)
+				\end{align}
+				が成立する．
+				\QED
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{lem}\label{lem:lemma_for_Young_integral}
+			$x \in C^1,\ f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$とする．
+			\begin{description}
+				\item[(1)]
+					$1 \leq p < 2$の場合，或るcontrol function $\omega$が存在して
+					\begin{align}
+						\left| X^1_{s,t} \right|
+						\leq \omega(s,t)^{1/p},
+						\quad (0 \leq \forall s \leq \forall t \leq T)
+					\end{align}
+					を満たすとき，ある定数$C=C(p,f)$があり
+					\begin{align}
+						\left|I_{s,t}(x) \right|
+						\leq C\left( \omega(s,t)^{1/p} + \omega(s,t)^{2/p} \right).
+					\end{align}
+					が成立する．
+				\item[(2)] $2 \leq p < 3$の場合，或るcontrol function $\omega$が存在して
+					\begin{align}
+						\left| X^1_{s,t} \right| \leq \omega(s,t)^{1/p},
+						\quad \left| X^2_{s,t} \right| \leq \omega(s,t)^{2/p},
+						\quad (0 \leq \forall s \leq \forall t \leq T)
+					\end{align}
+					を満たすとき，ある定数$C=C(p,f)$があり
+					\begin{align}
+						\left|I_{s,t}(x) \right|
+						\leq C\left( \omega(s,t)^{1/p} + \omega(s,t)^{2/p} + \omega(s,t)^{3/p} \right).
+					\end{align}
+					が成立する．
+			\end{description}
 		\end{lem}
 	\end{screen}
 	
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[(1)] $D = \{s=t_0 < \cdots < t_N = t\}\ (N \geq 2)$に対し，
-				$D_{-1} \coloneqq D \backslash \{i\}$とおく．同様に
-				$D_{-2} \coloneqq D_{-1} \backslash \{i'\}$と続けて
-				$D_{-k}\ (k=1,2,\cdots,N-1)$を構成する．
+				補題\refeq{lem:control_function_min}により存在する
+				$i$を取り$D_{-1} \coloneqq D \backslash \{i\}$と書く．
+				補題\refeq{lem:control_function_min}の添数を除く作業を続けて
+				$D_{-k}\ (k=1,\cdots,N-1)$を構成する．
+				\begin{align}
+					M \coloneqq \max{
+					\substack{t \in [0,T] \\ 1 \leq i \leq m \\ 1 \leq j,k \leq d}}
+					{\left| \partial_k f^i_j(x_t) \right|},
+					\quad 
+					M' \coloneqq \max{t \in [0,T]}{\left| f(x_t) \right|}
+				\end{align}
+				とおけば$M,M' < \infty$であり，$\left| X^1_{t_i,t_{i+1}} \right| \leq \omega(t_i,t_{i+1})^{1/p} \leq \omega(t_{i-1},t_{i+1})^{1/p}$と補題\refeq{lem:control_function_min}により
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(x,D_{-1}) \right|
+					&= \left| \tilde{I}_{t_{i-1},t_i}(x) + \tilde{I}_{t_i,t_{i+1}}(x) - \tilde{I}_{t_{i-1},t_{i+1}}(x) \right| \\
+					& \leq \left| \left\{ f(x_{t_i}) - f(x_{t_{i-1}}) \right\} X^1_{t_i,t_{i+1}} \right| \\
+					&\leq \left| \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i}-x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \right| \\
+					&\leq md^2 M \left| X^1_{t_i,t_{i+1}} \right|^2 \\
+					&\leq md^2 M \left( \frac{2\omega(s,t)}{N-1} \right)^{2/p}
+				\end{align}
+				が成立する．同様に
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right|
+					\leq md^2 M \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p},
+					\quad(k=0,\cdots,N-2)
+				\end{align}
+				が成り立ち$(D_{-0} = D)$
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x,D) - f(x_s)X^1_{s,t} \right|
+					&\leq \sum_{k=0}^{N-2} \left| \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right| \\
+					&\leq md^2 M (2\omega(s,t))^{2/p} \sum_{k=0}^{N-2} \left( \frac{1}{N-k-1} \right)^{2/p} \\
+					&\leq md^2 M (2\omega(s,t))^{2/p} \zeta\biggl(\frac{2}{p}\biggr)
+				\end{align}
+				が従う．いま，仮定より$p < 2$であるから$\zeta(2/p) < \infty$であり，
+				定理\ref{thm:Riemann_Stieltjes_approximation}より
+				\begin{align}
+					\left| I_{s,t}(x) \right|
+					\leq M' \omega(s,t)^{1/p} + md^2 M (2\omega(s,t))^{2/p} \zeta\biggl(\frac{2}{p}\biggr)
+				\end{align}
+				を得る．
+				
+			\item[(2)]
+				(1)と同様に$D_{-k}\ (k=1,\cdots,N-1)$を構成する．
+				会田先生のノートの通りに
+				\begin{align}
+					J_{s,t}(x,D) - J_{s,t}(x,D_{-1})
+					&= \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{i-1}} + \theta (x_{t_i}- x_{t_{i-1}}))\ dr\ d\theta \right\}
+						X^1_{t_{i-1},t_i} \otimes X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \\
+						&\qquad + \left\{ \int_0^1 (\nabla^2 f)(x_{t_{i-1}} + \theta (x_{t_i}- x_{t_{i-1}}))\ d\theta \right\}
+						X^1_{t_{i-1},t_i} \otimes X^2_{t_i,t_{i+1}}
+				\end{align}
+				を得る．ここで(1)の$M,M'$に加えて
+				\begin{align}
+					M'' \coloneqq \max{
+					\substack{t \in [0,T] \\ 1 \leq i \leq m \\ 1 \leq j,k,v \leq d}}
+					{\left| \partial_v \partial_k f^i_j(x_t) \right|}
+				\end{align}
+				とおけば
+				\begin{align}
+					\left| J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1}) \right|
+					&\leq m d^2 M \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p} + m d^2 M'' \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p} \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p} \\
+					&\leq m d^2 (M + M'') \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p}
+				\end{align}
+				が成立し，会田先生のノートの通りに
+				\begin{align}
+					\left| J_{s,t}(x,D) - \left( f(x_s)X^1_{s,t} + (\nabla f)(x_s)X^2_{s,t} \right) \right|
+					\leq 2^{3/p} m d^2 (M+M'') \zeta\biggl(\frac{3}{p}\biggr) \omega(s,t)^{3/p}
+				\end{align}
+				が従い，$p < 3$の仮定より$\zeta(3/p) < \infty$である．(1)と同じく定理\ref{thm:Riemann_Stieltjes_approximation}より
+				\begin{align}
+					\left| I_{s,t}(x) \right|
+					\leq M' \omega(s,t)^{1/p} + m d^2 M \omega(s,t)^{2/p} + 2^{3/p} m d^2 (M+M'') \zeta\biggl(\frac{3}{p}\biggr) \omega(s,t)^{3/p}
+				\end{align}
+				となる．
+				\QED
 		\end{description}
 	\end{prf}
 	
 	\begin{screen}
-		\begin{lem}
+		\begin{lem}[定理\ref{thm:continuity_theorem_1}，\ref{thm:continuity_theorem_2}のキーレンマ]
+		\label{lem:key_lemma_for_continuity_theorem}
 			\begin{description}
+				$x,y \in C^1,\ f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m))$とし，
+				$x_0 = y_0$を仮定する．
 				\item[(1)]
+					$1 \leq p < 2$の場合，任意の$\epsilon > 0$に対し或るcontrol function $\omega$が存在して
+					\begin{align}
+						&\left| X^1_{s,t} \right|, \left| Y^1_{s,t} \right|
+						\leq \omega(s,t)^{1/p}, \\
+						&\left| X^1_{s,t} - Y^1_{s,t} \right| \leq \epsilon \omega(s,t)^{1/p},
+						\quad (0 \leq \forall s \leq \forall t \leq T)
+					\end{align}
+					を満たすとき，ある定数$C=C(p,f,\omega(0,T))$があり
+					\begin{align}
+						\left|I_{s,t}(x) - I_{s,t}(y) \right|
+						\leq \epsilon C \omega(s,t)^{1/p}.
+					\end{align}
+					が成立する．
+				
 				\item[(2)]
 			\end{description}
 		\end{lem}
@@ -110,31 +396,55 @@
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[(1)] 
+				補題\ref{lem:lemma_for_Young_integral}と同様に
+				$D_{-k}\ (k=0,1,\cdots,N-1)$を作る．
+				$D_{-k}$のdivision pointを$t_i$と書けば
 				\begin{align}
 					&\left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\}
 					- \left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \\
 					&= \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i} - x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \\
 						&\qquad - \left\{ \int_0^1 (\nabla f)(y_{t_{i-1}} + \theta (y_{t_i} - y_{t_{i-1}}))\ d\theta \right\} Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
 					&= \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i} - x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes \left( X^1_{t_i,t_{i+1}} -  Y^1_{t_i,t_{i+1}}\right) \\
-						&\qquad + \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i} - x_{t_{i-1}}))\ d\theta \right\} \left( X^1_{t_{i-1},t_i} - Y^1_{t_{i-1},t_i} \right) \otimes Y^1_{t_i,t_{i+1}} \\
-						&\qquad + \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)\left( x_{t_{i-1}} + r(x_{t_i} - x_{t_{i-1}})\right)\ dr\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
-						&\qquad + (\nabla f)(x_{t_{i-1}})Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}}
-							- (\nabla f)(y_{t_{i-1}})Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
-						&\qquad - \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)\left( y_{t_{i-1}} + r(y_{t_i} - y_{t_{i-1}})\right)\ dr\ d\theta \right\} Y^1_{t_{i-1},t_i} \otimes Y^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
-					&= 
+						&\qquad+ \left\{ \int_0^1 (\Delta f)\left( x_{t_{i-1}} + \theta(x_{t_i} - x_{t_{i-1}}) \right)
+							- (\nabla f)\left( y_{t_{i-1}} + \theta(y_{t_i} - y_{t_{i-1}}) \right)\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
+						&\qquad + \left\{ \int_0^1 (\nabla f)(y_{t_{i-1}} + \theta (y_{t_i} - y_{t_{i-1}}))\ d\theta \right\} \left( X^1_{t_{i-1},t_i} - Y^1_{t_{i-1}} \right) \otimes Y^1_{t_i,t_{i+1}} \\
+					&= \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i} - x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes \left( X^1_{t_i,t_{i+1}} -  Y^1_{t_i,t_{i+1}}\right) \\
+						&\qquad+ \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)\left( y_{t_{i-1}} + \theta(y_{t_i} - y_{t_{i-1}})
+							 + r\left( x_{t_i} - x_{t_{i-1}} - y_{t_i} + y_{t_{i-1}} \right) + x_{t_{i-1}} - y_{t_{i-1}} \right)\ dr\ d\theta \right\} \\
+							 &\qquad \qquad \left( X^1_{t_{i-1},t_i} - Y^1_{t_{i-1},t_i} \right) \otimes X^1_{t_{i-1},t_i} \otimes Y^1_{t_i,t_{i+1}} \\
+						&\qquad + \left\{ \int_0^1 (\nabla f)(y_{t_{i-1}} + \theta (y_{t_i} - y_{t_{i-1}}))\ d\theta \right\} \left( X^1_{t_{i-1},t_i} - Y^1_{t_{i-1}} \right) \otimes Y^1_{t_i,t_{i+1}}
 				\end{align}
-				が成り立つ一方で
+				が成り立つから，仮定より
+				\begin{align}
+					&\left| \left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\}
+					- \left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \right| \\
+					&\qquad \leq m d^2 \Norm{\nabla f}{\infty} \left| X^1_{t_{i-1},t_i} \right|\left| X^1_{t_i,t_{i+1}} - Y^1_{t_i,t_{i+1}} \right| \\
+						&\qquad + m d^3 \Norm{\nabla^2 f}{\infty} \left| X^1_{t_{i-1},t_i} - Y^1_{t_{i-1},t_i} \right|\left| X^1_{t_{i-1},t_i} \right| \left| Y^1_{t_{i-1},t_i} \right| \\
+						&\qquad + m d^2 \Norm{\nabla f}{\infty}  \left| X^1_{t_{i-1},t_i} - Y^1_{t_{i-1},t_i} \right|\left| Y^1_{t_{i-1},t_i} \right|
+				\end{align}
+				$x_0 = y_0$の仮定により
 				\begin{align}
 					\left| \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right|
 					&= \left| f(x_s)X^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
 					&\leq \left| f(x_s)X^1_{s,t} - f(x_s)Y^1_{s,t} \right|
 						+ \left| f(x_s)Y^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
-					&\leq M\left| X^1_{s,t} - Y^1_{s,t} \right|
+					&\leq M' \left| X^1_{s,t} - Y^1_{s,t} \right|
 						+ \left| \left\{ \int_0^1 (\nabla f)(y_s + \theta(x_s - y_s))\ d\theta \right\}
 						(x_s - y_s) \otimes Y^1_{s,t} \right| \\
-					&\leq M\left| X^1_{s,t} - Y^1_{s,t} \right|
-						+ M' d \left| X^1_{0,s} - Y^1_{0,s}\right| \left| Y^1_{s,t} \right|
+					&\leq M' \left| X^1_{s,t} - Y^1_{s,t} \right|
+						+ m d^2 M \left| X^1_{0,s} - Y^1_{0,s}\right| \left| Y^1_{s,t} \right| \\
+					&\leq M' \epsilon \omega(s,t)^{1/p} + m d^2 M \epsilon \omega(0,s)^{1/p} \omega(s,t)^{1/p} 
 				\end{align}
-				も成立する．
+				が成立する．
 		\end{description}
+	\end{prf}
+	
+	\begin{prf}[定理\ref{thm:continuity_theorem_1}]
+		$1 \leq p$の場合，定理\ref{thm:examples_of_control_functions}より
+		\begin{align}
+			\omega(s,t) \coloneqq \Norm{X^1}{p,[s,t]}^p + \Norm{Y^1}{p,[s,t]}^p + \left( \epsilon^{-1} \Norm{X^1 - Y^1}{p,[s,t]}^p \right)^p,
+			\quad ((s,t) \in \Delta_T)
+		\end{align}
+		でcontrol functionが定まり，定理\ref{lem:key_lemma_for_continuity_theorem}(1)の仮定を満たす．
+		\QED
 	\end{prf}

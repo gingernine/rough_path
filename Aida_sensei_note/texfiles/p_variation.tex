@@ -23,8 +23,8 @@
 				\sum_{D} f(x_{s_{i-1}})(x_{t_i} - x_{t_{i-1}})
 				\in \R^m.
 			\end{align}
-			ここで$s_{i-1}$は区間$[t_{i-1},t_i]$に属する任意の点であり，
-			極限は$s_{i-1}$の取り方に依らず確定する．
+			$s_{i-1}$は区間$[t_{i-1},t_i]$に属する任意の点であり，
+			極限は$s_{i-1}$の取り方に依らない．
 		\end{thm}
 	\end{screen}
 	\footnotetext{
@@ -41,7 +41,7 @@
 			= \sum_{j=1}^{d} \sum_{D} f^k_j (x_{s_{i-1}}) \dot{x}^j_{\xi_i}(t_i - t_{i-1}),
 			\quad ({}^\exists \xi_i \in [t_{i-1},t_i])
 		\end{align}
-		と表現できる．いま，各$j,k$について
+		と表現できる．各$j,k$について
 		\begin{align}
 			\lim_{|D| \to 0} \sum_{D} f^k_j (x_{s_{i-1}}) \dot{x}^j_{\xi_i}(t_i - t_{i-1})
 		\end{align}
@@ -49,8 +49,7 @@
 		\begin{align}
 			\int_s^t f^k_j (x_u) \dot{x}^j_u\ du
 		\end{align}
-		に収束するから定理が成立する. 
-		\QED
+		に収束する. 
 		\begin{comment}
 		が確定すれば，第$k$成分の極限が確定し定理の主張を得る．
 		いま，$t \longrightarrow f^k_j(x_t)$及び$t \longmapsto (d/dt)x^j_t$は（$[s,t]$上一様）連続であるから，
@@ -102,9 +101,9 @@
 \begin{screen}
 	\begin{dfn}[$C^1$-級のパスに対する汎関数]
 		$x \in C^1$と$f \in C(\R^d,L(\R^d \rightarrow \R^m))$に対して，
-		$[s,t] \subset [0,T]$におけるRiemann-Stieltjes積分を次で表現する:
+		$[s,t] \subset [0,T]$におけるRiemann-Stieltjes積分を$I$で表現する:
 		\begin{align}
-			I^f_{s,t}(x) = \int_s^t f(x_u)\ dx_u 
+			I_{s,t}(x) = \int_s^t f(x_u)\ dx_u 
 			&\coloneqq \lim_{|D| \to 0}
 				\sum_{D} f(x_{t_{i-1}})(x_{t_i} - x_{t_{i-1}}), \\
 			\left[ \int_s^t f(x_u)\ dx_u \right]^k
@@ -176,7 +175,7 @@
 \end{prf}
 
 \end{comment}
-$C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
+$C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間となる:
 \begin{align}
 	\Norm{x}{\infty} \coloneqq \sup{t \in [0,T]}{|x(t)|},
 	\quad \Norm{x'}{\infty} \coloneqq \sup{t \in [0,T]}{|x'(t)|},
@@ -187,16 +186,14 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 \begin{screen}
 	\begin{thm}[$\Norm{\cdot}{C^1}$に関する連続性]\label{thm:T_s_t_continuous_w_r_t_C1_norm}
 		$[s,t] \subset [0,T]$とし，$C^1$には$\Norm{\cdot}{C^1}$でノルム位相を入れる．
-		このとき，$f \in C(\R^d,L(\R^d \rightarrow \R^m))$に対し
-		$C^1 \ni x \longmapsto I^f_{s,t}(x) \in \R^m$は連続である．
+		このとき，$C^1 \ni x \longmapsto I_{s,t}(x) \in \R^m$は連続である．
 	\end{thm}
 \end{screen}
 
 \begin{prf}
-	$C^1$の各点は可算な基本近傍系を持つから
-	$x \longmapsto I_{s,t}(x)$の点列連続性と連続性は一致する．
-	すなわち$x^n \longrightarrow x$なら$I^f_{s,t}(x^n) \longrightarrow I^f_{s,t}(x)$
-	が従うことを示せばよい．今回も各$j,k$について
+	$C^1$の第一可算性により点列連続性と連続性は一致するから，
+	$x^n \longrightarrow x$のとき$I_{s,t}(x^n) \longrightarrow I_{s,t}(x)$
+	が従うことを示せばよい．各$j,k$について
 	\begin{align}
 		\int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
 		\longrightarrow \int_s^t f^k_j(x_u)\ dx^j_u,
@@ -204,82 +201,29 @@ $C^1$において次でノルム$\Norm{\cdot}{C^1}$を定める:
 		\label{eq:thm_T_s_t_continuous_w_r_t_C1_norm}
 	\end{align}
 	が成り立つことを示せば十分である．
-	\begin{description}
-		\item[第一段] $t \longmapsto x_t$の連続性より$x([s,t])$は$\R^d$のコンパクト集合であるから，
-			$t \longmapsto f(x_t)$は$[s,t]$上で有界である．
-			ここで$M \coloneqq \sup{t \in [s,t]}{|f(x_t)|}$とおく．
-			
-		\item[第二段]
-			任意の分割$D \in \delta[s,t]$に対し，平均値の定理を使うと以下のように式変形される:
-			\begin{align}
-				&\left| \sum_D f^k_j(x^n_{t_{i-1}})(x^{n,j}_{t_i} - x^{n,j}_{t_{i-1}})
-					- \sum_D f^k_j(x_{t_{i-1}})(x^j_{t_i} - x^j_{t_{i-1}}) \right| \\
-				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \dot{x}^{n,j}_{\xi_i} 
-					- f^k_j(x_{t_{i-1}}) \dot{x}^j_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \dot{x}^{n,j}_{\xi_i} 
-					+ f^k_j(x_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i} \right.\\
-					&\qquad \left.- f^k_j(x_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i}
-					- f^k_j(x_{t_{i-1}}) \dot{x}^j_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \dot{x}^{n,j}_{\xi_i} 
-					- f^k_j(x_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i} \right|(t_i - t_{i-1}) \\
-					&\qquad + \sum_D \left|f^k_j(x_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i}
-					- f^k_j(x_{t_{i-1}}) \dot{x}^j_{\eta_i} \right|(t_i - t_{i-1}).
-			\end{align}
-			ここで最終式第二項については
-			\begin{align}
-				&\sum_D \left|f^k_j(x_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i}
-					- f^k_j(x_{t_{i-1}}) \dot{x}^j_{\eta_i} \right|(t_i - t_{i-1}) \\
-				&\qquad \leq \sum_D M \Norm{x^n - x}{C^1} (t_i - t_{i-1})
-				= M (t - s) \Norm{x^n - x}{C^1}
-			\end{align}
-			が成り立ち，第一項については
-			\begin{align}
-				&\sum_D \left| f^k_j(x^n_{t_{i-1}}) \dot{x}^{n,j}_{\xi_i} 
-					- f^k_j(x_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &\sum_D \left| f^k_j(x^n_{t_{i-1}}) \dot{x}^{n,j}_{\xi_i} 
-					- f^k_j(x^n_{t_{i-1}}) \dot{x}^{j}_{\xi_i} \right.\\
-					&\qquad + f^k_j(x^n_{t_{i-1}}) \dot{x}^{j}_{\xi_i}
-					- f^k_j(x^n_{t_{i-1}}) \dot{x}^{j}_{\eta_i} \\
-					&\qquad + f^k_j(x^n_{t_{i-1}}) \dot{x}^{j}_{\eta_i}
-					- f^k_j(x^n_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i} \\
-					&\qquad + f^k_j(x^n_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i}
-					\left. - f^k_j(x_{t_{i-1}}) \dot{x}^{n,j}_{\eta_i} \right|(t_i - t_{i-1}) \\
-				\leq &2M (t - s) \Norm{x^n - x}{C^1}
-					+ M(t-s) \sup{|\xi - \eta| \leq |D|}{\left|x^j_\xi - x^j_\eta \right|} \\
-					&\qquad + \Norm{x}{C^1}(t-s)\sup{t \in [0,T]}{\left|f^k_j(x^n_t) - f^k_j(x_t) \right|}
-			\end{align}
-			とできる．いま，任意に$\epsilon > 0$を取れば，或る$\epsilon > \delta > 0$が存在して
-			$v,w \in x([s,t]),\ |v - w| < \delta$なら$|f^k_j(v) - f^k_j(w)| < \epsilon$
-			が成り立つ（一様連続）．すなわち$\Norm{x^{(n)} - x}{C^1} < \delta$なら
-			\begin{align}
-				\sup{t \in [s,t]}{\left|f^k_j(x^n_t) - f^k_j(x_t) \right|} < \epsilon
-			\end{align}
-			が成立する．$\Norm{x^n - x}{C^1} \longrightarrow 0$の仮定より，
-			或る自然数$N$が存在して$\Norm{x^n - x}{C^1} < \delta\ (n > N)$が満たされるから，
-			ここで$n > N$を任意に一つ選び固定する．
-		
-		\item[第三段] 定理\ref{thm:existence_of_Riemann_Stieltjes_integral}より，前段の$\epsilon$に対し或る$\delta_1 > 0$が存在して，
-			$|D| < \delta_1$なら
-			\begin{align}
-				&\left| \int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
-					- \sum_D f^k_j(x^n_{t_{i-1}})(x^n_{t_i} - x^n_{t_{i-1}}) \right| < \epsilon, \\
-				&\left| \int_s^t f^k_j(x_u)\ dx^j_u
-					- \sum_D f^k_j(x_{t_{i-1}})(x_{t_i} - x_{t_{i-1}}) \right| < \epsilon, \\
-			\end{align}
-			が成り立つ．一方で$x^j$は一様連続であるから，或る$\delta_2 > 0$が存在して
-			$|D| < \delta_2$なら
-			\begin{align}
-				\sup{|\xi - \eta| \leq |D|}{\left|x^j_\xi - x^j_\eta \right|} < \epsilon
-			\end{align}
-			が満たされる．よって$|D| < \delta \wedge \delta_1 \wedge \delta_2$ならば
-			\begin{align}
-				\left| \int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
-					- \int_s^t f^k_j(x_u)\ dx^j_u \right|
-				< \left[2 + 4M(t-s) + \Norm{x}{C^1}(t-s) \right] \epsilon
-			\end{align}
-			が出る．$n > N$は任意であったから(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm})が従う．
-			\QED
-	\end{description}
+	連続性より$M \coloneqq \sup{u \in [s,t]}{|f(x_u)|} < \infty$が定まり
+	\begin{align}
+		&\left| \int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
+			- \int_s^t f^k_j(x_u)\ dx^j_u \right|
+		= \left| \int_s^t f^k_j(x^n_u)\dot{x}^{n,j}_u\ du
+			- \int_s^t f^k_j(x_u)\dot{x}^j_u\ du \right| \\
+		&\qquad \leq \int_s^t \left| f^k_j(x^n_u)\dot{x}^{n,j}_u - f^k_j(x^n_u)\dot{x}^j_u \right|\ du
+			+ \int_s^t \left| f^k_j(x^n_u)\dot{x}^j_u - f^k_j(x_u)\dot{x}^j_u \right|\ du \\
+		&\qquad \leq M \Norm{x^n - x}{C^1} (t-s)
+			+ \sup{u \in [s,t]}{\left| f^k_j(x^n_u) - f^k_j(x_u) \right|} \Norm{x}{C^1}(t-s)
+			\label{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}
+	\end{align}
+	が成り立つ．いま，任意に$\epsilon > 0$を取れば，或る$\epsilon > \delta > 0$が存在して
+	$v,w \in x([s,t]),\ |v - w| < \delta$なら$|f^k_j(v) - f^k_j(w)| < \epsilon$
+	を満たす（一様連続）．すなわち$\Norm{x^{(n)} - x}{C^1} < \delta$なら
+	\begin{align}
+		\sup{t \in [s,t]}{\left|f^k_j(x^n_t) - f^k_j(x_t) \right|} < \epsilon
+	\end{align}
+	が成立する．$\Norm{x^n - x}{C^1} \longrightarrow 0$の仮定より，
+	或る自然数$N$が存在して$\Norm{x^n - x}{C^1} < \delta\ (n > N)$が満たされるから，
+	$(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}) < \epsilon[M(t-s) + \Norm{x}{C^1}(t-s)]$
+	が成り立ち(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm})が従う．
+	\QED
 \end{prf}
 
 \begin{screen}
@@ -412,7 +356,7 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 				&\qquad \leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
 					\biggl( \int_{t_{i-1}}^{t_i} | \dot{x}^j_{u} |^q\ du \biggr)^{p/q}
 				\leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
-					\biggl( \Norm{x}{C^1}^p \int_{0}^{T} du \biggr)^{p/q}
+					\biggl( \Norm{x}{C^1}^q \int_{0}^{T} du \biggr)^{p/q}
 				\leq d\Norm{x}{C^1}^p T^p
 			\end{align}
 			が成立し，$\Norm{x}{p} < \infty$が従う．
@@ -421,16 +365,15 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 	\QED
 \end{prf}
 
-	以上が会田先生の資料のIntroductionの部分の補完である．
 	次節の考察対象は主に定理\ref{thm:T_s_t_continuous_w_r_t_C1_norm}と
 	定理\ref{thm:C1_p_variation_topology}に関係する．
 	定理\ref{thm:T_s_t_continuous_w_r_t_C1_norm}によれば，
 	$C^1$に$\Norm{\cdot}{C^1}$でノルム位相を導入した場合，
 	$f \in C(\R^d,L(\R^d \rightarrow \R^m))$に対して
-	$C^1 \ni x \longmapsto I^f_{s,t}(x)$は連続である．
+	$C^1 \ni x \longmapsto I_{s,t}(x)$は連続である．
 	一方で定理\ref{thm:T_s_t_continuous_w_r_t_C1_norm}によれば，
 	0出発$C^1$-パス空間$\tilde{C}^1$に$\Norm{\cdot}{p}$でノルム位相を導入した場合，
-	$\tilde{C}^1 \ni x \longmapsto I^f_{s,t}(x)$が連続であるという
+	$\tilde{C}^1 \ni x \longmapsto I_{s,t}(x)$が連続であるという
 	保証はない．しかし，次節以後の結果により，
 	$1 \leq p < 3$かつ$f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$が満たされているなら
-	$\tilde{C}^1 \ni x \longmapsto I^f_{s,t}(x)$は或る意味での連続性を持つ．
+	$\tilde{C}^1 \ni x \longmapsto I_{s,t}(x)$は或る意味での連続性を持つ．
