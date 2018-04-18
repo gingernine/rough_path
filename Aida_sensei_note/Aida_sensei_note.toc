@@ -1,3 +1,2 @@
 \contentsline {section}{\numberline {0.1}導入}{1}
-\contentsline {section}{\numberline {0.2}連続性定理の主張}{5}
-\contentsline {section}{\numberline {0.3}連続性定理の証明}{6}
+\contentsline {section}{\numberline {0.2}連続性定理}{5}

@@ -177,10 +177,8 @@
 \end{comment}
 $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間となる:
 \begin{align}
-	\Norm{x}{\infty} \coloneqq \sup{t \in [0,T]}{|x(t)|},
-	\quad \Norm{x'}{\infty} \coloneqq \sup{t \in [0,T]}{|x'(t)|},
-	\quad \Norm{x}{C^1} \coloneqq
-	\Norm{x}{\infty} + \Norm{x'}{\infty}.
+	\Norm{x}{C^1} \coloneqq
+	\sup{t \in [0,T]}{|x(t)|} + \sup{t \in [0,T]}{|\dot{x}(t)|}.
 \end{align}
 
 \begin{screen}
@@ -221,7 +219,7 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 	\end{align}
 	が成立する．$\Norm{x^n - x}{C^1} \longrightarrow 0$の仮定より，
 	或る自然数$N$が存在して$\Norm{x^n - x}{C^1} < \delta\ (n > N)$が満たされるから，
-	$(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}) < \epsilon[M(t-s) + \Norm{x}{C^1}(t-s)]$
+	$(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}) < \epsilon[M(t-s) + \Norm{x}{C^1}(t-s)]\ (n > N)$
 	が成り立ち(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm})が従う．
 	\QED
 \end{prf}
@@ -341,27 +339,25 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 			平均値の定理より，任意の$D \in \delta[0,T]$に対し
 			\begin{align}
 				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|
-				\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|
-				\leq \sum_D \sum_{j=1}^d \Norm{x}{C^1}(t_i - t_{i-1})
-				= d\Norm{x}{C^1}T < \infty
+				\leq \sum_D \Norm{x}{C^1}(t_i - t_{i-1})
+				= \Norm{x}{C^1}T < \infty
 			\end{align}
 			が成り立ち$\Norm{x}{1} < \infty$が従う．
 		
 		\item[$p > 1$の場合] $q$を$p$の共役指数とする．
 			任意の$D \in \delta[0,T]$に対し，H\Ddot{o}lderの不等式より
 			\begin{align}
-				&\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p
-				\leq \sum_D \sum_{j=1}^d \left| x^j_{t_i} - x^j_{t_{i-1}} \right|^p
-				= \sum_D \sum_{j=1}^d \left| \int_{t_{i-1}}^{t_i} \dot{x}^j_{u}\ du \right|^p \\
-				&\qquad \leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
-					\biggl( \int_{t_{i-1}}^{t_i} | \dot{x}^j_{u} |^q\ du \biggr)^{p/q}
-				\leq \sum_D \sum_{j=1}^d (t_i - t_{i-1})
+				\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p
+				&= \sum_D \left| \int_{t_{i-1}}^{t_i} \dot{x}_{u}\ du \right|^p 
+				\leq \sum_D (t_i - t_{i-1})
+					\biggl( \int_{t_{i-1}}^{t_i} | \dot{x}_{u} |^q\ du \biggr)^{p/q} \\
+				&\leq \sum_D (t_i - t_{i-1})
 					\biggl( \Norm{x}{C^1}^q \int_{0}^{T} du \biggr)^{p/q}
-				\leq d\Norm{x}{C^1}^p T^p
+				= \Norm{x}{C^1}^p T^p
 			\end{align}
 			が成立し，$\Norm{x}{p} < \infty$が従う．
 	\end{description}
-	以上より，$p \geq 1$ならば$\Norm{x}{p} \leq dT\Norm{x}{C^1}\ (x \in C^1)$が成り立ち(2)の主張を得る．
+	以上より，$p \geq 1$ならば$\Norm{x}{p} \leq T\Norm{x}{C^1}\ (x \in C^1)$が成り立ち(2)の主張を得る．
 	\QED
 \end{prf}
 
