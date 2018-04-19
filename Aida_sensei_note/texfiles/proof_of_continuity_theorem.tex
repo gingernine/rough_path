@@ -288,7 +288,19 @@
 				同様にして$s \longmapsto \omega(s,t)$の左連続性も成立する．
 				
 			\item[第四段]
-				$\Delta_T \ni (s,t) \longmapsto \omega(s,t)$の連続性を示す．
+				$\omega$の$(s,t) \in \Delta_T$における連続性を示す．$h,k \geq 0$として考えれば，
+				\begin{align}
+					&|\omega(s,t) - \omega(s-h,t-k)| \\
+					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s-h,t) - \omega(s-h,t-k)| \\
+					&\qquad= |\omega(s,t) - \omega(s-h,t)| + \omega(s-h,t) - \omega(s-h,t-k) \\
+					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + \omega(s-h,t) - \omega(s,t-k) \\
+					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s-h,t) - \omega(s,t)| + |\omega(s,t) - \omega(s,t-k)|, \\
+					&|\omega(s,t) - \omega(s+h,t+k)| \\
+					&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + |\omega(s+h,t) - \omega(s+h,t+k)| \\
+					&\qquad= |\omega(s,t) - \omega(s+h,t)| + \omega(s+h,t+k) - \omega(s+h,t) \\
+					&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + \omega(s,t+k) - \omega(s+h,t) \\
+					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s,t+k) - \omega(s,t)| + |\omega(s,t) - \omega(s+h,t)|
+				\end{align}
 		\end{description}
 	\end{prf}
 	
