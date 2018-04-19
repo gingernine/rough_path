@@ -1,3 +1,86 @@
+\section{連続性定理}
+	\begin{screen}
+		\begin{dfn}[記号の定義]
+			$x \in C^1,\ f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$に対し次を定める．
+			\begin{align}
+				\Delta_T &\coloneqq \Set{(s,t)}{0 \leq s \leq t \leq T}, \\
+				X^1 &:\Delta_T \longrightarrow \R^d\ \left( (s,t) \longmapsto X^1_{s,t} = x_t - x_s \right), \\
+				X^2 &:\Delta_T \longrightarrow \R^d \otimes \R^d\ \left( (s,t) \longmapsto X^2_{s,t} = \int_s^t (x_u - x_s) \otimes dx_u \right), \\
+				\tilde{I}_{s,t}(x) &\coloneqq f(x_s)X^1_{s,t} = f(x_s)(x_t - x_s), \\
+				J_{s,t}(x) &\coloneqq f(x_s)X^1_{s,t} + (\nabla f)(x_s)X^2_{s,t}.
+			\end{align}
+		\end{dfn}
+	\end{screen}
+	
+	以降，$a,b,c,d \in \R^d$に対して次の表現を使う:
+	\begin{align}
+		\left[ (\nabla f)(x_s)X^2_{s,t} \right]^i &= \sum_{j,k=1}^d \partial_k f^i_j(x_s) \int_s^t \left(x^k_u - x^k_s \right)\ dx^j_u,\\
+		\left[ (\nabla f)(x_s)(a \otimes b) \right]^i &= \sum_{j,k=1}^d \partial_k f^i_j(x_s) a^k b^j,\\
+		\left[ (\nabla^2 f)(x_s)(a \otimes b \otimes c) \right]^i &= \sum_{j,k,v=1}^d \partial_v \partial_k f^i_j(x_s) a^v b^k c^j,\\
+		\left[ (\nabla^3 f)(x_s)(a \otimes b \otimes c \otimes d) \right]^i &= \sum_{j,k,v,w=1}^d \partial_w \partial_v \partial_k f^i_j(x_s) a^w b^v c^k d^j.
+	\end{align}
+	
+	\begin{screen}
+		\begin{thm}\label{thm:Riemann_Stieltjes_approximation}
+			$[s,t] \subset [0,T],\ x \in C^1,\ f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$とする．$D \in \delta[s,t]$に対し
+			\begin{align}
+				\tilde{I}_{s,t}(x,D) \coloneqq \sum_D \tilde{I}_{t_{i-1},t_i}(x),
+				\quad J_{s,t}(x,D) \coloneqq \sum_D J_{t_{i-1},t_i}(x)
+			\end{align}
+			を定めるとき，次が成立する:
+			\begin{align}
+				I_{s,t}(x) = \lim_{|D| \to 0} \tilde{I}_{s,t}(x,D)
+				= \lim_{|D| \to 0} J_{s,t}(x,D).
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		第一の等号は$I_{s,t}(x)$の定義によるから，第二の等号を証明する．まず，
+		\begin{align}
+			I_{s,t}(x)
+			&= \int_s^t f(x_u)\ dx_u \\
+			&= \int_s^t f(x_s) + f(x_u) - f(x_s)\ dx_u \\
+			&= \int_s^t f(x_s)\ dx_u
+				+ \int_s^t \int_0^1 (\nabla f)(x_s + \theta(x_u - x_s)) \left( X^1_{s,u} \otimes \dot{x}_u \right)\ d\theta\ du \\
+			&= f(x_s)X^1_{s,t} + (\nabla f)(x_s) X^2_{s,t} \\
+				&\quad+ \int_s^t \int_0^1 \left\{ (\nabla f)(x_s + \theta(x_u - x_s)) - (\nabla f)(x_s) \right\}\left( X^1_{s,u} \otimes \dot{x}_u \right)\ d\theta\ du \\
+			&= J_{s,t}(x)
+				+ \int_s^t 
+				\int_0^1 \int_0^\theta (\nabla^2 f)(x_s + r(x_u - x_s))\left( X^1_{s,u} \otimes X^1_{s,u} \otimes \dot{x}_u \right)\ dr\ d\theta\ du
+		\end{align}
+		が成り立つ．$[0,T] \ni t \longmapsto x_t$の連続性より，
+		最下段式中の$x_s + r(x_u - x_s)\ (0 \leq r \leq 1,\ s \leq u \leq t)$は或るコンパクト集合$K$に含まれ，
+		$f$が$C^2$-級関数であるから
+		\begin{align}
+			M \coloneqq \sum_{i,j,k,v} \sup{x \in K}{\left|\partial_v \partial_k f_j^i(x) \right|}
+		\end{align}
+		として$M < \infty$を定めれば
+		\begin{align}
+			&\left| \int_s^t 
+				\int_0^1 \int_0^\theta (\nabla^2 f)(x_s + r(x_u - x_s))\left( X^1_{s,u} \otimes X^1_{s,u} \otimes \dot{x}_u \right)\ dr\ d\theta\ du \right| \\
+			&\qquad \leq \int_s^t 
+				\int_0^1 \int_0^\theta \left| (\nabla^2 f)(x_s + r(x_u - x_s))\left( X^1_{s,u} \otimes X^1_{s,u} \otimes \dot{x}_u \right) \right|\ dr\ d\theta\ du \\
+			&\qquad \leq M \int_s^t |X^1_{s,u}|^2 |\dot{x}_u|\ du \\
+			&\qquad \leq M \Norm{x}{C^1}^3 \int_s^t (u - s)^2\ du
+		\end{align}
+		が出る．特に$D \in \delta[s,t]$に対して
+		\begin{align}
+			&\sum_D \int_{t_{i-1}}^{t_i} (u - t_{i-1})^2\ du
+			\leq \sum_D |D| \int_{t_{i-1}}^{t_i} (u - t_{i-1})\ du \\
+			&\qquad \leq \sum_D |D| \int_{t_{i-1}}^{t_i} (u - s)\ du
+			\leq \frac{1}{2}(t-s)^2 |D|
+			\longrightarrow 0 \quad (|D| \longrightarrow 0)
+		\end{align}
+		が成立するから，
+		\begin{align}
+			\left| I_{s,t}(x) - J_{s,t}(x,D) \right|
+			\leq \sum_D \left| I_{t_{i-1},t_i}(x) - J_{t_{i-1},t_i}(x) \right| \longrightarrow 0 \quad (|D| \longrightarrow 0)
+		\end{align}
+		が従い定理の主張を得る．
+		\QED
+	\end{prf}
+	
 	\begin{screen}
 		\begin{dfn}[control function]
 			関数$\omega:\Delta_T \longrightarrow [0,\infty)$
@@ -10,17 +93,151 @@
 		\end{dfn}
 	\end{screen}
 	
+	式(\refeq{eq:control_function_subadditivity})から$\omega(t,t)=0\ (\forall t \in [0,T])$が従う．
+	
 	\begin{screen}
 		\begin{dfn}[ノルム空間値写像の$p$-variation]
-			$(V,\Norm{\cdot}{})$をノルム空間とするとき，$p \geq 1,\ [s,t] \subset [0,T]
-			,\ \psi:\Delta_T \longrightarrow V$に対して
+			$(V,\Norm{\cdot}{})$をノルム空間，$p \geq 1$とする．
+			このとき連続写像$\psi:\Delta_T \longrightarrow V$に対する$p$-variationを
 			\begin{align}
 				\Norm{\psi}{p,[s,t]}
-				\coloneqq \left\{ \sup{D \in \delta[s,t]}{ \sum_D \Norm{\psi_{t_{i-1},t_i}}{}^p} \right\}^{1/p}
+				\coloneqq \left\{ \sup{D \in \delta[s,t]}{ \sum_D \Norm{\psi_{t_{i-1},t_i}}{}^p} \right\}^{1/p},
+				\quad ((s,t) \subset [0,T])
 			\end{align}
-			と定める．特に$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と書く．
+			で定める．特に$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と書く．
 		\end{dfn}
 	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}
+			$(V,\Norm{\cdot}{})$をノルム空間，$p \geq 1$とする．
+			$\Norm{\psi}{p} < \infty$かつ$\psi_{t,t} = 0\ (\forall t \in [0,T])$を満たす連続写像$\psi:\Delta_T \longrightarrow V$に対して
+			\begin{align}
+				\omega:\Delta_T \ni (s,t) \longmapsto \Norm{\psi}{p,[s,t]}^p
+			\end{align}
+			により定める$\omega$はcontrol functionである．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$\Norm{\psi}{p} < \infty$の仮定より$\omega$は$[0,\infty)$値であるから，
+		以下では式(\refeq{eq:control_function_subadditivity})の成立と連続性を示す．
+		\begin{description}
+			\item[第一段]
+				$\omega$が式(\refeq{eq:control_function_subadditivity})を満たすことを示す．実際，
+				任意に$D_1 \in \delta[s,u],D_2 \in \delta[u,t]$を取れば
+				\begin{align}
+					\sum_{D_1}\Norm{\psi_{t_{i-1},t_i}}{}^p
+					+ \sum_{D_2}\Norm{\psi_{t_{i-1},t_i}}{}^p
+					= \sum_{D_1 \cup D_2}\Norm{\psi_{t_{i-1},t_i}}{}^p
+					\leq \Norm{\psi}{p:[s,t]}^p
+				\end{align}
+				が成り立つ．左辺の$D_1,D_2$の取り方は独立であるから，それぞれに対し上限を取れば
+				\begin{align}
+					\Norm{\psi}{p:[s,u]}^p + \Norm{\psi}{p:[u,t]}^p
+					\leq \Norm{\psi}{p:[s,t]}^p
+				\end{align}
+				が従う．
+			
+			\item[第二段]
+				任意の$[s,t] \subset [0,T]$について，
+				\begin{align}
+					\lim_{h \to +0} \omega(s,t+h) &= \inf{h>0}{\omega(s,t+h)},
+					&\lim_{h \to +0} \omega(s-h,t) &= \inf{h>0}{\omega(s-h,t)}, \\
+					\lim_{h \to +0} \omega(s,t-h) &= \sup{h>0}{\omega(s,t-h)},
+					&\lim_{h \to +0} \omega(s+h,t) &= \sup{h>0}{\omega(s+h,t)}
+				\end{align}
+				が成立する．実際$\omega(s,t+h)$について見れば，これは下に有界かつ
+				$h \to +0$に対し単調減少であるから極限が確定し下限に一致する．
+				残りの三つも同様の理由で成立する．
+				
+			\item[第二段]
+				任意の$t \in [0,T)$に対して次を示す:
+				\begin{align}
+					\lim_{h \to +0} \omega(t,t+h) = \inf{h>0}{\omega(t,t+h)} = 0.
+				\end{align}
+				第一の等号は前段より従うから，第二の等号を背理法により証明する．いま
+				\begin{align}
+					\inf{h>0}{\omega(t,t+h)} \eqqcolon \delta > 0
+					\label{eq:thm_continuity_of_norm_val_p_variation_2}
+				\end{align}
+				と仮定する．$\psi$の連続性より或る$h_1$が存在して
+				\begin{align}
+					\Norm{\psi_{t,t+h}}{}^p
+					 = \Norm{\psi_{t,t+h} - \psi_{t,t}}{}^p
+					 < \frac{\delta}{8},
+					\quad (\forall h < h_1)
+					\label{eq:thm_continuity_of_norm_val_p_variation_1}
+				\end{align}
+				が成立するから，任意に$h_0 < h_1$を取り固定する．
+				一方で$\omega(t,t+h_0) \geq \delta$より
+				\begin{align}
+					\sum_{i=1}^{N} \Norm{\psi_{\tau_{i-1},\tau_i}}{}^p > \frac{7\delta}{8}
+				\end{align}
+				を満たす$D = \{t = \tau_0 < \tau_1 < \cdots, \tau_N = t+h_0\} \in \delta[t,t+h_0]$が存在し，
+				(\refeq{eq:thm_continuity_of_norm_val_p_variation_1})と併せて
+				\begin{align}
+					\sum_{i=2}^{N} \Norm{\psi_{\tau_{i-1},\tau_i}}{}^p
+					> \frac{7\delta}{8} - \Norm{\psi_{t,\tau_1}}{}^p
+					>\frac{7\delta}{8} - \frac{\delta}{8}
+					= \frac{3 \delta}{4}
+				\end{align}
+				を得る．また，$\omega(t,\tau_1) \geq \delta$より或る$D' \in \delta[t,\tau_1]$が存在して
+				\begin{align}
+					\sum_{D'} \Norm{\psi_{t_{i-1},t_i}}{}^p > \frac{3 \delta}{4}
+				\end{align}
+				を満たすから，$D' \cup \{\tau_1 < \cdots, \tau_N = t+h_0\} \in \delta[t,t+h_0]$より
+				\begin{align}
+					\omega(t,t+h_0) > \sum_{D'} \Norm{\psi_{t_{i-1},t_i}}{}^p + \sum_{i=2}^{N} \Norm{\psi_{\tau_{i-1},\tau_i}}{}^p
+					> \frac{3\delta}{2}
+				\end{align}
+				が従うが，$h_0 < h_1$の任意性と単調減少性により
+				\begin{align}
+					\delta = \inf{h>0}{\omega(t,t+h)} = \inf{h_1>h>0}{\omega(t,t+h)} \geq \frac{3\delta}{2}
+				\end{align}
+				となり矛盾が生じる．
+				同様にして
+				\begin{align}
+					\lim_{h \to +0} \omega(t-h,t) = 0,
+					\quad (\forall t \in (0,T])
+				\end{align}
+				も成立する．
+				
+			\item[第三段]
+				任意に$s \in [0,T)$を取り固定し，
+				$[s,T) \ni t \longmapsto \omega(s,t)$が右連続であることを示す．
+				\begin{align}
+					\lim_{h \to +0} \omega(s,t+h) \leq \omega(s,t)
+					\label{eq:thm_continuity_of_norm_val_p_variation_3}
+				\end{align}
+				を示せば，第二段より逆向きの不等号も従い右連続性を得る．
+				任意に$h,\epsilon > 0$を取れば，
+				\begin{align}
+					\omega(s,t + h) - \epsilon
+					\leq \sum_D \Norm{\psi_{t_{i-1},t_i}}{}^p
+				\end{align}
+				を満たす$D \in \delta[s,t+h]$が存在する．
+				$D_1 \coloneqq [s,t] \cap D,\ D_2 \coloneqq D \backslash D_1$とおいて
+				$D_2$の最小元を
+				\begin{align}
+					\omega(s,t + h) - \epsilon
+					\leq \sum_{D_1} \Norm{\psi_{t_{i-1},t_i}}{}^p + \sum_{D_2} \Norm{\psi_{t_{i-1},t_i}}{}^p
+					\leq \omega(s,t) + \omega(t,t+h)
+				\end{align}
+				が成り立つ．$h \longrightarrow +0$として
+				\begin{align}
+					\lim_{h \to +0} \omega(s,t+h) - \epsilon \leq \omega(s,t)
+				\end{align}
+				が従い，$\epsilon$の任意性より(\refeq{eq:thm_continuity_of_norm_val_p_variation_3})が出る．
+				同様にして$s \longmapsto \omega(s,t)$の左連続性も成立する:
+				\begin{align}
+					\lim_{h \to +0} \omega(s-h,t) = \omega(s,t).
+				\end{align}
+			
+			\item[第四段]
+				$t \longmapsto \omega(s,t)$の左連続性を示す．
+		\end{description}
+	\end{prf}
 	
 	\begin{screen}
 		\begin{thm}[control functionの例]\label{thm:examples_of_control_functions}
@@ -41,20 +258,7 @@
 	\begin{thm}\mbox{}
 		\begin{description}
 			\item[(1)]
-			\item[(2)] 任意の$D_1 \in \delta[s,u],D_2 \in \delta[u,t]$に対して
-				合併$D_1 \cup D_2$は$[s,t]$の分割であるから，
-				\begin{align}
-					\sum_{D_1}\left| x_{t_i} - x_{t_{i-1}} \right|^p
-					+ \sum_{D_2}\left| x_{t_i} - x_{t_{i-1}} \right|^p
-					\leq \sup{D \in \delta[s,t]}{\sum_{D} \left| x_{t_i} - x_{t_{i-1}} \right|^p}
-					= \Norm{X^1}{p:[s,t]}^p
-				\end{align}
-				が成り立つ．左辺の$D_1,D_2$の取り方は独立であるから，それぞれに対し上限を取れば
-				\begin{align}
-					\Norm{X^1}{p:[s,u]}^p + \Norm{X^1}{p:[u,t]}^p
-					\leq \Norm{X^1}{p:[s,t]}^p
-				\end{align}
-				が得られる．
+			\item[(2)] 
 				
 			\item[(3)] 任意の$[s,t] \subset [0,T]$に対して
 				$\Norm{X^2}{p:[s,t]}^p < \infty$を示せば，あとは
@@ -83,6 +287,17 @@
 		\end{description}
 	\end{thm}
 	
+	\begin{prf}
+		\begin{align}
+			&\omega_1(s,u)\omega_2(s,u) + \omega_1(u,t)\omega_2(u,t) \\
+			&= \left\{ \omega_1(s,u) + \omega_1(u,t) \right\}\omega_2(s,u) + \omega_1(u,t)\left\{\omega_2(u,t) - \omega_2(s,u)\right\} \\
+			&\leq \omega_1(s,t)\omega_2(s,u) + \omega_1(u,t)\left\{\omega_2(u,t) - \omega_2(s,u)\right\} \\
+			&\leq \omega_1(s,t)\omega_2(s,u) + \omega_1(u,t)\omega_2(u,t) \\
+			&\leq \omega_1(s,t)\left\{ \omega_2(s,u) + \omega_2(u,t)\right\} \\
+			&\leq \omega_1(s,t)\omega_2(s,t)
+		\end{align}
+	\end{prf}
+	
 	\begin{screen}
 		\begin{lem}[division point]\label{lem:control_function_min}
 			$\omega$を$\Delta_T$上のcontrol functionとする．
@@ -95,6 +310,11 @@
 			以後この$t_i$を$D$のdivision pointと呼ぶ．
 		\end{lem}
 	\end{screen}
+	
+	\begin{prf}
+		会田先生のノート参照．
+		\QED
+	\end{prf}
 	
 	\begin{screen}
 		\begin{thm}[$1 \leq p < 2$の場合の連続性定理]\label{thm:continuity_theorem_1}
@@ -113,35 +333,38 @@
 	\end{screen}
 	
 	\begin{prf}
-		control function $\omega$を
-		\begin{align}
-			\omega(\alpha,\beta) = \Norm{X^1}{p,[\alpha,\beta]}^p + \Norm{Y^1}{p,[\alpha,\beta]}^p + \epsilon^{-p} \Norm{X^1 - Y^1}{p,[\alpha,\beta]}^p,
-			\quad ((\alpha,\beta) \in \Delta_T)
-		\end{align}
-		により定める．
+		$[s,t] \subset [0,T]$とする．
 		\begin{description}
 			\item[第一段]
-				任意に$[s,t] \subset [0,T]$を固定し
-				$D = \{s=t_0 < \cdots, t_N=t\} \in \delta[s,t]\ (N \geq 2)$を取れば
-				division point $t_{i_1}$が存在する．
+				$\omega:\Delta_T \longrightarrow [0,\infty)$を
+				\begin{align}
+					\omega(\alpha,\beta) = \Norm{X^1}{p,[\alpha,\beta]}^p + \Norm{Y^1}{p,[\alpha,\beta]}^p + \epsilon^{-p} \Norm{X^1 - Y^1}{p,[\alpha,\beta]}^p,
+					\quad ((\alpha,\beta) \in \Delta_T)
+				\end{align}
+				で定めれば，定理\ref{thm:examples_of_control_functions}により$1 \leq p$の下で$\omega$はcontrol functionである．
+				
+			\item[第一段]
+				任意に$[s,t]$の分割
+				$D = \{s=t_0 < \cdots < t_N=t\}\ (N \geq 2)$を取れば，
+				補題\ref{lem:control_function_min}よりdivision point $t_{i_1}$が存在する．
 				$D_{-1} \coloneqq D \backslash \{t_{i_1}\}$と定め，$D_{-1}$のdivision point $t_{i_2}$を除き
-				$D_{-2} \coloneqq D_{-1} \backslash \{t_{i_2}\}$と定める．繰り返せば
+				$D_{-2} \coloneqq D_{-1} \backslash \{t_{i_2}\}$と定める．この操作を繰り返せば
 				$t_{i_k},D_{-k}\ (k=1,\cdots,N-1)$が得られ，
 				\begin{align}
-					\tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(y,D)
-					&= \sum_{k=0}^{N-2} \left[ \left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\} - 
+					&\tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(y,D) \\
+					&\qquad = \sum_{k=0}^{N-2} \left[ \left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\} - 
 						\left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \right] \label{eq:continuity_theorem_1_1}\\
-					&\qquad + \left\{ \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right\}	\label{eq:continuity_theorem_1_2}
+					&\quad \qquad + \left\{ \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right\}	\label{eq:continuity_theorem_1_2}
 				\end{align}
 				と表現できる．ただし$D = D_{-0}$と見做す．
 			
 			\item[第二段]
-				式(\refeq{eq:continuity_theorem_1_1})について，或る定数$C_1$が存在して
+				式(\refeq{eq:continuity_theorem_1_1})について，次を満たす定数$C_1$が存在することを示す:
 				\begin{align}
 					|(\refeq{eq:continuity_theorem_1_1})| \leq \epsilon C_1
 					\label{eq:continuity_theorem_1_3}
 				\end{align}
-				が成り立つことを示す．ここで
+				実際，前段の結果より
 				\begin{align}
 					M \coloneqq
 						\sup{\substack{x \in \R^d \\ 1 \leq i \leq m \\ 1 \leq j \leq d}}{|f^i_j(x)|} 
@@ -271,7 +494,8 @@
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}$[s,t] \subset [0,T]$とする．
+	\begin{prf}
+		$[s,t] \subset [0,T]$とする．
 		\begin{description}
 			\item[第一段]
 				$\omega:\Delta_T \longrightarrow [0,\infty)$を
@@ -281,7 +505,7 @@
 						&\quad + \epsilon^{-p} \Norm{X^1 - Y^1}{p,[\alpha,\beta]}^p +  \epsilon^{-p/2} \Norm{X^2 - Y^2}{p/2,[\alpha,\beta]}^{p/2},
 					\quad ((\alpha,\beta) \in \Delta_T)
 				\end{align}
-				により定めれば，定理\ref{thm:examples_of_control_functions}により$2 \leq p$の下で$\omega$はcontrol functionである．
+				で定めれば，定理\ref{thm:examples_of_control_functions}により$2 \leq p$の下で$\omega$はcontrol functionである．
 				
 			\item[第二段]
 				$D \in \delta[s,t]$に対し，
@@ -447,118 +671,3 @@
 		$\sup{x\in\R^d}{}$を$\sup{|x| \leq 9R}$に替えればよい．
 		\QED
 	\end{prf}
-	
-	\begin{screen}
-		\begin{lem}\label{lem:lemma_for_Young_integral}
-			$x \in C^1,\ f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$とする．
-			\begin{description}
-				\item[(1)]
-					$1 \leq p < 2$の場合，或るcontrol function $\omega$が存在して
-					\begin{align}
-						\left| X^1_{s,t} \right|
-						\leq \omega(s,t)^{1/p},
-						\quad (0 \leq \forall s \leq \forall t \leq T)
-					\end{align}
-					を満たすとき，ある定数$C=C(p,f)$があり
-					\begin{align}
-						\left|I_{s,t}(x) \right|
-						\leq C\left( \omega(s,t)^{1/p} + \omega(s,t)^{2/p} \right).
-					\end{align}
-					が成立する．
-				\item[(2)] $2 \leq p < 3$の場合，或るcontrol function $\omega$が存在して
-					\begin{align}
-						\left| X^1_{s,t} \right| \leq \omega(s,t)^{1/p},
-						\quad \left| X^2_{s,t} \right| \leq \omega(s,t)^{2/p},
-						\quad (0 \leq \forall s \leq \forall t \leq T)
-					\end{align}
-					を満たすとき，ある定数$C=C(p,f)$があり
-					\begin{align}
-						\left|I_{s,t}(x) \right|
-						\leq C\left( \omega(s,t)^{1/p} + \omega(s,t)^{2/p} + \omega(s,t)^{3/p} \right).
-					\end{align}
-					が成立する．
-			\end{description}
-		\end{lem}
-	\end{screen}
-	
-	\begin{prf}\mbox{}
-		\begin{description}
-			\item[(1)] $D = \{s=t_0 < \cdots < t_N = t\}\ (N \geq 2)$に対し，
-				補題\refeq{lem:control_function_min}により存在する
-				$i$を取り$D_{-1} \coloneqq D \backslash \{i\}$と書く．
-				補題\refeq{lem:control_function_min}の添数を除く作業を続けて
-				$D_{-k}\ (k=1,\cdots,N-1)$を構成する．
-				\begin{align}
-					M \coloneqq \max{
-					\substack{t \in [0,T] \\ 1 \leq i \leq m \\ 1 \leq j,k \leq d}}
-					{\left| \partial_k f^i_j(x_t) \right|},
-					\quad 
-					M' \coloneqq \max{t \in [0,T]}{\left| f(x_t) \right|}
-				\end{align}
-				とおけば$M,M' < \infty$であり，$\left| X^1_{t_i,t_{i+1}} \right| \leq \omega(t_i,t_{i+1})^{1/p} \leq \omega(t_{i-1},t_{i+1})^{1/p}$と補題\refeq{lem:control_function_min}により
-				\begin{align}
-					\left| \tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(x,D_{-1}) \right|
-					&= \left| \tilde{I}_{t_{i-1},t_i}(x) + \tilde{I}_{t_i,t_{i+1}}(x) - \tilde{I}_{t_{i-1},t_{i+1}}(x) \right| \\
-					& \leq \left| \left\{ f(x_{t_i}) - f(x_{t_{i-1}}) \right\} X^1_{t_i,t_{i+1}} \right| \\
-					&\leq \left| \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i}-x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \right| \\
-					&\leq md^2 M \left| X^1_{t_i,t_{i+1}} \right|^2 \\
-					&\leq md^2 M \left( \frac{2\omega(s,t)}{N-1} \right)^{2/p}
-				\end{align}
-				が成立する．同様に
-				\begin{align}
-					\left| \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right|
-					\leq md^2 M \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p},
-					\quad(k=0,\cdots,N-2)
-				\end{align}
-				が成り立ち$(D_{-0} = D)$
-				\begin{align}
-					\left| \tilde{I}_{s,t}(x,D) - f(x_s)X^1_{s,t} \right|
-					&\leq \sum_{k=0}^{N-2} \left| \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right| \\
-					&\leq md^2 M (2\omega(s,t))^{2/p} \sum_{k=0}^{N-2} \left( \frac{1}{N-k-1} \right)^{2/p} \\
-					&\leq md^2 M (2\omega(s,t))^{2/p} \zeta\biggl(\frac{2}{p}\biggr)
-				\end{align}
-				が従う．いま，仮定より$p < 2$であるから$\zeta(2/p) < \infty$であり，
-				定理\ref{thm:Riemann_Stieltjes_approximation}より
-				\begin{align}
-					\left| I_{s,t}(x) \right|
-					\leq M' \omega(s,t)^{1/p} + md^2 M (2\omega(s,t))^{2/p} \zeta\biggl(\frac{2}{p}\biggr)
-				\end{align}
-				を得る．
-				
-			\item[(2)]
-				(1)と同様に$D_{-k}\ (k=1,\cdots,N-1)$を構成する．
-				会田先生のノートの通りに
-				\begin{align}
-					J_{s,t}(x,D) - J_{s,t}(x,D_{-1})
-					&= \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{i-1}} + \theta (x_{t_i}- x_{t_{i-1}}))\ dr\ d\theta \right\}
-						X^1_{t_{i-1},t_i} \otimes X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \\
-						&\qquad + \left\{ \int_0^1 (\nabla^2 f)(x_{t_{i-1}} + \theta (x_{t_i}- x_{t_{i-1}}))\ d\theta \right\}
-						X^1_{t_{i-1},t_i} \otimes X^2_{t_i,t_{i+1}}
-				\end{align}
-				を得る．ここで(1)の$M,M'$に加えて
-				\begin{align}
-					M'' \coloneqq \max{
-					\substack{t \in [0,T] \\ 1 \leq i \leq m \\ 1 \leq j,k,v \leq d}}
-					{\left| \partial_v \partial_k f^i_j(x_t) \right|}
-				\end{align}
-				とおけば
-				\begin{align}
-					\left| J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1}) \right|
-					&\leq m d^2 M \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p} + m d^2 M'' \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p} \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p} \\
-					&\leq m d^2 (M + M'') \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p}
-				\end{align}
-				が成立し，会田先生のノートの通りに
-				\begin{align}
-					\left| J_{s,t}(x,D) - \left( f(x_s)X^1_{s,t} + (\nabla f)(x_s)X^2_{s,t} \right) \right|
-					\leq 2^{3/p} m d^2 (M+M'') \zeta\biggl(\frac{3}{p}\biggr) \omega(s,t)^{3/p}
-				\end{align}
-				が従い，$p < 3$の仮定より$\zeta(3/p) < \infty$である．(1)と同じく定理\ref{thm:Riemann_Stieltjes_approximation}より
-				\begin{align}
-					\left| I_{s,t}(x) \right|
-					\leq M' \omega(s,t)^{1/p} + m d^2 M \omega(s,t)^{2/p} + 2^{3/p} m d^2 (M+M'') \zeta\biggl(\frac{3}{p}\biggr) \omega(s,t)^{3/p}
-				\end{align}
-				となる．
-				\QED
-		\end{description}
-	\end{prf}
-	

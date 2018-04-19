@@ -1,0 +1,115 @@
+\section{Young 積分}
+	\begin{screen}
+		\begin{lem}\label{lem:lemma_for_Young_integral}
+			$x \in C^1,\ f \in C^2(\R^d,L(\R^d \rightarrow \R^m))$とする．
+			\begin{description}
+				\item[(1)]
+					$1 \leq p < 2$の場合，或るcontrol function $\omega$が存在して
+					\begin{align}
+						\left| X^1_{s,t} \right|
+						\leq \omega(s,t)^{1/p},
+						\quad (0 \leq \forall s \leq \forall t \leq T)
+					\end{align}
+					を満たすとき，ある定数$C=C(p,f)$があり
+					\begin{align}
+						\left|I_{s,t}(x) \right|
+						\leq C\left( \omega(s,t)^{1/p} + \omega(s,t)^{2/p} \right).
+					\end{align}
+					が成立する．
+				\item[(2)] $2 \leq p < 3$の場合，或るcontrol function $\omega$が存在して
+					\begin{align}
+						\left| X^1_{s,t} \right| \leq \omega(s,t)^{1/p},
+						\quad \left| X^2_{s,t} \right| \leq \omega(s,t)^{2/p},
+						\quad (0 \leq \forall s \leq \forall t \leq T)
+					\end{align}
+					を満たすとき，ある定数$C=C(p,f)$があり
+					\begin{align}
+						\left|I_{s,t}(x) \right|
+						\leq C\left( \omega(s,t)^{1/p} + \omega(s,t)^{2/p} + \omega(s,t)^{3/p} \right).
+					\end{align}
+					が成立する．
+			\end{description}
+		\end{lem}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[(1)] $D = \{s=t_0 < \cdots < t_N = t\}\ (N \geq 2)$に対し，
+				補題\refeq{lem:control_function_min}により存在する
+				$i$を取り$D_{-1} \coloneqq D \backslash \{i\}$と書く．
+				補題\refeq{lem:control_function_min}の添数を除く作業を続けて
+				$D_{-k}\ (k=1,\cdots,N-1)$を構成する．
+				\begin{align}
+					M \coloneqq \max{
+					\substack{t \in [0,T] \\ 1 \leq i \leq m \\ 1 \leq j,k \leq d}}
+					{\left| \partial_k f^i_j(x_t) \right|},
+					\quad 
+					M' \coloneqq \max{t \in [0,T]}{\left| f(x_t) \right|}
+				\end{align}
+				とおけば$M,M' < \infty$であり，$\left| X^1_{t_i,t_{i+1}} \right| \leq \omega(t_i,t_{i+1})^{1/p} \leq \omega(t_{i-1},t_{i+1})^{1/p}$と補題\refeq{lem:control_function_min}により
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(x,D_{-1}) \right|
+					&= \left| \tilde{I}_{t_{i-1},t_i}(x) + \tilde{I}_{t_i,t_{i+1}}(x) - \tilde{I}_{t_{i-1},t_{i+1}}(x) \right| \\
+					& \leq \left| \left\{ f(x_{t_i}) - f(x_{t_{i-1}}) \right\} X^1_{t_i,t_{i+1}} \right| \\
+					&\leq \left| \left\{ \int_0^1 (\nabla f)(x_{t_{i-1}} + \theta (x_{t_i}-x_{t_{i-1}}))\ d\theta \right\} X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \right| \\
+					&\leq md^2 M \left| X^1_{t_i,t_{i+1}} \right|^2 \\
+					&\leq md^2 M \left( \frac{2\omega(s,t)}{N-1} \right)^{2/p}
+				\end{align}
+				が成立する．同様に
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right|
+					\leq md^2 M \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p},
+					\quad(k=0,\cdots,N-2)
+				\end{align}
+				が成り立ち$(D_{-0} = D)$
+				\begin{align}
+					\left| \tilde{I}_{s,t}(x,D) - f(x_s)X^1_{s,t} \right|
+					&\leq \sum_{k=0}^{N-2} \left| \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right| \\
+					&\leq md^2 M (2\omega(s,t))^{2/p} \sum_{k=0}^{N-2} \left( \frac{1}{N-k-1} \right)^{2/p} \\
+					&\leq md^2 M (2\omega(s,t))^{2/p} \zeta\biggl(\frac{2}{p}\biggr)
+				\end{align}
+				が従う．いま，仮定より$p < 2$であるから$\zeta(2/p) < \infty$であり，
+				定理\ref{thm:Riemann_Stieltjes_approximation}より
+				\begin{align}
+					\left| I_{s,t}(x) \right|
+					\leq M' \omega(s,t)^{1/p} + md^2 M (2\omega(s,t))^{2/p} \zeta\biggl(\frac{2}{p}\biggr)
+				\end{align}
+				を得る．
+				
+			\item[(2)]
+				(1)と同様に$D_{-k}\ (k=1,\cdots,N-1)$を構成する．
+				会田先生のノートの通りに
+				\begin{align}
+					J_{s,t}(x,D) - J_{s,t}(x,D_{-1})
+					&= \left\{ \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{i-1}} + \theta (x_{t_i}- x_{t_{i-1}}))\ dr\ d\theta \right\}
+						X^1_{t_{i-1},t_i} \otimes X^1_{t_{i-1},t_i} \otimes X^1_{t_i,t_{i+1}} \\
+						&\qquad + \left\{ \int_0^1 (\nabla^2 f)(x_{t_{i-1}} + \theta (x_{t_i}- x_{t_{i-1}}))\ d\theta \right\}
+						X^1_{t_{i-1},t_i} \otimes X^2_{t_i,t_{i+1}}
+				\end{align}
+				を得る．ここで(1)の$M,M'$に加えて
+				\begin{align}
+					M'' \coloneqq \max{
+					\substack{t \in [0,T] \\ 1 \leq i \leq m \\ 1 \leq j,k,v \leq d}}
+					{\left| \partial_v \partial_k f^i_j(x_t) \right|}
+				\end{align}
+				とおけば
+				\begin{align}
+					\left| J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1}) \right|
+					&\leq m d^2 M \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p} + m d^2 M'' \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p} \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p} \\
+					&\leq m d^2 (M + M'') \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p}
+				\end{align}
+				が成立し，会田先生のノートの通りに
+				\begin{align}
+					\left| J_{s,t}(x,D) - \left( f(x_s)X^1_{s,t} + (\nabla f)(x_s)X^2_{s,t} \right) \right|
+					\leq 2^{3/p} m d^2 (M+M'') \zeta\biggl(\frac{3}{p}\biggr) \omega(s,t)^{3/p}
+				\end{align}
+				が従い，$p < 3$の仮定より$\zeta(3/p) < \infty$である．(1)と同じく定理\ref{thm:Riemann_Stieltjes_approximation}より
+				\begin{align}
+					\left| I_{s,t}(x) \right|
+					\leq M' \omega(s,t)^{1/p} + m d^2 M \omega(s,t)^{2/p} + 2^{3/p} m d^2 (M+M'') \zeta\biggl(\frac{3}{p}\biggr) \omega(s,t)^{3/p}
+				\end{align}
+				となる．
+				\QED
+		\end{description}
+	\end{prf}
+	
