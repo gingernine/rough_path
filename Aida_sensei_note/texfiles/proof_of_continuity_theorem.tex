@@ -313,7 +313,6 @@
 	\end{screen}
 	
 	\begin{prf}
-		会田先生のノート参照．
 		\QED
 	\end{prf}
 	
@@ -365,7 +364,7 @@
 					|(\refeq{eq:continuity_theorem_1_1})| \leq \epsilon C_1
 					\label{eq:continuity_theorem_1_3}
 				\end{align}
-				以降$t_k = t_{(k)}$と書き直せば，
+				見やすくするために$t_k = t_{(k)}$と書き直せば，
 				\begin{align}
 					&\left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\} - 
 						\left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \\
@@ -401,33 +400,40 @@
 				}
 				が成り立つ．補題\ref{lem:control_function_min}より
 				\begin{align}
-					&\left| X^1_{t_{i_k}-1,t_{i_k}} \right|, \left| Y^1_{t_{i_k}-1,t_{i_k}} \right| \leq \omega(t_{i_k}-1,t_{i_k})^{1/p} \leq \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}, \\
-					&\left| X^1_{t_{i_k},t_{i_k}+1} \right|, \left| Y^1_{t_{i_k},t_{i_k}+1} \right| \leq \omega(t_{i_k},t_{i_k}+1)^{1/p} \leq \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}, \\
-					&\left| X^1_{t_{i_k}-1,t_{i_k}} - Y^1_{t_{i_k}-1,t_{i_k}} \right| \leq \epsilon \omega(t_{i_k}-1,t_{i_k})^{1/p} \leq \epsilon \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}, \\
-					&\left| X^1_{t_{i_k},t_{i_k}+1} - Y^1_{t_{i_k},t_{i_k}+1} \right| \leq \epsilon \omega(t_{i_k},t_{i_k}+1)^{1/p} \leq \epsilon \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}
+					&\left| X^1_{t_{k-1},t_k} \right|, \left| Y^1_{t_{k-1},t_k} \right|,\left| X^1_{t_k,t_{k+1}} \right|, \left| Y^1_{t_k,t_{k+1}} \right|
+					\leq \omega(t_{k-1},t_{k+1})^{1/p} \leq \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}, \\
+					&\left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right|,\left| X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right|
+					\leq \epsilon \omega(t_{k-1},t_{k+1})^{1/p} \leq \epsilon \left( \frac{2\omega(s,t)}{N-k-1} \right)^{1/p}
 				\end{align}
 				が満たされ，また
 				\begin{align}
-					\left| X^1_{0,t_{i_k}-1} - Y^1_{0,t_{i_k}-1} \right|
+					\left| X^1_{0,t_{k-1}} - Y^1_{0,t_{k-1}} \right|
+					\leq \epsilon \omega(0,t_{k-1})^{1/p}
 					\leq \epsilon \omega(0,T)^{1/p}
 					\leq \epsilon \left( 2 R^p + 1 \right)^{1/p}
 				\end{align}
 				でもあるから，
 				\begin{align}
+					M &\coloneqq \sum_{i,j} \sup{x \in \R^d}{|f^i_j(x)|} + \sum_{i,j,k} \sup{x \in \R^d}{|\partial_k f^i_j(x)|}
+						+ \sum_{i,j,k,v} \sup{x \in \R^d}{|\partial_v \partial_k f^i_j(x)|}
+					\label{eq:continuity_theorem_1_4}
+				\end{align}
+				と定めて
+				\begin{align}
 					&\left| \left\{ \tilde{I}_{s,t}(x,D_{-k}) - \tilde{I}_{s,t}(x,D_{-k-1}) \right\} - 
 						\left\{ \tilde{I}_{s,t}(y,D_{-k}) - \tilde{I}_{s,t}(y,D_{-k-1}) \right\} \right| \\
-					&\leq md M \left|X^1_{t_{i_k}-1,t_{i_k}}\right|\left| X^1_{t_{i_k},t_{i_k}+1} - Y^1_{t_{i_k},t_{i_k}+1} \right| \\
-						&\quad + md M \left| X^1_{t_{i_k}-1,t_{i_k}} - Y^1_{t_{i_k}-1,t_{i_k}} \right| \left| Y^1_{t_{i_k},t_{i_k}+1} \right| \\
-						&\quad + md^2 M \left| X^1_{0,t_{i_k}-1} - Y^1_{0,t_{i_k}-1} \right| \left| Y^1_{t_{i_k}-1,t_{i_k}} \right|\left| Y^1_{t_{i_k},t_{i_k}+1} \right| \\
-						&\quad + md^2 M \left| X^1_{t_{i_k}-1,t_{i_k}} - Y^1_{t_{i_k}-1,t_{i_k}} \right| \left| Y^1_{t_{i_k}-1,t_{i_k}} \right|\left| Y^1_{t_{i_k},t_{i_k}+1} \right| \\
-					&\leq \epsilon md^2M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p} \\
-					&\leq \epsilon md^2M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] 2^{2/p} \left( 2 R^p + 1 \right)^{2/p} \left( \frac{1}{N-k-1} \right)^{2/p}
+					&\leq M \left|X^1_{t_{k-1},t_k}\right|\left| X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{0,t_{k-1}} - Y^1_{0,t_{k-1}} \right| \left| Y^1_{t_{k-1},t_k} \right|\left| Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right| \left| Y^1_{t_{k-1},t_k} \right|\left| Y^1_{t_k,t_{k+1}} \right| \\
+					&\leq \epsilon M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{2/p} \\
+					&\leq \epsilon M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] 2^{2/p} \left( 2 R^p + 1 \right)^{2/p} \left( \frac{1}{N-k-1} \right)^{2/p}
 				\end{align}
 				を得る．
 				\begin{align}
-					C_1' \coloneqq  md^2M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] 2^{2/p} \left( 2 R^p + 1 \right)^{2/p}
+					C_1' \coloneqq  M \left[2 + 2 \left( 2 R^p + 1 \right)^{1/p} \right] 2^{2/p} \left( 2 R^p + 1 \right)^{2/p}
 				\end{align}
-				と定めれば
+				とおけば
 				\begin{align}
 					|(\refeq{eq:continuity_theorem_1_1})| \leq
 					\sum_{k=0}^{N-2} \epsilon C_1' \left( \frac{1}{N-k-1} \right)^{2/p}
@@ -437,21 +443,20 @@
 				$C_1 \coloneqq C_1' \zeta(2/p)$とおいて(\refeq{eq:continuity_theorem_1_3})が従う．
 			
 			\item[第三段]
-				$x_0 = y_0$の仮定により
+				$x_0 = y_0$の仮定により$x_s-y_s = X^1_{0,s} - Y^1_{0,s}$が成り立ち
 				\begin{align}
 					\left| \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right|
 					&= \left| f(x_s)X^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
 					&\leq \left| f(x_s)X^1_{s,t} - f(x_s)Y^1_{s,t} \right|
 						+ \left| f(x_s)Y^1_{s,t} - f(y_s)Y^1_{s,t} \right| \\
-					&\leq mdM \left| X^1_{s,t} - Y^1_{s,t} \right|
-						+ \left| \left\{ \int_0^1 (\nabla f)(y_s + \theta(x_s - y_s))\ d\theta \right\}
-						(x_s - y_s) \otimes Y^1_{s,t} \right| \\
-					&\leq mdM \left| X^1_{s,t} - Y^1_{s,t} \right|
-						+ m d^2 M \left| X^1_{0,s} - Y^1_{0,s}\right| \left| Y^1_{s,t} \right| \\
-					&\leq M \epsilon \omega(s,t)^{1/p} + m d^2 M \epsilon \omega(0,s)^{1/p} \omega(s,t)^{1/p} \\
-					&\leq \epsilon C_2 
+					&\leq M \left| X^1_{s,t} - Y^1_{s,t} \right|
+						+ \left| \int_0^1 (\nabla f)(y_s + \theta(x_s - y_s)) \left[ \left( X^1_{0,s} - Y^1_{0,s}\right) \otimes Y^1_{s,t} \right]\ d\theta \right| \\
+					&\leq M \left| X^1_{s,t} - Y^1_{s,t} \right|
+						+ M \left| X^1_{0,s} - Y^1_{0,s}\right| \left| Y^1_{s,t} \right| \\
+					&\leq M \epsilon \omega(s,t)^{1/p} + M \epsilon \omega(0,s)^{1/p} \omega(s,t)^{1/p} \\
+					&\leq \epsilon M\left[\left( 2 R^p + 1 \right)^{1/p} + \left( 2 R^p + 1 \right)^{2/p} \right]
 				\end{align}
-				が成立する．ここで$C_2 = mdM \left( 2 R^p + 1 \right)^{1/p} + m d^2 M \left( 2 R^p + 1 \right)^{2/p}$とした．
+				が従う．ここで$C_2 \coloneqq M\left[\left( 2 R^p + 1 \right)^{1/p} + \left( 2 R^p + 1 \right)^{2/p} \right]$とおく．
 				
 			\item[第四段]
 				第二段と第三段より，任意の$D \in \delta[s,t]$に対し
@@ -459,13 +464,13 @@
 					\left| \tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(y,D) \right|
 					\leq \epsilon (C_1 + C_2)
 				\end{align}
-				が満たされる．定理\ref{thm:Riemann_Stieltjes_approximation}により
+				が成立し．定理\ref{thm:Riemann_Stieltjes_approximation}により
 				$|D| \longrightarrow 0$として
 				\begin{align}
 					\left| I_{s,t}(x) - I_{s,t}(y) \right|
 					\leq \epsilon (C_1 + C_2)
 				\end{align}
-				が成立する．
+				が出る．
 				\QED
 		\end{description}
 	\end{prf}
@@ -627,7 +632,7 @@
 						+ 2\left( 2 R^p + 2R^{p/2} + 2 \right)^{2/p}
 						+\left( 2 R^p + 2R^{p/2} + 2 \right)^{3/p} \right]
 				\end{align}
-				が成立する．ここで最下段の$\epsilon$の係数を$C_2$とおく．
+				が従う．ここで最下段の$\epsilon$の係数を$C_2$とおく．
 				
 			\item[第六段]
 				以上より，任意の$D \in \delta[s,t]$に対し
@@ -635,13 +640,13 @@
 					\left| J_{s,t}(x,D) - J_{s,t}(y,D) \right|
 					\leq \epsilon (C_1 + C_2)
 				\end{align}
-				が満たされる．定理\ref{thm:Riemann_Stieltjes_approximation}により
+				が成り立ち，定理\ref{thm:Riemann_Stieltjes_approximation}により
 				$|D| \longrightarrow 0$として
 				\begin{align}
 					\left| I_{s,t}(x) - I_{s,t}(y) \right|
 					\leq \epsilon (C_1 + C_2)
 				\end{align}
-				が成立する．
+				が出る．
 				\QED
 		\end{description}
 	\end{prf}
