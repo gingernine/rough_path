@@ -85,7 +85,7 @@
 	\begin{screen}
 		\begin{dfn}[control function]
 			関数$\omega:\Delta_T \longrightarrow [0,\infty)$
-			が連続かつ任意の$0 \leq s \leq u \leq t \leq T$に対して
+			が連続かつ任意の$s \leq u \leq t$に対して
 			\begin{align}
 				\omega(s,u) + \omega(u,t) \leq \omega(s,t)
 				\label{eq:control_function_subadditivity}
@@ -95,6 +95,7 @@
 	\end{screen}
 	
 	式(\refeq{eq:control_function_subadditivity})から$\omega(t,t)=0\ (\forall t \in [0,T])$が従う．
+	つまりcontrol functionは''対角線上で0になる''．
 	
 	\begin{screen}
 		\begin{dfn}[ノルム空間値写像の$p$-variation]
@@ -110,9 +111,9 @@
 	\end{screen}
 	
 	\begin{screen}
-		\begin{thm}
+		\begin{thm}[$p$-variationが定めるcontrol function]
 			$(V,\Norm{\cdot}{})$をノルム空間，$p \geq 1$とする．
-			$\Norm{\psi}{p} < \infty$かつ$\psi_{t,t} = 0\ (\forall t \in [0,T])$を満たす連続写像$\psi:\Delta_T \longrightarrow V$に対して
+			$\Norm{\psi}{p} < \infty$かつ$\psi_{t,t} = 0\ (\forall t \in [0,T])$を満たす連続写像$\psi:\Delta_T \longrightarrow V$に対して，
 			\begin{align}
 				\omega:\Delta_T \ni (s,t) \longmapsto \Norm{\psi}{p,[s,t]}^p
 			\end{align}
@@ -139,9 +140,12 @@
 					\leq \Norm{\psi}{p:[s,t]}^p
 				\end{align}
 				が従う．
-			
 			\item[第二段]
-				任意の$[s,t] \subset [0,T]$について，
+				任意の$[s,t] \subset [0,T]$について
+				\footnote{
+					下段の二式については$s < t$と仮定する．また
+					上段についても，$t=T$或は$s=0$の場合を除く．
+				}，
 				\begin{align}
 					\lim_{h \to +0} \omega(s,t+h) &= \inf{h>0}{\omega(s,t+h)},
 					&\lim_{h \to +0} \omega(s-h,t) &= \inf{h>0}{\omega(s-h,t)}, \\
@@ -151,6 +155,57 @@
 				が成立する．実際$\omega(s,t+h)$について見れば，これは下に有界かつ
 				$h \to +0$に対し単調減少であるから極限が確定し下限に一致する．
 				残りの三つも同様の理由で成立する．
+				
+			\item[第三段]
+				任意の$s \in [0,T)$に対し，$(s,T] \ni t \longmapsto \omega(s,t)$
+				の左連続性を示す．ここでは
+				\begin{align}
+					\tilde{\omega}(s,t) \coloneqq 
+					\begin{cases}
+						\lim_{h \to +0}\omega(s,t-h), & (s < t), \\
+						0, & (s=t),
+					\end{cases}
+					\quad (\forall (s,t) \in \Delta_T)
+				\end{align}
+				で定める$\tilde{\omega}$が優加法性を持ち，かつ
+				\begin{align}
+					\Norm{\psi_{s,t}}{}^p \leq \tilde{\omega}(s,t),
+					\quad (\forall (s,t) \in \Delta_T)
+				\end{align}
+				を満たすことを示す．
+				実際これが示されれば，任意の$D \in \delta[s,t]$に対し
+				\begin{align}
+					\sum_D \Norm{\psi_{t_{i-1},t_i}}{}^p
+					\leq \sum_D \tilde{\omega}(t_{i-1},t_i)
+					\leq \tilde{\omega}(s,t)
+				\end{align}
+				が成立し$\omega(s,t) \leq \tilde{\omega}(s,t)$が従い，
+				$\omega(s,t) \geq \omega(s,t-h)\ (\forall h > 0)$と併せて
+				\begin{align}
+					\omega(s,t) = \tilde{\omega}(s,t) = \lim_{h \to +0} \omega(s,t-h)
+				\end{align}
+				を得る．いま，任意に$s < u < t$を取れば，十分小さい$h_1,h_2 > 0$に対して
+				\begin{align}	
+					\omega(s,u-h_1) + \omega(u,t-h_2) \leq \omega(s,t-h_2)
+				\end{align}
+				が満たされ，$h_1 \longrightarrow +0,\ h_2 \longrightarrow +0$として
+				\begin{align}
+					\tilde{\omega}(s,u) + \tilde{\omega}(u,t) \leq \tilde{\omega}(s,t)
+				\end{align}
+				が成り立ち$\tilde{\omega}$は優加法性を持つ．また，もし
+				或る$[u,v] \subset [0,T]$に対して
+				\begin{align}
+					\Norm{\psi_{u,v}}{}^p > \tilde{\omega}(u,v)
+				\end{align}
+				が成り立つと仮定すると
+				\begin{align}
+					\Norm{\psi_{u,v}}{}^p > \tilde{\omega}(u,v) \geq \omega(u,v-h) \geq \Norm{\psi_{u,v-h}}{}^p,
+					\quad (\forall h > 0)
+				\end{align}
+				となる．一方$\psi$の連続性より
+				$\Norm{\psi_{u,v-h}}{}^p \longrightarrow \Norm{\psi_{u,v}}{}^p\ (h \longrightarrow +0)$が従い矛盾が生じる．
+				同様にして，任意の$t \in (0,T]$に対し$[0,t) \ni s \longmapsto \omega(s,t)$
+				の右連続性も出る．
 				
 			\item[第二段]
 				任意の$t \in [0,T)$に対して次を示す:
@@ -230,13 +285,10 @@
 					\lim_{h \to +0} \omega(s,t+h) - \epsilon \leq \omega(s,t)
 				\end{align}
 				が従い，$\epsilon$の任意性より(\refeq{eq:thm_continuity_of_norm_val_p_variation_3})が出る．
-				同様にして$s \longmapsto \omega(s,t)$の左連続性も成立する:
-				\begin{align}
-					\lim_{h \to +0} \omega(s-h,t) = \omega(s,t).
-				\end{align}
-			
+				同様にして$s \longmapsto \omega(s,t)$の左連続性も成立する．
+				
 			\item[第四段]
-				$t \longmapsto \omega(s,t)$の左連続性を示す．
+				$\Delta_T \ni (s,t) \longmapsto \omega(s,t)$の連続性を示す．
 		\end{description}
 	\end{prf}
 	
@@ -300,15 +352,15 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{lem}[division point]\label{lem:control_function_min}
+		\begin{lem}\label{lem:control_function_min}
 			$\omega$を$\Delta_T$上のcontrol functionとする．
 			$D = \{s = t_0 < t_1 < \cdots < t_N= t\}$について，$N \geq 2$の場合
 			或る$1 \leq i \leq N-1$が存在して次を満たす:
 			\begin{align}
 				\omega(t_{i-1},t_{i+1})
 				\leq \frac{2 \omega(s,t)}{N-1}.
+				\label{eq:lem_control_function_min}
 			\end{align}
-			以後この$t_i$を$D$のdivision pointと呼ぶ．
 		\end{lem}
 	\end{screen}
 	
@@ -332,7 +384,33 @@
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}
+	\begin{screen}
+		\begin{cor}[$p$-variationによる閉球上のLipschitz連続性]\label{cor:continuity_theorem_1}
+			$1 \leq p < 2$とし，
+			$x_0 = y_0$を満たす$x,y \in C^1$と$f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)),\ 0 < R < \infty,\ [s,t] \subset [0,T]$を任意に取る．
+			このとき，
+			\begin{align}
+				\Norm{X^1}{p,[s,t]},\Norm{Y^1}{p,[s,t]} \leq R
+			\end{align}
+			なら，或る定数$C = C(p,R,f)$が存在して次を満たす:
+			\begin{align}
+				\left| I_{s,t}(x) - I_{s,t}(y) \right| \leq C\Norm{X^1 - Y^1}{p,[s,t]}.
+			\end{align}
+		\end{cor}
+	\end{screen}
+	
+	\begin{prf}[系\ref{cor:continuity_theorem_1}]
+		定理\ref{thm:continuity_theorem_1}において，
+		$\epsilon = \Norm{X^1 - Y^1}{p}\ (x \neq y)$
+		\footnote{
+			$x=y$なら$\Norm{X^1 - Y^1}{p} = 0$かつ$I_{s,t}(x) = I_{s,t}(y)$が成り立つ．
+		}
+		として証明が通る．
+		$[0,T]$で考察したことを$[s,t]$に置き換えれば系を得る．
+		\QED
+	\end{prf}
+	
+	\begin{prf}[定理\ref{thm:continuity_theorem_1}]
 		$[s,t] \subset [0,T]$とする．
 		\begin{description}
 			\item[第一段]
@@ -346,8 +424,9 @@
 			\item[第二段]
 				任意に$[s,t]$の分割
 				$D = \{s=t_0 < \cdots < t_N=t\}\ (N \geq 2)$を取れば，
-				補題\ref{lem:control_function_min}よりdivision point $t_{(0)}$が存在する．
-				$D_{-0} \coloneqq D,\ D_{-1} \coloneqq D \backslash \{t_{(0)}\}$と定め，$D_{-1}$のdivision point $t_{(1)}$を除き
+				補題\ref{lem:control_function_min}より(\refeq{eq:lem_control_function_min})を満たす$t_{(0)}$が存在する．
+				ここで，$D_{-0} \coloneqq D,\ D_{-1} \coloneqq D \backslash \{t_{(0)}\}$と定める．
+				$N \geq 3$ならば$D_{-1}$についても(\refeq{eq:lem_control_function_min})を満たす$t_{(1)}$が存在するから，
 				$D_{-2} \coloneqq D_{-1} \backslash \{t_{(1)}\}$と定める．この操作を繰り返せば
 				$t_{(k)},D_{-k}\ (k=0,1,\cdots,N-1)$が得られ，
 				\begin{align}
@@ -358,7 +437,7 @@
 				\end{align}
 				と表現できる．
 			
-			\item[第二段]
+			\item[第三段]
 				式(\refeq{eq:continuity_theorem_1_1})について，次を満たす定数$C_1$が存在することを示す:
 				\begin{align}
 					|(\refeq{eq:continuity_theorem_1_1})| \leq \epsilon C_1
@@ -442,7 +521,7 @@
 				が成立し，$p < 2$より$\zeta(2/p) < \infty$であるから
 				$C_1 \coloneqq C_1' \zeta(2/p)$とおいて(\refeq{eq:continuity_theorem_1_3})が従う．
 			
-			\item[第三段]
+			\item[第四段]
 				$x_0 = y_0$の仮定により$x_s-y_s = X^1_{0,s} - Y^1_{0,s}$が成り立ち
 				\begin{align}
 					\left| \tilde{I}_{s,t}(x) - \tilde{I}_{s,t}(y) \right|
@@ -458,7 +537,7 @@
 				\end{align}
 				が従う．ここで$C_2 \coloneqq M\left[\left( 2 R^p + 1 \right)^{1/p} + \left( 2 R^p + 1 \right)^{2/p} \right]$とおく．
 				
-			\item[第四段]
+			\item[第五段]
 				第二段と第三段より，任意の$D \in \delta[s,t]$に対し
 				\begin{align}
 					\left| \tilde{I}_{s,t}(x,D) - \tilde{I}_{s,t}(y,D) \right|
@@ -491,7 +570,30 @@
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}
+	\begin{screen}
+		\begin{cor}\label{cor:continuity_theorem_2}
+			$1 \leq p < 2$とし，
+			$x_0 = y_0$を満たす$x,y \in C^1$と$f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)),\ 0 < R < \infty,\ [s,t] \subset [0,T]$を任意に取る．
+			このとき，
+			\begin{align}
+				\Norm{X^1}{p,[s,t]},\Norm{Y^1}{p,[s,t]}, \Norm{X^2}{p/2,[s,t]},\Norm{Y^2}{p/2,[s,t]} \leq R
+			\end{align}
+			なら，或る定数$C = C(p,R,f)$が存在して次を満たす:
+			\begin{align}
+				\left| I_{s,t}(x) - I_{s,t}(y) \right| \leq C\left( \Norm{X^1 - Y^1}{p,[s,t]}+\Norm{X^2 - Y^2}{p/2,[s,t]} \right).
+			\end{align}
+		\end{cor}
+	\end{screen}
+	
+	\begin{prf}[系\ref{cor:continuity_theorem_2}]
+		定理\ref{thm:continuity_theorem_2}において，
+		$\epsilon = \Norm{X^1 - Y^1}{p} + \Norm{X^2 - Y^2}{p/2,[s,t]}\ (x \neq y)$
+		として証明が通る．
+		$[0,T]$で考察したことを$[s,t]$に置き換えれば系を得る．
+		\QED
+	\end{prf}
+	
+	\begin{prf}[定理\ref{cor:continuity_theorem_2}]
 		$[s,t] \subset [0,T]$とする．
 		\begin{description}
 			\item[第一段]
@@ -507,7 +609,7 @@
 			\item[第二段]
 				$D \in \delta[s,t]$に対し，
 				定理\ref{thm:continuity_theorem_1}の証明と同様にして
-				$t_{i_k},D_{-k}$を構成すれば
+				$t_{(k)},D_{-k}$を構成すれば
 				\begin{align}
 					&J_{s,t}(x,D) - J_{s,t}(y,D) \\
 					&\qquad= \sum_{k=0}^{N-2} \left[ \left\{ J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1}) \right\} - 
@@ -518,24 +620,24 @@
 			
 			\item[第三段]
 				$J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1})$を変形する．
-				以降$t_i = t_{i_k}$と書き直せば
+				以降$t_k = t_{(k)}$と書き直せば
 				\begin{align}
 					&J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1}) \\
-					&\qquad = J_{t_i-1,t_i}(x) + J_{t_i,t_i+1}(x) - J_{t_i-1,t_i+1}(x) \\
-					&\qquad = f(x_{t_i-1}) X^1_{t_i-1,t_i} + f(x_{t_i}) X^1_{t_i,t_i+1} - f(x_{t_i-1}) X^1_{t_i-1,t_i+1} \\
-						&\qquad \qquad + (\nabla f)(x_{t_i-1})X^2_{t_i-1,t_i} + (\nabla f)(x_{t_i})X^2_{t_i,t_i+1} - (\nabla f)(x_{t_i-1})X^2_{t_i-1,t_i+1} \\
-					&\qquad = \left\{ f(x_{t_i}) - f(x_{t_i-1}) \right\} X^1_{t_i,t_i+1} \\
-						&\qquad \qquad + (\nabla f)(x_{t_i-1})X^2_{t_i-1,t_i} + (\nabla f)(x_{t_i})X^2_{t_i,t_i+1} - (\nabla f)(x_{t_i-1})X^2_{t_i-1,t_i+1} \\
-					&\qquad = \int_0^1 \left\{ (\nabla f)(x_{t_i-1} + \theta(x_{t_i} - x_{t_i-1})) - (\nabla f)(x_{t_i-1}) \right\} X^1_{t_i-1,t_i} \otimes X^1_{t_i,t_i+1}\ d\theta \\
-						&\qquad \qquad + (\nabla f)(x_{t_i-1})X^1_{t_i-1,t_i} \otimes X^1_{t_i,t_i+1} \\
-						&\qquad \qquad + (\nabla f)(x_{t_i-1})X^2_{t_i-1,t_i} + (\nabla f)(x_{t_i})X^2_{t_i,t_i+1} - (\nabla f)(x_{t_i-1})X^2_{t_i-1,t_i+1} \\
-					&\qquad = \int_0^1 \int_0^\theta (\nabla f)(x_{t_i-1} + r(x_{t_i} - x_{t_i-1}))  X^1_{t_i-1,t_i} \otimes X^1_{t_i-1,t_i} \otimes X^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\qquad \qquad + (\nabla f)(x_{t_i-1})\left( X^1_{t_i-1,t_i} \otimes X^1_{t_i,t_i+1} + X^2_{t_i-1,t_i} - X^2_{t_i-1,t_i+1} \right) \\
-						&\qquad \qquad + (\nabla f)(x_{t_i})X^2_{t_i,t_i+1} \\
-					&\qquad = \int_0^1 \int_0^\theta (\nabla f)(x_{t_i-1} + r(x_{t_i} - x_{t_i-1}))  X^1_{t_i-1,t_i} \otimes X^1_{t_i-1,t_i} \otimes X^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\qquad \qquad + \left\{ (\nabla f)(x_{t_i}) - (\nabla f)(x_{t_i-1}) \right\}X^2_{t_i,t_i+1} \\
-					&\qquad = \int_0^1 \int_0^\theta (\nabla f)(x_{t_i-1} + r(x_{t_i} - x_{t_i-1}))  X^1_{t_i-1,t_i} \otimes X^1_{t_i-1,t_i} \otimes X^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\qquad \qquad + \int_0^1 (\nabla^2 f)(x_{t_i-1} + \theta(x_{t_i} - x_{t_i-1})) X^1_{t_i-1,t_i} \otimes X^2_{t_i,t_i+1}\ d\theta
+					&\qquad = J_{t_{k-1},t_k}(x) + J_{t_k,t_{k+1}}(x) - J_{t_{k-1},t_{k+1}}(x) \\
+					&\qquad = f(x_{t_{k-1}}) X^1_{t_{k-1},t_k} + f(x_{t_k}) X^1_{t_k,t_{k+1}} - f(x_{t_{k-1}}) X^1_{t_{k-1},t_{k+1}} \\
+						&\qquad \qquad + (\nabla f)(x_{t_{k-1}})X^2_{t_{k-1},t_k} + (\nabla f)(x_{t_k})X^2_{t_k,t_{k+1}} - (\nabla f)(x_{t_{k-1}})X^2_{t_{k-1},t_{k+1}} \\
+					&\qquad = \left\{ f(x_{t_k}) - f(x_{t_{k-1}}) \right\} X^1_{t_k,t_{k+1}} \\
+						&\qquad \qquad + (\nabla f)(x_{t_{k-1}})X^2_{t_{k-1},t_k} + (\nabla f)(x_{t_k})X^2_{t_k,t_{k+1}} - (\nabla f)(x_{t_{k-1}})X^2_{t_{k-1},t_{k+1}} \\
+					&\qquad = \int_0^1 \left\{ (\nabla f)(x_{t_{k-1}} + \theta(x_{t_k} - x_{t_{k-1}})) - (\nabla f)(x_{t_{k-1}}) \right\} X^1_{t_{k-1},t_k} \otimes X^1_{t_k,t_{k+1}}\ d\theta \\
+						&\qquad \qquad + (\nabla f)(x_{t_{k-1}})X^1_{t_{k-1},t_k} \otimes X^1_{t_k,t_{k+1}} \\
+						&\qquad \qquad + (\nabla f)(x_{t_{k-1}})X^2_{t_{k-1},t_k} + (\nabla f)(x_{t_k})X^2_{t_k,t_{k+1}} - (\nabla f)(x_{t_{k-1}})X^2_{t_{k-1},t_{k+1}} \\
+					&\qquad = \int_0^1 \int_0^\theta (\nabla f)(x_{t_{k-1}} + r(x_{t_k} - x_{t_{k-1}}))  X^1_{t_{k-1},t_k} \otimes X^1_{t_{k-1},t_k} \otimes X^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\qquad \qquad + (\nabla f)(x_{t_{k-1}})\left( X^1_{t_{k-1},t_k} \otimes X^1_{t_k,t_{k+1}} + X^2_{t_{k-1},t_k} - X^2_{t_{k-1},t_{k+1}} \right) \\
+						&\qquad \qquad + (\nabla f)(x_{t_k})X^2_{t_k,t_{k+1}} \\
+					&\qquad = \int_0^1 \int_0^\theta (\nabla f)(x_{t_{k-1}} + r(x_{t_k} - x_{t_{k-1}}))  X^1_{t_{k-1},t_k} \otimes X^1_{t_{k-1},t_k} \otimes X^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\qquad \qquad + \left\{ (\nabla f)(x_{t_k}) - (\nabla f)(x_{t_{k-1}}) \right\}X^2_{t_k,t_{k+1}} \\
+					&\qquad = \int_0^1 \int_0^\theta (\nabla f)(x_{t_{k-1}} + r(x_{t_k} - x_{t_{k-1}}))  X^1_{t_{k-1},t_k} \otimes X^1_{t_{k-1},t_k} \otimes X^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\qquad \qquad + \int_0^1 (\nabla^2 f)(x_{t_{k-1}} + \theta(x_{t_k} - x_{t_{k-1}})) X^1_{t_{k-1},t_k} \otimes X^2_{t_k,t_{k+1}}\ d\theta
 				\end{align}
 				を得る．
 				
@@ -549,28 +651,28 @@
 				\begin{align}
 					&\left\{ J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1}) \right\} - 
 						\left\{ J_{s,t}(y,D_{-k}) - J_{s,t}(y,D_{-k-1}) \right\} \\
-					&=	\int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_i-1}+r(x_{t_i}-x_{t_i-1})) X^1_{t_i-1,t_i} \otimes X^1_{t_i-1,t_i} \otimes X^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad + \int_0^1 (\nabla^2 f)(x_{t_i-1}+\theta(x_{t_i}-x_{t_i-1}))X^1_{t_i-1,t_i} \otimes X^2_{t_i,t_i+1}\ d\theta \\
-						&\quad - \int_0^1 \int_0^\theta (\nabla^2 f)(y_{t_i-1}+r(y_{t_i}-y_{t_i-1})) Y^1_{t_i-1,t_i} \otimes Y^1_{t_i-1,t_i} \otimes Y^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad - \int_0^1 (\nabla^2 f)(y_{t_i-1}+\theta(y_{t_i}-y_{t_i-1}))Y^1_{t_i-1,t_i} \otimes Y^2_{t_i,t_i+1}\ d\theta \\
-					&= \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_i-1}+r(x_{t_i}-x_{t_i-1})) X^1_{t_i-1,t_i} \otimes X^1_{t_i-1,t_i} \otimes \left(X^1_{t_i,t_i+1} - Y^1_{t_i,t_i+1}\right)\ dr\ d\theta \\
-						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_i-1}+r(x_{t_i}-x_{t_i-1})) X^1_{t_i-1,t_i} \otimes \left(X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \otimes Y^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad +  \int_0^1 \int_0^\theta \left\{ (\nabla^2 f)(x_{t_i-1}+r(x_{t_i}-x_{t_i-1})) - (\nabla^2 f)(y_{t_i-1}+r(y_{t_i}-y_{t_i-1})) \right\} \\
-						&\qquad\qquad\qquad X^1_{t_i-1,t_i} \otimes Y^1_{t_i-1,t_i} \otimes Y^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(y_{t_i-1}+r(y_{t_i}-y_{t_i-1})) \left( X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \otimes Y^1_{t_i-1,t_i} \otimes Y^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad + \int_0^1 (\nabla^2 f)(x_{t_i-1}+\theta(x_{t_i}-x_{t_i-1}))X^1_{t_i-1,t_i} \otimes \left(X^2_{t_i,t_i+1} -  Y^2_{t_i,t_i+1}\right)\ d\theta \\
-						&\quad + \int_0^1 \left\{ (\nabla^2 f) (x_{t_i-1}+\theta(x_{t_i}-x_{t_i-1})) - (\nabla^2 f)(y_{t_i-1}+\theta(y_{t_i}-y_{t_i-1})) \right\} \\
-						&\qquad\qquad\qquad X^1_{t_i-1,t_i} \otimes Y^2_{t_i,t_i+1}\ d\theta \\
-						&\quad + \int_0^1 (\nabla^2 f)(y_{t_i-1}+\theta(y_{t_i}-y_{t_i-1})) \left( X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \otimes Y^2_{t_i,t_i+1}\ d\theta \\
-					&= \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_i-1}+r(x_{t_i}-x_{t_i-1})) X^1_{t_i-1,t_i} \otimes X^1_{t_i-1,t_i} \otimes \left(X^1_{t_i,t_i+1} - Y^1_{t_i,t_i+1}\right)\ dr\ d\theta \\
-						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_i-1}+r(x_{t_i}-x_{t_i-1})) X^1_{t_i-1,t_i} \otimes \left(X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \otimes Y^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad +  \int_0^1 \int_0^\theta \int_0^1 (\nabla^3 f)(y_{t_i-1}+r(y_{t_i}-y_{t_i-1}) + u(x_{t_i-1}+r(x_{t_i}-x_{t_i-1}) - y_{t_i-1}-r(y_{t_i}-y_{t_i-1}))) \\
-						&\qquad\qquad\qquad \left\{ \left( X^1_{0,t_i-1} - Y^1_{0,t_i-1} \right) + r\left( X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \right\} \otimes X^1_{t_i-1,t_i} \otimes Y^1_{t_i-1,t_i} \otimes Y^1_{t_i,t_i+1}\ du\ dr\ d\theta \\
-						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(y_{t_i-1}+r(y_{t_i}-y_{t_i-1})) \left( X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \otimes Y^1_{t_i-1,t_i} \otimes Y^1_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad + \int_0^1 (\nabla^2 f)(x_{t_i-1}+\theta(x_{t_i}-x_{t_i-1}))X^1_{t_i-1,t_i} \otimes \left(X^2_{t_i,t_i+1} -  Y^2_{t_i,t_i+1}\right)\ d\theta \\
-						&\quad + \int_0^1 \int_0^1 (\nabla^3 f) (y_{t_i-1}+\theta(y_{t_i}-y_{t_i-1}) + r(x_{t_i-1}+\theta(x_{t_i}-x_{t_i-1})-y_{t_i-1}-\theta(y_{t_i}-y_{t_i-1}))) \\
-						&\qquad\qquad\qquad \left\{ \left( X^1_{0,t_i-1} - Y^1_{0,t_i-1} \right) + \theta\left( X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \right\} \otimes X^1_{t_i-1,t_i} \otimes Y^2_{t_i,t_i+1}\ dr\ d\theta \\
-						&\quad + \int_0^1 (\nabla^2 f)(y_{t_i-1}+\theta(y_{t_i}-y_{t_i-1})) \left( X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right) \otimes Y^2_{t_i,t_i+1}\ d\theta
+					&=	\int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{k-1}}+r(x_{t_k}-x_{t_{k-1}})) X^1_{t_{k-1},t_k} \otimes X^1_{t_{k-1},t_k} \otimes X^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad + \int_0^1 (\nabla^2 f)(x_{t_{k-1}}+\theta(x_{t_k}-x_{t_{k-1}}))X^1_{t_{k-1},t_k} \otimes X^2_{t_k,t_{k+1}}\ d\theta \\
+						&\quad - \int_0^1 \int_0^\theta (\nabla^2 f)(y_{t_{k-1}}+r(y_{t_k}-y_{t_{k-1}})) Y^1_{t_{k-1},t_k} \otimes Y^1_{t_{k-1},t_k} \otimes Y^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad - \int_0^1 (\nabla^2 f)(y_{t_{k-1}}+\theta(y_{t_k}-y_{t_{k-1}}))Y^1_{t_{k-1},t_k} \otimes Y^2_{t_k,t_{k+1}}\ d\theta \\
+					&= \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{k-1}}+r(x_{t_k}-x_{t_{k-1}})) X^1_{t_{k-1},t_k} \otimes X^1_{t_{k-1},t_k} \otimes \left(X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}}\right)\ dr\ d\theta \\
+						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{k-1}}+r(x_{t_k}-x_{t_{k-1}})) X^1_{t_{k-1},t_k} \otimes \left(X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \otimes Y^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad +  \int_0^1 \int_0^\theta \left\{ (\nabla^2 f)(x_{t_{k-1}}+r(x_{t_k}-x_{t_{k-1}})) - (\nabla^2 f)(y_{t_{k-1}}+r(y_{t_k}-y_{t_{k-1}})) \right\} \\
+						&\qquad\qquad\qquad X^1_{t_{k-1},t_k} \otimes Y^1_{t_{k-1},t_k} \otimes Y^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(y_{t_{k-1}}+r(y_{t_k}-y_{t_{k-1}})) \left( X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \otimes Y^1_{t_{k-1},t_k} \otimes Y^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad + \int_0^1 (\nabla^2 f)(x_{t_{k-1}}+\theta(x_{t_k}-x_{t_{k-1}}))X^1_{t_{k-1},t_k} \otimes \left(X^2_{t_k,t_{k+1}} -  Y^2_{t_k,t_{k+1}}\right)\ d\theta \\
+						&\quad + \int_0^1 \left\{ (\nabla^2 f) (x_{t_{k-1}}+\theta(x_{t_k}-x_{t_{k-1}})) - (\nabla^2 f)(y_{t_{k-1}}+\theta(y_{t_k}-y_{t_{k-1}})) \right\} \\
+						&\qquad\qquad\qquad X^1_{t_{k-1},t_k} \otimes Y^2_{t_k,t_{k+1}}\ d\theta \\
+						&\quad + \int_0^1 (\nabla^2 f)(y_{t_{k-1}}+\theta(y_{t_k}-y_{t_{k-1}})) \left( X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \otimes Y^2_{t_k,t_{k+1}}\ d\theta \\
+					&= \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{k-1}}+r(x_{t_k}-x_{t_{k-1}})) X^1_{t_{k-1},t_k} \otimes X^1_{t_{k-1},t_k} \otimes \left(X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}}\right)\ dr\ d\theta \\
+						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(x_{t_{k-1}}+r(x_{t_k}-x_{t_{k-1}})) X^1_{t_{k-1},t_k} \otimes \left(X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \otimes Y^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad +  \int_0^1 \int_0^\theta \int_0^1 (\nabla^3 f)(y_{t_{k-1}}+r(y_{t_k}-y_{t_{k-1}}) + u(x_{t_{k-1}}+r(x_{t_k}-x_{t_{k-1}}) - y_{t_{k-1}}-r(y_{t_k}-y_{t_{k-1}}))) \\
+						&\qquad\qquad\qquad \left\{ \left( X^1_{0,t_{k-1}} - Y^1_{0,t_{k-1}} \right) + r\left( X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \right\} \otimes X^1_{t_{k-1},t_k} \otimes Y^1_{t_{k-1},t_k} \otimes Y^1_{t_k,t_{k+1}}\ du\ dr\ d\theta \\
+						&\quad + \int_0^1 \int_0^\theta (\nabla^2 f)(y_{t_{k-1}}+r(y_{t_k}-y_{t_{k-1}})) \left( X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \otimes Y^1_{t_{k-1},t_k} \otimes Y^1_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad + \int_0^1 (\nabla^2 f)(x_{t_{k-1}}+\theta(x_{t_k}-x_{t_{k-1}}))X^1_{t_{k-1},t_k} \otimes \left(X^2_{t_k,t_{k+1}} -  Y^2_{t_k,t_{k+1}}\right)\ d\theta \\
+						&\quad + \int_0^1 \int_0^1 (\nabla^3 f) (y_{t_{k-1}}+\theta(y_{t_k}-y_{t_{k-1}}) + r(x_{t_{k-1}}+\theta(x_{t_k}-x_{t_{k-1}})-y_{t_{k-1}}-\theta(y_{t_k}-y_{t_{k-1}}))) \\
+						&\qquad\qquad\qquad \left\{ \left( X^1_{0,t_{k-1}} - Y^1_{0,t_{k-1}} \right) + \theta\left( X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \right\} \otimes X^1_{t_{k-1},t_k} \otimes Y^2_{t_k,t_{k+1}}\ dr\ d\theta \\
+						&\quad + \int_0^1 (\nabla^2 f)(y_{t_{k-1}}+\theta(y_{t_k}-y_{t_{k-1}})) \left( X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right) \otimes Y^2_{t_k,t_{k+1}}\ d\theta
 				\end{align}
 				が成り立つから，
 				\begin{align}
@@ -583,16 +685,16 @@
 				\begin{align}
 					&\left| \left\{ J_{s,t}(x,D_{-k}) - J_{s,t}(x,D_{-k-1}) \right\} - 
 						\left\{ J_{s,t}(y,D_{-k}) - J_{s,t}(y,D_{-k-1}) \right\} \right| \\
-					&\leq M \left|X^1_{t_i-1,t_i}\right| \left|X^1_{t_i-1,t_i}\right| \left| X^1_{t_i,t_i+1} - Y^1_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{t_i-1,t_i} \right| \left| X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right| \left| Y^1_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{0,t_i-1} - Y^1_{0,t_i-1} \right| \left| X^1_{t_i-1,t_i} \right| \left| Y^1_{t_i-1,t_i} \right| \left| Y^1_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right| \left| X^1_{t_i-1,t_i} \right| \left| Y^1_{t_i-1,t_i} \right| \left| Y^1_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right| \left| Y^1_{t_i-1,t_i} \right| \left| Y^1_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{t_i-1,t_i} \right| \left| X^2_{t_i,t_i+1} - Y^2_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{0,t_i-1} - Y^1_{0,t_i-1} \right| \left| X^1_{t_i-1,t_i} \right| \left| Y^2_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right| \left| X^1_{t_i-1,t_i} \right| \left| Y^2_{t_i,t_i+1} \right| \\
-						&\quad + M \left| X^1_{t_i-1,t_i} - Y^1_{t_i-1,t_i} \right| \left| Y^2_{t_i,t_i+1} \right| \\
-					&\leq \epsilon M \left[5 + 2\omega(0,t_i-1)^{1/p} + 2\omega(t_i-1,t_i)^{1/p} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p} \\
+					&\leq M \left|X^1_{t_{k-1},t_k}\right| \left|X^1_{t_{k-1},t_k}\right| \left| X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} \right| \left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{0,t_{k-1}} - Y^1_{0,t_{k-1}} \right| \left| X^1_{t_{k-1},t_k} \right| \left| Y^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right| \left| X^1_{t_{k-1},t_k} \right| \left| Y^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right| \left| Y^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} \right| \left| X^2_{t_k,t_{k+1}} - Y^2_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{0,t_{k-1}} - Y^1_{0,t_{k-1}} \right| \left| X^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right| \left| X^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
+						&\quad + M \left| X^1_{t_{k-1},t_k} - Y^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
+					&\leq \epsilon M \left[5 + 2\omega(0,t_{k-1})^{1/p} + 2\omega(t_{k-1},t_k)^{1/p} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p} \\
 					&\leq \epsilon M \left[2 + 4\left( 2 R^p + 2R^{p/2} + 2 \right)^{1/p} \right] 2^{3/p} \left( 2 R^p + 2R^{p/2} + 2 \right)^{3/p} \left( \frac{1}{N-k-1} \right)^{3/p}
 				\end{align}
 				を得る．ここで
