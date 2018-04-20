@@ -273,14 +273,19 @@
 					\leq \sum_D \Norm{\psi_{t_{i-1},t_i}}{}^p
 				\end{align}
 				を満たす$D \in \delta[s,t+h]$が存在する．
-				$D_1 \coloneqq [s,t] \cap D,\ D_2 \coloneqq D \backslash D_1$とおいて
-				$D_2$の最小元を
+				$D_1 \coloneqq [s,t] \cap D$とおいて
+				$D_1 = \{t_0 < \cdots < t_k\}$と表されているとする．
+				このとき$D_2 \coloneqq D \backslash \left( D_1 \cup \{ t_{k+1} \} \right)$として
 				\begin{align}
 					\omega(s,t + h) - \epsilon
-					\leq \sum_{D_1} \Norm{\psi_{t_{i-1},t_i}}{}^p + \sum_{D_2} \Norm{\psi_{t_{i-1},t_i}}{}^p
-					\leq \omega(s,t) + \omega(t,t+h)
+					&\leq \sum_{i=1}^{k} \Norm{\psi_{t_{i-1},t_i}}{}^p 
+						+ \Norm{\psi_{t_k,t_{k+1}}}{}^p + \sum_{D_2} \Norm{\psi_{t_{i-1},t_i}}{}^p \\
+					&= \sum_{i=1}^{k} \Norm{\psi_{t_{i-1},t_i}}{}^p 
+						+ \Norm{\psi_{t_k,t}}{}^p + \Norm{\psi_{t_k,t_{k+1}}}{}^p - \Norm{\psi_{t_k,t}}{}^p
+						+ \sum_{D_2} \Norm{\psi_{t_{i-1},t_i}}{}^p \\
+					&\leq \omega(s,t) + \omega(t,t+h) + \Norm{\psi_{t_k,t_{k+1}}}{}^p - \Norm{\psi_{t_k,t}}{}^p
 				\end{align}
-				が成り立つ．$h \longrightarrow +0$として
+				が成り立つ．$\psi$の(一様)連続性より$\Norm{\psi_{t_k,t_{k+1}}}{}^p \longrightarrow \Norm{\psi_{t_k,t}}{}^p\ (h \longrightarrow +0)$が成り立つから
 				\begin{align}
 					\lim_{h \to +0} \omega(s,t+h) - \epsilon \leq \omega(s,t)
 				\end{align}
