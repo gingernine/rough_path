@@ -264,6 +264,25 @@ $0$の定数関数のみの空間でしかない．
 	\QED
 \end{prf}
 
+\begin{screen}
+	\begin{thm}
+		$1 \leq p \leq q$に対し$B_{p,T}(\R^d) \subset B_{q,T}(\R^d)$
+		が成立する．
+	\end{thm}
+\end{screen}
+
+\begin{prf}
+	任意の$x \in B_{p,T}(\R^d)$と$D \in \delta[0,T]$に対し
+	\begin{align}
+		\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^q
+		&\leq \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \left| x_{t_i} - x_{t_{i-1}} \right|^{q-p} \\
+		&\leq 2^{q-p}\sup{t \in [0,T]}{\left| x_t \right|^{q-p}} \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \\
+		&\leq 2^{q-p}\sup{t \in [0,T]}{\left| x_t \right|^{q-p}} \Norm{x}{p}^p
+	\end{align}
+	が成立する．
+	\QED
+\end{prf}
+
 $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta[s,t]$に対し
 \begin{align}
 	\left\{ \sum_D \left| (x_{t_i} + y_{t_i}) - (x_{t_{i-1}} + y_{t_{i-1}}) \right|^p \right\}^{1/p}

@@ -144,7 +144,7 @@
 				任意の$[s,t] \subset [0,T]$について
 				\footnote{
 					下段の二式については$s < t$と仮定する．また
-					上段についても，$t=T$或は$s=0$の場合を除く．
+					上段についても，$t=T$或は$s=0$の場合を除く必要がある．
 				}，
 				\begin{align}
 					\lim_{h \to +0} \omega(s,t+h) &= \inf{h>0}{\omega(s,t+h)},
@@ -207,7 +207,7 @@
 				同様にして，任意の$t \in (0,T]$に対し$[0,t) \ni s \longmapsto \omega(s,t)$
 				の右連続性も出る．
 				
-			\item[第二段]
+			\item[第四段]
 				任意の$t \in [0,T)$に対して次を示す:
 				\begin{align}
 					\lim_{h \to +0} \omega(t,t+h) = \inf{h>0}{\omega(t,t+h)} = 0.
@@ -259,7 +259,7 @@
 				\end{align}
 				も成立する．
 				
-			\item[第三段]
+			\item[第五段]
 				任意に$s \in [0,T)$を取り固定し，
 				$[s,T) \ni t \longmapsto \omega(s,t)$が右連続であることを示す．
 				\begin{align}
@@ -287,7 +287,7 @@
 				が従い，$\epsilon$の任意性より(\refeq{eq:thm_continuity_of_norm_val_p_variation_3})が出る．
 				同様にして$s \longmapsto \omega(s,t)$の左連続性も成立する．
 				
-			\item[第四段]
+			\item[第六段]
 				$\omega$の$(s,t) \in \Delta_T$における連続性を示す．$h,k \geq 0$として考えれば，
 				\begin{align}
 					&|\omega(s,t) - \omega(s-h,t-k)| \\
@@ -301,6 +301,20 @@
 					&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + \omega(s,t+k) - \omega(s+h,t) \\
 					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s,t+k) - \omega(s,t)| + |\omega(s,t) - \omega(s+h,t)|
 				\end{align}
+				が成り立ち，値の差は上述した連続性により縮まる．また
+				$|\omega(s,t) - \omega(s-h,t+k)|$については，
+				$h,k \longrightarrow +0$として$\omega(s-h,t+k)$は単調減少に$\omega(s,t)$に近づく．
+				単調性より極限は$h,k$の近づけ方に依らず
+				\begin{align}
+					\omega(s,t) = \lim_{h \to +0} \lim_{k \to +0} \omega(s-h,t+k) = \lim_{h,k \to +0} \omega(s-h,t+k)
+				\end{align}
+				となり，同様に
+				\begin{align}
+					\omega(s,t) = \lim_{h \to +0} \lim_{k \to +0} \omega(s+h,t-k) = \lim_{h,k \to +0} \omega(s+h,t-k)
+				\end{align}
+				も得られ，$\omega(s-h,t-k)$は$h,k \to 0\ $(近づけ方に依らない)として$\omega(s,t)$に収束し
+				$\omega$の連続性が出る．
+				\QED
 		\end{description}
 	\end{prf}
 	
@@ -308,11 +322,9 @@
 		\begin{thm}[control functionの例]\label{thm:examples_of_control_functions}
 			以下の関数$\omega:\Delta_T \longrightarrow [0,\infty)$はcontrol functionである．
 			\begin{description}
-				\item[(1)] $\omega \coloneqq \left( \omega_1^r + \omega_2^r \right)^{1/r},
-					\quad (0 < r \leq 1,\ \omega_1,\omega_2:\mbox{control function}).$
-				\item[(2)] $\omega:(s,t) \longmapsto \Norm{X^1}{p:[s,t]}^p,
+				\item[(1)] $\omega:(s,t) \longmapsto \Norm{X^1}{p:[s,t]}^p,
 					\quad (p \geq 1,\ x \in B_{p,T}(\R^d)).$
-				\item[(3)] $\omega:(s,t) \longmapsto \Norm{X^2}{p:[s,t]}^p,
+				\item[(2)] $\omega:(s,t) \longmapsto \Norm{X^2}{p:[s,t]}^p,
 					\quad (p \geq 1,\ x \in C^1).$
 			\end{description}
 		\end{thm}
@@ -322,10 +334,10 @@
 	
 	\begin{thm}\mbox{}
 		\begin{description}
-			\item[(1)]
-			\item[(2)] 
+			\item[(1)] $\omega:(s,t) \longmapsto X^1_{s,t} = x_t - x_s$は連続であるから，
+				前定理より$\omega$はcontrol functionである．
 				
-			\item[(3)] 任意の$[s,t] \subset [0,T]$に対して
+			\item[(2)] 任意の$[s,t] \subset [0,T]$に対して
 				$\Norm{X^2}{p:[s,t]}^p < \infty$を示せば，あとは
 				上と同じ理由により定理の主張が得られる．
 				実際，任意の分割$D = \{s=t_0 < \cdots < t_N = t\}$に対し
@@ -352,7 +364,7 @@
 		\end{description}
 	\end{thm}
 	
-	\begin{prf}
+	\begin{comment}
 		\begin{align}
 			&\omega_1(s,u)\omega_2(s,u) + \omega_1(u,t)\omega_2(u,t) \\
 			&= \left\{ \omega_1(s,u) + \omega_1(u,t) \right\}\omega_2(s,u) + \omega_1(u,t)\left\{\omega_2(u,t) - \omega_2(s,u)\right\} \\
@@ -361,7 +373,7 @@
 			&\leq \omega_1(s,t)\left\{ \omega_2(s,u) + \omega_2(u,t)\right\} \\
 			&\leq \omega_1(s,t)\omega_2(s,t)
 		\end{align}
-	\end{prf}
+	\end{comment}
 	
 	\begin{screen}
 		\begin{lem}\label{lem:control_function_min}
@@ -377,6 +389,7 @@
 	\end{screen}
 	
 	\begin{prf}
+		(会田先生のテキスト．)
 		\QED
 	\end{prf}
 	
@@ -399,14 +412,14 @@
 	\begin{screen}
 		\begin{cor}[$p$-variationによる閉球上のLipschitz連続性]\label{cor:continuity_theorem_1}
 			$1 \leq p < 2$とし，
-			$x_0 = y_0$を満たす$x,y \in C^1$と$f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)),\ 0 < R < \infty,\ [s,t] \subset [0,T]$を任意に取る．
+			$x_0 = y_0$を満たす$x,y \in C^1$と$f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)),\ 0 < R < \infty$を任意に取る．
 			このとき，
 			\begin{align}
-				\Norm{X^1}{p,[s,t]},\Norm{Y^1}{p,[s,t]} \leq R
+				\Norm{X^1}{p},\Norm{Y^1}{p} \leq R
 			\end{align}
 			なら，或る定数$C = C(p,R,f)$が存在して次を満たす:
 			\begin{align}
-				\left| I_{s,t}(x) - I_{s,t}(y) \right| \leq C\Norm{X^1 - Y^1}{p,[s,t]}.
+				\left| I_{0,T}(x) - I_{0,T}(y) \right| \leq C\Norm{X^1 - Y^1}{p}.
 			\end{align}
 		\end{cor}
 	\end{screen}
@@ -418,7 +431,6 @@
 			$x=y$なら$\Norm{X^1 - Y^1}{p} = 0$かつ$I_{s,t}(x) = I_{s,t}(y)$が成り立つ．
 		}
 		として証明が通る．
-		$[0,T]$で考察したことを$[s,t]$に置き換えれば系を得る．
 		\QED
 	\end{prf}
 	
@@ -585,23 +597,22 @@
 	\begin{screen}
 		\begin{cor}\label{cor:continuity_theorem_2}
 			$1 \leq p < 2$とし，
-			$x_0 = y_0$を満たす$x,y \in C^1$と$f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)),\ 0 < R < \infty,\ [s,t] \subset [0,T]$を任意に取る．
+			$x_0 = y_0$を満たす$x,y \in C^1$と$f \in C^2_b(\R^d,L(\R^d \rightarrow \R^m)),\ 0 < R < \infty$を任意に取る．
 			このとき，
 			\begin{align}
-				\Norm{X^1}{p,[s,t]},\Norm{Y^1}{p,[s,t]}, \Norm{X^2}{p/2,[s,t]},\Norm{Y^2}{p/2,[s,t]} \leq R
+				\Norm{X^1}{p},\Norm{Y^1}{p}, \Norm{X^2}{p/2},\Norm{Y^2}{p/2} \leq R
 			\end{align}
 			なら，或る定数$C = C(p,R,f)$が存在して次を満たす:
 			\begin{align}
-				\left| I_{s,t}(x) - I_{s,t}(y) \right| \leq C\left( \Norm{X^1 - Y^1}{p,[s,t]}+\Norm{X^2 - Y^2}{p/2,[s,t]} \right).
+				\left| I_{0,T}(x) - I_{0,T}(y) \right| \leq C\left( \Norm{X^1 - Y^1}{p}+\Norm{X^2 - Y^2}{p/2} \right).
 			\end{align}
 		\end{cor}
 	\end{screen}
 	
 	\begin{prf}[系\ref{cor:continuity_theorem_2}]
 		定理\ref{thm:continuity_theorem_2}において，
-		$\epsilon = \Norm{X^1 - Y^1}{p} + \Norm{X^2 - Y^2}{p/2,[s,t]}\ (x \neq y)$
+		$\epsilon = \Norm{X^1 - Y^1}{p} + \Norm{X^2 - Y^2}{p/2}\ (x \neq y)$
 		として証明が通る．
-		$[0,T]$で考察したことを$[s,t]$に置き換えれば系を得る．
 		\QED
 	\end{prf}
 	
