@@ -1,25 +1,101 @@
 \section{テンソル積の導入}
 	$\K = \C$または$\R$と考える．$E,F$を$\K$上の線形空間とするとき，
 	テンソル積$E \otimes F$を定めたい．
-	
 	\begin{align}
-		\Lambda(E \times F) 
-		\coloneqq \K^{\oplus(E \times F)}
-		&= \Set{b:E \times F \longrightarrow \K}{\mbox{有限個の$(e,f) \in E \times F$を除いて$b(e,f)=0$．}} \\
-		&= \bigoplus_{i \in E \times F} X_i,
-		\quad (X_i = \K,\ \forall i \in E \times F)
+		\Lambda(E \times F)
+		= \Set{b:E \times F \longrightarrow \K}{\mbox{有限個の$(e,f) \in E \times F$を除いて$b(e,f)=0$．}}
 	\end{align}
 	により$\Lambda(E \times F)$を定める．また$(e,f) \in E \times F$に対する定義関数
 	\begin{align}
-		\defunc_{\{(e,f)\}} (g,h) = 
+		\defunc_{(e,f)} (g,h) = 
 		\begin{cases}
 			1, & (e,f) = (g,h), \\
 			0, & (e,f) \neq (g,h)
 		\end{cases}
 	\end{align}
-	は$\defunc_{\{(e,f)\}} \in \Lambda(E \times F)$を満たす．
+	は$\defunc_{(e,f)} \in \Lambda(E \times F)$を満たす．
 	$\Lambda(E \times F)$が$\K$-線形空間をなすことにより
 	\begin{align}
 		\Lambda_0(E \times F) \coloneqq
-		%\span{\Set{\defunc_{\{(e+e',f)\}}}{}}
+		\Span{\Set{ \substack{\defunc_{(e+e',f)}-\defunc_{(e,f)}-\defunc_{(e',f)},\\
+			\defunc_{(e,f+f')}-\defunc_{(e,f)}-\defunc_{(e,f')}, \\
+			\defunc_{(\lambda e,f)}-\lambda\defunc_{(e,f)}, \\
+			\defunc_{(e,\lambda f)}-\lambda\defunc_{(e,f)} }}{e,e' \in E,f,f' \in F,\lambda \in \K}}
 	\end{align}
+	は$\Lambda(E \times F)$の線型部分空間である．
+	$b \in \Lambda(E \times F)$の$\Lambda_0(E \times F)$に関する同値類を$[b]$で表す．
+	\begin{screen}
+		\begin{dfn}[テンソル積]
+			$\K$-線形空間$E,F$のテンソル積を
+			\begin{align}
+				E \otimes F \coloneqq \Lambda(E \times F)/\Lambda_0(E \times F)
+			\end{align}
+			で定める．また$(e,f) \in E \times F$に対するテンソル積を
+			\begin{align}
+				e \otimes f \coloneqq \left[ \defunc_{(e,f)} \right]
+			\end{align}
+			により定める．
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[テンソル積は双線型・元の表現]
+			$E,F$を$\K$-線形空間とするとき，
+			\begin{align}
+				\otimes : E \times F \ni (e,f) \longmapsto e \otimes f \in E \otimes F
+			\end{align}
+			は双線型である．また任意の$u \in E \otimes F$は，或る有限個の
+			$e_i \otimes f_i \in E \otimes F$により
+			\begin{align}
+				u = \sum_{i=1}^{n} e_i \otimes f_i
+			\end{align}
+			と書ける．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$e,e' \in E,\ f,f' \in F,\ \lambda \in \K$とする．
+		$\Lambda_0(E \times F)$の定義より
+		\begin{align}
+			\defunc_{(e+e',f)} \equiv \defunc_{(e,f)}+\defunc_{(e',f)},
+			\quad \pmod{\Lambda_0(E \times F)}
+		\end{align}
+		が満たされ$(e + e') \otimes f = e \otimes f + e' \otimes f$が成立する．
+		同様にして
+		\begin{align}
+			e \otimes (f+f') &= e \otimes f + e \otimes f', \\
+			(\lambda e) \otimes f &= \lambda e \otimes f, \\
+			e \otimes (\lambda f) &= \lambda e \otimes f
+		\end{align}
+		が従うので$\otimes$は双線型である．また
+		任意の$u \in E \otimes F$に対し，その代表を$b \in \Lambda(E \times F)$とすれば
+		\begin{align}
+			b = \sum_{i=1}^n k_i \defunc_{(e_i,f_i)},
+			\quad \left( k_i = b(e_i,f_i),\ i=1,2,\cdots,n \right)
+		\end{align}
+		と表せるから
+		\begin{align}
+			u = \left[ \sum_{i=1}^n k_i \defunc_{(e_i,f_i)} \right]
+			= \left[ \sum_{i=1}^n \defunc_{(k_i e_i,f_i)} \right]
+			= \sum_{i=1}^n (k_i e_i) \otimes f_i
+		\end{align}
+		を得る．
+		\QED
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}
+			$E,F,V$を$\K$-線形空間とするとき，
+			$\Hom{E \otimes F}{V}$と
+			$\Bilin{E \times F}{V}$は線型同型である．
+			ただしHomは線形写像全体，$\mathrm{Hom}^{(2)}$は双線型写像全体を表す．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		同型写像は
+		\begin{align}
+			\Phi: \Hom{E \otimes F}{V} \ni T \longmapsto T \circ \otimes \in \Bilin{E \times F}{V}
+		\end{align}
+		により与えられる．実際，
+	\end{prf}

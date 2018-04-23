@@ -191,36 +191,32 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 \begin{prf}
 	$C^1$の第一可算性により点列連続性と連続性は一致するから，
 	$x^n \longrightarrow x$のとき$I_{s,t}(x^n) \longrightarrow I_{s,t}(x)$
-	が従うことを示せばよい．各$j,k$について
+	が従うことを示せばよい．
 	\begin{align}
-		\int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
-		\longrightarrow \int_s^t f^k_j(x_u)\ dx^j_u,
-		\quad (n \longrightarrow \infty)
-		\label{eq:thm_T_s_t_continuous_w_r_t_C1_norm}
+		M \coloneqq \sup{u \in [s,t]}{|f(x_u)|} < \infty
 	\end{align}
-	が成り立つことを示せば十分である．
-	連続性より$M \coloneqq \sup{u \in [s,t]}{|f(x_u)|} < \infty$が定まり
+	を定めれば
 	\begin{align}
-		&\left| \int_s^t f^k_j(x^n_u)\ dx^{n,j}_u
-			- \int_s^t f^k_j(x_u)\ dx^j_u \right|
-		= \left| \int_s^t f^k_j(x^n_u)\dot{x}^{n,j}_u\ du
-			- \int_s^t f^k_j(x_u)\dot{x}^j_u\ du \right| \\
-		&\qquad \leq \int_s^t \left| f^k_j(x^n_u)\dot{x}^{n,j}_u - f^k_j(x^n_u)\dot{x}^j_u \right|\ du
-			+ \int_s^t \left| f^k_j(x^n_u)\dot{x}^j_u - f^k_j(x_u)\dot{x}^j_u \right|\ du \\
+		&\left| \int_s^t f(x^n_u)\ dx^n_u
+			- \int_s^t f(x_u)\ dx_u \right|
+		= \left| \int_s^t f(x^n_u)\dot{x}^n_u\ du
+			- \int_s^t f(x_u)\dot{x}_u\ du \right| \\
+		&\qquad \leq \int_s^t \left| f(x^n_u)\dot{x}^n_u - f(x^n_u)\dot{x}_u \right|\ du
+			+ \int_s^t \left| f(x^n_u)\dot{x}_u - f(x_u)\dot{x}_u \right|\ du \\
 		&\qquad \leq M \Norm{x^n - x}{C^1} (t-s)
-			+ \sup{u \in [s,t]}{\left| f^k_j(x^n_u) - f^k_j(x_u) \right|} \Norm{x}{C^1}(t-s)
+			+ \sup{u \in [s,t]}{\left| f(x^n_u) - f(x_u) \right|} \Norm{x}{C^1}(t-s)
 			\label{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}
 	\end{align}
 	が成り立つ．いま，任意に$\epsilon > 0$を取れば，或る$\epsilon > \delta > 0$が存在して
-	$v,w \in x([s,t]),\ |v - w| < \delta$なら$|f^k_j(v) - f^k_j(w)| < \epsilon$
+	$v,w \in x([s,t]),\ |v - w| < \delta$なら$|f(v) - f(w)| < \epsilon$
 	を満たす（一様連続）．すなわち$\Norm{x^{(n)} - x}{C^1} < \delta$なら
 	\begin{align}
-		\sup{t \in [s,t]}{\left|f^k_j(x^n_t) - f^k_j(x_t) \right|} < \epsilon
+		\sup{t \in [s,t]}{\left|f(x^n_t) - f(x_t) \right|} < \epsilon
 	\end{align}
 	が成立する．$\Norm{x^n - x}{C^1} \longrightarrow 0$の仮定より，
 	或る自然数$N$が存在して$\Norm{x^n - x}{C^1} < \delta\ (n > N)$が満たされるから，
 	$(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}) < \epsilon[M(t-s) + \Norm{x}{C^1}(t-s)]\ (n > N)$
-	が成り立ち(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm})が従う．
+	が成り立ち$I_{s,t}(x^n) \longrightarrow I_{s,t}(x)$が従う．
 	\QED
 \end{prf}
 
