@@ -1,20 +1,20 @@
 \section{テンソル積の導入}
-	$\K = \C$または$\R$と考える．$E,F$を$\K$上の線形空間とするとき，
+	$E,F$を体$\K$上の線形空間とするとき，
 	テンソル積$E \otimes F$を定めたい．
 	\begin{align}
-		\Lambda(E \times F)
-		= \Set{b:E \times F \longrightarrow \K}{\mbox{有限個の$(e,f) \in E \times F$を除いて$b(e,f)=0$．}}
+		\Lambda(E)
+		= \Set{f:E\longrightarrow \K}{\mbox{有限個の$e \in E$を除いて$f(e)=0$．}}
 	\end{align}
-	により$\Lambda(E \times F)$を定める．また$(e,f) \in E \times F$に対する定義関数
+	により$\K$-線形空間$\Lambda(E)$を定める．また$e \in E$に対する定義関数を
 	\begin{align}
-		\defunc_{(e,f)} (g,h) = 
+		\defunc_e (x) = 
 		\begin{cases}
-			1, & (e,f) = (g,h), \\
-			0, & (e,f) \neq (g,h)
+			1, & x = e, \\
+			0, & x \neq e
 		\end{cases}
 	\end{align}
-	は$\defunc_{(e,f)} \in \Lambda(E \times F)$を満たす．
-	$\Lambda(E \times F)$が$\K$-線形空間をなすことにより
+	で表し，同様にして$\Lambda(E \times F)$及び$(e,f) \in E \times F$に対し
+	$\defunc_{e,f}$を定める．$\Lambda(E \times F)$に対し
 	\begin{align}
 		\Lambda_0(E \times F) \coloneqq
 		\Span{\Set{ \substack{\defunc_{(e+e',f)}-\defunc_{(e,f)}-\defunc_{(e',f)},\\
@@ -22,15 +22,15 @@
 			\defunc_{(\lambda e,f)}-\lambda\defunc_{(e,f)}, \\
 			\defunc_{(e,\lambda f)}-\lambda\defunc_{(e,f)} }}{e,e' \in E,f,f' \in F,\lambda \in \K}}
 	\end{align}
-	は$\Lambda(E \times F)$の線型部分空間である．
-	$b \in \Lambda(E \times F)$の$\Lambda_0(E \times F)$に関する同値類を$[b]$で表す．
+	により線型部分空間を定め，
+	$b \in \Lambda(E \times F)$の$\Lambda_0(E \times F)$に関する同値類を$[b]$と書く．
 	\begin{screen}
 		\begin{dfn}[テンソル積]
-			$\K$-線形空間$E,F$のテンソル積を
+			$\K$-線形空間$E,F$に対し
 			\begin{align}
 				E \otimes F \coloneqq \Lambda(E \times F)/\Lambda_0(E \times F)
 			\end{align}
-			で定める．また$(e,f) \in E \times F$に対するテンソル積を
+			で定める商空間を$E$と$F$のテンソル積という．また$(e,f) \in E \times F$に対するテンソル積を
 			\begin{align}
 				e \otimes f \coloneqq \left[ \defunc_{(e,f)} \right]
 			\end{align}
@@ -84,18 +84,84 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}
+		\begin{thm}[テンソル積の普遍性]
 			$E,F,V$を$\K$-線形空間とするとき，
 			$\Hom{E \otimes F}{V}$と
-			$\Bilin{E \times F}{V}$は線型同型である．
-			ただしHomは線形写像全体，$\mathrm{Hom}^{(2)}$は双線型写像全体を表す．
+			$\Bilin{E \times F}{V}$は
+			次の写像$\Phi$により線型同型である:
+			\begin{align}
+				\begin{array}{ccc}
+					\Phi:\Hom{E \otimes F}{V} & \longrightarrow & \Bilin{E \times F}{V} \\
+					\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
+					T & \longmapsto & T \circ \otimes
+				\end{array}
+			\end{align}
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}
-		同型写像は
-		\begin{align}
-			\Phi: \Hom{E \otimes F}{V} \ni T \longmapsto T \circ \otimes \in \Bilin{E \times F}{V}
-		\end{align}
-		により与えられる．実際，
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				始めの二段で$\Phi$の全射性を示す．$f \in \Hom{\Lambda(E \times F)}{V}$に対し
+				\begin{align}
+					g: E \times F \ni (e,f) \longmapsto f(\defunc_{e,f}) \in V
+				\end{align}
+				を対応させる次の写像が線形同型であることを示す:
+				\begin{align}
+					\begin{array}{ccc}
+						F:\Hom{\Lambda(E \times F)}{V} & \longrightarrow & \Map{E \times F}{V} \\
+						\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
+						f & \longmapsto & g
+					\end{array}
+				\end{align}
+				実際$g = F(f)$の定め方より
+				$F$は線型である．また$F(f_1) = F(f_2)$なら
+				\begin{align}
+					f_1(\defunc_{e,f}) = f_2(\defunc_{e,f}),
+					\quad (\forall (e,f) \in E \times F)
+				\end{align}
+				が成り立ち，$\Lambda(E \times F)$は$\defunc_{e,f}\ ((e,f) \in E \times F)$で生成されるから
+				$f_1 = f_2$が従い単射性を得る．いま，
+				\begin{align}
+					\sum_{e \in E \times F} \psi(e) g(e)
+					\coloneqq \sum_{\substack{e \in E \\ \psi(e) \neq 0}} \psi(e) g(e),
+					\quad (\psi \in \Lambda(E),\ g \in \Map{E}{V})
+				\end{align}
+				により総和記号を定める．そして任意の
+				$g \in \Map{E}{V}$に対して
+				\begin{align}
+					f(\psi) \coloneqq \sum_{e \in E} \psi(e) g(e),
+					\quad (\psi \in \Hom{\Lambda(E)}{V})
+				\end{align}
+				で$f$を作れば，$f \in \Hom{\Lambda(E)}{V}$が満たされ
+				$F$の全射性が従う．
+				
+			\item[第二段]
+				任意に$b \in \Bilin{E \times F}{V}$を取り
+				$h \coloneqq F^{-1}(b)$とおけば，$h$の線型性より
+				\begin{align}
+					b(e+e',f) - b(e,f) - b(e',f)
+					&= h(\defunc_{e+e',f} - \defunc_{e,f} - \defunc_{e',f}), \\
+					b(e,f+f') - b(e,f) - b(e,f')
+					&= h(\defunc_{e,f+f'} - \defunc_{e,f} - \defunc_{e,f'}), \\
+					b(\lambda e,f) - \lambda b(e,f)
+					&= h(\defunc_{\lambda e,f} - \lambda \defunc_{e,f}), \\
+					b(e,\lambda f) - \lambda b(e,f)
+					&= h(\defunc_{e,\lambda f} - \lambda \defunc_{e,f})
+				\end{align}
+				が成り立ち，$b$の双線型性により$h$は$\Lambda_0(E \times F)$上で0である．従って
+				\begin{align}
+					T([b]) \coloneqq h(b),
+					\quad (b \in \Lambda(E \times F))
+				\end{align}
+				で定める$T$はwell-definedであり，$T \in \Hom{E \otimes F}{V}$かつ
+				\begin{align}	
+					b(e,f) = h(\defunc_{e,f}) = (T \circ \otimes) (e,f),
+					\quad (\forall (e,f) \in E \times F)
+				\end{align}
+				が満たされ$\Phi$の全射性が得られる．
+				
+			\item[第三段]
+				
+		\end{description}
 	\end{prf}
