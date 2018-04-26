@@ -39,17 +39,16 @@
 	\end{screen}
 	
 	\begin{screen}
-		\begin{thm}[テンソル積は双線型・元の表現]
+		\begin{thm}[テンソル積は双線型]\label{thm:tensor_product_is_bilinear}
 			$E,F$を$\K$-線形空間とするとき，
 			\begin{align}
 				\otimes : E \times F \ni (e,f) \longmapsto e \otimes f \in E \otimes F
 			\end{align}
-			は双線型である．また任意の$u \in E \otimes F$は，或る有限個の
-			$e_i \otimes f_i \in E \otimes F$により
+			は双線型である．また次が成り立つ:
 			\begin{align}
-				u = \sum_{i=1}^{n} e_i \otimes f_i
+				E \otimes F = \Span{\Set{e \otimes f}{(e,f) \in E \times F}}.
+				\label{eq:thm_tensor_product_is_bilinear}
 			\end{align}
-			と書ける．
 		\end{thm}
 	\end{screen}
 	
@@ -68,18 +67,18 @@
 			e \otimes (\lambda f) &= \lambda e \otimes f
 		\end{align}
 		が従うので$\otimes$は双線型である．また
-		任意の$u \in E \otimes F$に対し，その代表を$b \in \Lambda(E \times F)$とすれば
+		任意に$u = [b] \in E \otimes F$を取れば
 		\begin{align}
 			b = \sum_{i=1}^n k_i \defunc_{(e_i,f_i)},
 			\quad \left( k_i = b(e_i,f_i),\ i=1,2,\cdots,n \right)
 		\end{align}
-		と表せるから
+		と表せるから，
 		\begin{align}
 			u = \left[ \sum_{i=1}^n k_i \defunc_{(e_i,f_i)} \right]
 			= \left[ \sum_{i=1}^n \defunc_{(k_i e_i,f_i)} \right]
 			= \sum_{i=1}^n (k_i e_i) \otimes f_i
 		\end{align}
-		を得る．
+		が従い(\refeq{eq:thm_tensor_product_is_bilinear})を得る．
 		\QED
 	\end{prf}
 	
@@ -99,10 +98,10 @@
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}\mbox{}
+	\begin{prf}全射性と単射性を示す．
 		\begin{description}
 			\item[第一段]
-				始めの二段で$\Phi$の全射性を示す．$f \in \Hom{\Lambda(E \times F)}{V}$に対し
+				始めの二段で$\Phi$の全射性を示す．まず，$f \in \Hom{\Lambda(E \times F)}{V}$に対し
 				\begin{align}
 					g: E \times F \ni (e,f) \longmapsto f(\defunc_{e,f}) \in V
 				\end{align}
@@ -120,20 +119,20 @@
 					f_1(\defunc_{e,f}) = f_2(\defunc_{e,f}),
 					\quad (\forall (e,f) \in E \times F)
 				\end{align}
-				が成り立ち，$\Lambda(E \times F)$は$\defunc_{e,f}\ ((e,f) \in E \times F)$で生成されるから
-				$f_1 = f_2$が従い単射性を得る．いま，
+				が成り立ち，$\Span{\Set{\defunc_{e,f}}{(e,f) \in E \times F}}=\Lambda(E \times F)$より
+				$F$の単射性を得る．いま，
 				\begin{align}
-					\sum_{e \in E \times F} \psi(e) g(e)
-					\coloneqq \sum_{\substack{e \in E \\ \psi(e) \neq 0}} \psi(e) g(e),
-					\quad (\psi \in \Lambda(E),\ g \in \Map{E}{V})
+					\sum_{(e,f) \in E \times F} \psi(e,f) g(e,f)
+					\coloneqq \sum_{\substack{(e,f) \in E \times F \\ \psi(e,f) \neq 0}} \psi(e,f) g(e,f),
+					\quad (\psi \in \Lambda(E \times F),\ g \in \Map{E \times F}{V})
 				\end{align}
-				により総和記号を定める．そして任意の
-				$g \in \Map{E}{V}$に対して
+				により総和記号を定め，
+				$g \in \Map{E \times F}{V}$に対して
 				\begin{align}
-					f(\psi) \coloneqq \sum_{e \in E} \psi(e) g(e),
-					\quad (\psi \in \Hom{\Lambda(E)}{V})
+					f(\psi) \coloneqq \sum_{(e,f) \in E \times F} \psi(e,f) g(e,f),
+					\quad (\psi \in \Hom{\Lambda(E \times F)}{V})
 				\end{align}
-				で$f$を作れば，$f \in \Hom{\Lambda(E)}{V}$が満たされ
+				で$f$を作れば，$f \in \Hom{\Lambda(E \times F)}{V}$が満たされ
 				$F$の全射性が従う．
 				
 			\item[第二段]
@@ -162,6 +161,36 @@
 				が満たされ$\Phi$の全射性が得られる．
 				
 			\item[第三段]
-				
+				$\Phi(T_1) = \Phi(T_2)$ならば
+				$T_1$と$T_2$は$\Set{e \otimes f}{e \in E,\ f \in F}$の上で一致する．
+				定理\ref{thm:tensor_product_is_bilinear}より
+				$\Set{e \otimes f}{e \in E,\ f \in F}$は
+				$E \otimes F$を生成するから$\Phi$の単射性が従う．
+				\QED
 		\end{description}
 	\end{prf}
+	
+	$\K=\R,\C$のとき，$E$の弱位相を
+	$\sigma(E,E^*)$と書き，$E^*$の汎弱位相を$\sigma(E^*,E)$と書く．
+	また
+	\begin{align}
+		\mathcal{F}(E,F)
+		\coloneqq &\Set{T:E \longrightarrow F}{\Dim{T E} < \infty}, \\
+		\mathcal{F}_{w^*}(E^*,F)
+		\coloneqq &\Set{T \in \mathcal{F}(E^*,F)}{T^{-1}(A) \in \sigma(F^*,F),\quad \forall A \in \sigma(E,E^*)} \\
+		= &\Set{T \in \mathcal{F}(E^*,F)}{T : \mbox{$w^*$-$w$-continuous}}
+	\end{align}
+	とおく．
+	
+	\begin{screen}
+		\begin{thm}
+			$\K$を$\R$または$\C$と考える．$E,F$が$\K$-Banach空間なら，
+			\begin{align}
+				\begin{array}{ccc}
+					i:E \otimes F & \longrightarrow & \mathcal{F}_{w^*}(E^*,F), \\
+					i(e \otimes f): E^* \ni e^* & \longmapsto & \inprod<e^*,e>f 
+				\end{array}
+			\end{align}
+			で定める$i$は線型同型である．
+		\end{thm}
+	\end{screen}
