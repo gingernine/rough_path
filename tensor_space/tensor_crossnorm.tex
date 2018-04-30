@@ -94,9 +94,10 @@
 \def\c#1{C(#1)} %有界実連続関数
 \def\cbound#1{C_{b} (#1)} %有界実連続関数
 \def\Dim#1{\mathrm{dim}#1} %次元
+\def\pmod#1{\mathrm{Mod}\ #1} %mod
 \def\Map#1#2{\mathrm{Map} \left(#1,#2\right)} %写像全体
 \def\Hom#1#2{\mathrm{Hom} \left(#1,#2\right)} %線形写像全体
-\def\Bilin#1#2{\mathrm{Hom}^{(2)} \left(#1,#2\right)} %双線形写像全体
+\def\Ln#1#2#3{\mathrm{Hom}^{(#3)} \left(#1,#2\right)} %多重線形写像全体
 \def\semiLp#1#2{\mathscr{L}^{#1} \left(#2\right)} %ノルム空間L^p
 \def\Lp#1#2{\operatorname{L}^{#1} \left(#2\right)} %ノルム空間L^p
 \def\cinf#1{C^{\infty} (#1)} %無限回連続微分可能関数
@@ -132,5 +133,5 @@
 
 \newpage
 \tableofcontents
-	\input{texfiles/tensor_product}
+	\input{texfiles/tensor_product_multiple}
 \end{document}

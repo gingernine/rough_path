@@ -1,1 +1,2 @@
-\contentsline {section}{\numberline {0.1}テンソル積の導入}{1}
+\contentsline {section}{\numberline {0.1}notation}{1}
+\contentsline {section}{\numberline {0.2}テンソル積}{1}

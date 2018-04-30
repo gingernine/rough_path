@@ -1,0 +1,48 @@
+\section{The notion of rough path}
+
+$V$を$\R$-上のBanach空間とする．
+$T(V) \coloneqq $
+\begin{screen}
+	\begin{thm}
+		$\Omega_p(V)$は次で定める距離
+		\begin{align}
+			d_p(X,Y) \coloneqq \max{1 \leq i \leq [p]}{\Norm{X^i - Y^i}{p/i}}
+		\end{align}
+		により完備距離空間となる．
+	\end{thm}
+\end{screen}
+
+\begin{prf}
+	$(X^k)_{k=1}^{\infty}$をCauchy列とすれば，
+	任意の$\epsilon > 0$に対し或る$K \in \N$が存在して
+	\begin{align}
+		\Norm{X^{k,i} - X^{\ell,i}}{p/i} < \epsilon,
+		\quad (\forall k,\ell > K,\ 1 \leq i \leq [p])
+	\end{align}
+	が成立する．よって定理(\ref{thm:B_p_T_Banach_space})より
+	各$i$に対し或る$X^i \in B_{p/i,T}(V)$が存在して
+	\begin{align}
+		\Norm{X^{k,i} - X^i}{p/i}
+		\longrightarrow 0
+		\quad (k \longrightarrow \infty,\ 1 \leq i \leq [p])
+	\end{align}
+	を満たす．$X:\Delta_T \longrightarrow T^{(n)}(V)$を
+	\begin{align}
+		X_{s,t} \coloneqq (1,X^1_{s,t},\cdots,X^n_{s,t}),
+		\quad ((s,t) \in \Delta_T)
+	\end{align}
+	により定めれば，$X^i$の連続性より$X$も連続である．さらに任意の$D \in \delta[0,T]$に対して
+	\begin{align}
+		\sum_D \Norm{X^k_{t_{i-1},t_i} - X_{t_{i-1},t_i}}{}^p
+		&= \sum_D \left( \Norm{X^{k,1}_{t_{i-1},t_i} - X^1_{t_{i-1},t_i}}{} + \cdots + \Norm{X^{k,n}_{t_{i-1},t_i} - X^n_{t_{i-1},t_i}}{} \right)^p \\
+		&\leq (n+1)^p \sum_D \left( \Norm{X^{k,1}_{t_{i-1},t_i} - X^1_{t_{i-1},t_i}}{}^p + \cdots + \Norm{X^{k,n}_{t_{i-1},t_i} - X^n_{t_{i-1},t_i}}{}^p \right) \\
+		&\leq (n+1)^p \left( \Norm{X^{k,1}_{t_{i-1},t_i} - X^1_{t_{i-1},t_i}}{p}^p + \cdots + \Norm{X^{k,n}_{t_{i-1},t_i} - X^n_{t_{i-1},t_i}}{p}^p \right)
+	\end{align}
+	が成立するから，定理より
+	\begin{align}
+		\sup{D}{\sum_D \Norm{X^k_{t_{i-1},t_i} - X_{t_{i-1},t_i}}{}^p}
+		\longrightarrow 0 \quad (k \longrightarrow \infty)
+	\end{align}
+	が従い$X$の$p$-variationの有界性が出る．
+	\QED
+\end{prf}

@@ -1,26 +1,25 @@
-\section{テンソル積の導入}
+\section{テンソル積}
 	$E,F$を体$\K$上の線形空間とするとき，
 	テンソル積$E \otimes F$を定めたい．
 	\begin{align}
-		\Lambda(E)
-		= \Set{f:E\longrightarrow \K}{\mbox{有限個の$e \in E$を除いて$f(e)=0$．}}
+		\Lambda(E \times F)
+		= \Set{f:E \times F \longrightarrow \K}{\mbox{有限個の$(e,f) \in E \times F$を除いて$f(e,f)=0$．}}
 	\end{align}
-	により$\K$-線形空間$\Lambda(E)$を定める．また$e \in E$に対する定義関数を
+	により$\K$-線形空間$\Lambda(E \times F)$を定める．また$(e,f) \in E \times F$に対する定義関数を
 	\begin{align}
-		\defunc_e (x) = 
+		\defunc_{e,f} (x,y) = 
 		\begin{cases}
-			1, & x = e, \\
-			0, & x \neq e
+			1, & (x,y) = (e,f), \\
+			0, & (x,y) \neq (e,f)
 		\end{cases}
 	\end{align}
-	で表し，同様にして$\Lambda(E \times F)$及び$(e,f) \in E \times F$に対し
-	$\defunc_{e,f}$を定める．$\Lambda(E \times F)$に対し
+	で表す．$\Lambda(E \times F)$に対し
 	\begin{align}
 		\Lambda_0(E \times F) \coloneqq
-		\Span{\Set{ \substack{\defunc_{(e+e',f)}-\defunc_{(e,f)}-\defunc_{(e',f)},\\
-			\defunc_{(e,f+f')}-\defunc_{(e,f)}-\defunc_{(e,f')}, \\
-			\defunc_{(\lambda e,f)}-\lambda\defunc_{(e,f)}, \\
-			\defunc_{(e,\lambda f)}-\lambda\defunc_{(e,f)} }}{e,e' \in E,f,f' \in F,\lambda \in \K}}
+		\Span{\Set{ \substack{\defunc_{e+e',f}-\defunc_{e,f}-\defunc_{e',f},\\
+			\defunc_{e,f+f'}-\defunc_{e,f}-\defunc_{e,f'}, \\
+			\defunc_{\lambda e,f}-\lambda\defunc_{e,f}, \\
+			\defunc_{e,\lambda f}-\lambda\defunc_{e,f} }}{e,e' \in E,f,f' \in F,\lambda \in \K}}
 	\end{align}
 	により線型部分空間を定め，
 	$b \in \Lambda(E \times F)$の$\Lambda_0(E \times F)$に関する同値類を$[b]$と書く．
@@ -30,16 +29,16 @@
 			\begin{align}
 				E \otimes F \coloneqq \Lambda(E \times F)/\Lambda_0(E \times F)
 			\end{align}
-			で定める商空間を$E$と$F$のテンソル積という．また$(e,f) \in E \times F$に対するテンソル積を
+			で定める商空間を$E$と$F$のテンソル積という．また$(e,f) \in E \times F$に対する二項関係を
 			\begin{align}
-				e \otimes f \coloneqq \left[ \defunc_{(e,f)} \right]
+				e \otimes f \coloneqq \left[ \defunc_{e,f} \right]
 			\end{align}
-			により定める．
+			により定め，これを$E \otimes F$の標準写像と呼ぶ．
 		\end{dfn}
 	\end{screen}
 	
 	\begin{screen}
-		\begin{thm}[テンソル積は双線型]\label{thm:tensor_product_is_bilinear}
+		\begin{thm}[標準写像の双線型性]\label{thm:tensor_product_is_bilinear}
 			$E,F$を$\K$-線形空間とするとき，
 			\begin{align}
 				\otimes : E \times F \ni (e,f) \longmapsto e \otimes f \in E \otimes F
@@ -56,7 +55,7 @@
 		$e,e' \in E,\ f,f' \in F,\ \lambda \in \K$とする．
 		$\Lambda_0(E \times F)$の定義より
 		\begin{align}
-			\defunc_{(e+e',f)} \equiv \defunc_{(e,f)}+\defunc_{(e',f)},
+			\defunc_{e+e',f} \equiv \defunc_{e,f}+\defunc_{e',f},
 			\quad \pmod{\Lambda_0(E \times F)}
 		\end{align}
 		が満たされ$(e + e') \otimes f = e \otimes f + e' \otimes f$が成立する．
@@ -69,13 +68,13 @@
 		が従うので$\otimes$は双線型である．また
 		任意に$u = [b] \in E \otimes F$を取れば
 		\begin{align}
-			b = \sum_{i=1}^n k_i \defunc_{(e_i,f_i)},
+			b = \sum_{i=1}^n k_i \defunc_{e_i,f_i},
 			\quad \left( k_i = b(e_i,f_i),\ i=1,2,\cdots,n \right)
 		\end{align}
 		と表せるから，
 		\begin{align}
-			u = \left[ \sum_{i=1}^n k_i \defunc_{(e_i,f_i)} \right]
-			= \left[ \sum_{i=1}^n \defunc_{(k_i e_i,f_i)} \right]
+			u = \left[ \sum_{i=1}^n k_i \defunc_{e_i,f_i} \right]
+			= \left[ \sum_{i=1}^n \defunc_{k_i e_i,f_i} \right]
 			= \sum_{i=1}^n (k_i e_i) \otimes f_i
 		\end{align}
 		が従い(\refeq{eq:thm_tensor_product_is_bilinear})を得る．
@@ -83,56 +82,67 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}[テンソル積の普遍性]
-			$E,F,V$を$\K$-線形空間とするとき，
-			$\Hom{E \otimes F}{V}$と
-			$\Bilin{E \times F}{V}$は
-			次の写像$\Phi$により線型同型である:
+		\begin{thm}[普遍性]\label{thm:university_of_tensor_product}
+			$E,F,V$を$\K$-線形空間とする．このとき
+			任意の$T \in \Hom{E \otimes F}{V}$に対し
+			$T \circ \otimes \in \Bilin{E \times F}{V}$
+			が満たされ，これにより定める次の写像$\Phi$は線型同型である:
 			\begin{align}
 				\begin{array}{ccc}
 					\Phi:\Hom{E \otimes F}{V} & \longrightarrow & \Bilin{E \times F}{V} \\
 					\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
-					T & \longmapsto & T \circ \otimes
+					T & \longmapsto & T \circ \otimes \label{eq:thm_university_of_tensor_product}
 				\end{array}
 			\end{align}
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}全射性と単射性を示す．
+	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
-				始めの二段で$\Phi$の全射性を示す．まず，$f \in \Hom{\Lambda(E \times F)}{V}$に対し
+				$T \in \Hom{E \otimes F}{V}$の線型性と
+				$\otimes$の双線型性より
+				$T \circ \otimes$は双線型である．
+				
+			\item[第二段]
+				$\Phi(T_1) = \Phi(T_2)$ならば
+				$T_1$と$T_2$は$\Set{e \otimes f}{e \in E,\ f \in F}$の上で一致する．
+				定理\ref{thm:tensor_product_is_bilinear}より
+				$\Set{e \otimes f}{e \in E,\ f \in F}$は
+				$E \otimes F$を生成するから$\Phi$の単射性が従う．
+			
+			\item[第三段]
+				最後の二段で$\Phi$の全射性を示す．まず，$\varphi \in \Hom{\Lambda(E \times F)}{V}$に対し
 				\begin{align}
-					g: E \times F \ni (e,f) \longmapsto f(\defunc_{e,f}) \in V
+					g: E \times F \ni (e,f) \longmapsto \varphi(\defunc_{e,f}) \in V
 				\end{align}
-				を対応させる次の写像が線形同型であることを示す:
+				を対応させる次の写像が全単射であることを示す:
 				\begin{align}
 					\begin{array}{ccc}
 						F:\Hom{\Lambda(E \times F)}{V} & \longrightarrow & \Map{E \times F}{V} \\
 						\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
-						f & \longmapsto & g
+						\varphi & \longmapsto & g
 					\end{array}
 				\end{align}
-				実際$g = F(f)$の定め方より
-				$F$は線型である．また$F(f_1) = F(f_2)$なら
+				実際，$F(\varphi_1) = F(\varphi_2)$なら
 				\begin{align}
-					f_1(\defunc_{e,f}) = f_2(\defunc_{e,f}),
+					\varphi_1(\defunc_{e,f}) = \varphi_2(\defunc_{e,f}),
 					\quad (\forall (e,f) \in E \times F)
 				\end{align}
 				が成り立ち，$\Span{\Set{\defunc_{e,f}}{(e,f) \in E \times F}}=\Lambda(E \times F)$より
 				$F$の単射性を得る．いま，
 				\begin{align}
-					\sum_{(e,f) \in E \times F} \psi(e,f) g(e,f)
-					\coloneqq \sum_{\substack{(e,f) \in E \times F \\ \psi(e,f) \neq 0}} \psi(e,f) g(e,f),
-					\quad (\psi \in \Lambda(E \times F),\ g \in \Map{E \times F}{V})
+					\sum_{(e,f) \in E \times F} a(e,f) g(e,f)
+					\coloneqq \sum_{\substack{(e,f) \in E \times F \\ a(e,f) \neq 0}} a(e,f) g(e,f),
+					\quad (a \in \Lambda(E \times F),\ g \in \Map{E \times F}{V})
 				\end{align}
 				により総和記号を定め，
 				$g \in \Map{E \times F}{V}$に対して
 				\begin{align}
-					f(\psi) \coloneqq \sum_{(e,f) \in E \times F} \psi(e,f) g(e,f),
-					\quad (\psi \in \Hom{\Lambda(E \times F)}{V})
+					\varphi(a) \coloneqq \sum_{(e,f) \in E \times F} a(e,f) g(e,f),
+					\quad (a \in \Lambda(E \times F))
 				\end{align}
-				で$f$を作れば，$f \in \Hom{\Lambda(E \times F)}{V}$が満たされ
+				で$\varphi$を作れば，$\varphi \in \Hom{\Lambda(E \times F)}{V}$が満たされ
 				$F$の全射性が従う．
 				
 			\item[第二段]
@@ -159,17 +169,11 @@
 					\quad (\forall (e,f) \in E \times F)
 				\end{align}
 				が満たされ$\Phi$の全射性が得られる．
-				
-			\item[第三段]
-				$\Phi(T_1) = \Phi(T_2)$ならば
-				$T_1$と$T_2$は$\Set{e \otimes f}{e \in E,\ f \in F}$の上で一致する．
-				定理\ref{thm:tensor_product_is_bilinear}より
-				$\Set{e \otimes f}{e \in E,\ f \in F}$は
-				$E \otimes F$を生成するから$\Phi$の単射性が従う．
 				\QED
 		\end{description}
 	\end{prf}
 	
+\section{クロスノルム}
 	$\K=\R,\C$のとき，$E$の弱位相を
 	$\sigma(E,E^*)$と書き，$E^*$の汎弱位相を$\sigma(E^*,E)$と書く．
 	また
