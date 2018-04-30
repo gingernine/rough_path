@@ -1,8 +1,9 @@
 \section{notation}
+	以下，零元のみの線型空間は考えない．
 	$E,E_i,F$を体$\K$上の線形空間とするとき，
 	$\Hom{E}{F}$で$E$から$F$への$\K$-線型写像の全体を表し，
-	特に$F = \K$のとき$E^\#$と書く．また
-	$\Ln{E_1 \times \cdots \times E_n}{F}{n}$
+	特に$F = \K$のとき$E^\#$と書く．
+	また$\Ln{E_1 \times \cdots \times E_n}{F}{n}$
 	で$E_1 \times \cdots \times E_n$から$F$への$\K$-$n$重線型写像の全体を表す．
 	
 \section{テンソル積}
@@ -95,7 +96,29 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}[普遍性]\label{thm:universality_of_tensor_product}
+		\begin{thm}[$\cdots \otimes 0 \otimes \cdots$は零ベクトル]
+			$(E_i)_{i=1}^n$を$\K$-線形空間の族とし，
+			テンソル積$\bigotimes_{i=1}^n E_i$を定める．
+			このとき，或る$i$で$e_i = 0$なら
+			$e_1 \otimes \cdots \otimes e_n = 0$が成り立つ．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$e_i = 0$のとき，$\lambda = 0$とすれば
+		\begin{align}
+			e_1 \otimes \cdots \otimes e_n
+			= \left[ \defunc_{e_1,\cdots,0,\cdots,e_n} \right]
+			= \left[ \defunc_{e_1,\cdots,\lambda e_i,\cdots,e_n} - \lambda \defunc_{e_1,\cdots,e_i,\cdots,e_n}\right]
+			= 0
+		\end{align}
+		が成立する．
+		\QED
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}[普遍性(universality of tensor products)]
+		\label{thm:universality_of_tensor_product}
 			$(E_i)_{i=1}^n$を$\K$-線形空間の族とする．このとき
 			任意の$\K$-線型空間$V$に対して，$T \in \Hom{\bigotimes_{i=1}^n E_i}{V}$ならば
 			$T \circ \otimes \in \Ln{\bigoplus_{i=1}^n E_i}{V}{n}$
@@ -116,10 +139,17 @@
 					或る$\tau \in \Hom{U_0}{V}$が$\delta = \tau \circ \iota$を満たす．
 			\end{description}
 			を満たすなら，(\refeq{eq:thm_universality_of_tensor_product})において
-			$V = U_0$とするとき$T = \Phi^{-1}(\iota)$は線形同型である．
+			$V = U_0$とするとき$T = \Phi^{-1}(\iota)$は線型同型である．
 		\end{thm}
 	\end{screen}
-	
+	後半の主張により，$(E_i)_i$のテンソル積を別の方法で導入しても，
+	商空間を用いて導入した$\bigotimes_i E_i$と線型同型に結ばれる．
+	このとき，別の方法で導入したテンソル積及び標準写像を$\bigotimes\tilde{ }_i E_i,\ \tilde{\otimes}$と表せば，
+	或る線型同型$T:\bigotimes_i E_i \longrightarrow \bigotimes\tilde{ }_i E_i$がただ一つ存在して
+	\begin{align}
+		T(e_1 \otimes \cdots \otimes e_n) = e_1 \tilde{\otimes} \cdots \tilde{\otimes} e_n 
+	\end{align}
+	を満たす．
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
@@ -193,8 +223,8 @@
 					\otimes = \tau \circ \iota = (\tau \circ T) \circ \otimes,
 					\quad \iota = T \circ \otimes = (T \circ \tau) \circ \iota
 				\end{align}
-				が成り立つ．$T \longmapsto T \circ \otimes,\ \tau \longmapsto \tau \circ \iota$
-				が一対一であるから$\tau \circ T,\ T \circ \tau$はそれぞれ恒等写像に一致し，
+				が成り立ち，$T \longmapsto T \circ \otimes,\ \tau \longmapsto \tau \circ \iota$
+				が一対一であるから$\tau \circ T,\ T \circ \tau$はそれぞれ恒等写像に一致して
 				$T^{-1} = \tau$が従う．すなわち$T$は$\bigotimes_{i=1}^n E_i$から$U_0$への
 				線型同型である．
 				\QED
@@ -204,7 +234,7 @@
 	\begin{screen}
 		\begin{dfn}[線型写像のテンソル積]
 				$(E_i)_{i=1}^n$と$(F_i)_{i=1}^n$を$\K$-線型空間の族とする．
-				$f_i:E_i \longrightarrow F_i\ (i=1,\cdots,n)$が線型写像であるとして，
+				$f_i:E_i \longrightarrow F_i\ (i=1,\cdots,n)$が線型写像であるとき，
 				\begin{align}
 					b: \bigoplus_{i=1}^n E_i \ni (e_1,\cdots,e_n)
 					\longmapsto f_1(e_1)\otimes \cdots \otimes f_n(e_n)
@@ -224,10 +254,136 @@
 	\end{screen}
 	
 	\begin{screen}
-		\begin{thm}[写像のテンソル積の多重線型性]
-			$(E_i)_{i=1}^n$と$(F_i)_{i=1}^n$を$\K$-線型空間の族とする．
-			線型写像$f_i:E_i \longrightarrow F_i\ (i=1,\cdots,n)$
-			に対し定めるテンソル積$f_1 \otimes \cdots \otimes f_n$は
-			$n$重線型である．
+		\begin{thm}[テンソル積の基底]
+			$(E_i)_{i=1}^n$を$\K$-線型空間の族とし，各々の基底を
+			$\left( u^i_{\lambda_i} \right)_{\lambda_i \in \Lambda_i}\ (i=1,\cdots,n)$
+			とする．このとき$\left( u^1_{\lambda_1} \otimes 
+			\cdots \otimes u^n_{\lambda_n} \right)_{\lambda_1,\cdots,\lambda_n}$
+			は$\bigotimes_{i=1}^n E_i$の基底となる．
 		\end{thm}
 	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				各$u^i_{\lambda_i}$の生成する一次元空間を$W^i_{\lambda_i} \coloneqq \K u^i_{\lambda_i}$と表し
+				\begin{align}
+					V_i \coloneqq \bigoplus_{\lambda_i \in \Lambda_i} W^i_{\lambda_i},
+					\quad (i=1,\cdots,n)
+				\end{align}
+				とおく．$\left( u^i_{\lambda_i} \right)_{\lambda_i \in \Lambda_i}$
+				は$E_i$の基底であるから，任意の$e_i \in E_i$に対し$v_i \in V_i$がただ一つ定まり，
+				\begin{align}
+					f_i:E_i \ni e_i \longmapsto v_i \in V_i
+				\end{align}
+				により定める線型写像$f_i$は同型写像である．
+				このとき，写像のテンソル積
+				\begin{align}
+					f_1 \otimes \cdots \otimes f_n:
+					\bigotimes_{i=1}^n E_i \longrightarrow \bigotimes_{i=1}^n V_i
+				\end{align}
+				は線型同型となる．実際，$f_i$の逆写像$f^{-1}_i$のテンソル積
+				\begin{align}
+					f^{-1}_1 \otimes \cdots \otimes f^{-1}_n:
+					\bigotimes_{i=1}^n V_i \longrightarrow \bigotimes_{i=1}^n E_i
+				\end{align}
+				によって，全ての$(e_1 \otimes\cdots\otimes e_n) \in \bigotimes_{i=1}^n E_i$及び
+				$(v_1 \otimes\cdots\otimes v_n) \in \bigotimes_{i=1}^n V_i$に対し
+				\begin{align}
+					&f^{-1}_1 \otimes \cdots \otimes f^{-1}_n \circ 
+						f_1 \otimes \cdots \otimes f_n
+						(e_1 \otimes \cdots \otimes e_n) \\
+					&\qquad = f^{-1}_1 \otimes \cdots \otimes f^{-1}_n
+						\left( f_1(e_1) \otimes \cdots \otimes f_n(e_n) \right)
+						= (e_1 \otimes \cdots \otimes e_n), \\
+					&f_1 \otimes \cdots \otimes f_n \circ 
+						f^{-1}_1 \otimes \cdots \otimes f^{-1}_n
+						(v_1 \otimes \cdots \otimes v_n) \\
+					&\qquad = f_1 \otimes \cdots \otimes f_n
+						\left( f^{-1}_1(v_1) \otimes \cdots \otimes f^{-1}_n(v_n) \right)
+						= (v_1 \otimes \cdots \otimes v_n)
+				\end{align}
+				が成立し，それぞれ$\bigotimes_{i=1}^n E_i$と$\bigotimes_{i=1}^n V_i$
+				を生成するから
+				\begin{align}
+					(f_1 \otimes \cdots \otimes f_n)^{-1}
+					= f^{-1}_1 \otimes \cdots \otimes f^{-1}_n
+				\end{align}
+				の関係を得る．
+				
+			\item[第二段]
+				$\bigotimes_{i=1}^n V_i$と$\bigoplus_{\lambda_1,\cdots,\lambda_n} 
+				W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n}$が線型同型であることを示す．先ず
+				\begin{align}
+					g:\sum_j (v^j_1 \otimes \cdots \otimes v^j_n) \longmapsto 
+					\sum_j \left( v^j_1(\lambda_1)\otimes\cdots\otimes v^j_n(\lambda_n) \right)_{\lambda_1,\cdots,\lambda_n}
+				\end{align}
+				により線型写像$g:\bigotimes_{i=1}^n V_i \longrightarrow \bigoplus_{\lambda_1,\cdots,\lambda_n} W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n}$を定める．また
+				\begin{align}
+					\iota_{\lambda_i}:W^i_{\lambda_i}
+					\longrightarrow V_i,
+					\quad (\lambda_i \in \Lambda_i,\ i=1,\cdots,n)
+				\end{align}
+				を次の標準単射として定める:
+				\begin{align}
+					\iota_{\lambda_i}(u)(\lambda)
+					= \begin{cases}
+						u, & (\lambda = \lambda_i), \\
+						0, & (\lambda \neq \lambda_i),
+					\end{cases}
+					\quad (\lambda \in \Lambda_i,\ u \in W^i_{\lambda_i}).
+				\end{align}
+				$\iota_{\lambda_i}$は線型であるから
+				$\iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}:
+				W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n} \longrightarrow
+				\bigotimes_{i=1}^n V_i$
+				を定義出来て，
+				\begin{align}
+					h:w \longmapsto \sum_{\lambda_1,\cdots,\lambda_n} \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( w(\lambda_1,\cdots,\lambda_n) \right)
+				\end{align}
+				により線型写像$h:W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n} \longrightarrow
+				\bigotimes_{i=1}^n V_i$が定めれば$g^{-1} = h$が成り立つ．実際，
+				\begin{align}
+					g \circ h(w)
+					&= g \Biggl( \sum_{\lambda_1,\cdots,\lambda_n} \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( w(\lambda_1,\cdots,\lambda_n) \right) \Biggr) \\
+					&= \sum_{\lambda_1,\cdots,\lambda_n} g \left( \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( w(\lambda_1,\cdots,\lambda_n) \right) \right) \\
+					&= w
+				\end{align}
+				が任意の$w \in \bigoplus_{\lambda_1,\cdots,\lambda_n} 
+				W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n}$に対して成立し，
+				かつ任意の$v_1 \otimes \cdots \otimes v_n$に対し
+				\begin{align}
+					h \circ g (v_1 \otimes \cdots \otimes v_n)
+					&= \sum_{\lambda_1,\cdots,\lambda_n} \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( v_1(\lambda_1)\otimes \cdots \otimes v_n(\lambda_n) \right) \\
+					&= \sum_{\lambda_1,\cdots,\lambda_n}
+						\iota_{\lambda_1}(v_1(\lambda_1)) \otimes \cdots \otimes \iota_{\lambda_n}(v_n(\lambda_n)) \\
+					&= \Biggl( \sum_{\lambda_1 \in \Lambda_1} \iota_{\lambda_1}(v_1(\lambda_1)) \Biggr) \otimes \cdots \otimes \Biggl( \sum_{\lambda_n \in \Lambda_n} \iota_{\lambda_n}(v_n(\lambda_n)) \Biggr) \\
+					&= v_1 \otimes \cdots \otimes v_n
+				\end{align}
+				が成り立つから$g^{-1} = h$が従う．よって$g$は線型同型である．
+				
+			\item[第三段]
+				いま，$g \circ f_1 \otimes \cdots \otimes f_n$によって
+				$\bigotimes_{i=1}^n E_i$と$\bigoplus_{\lambda_1,\cdots,\lambda_n} 
+				W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n}$
+				は同型に対応し，
+				\begin{align}
+					w_{\lambda_1,\cdots,\lambda_n}(\nu_1,\cdots,\nu_n)
+					\coloneqq 
+					\begin{cases}
+						u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n}, & (\lambda_1,\cdots,\lambda_n) = (\nu_1,\cdots,\nu_n), \\
+						0, & (\lambda_1,\cdots,\lambda_n) \neq (\nu_1,\cdots,\nu_n)
+					\end{cases}
+				\end{align}
+				として$w_{\lambda_1,\cdots,\lambda_n}$を定めれば
+				\begin{align}
+					u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n}
+					\xmapsto{g \circ f_1 \otimes \cdots \otimes f_n}
+					w_{\lambda_1,\cdots,\lambda_n}
+				\end{align}
+				が成り立つ．$\left( w_{\lambda_1,\cdots,\lambda_n} \right)$
+				の一次独立性から$\left( u^1_{\lambda_1} \otimes 
+			\cdots \otimes u^n_{\lambda_n} \right)_{\lambda_1,\cdots,\lambda_n}$
+			の一次独立性が従う．
+		\end{description}
+	\end{prf}
