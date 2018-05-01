@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  30 APR 2018 18:49
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  2 MAY 2018 02:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -307,61 +307,136 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 \CommentStream=\write3
 
 Excluding comment 'comment')
-\c@Prop=\count109
-\c@Proof=\count110
-\c@thm=\count111
-\c@qst=\count112
-\@indexfile=\write4
-\openout4 = `tensor_crossnorm.idx'.
+(c:/w32tex/share/texmf-dist/tex/generic/xypic/xy.sty
+(c:/w32tex/share/texmf-dist/tex/generic/xypic/xy.tex Bootstrap'ing: catcodes,
+docmode, (c:/w32tex/share/texmf-dist/tex/generic/xypic/xyrecat.tex)
+(c:/w32tex/share/texmf-dist/tex/generic/xypic/xyidioms.tex)
+
+ Xy-pic version 3.8.9 <2013/10/06>
+ Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
+ Xy-pic is free software: see the User's Guide for details.
+
+Loading kernel: messages; fonts; allocations: state,
+\X@c=\dimen148
+\Y@c=\dimen149
+\U@c=\dimen150
+\D@c=\dimen151
+\L@c=\dimen152
+\R@c=\dimen153
+\Edge@c=\toks28
+\X@p=\dimen154
+\Y@p=\dimen155
+\U@p=\dimen156
+\D@p=\dimen157
+\L@p=\dimen158
+\R@p=\dimen159
+\Edge@p=\toks29
+\X@origin=\dimen160
+\Y@origin=\dimen161
+\X@xbase=\dimen162
+\Y@xbase=\dimen163
+\X@ybase=\dimen164
+\Y@ybase=\dimen165
+\X@min=\dimen166
+\Y@min=\dimen167
+\X@max=\dimen168
+\Y@max=\dimen169
+\lastobjectbox@=\box52
+\zerodotbox@=\box53
+\almostz@=\dimen170
+ direction,
+\d@X=\dimen171
+\d@Y=\dimen172
+\K@=\count109
+\KK@=\count110
+\Direction=\count111
+\K@dXdY=\dimen173
+\K@dYdX=\dimen174
+\xyread@=\read1
+\xywrite@=\write4
+\csp@=\count112
+\quotPTK@=\dimen175
+
+utility macros; pictures: \xy, positions,
+\swaptoks@@=\toks30
+\connectobjectbox@@=\box54
+ objects,
+\styletoks@=\toks31
+ decorations;
+kernel objects: directionals, circles, text; options; algorithms: directions,
+edges, connections;  Xy-pic loaded)
+(c:/w32tex/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package: xy 2013/10/06 Xy-pic version 3.8.9
+
+(c:/w32tex/share/texmf-dist/tex/generic/xypic/xymatrix.tex
+ Xy-pic option: Matrix feature v.3.14
+\Row=\count113
+\Col=\count114
+\queue@=\toks32
+\queue@@=\toks33
+\qcount@=\count115
+\qcount@@=\count116
+\matrixsize@=\count117
+ loaded)
+(c:/w32tex/share/texmf-dist/tex/generic/xypic/xyarrow.tex
+ Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded))
+\c@Prop=\count118
+\c@Proof=\count119
+\c@thm=\count120
+\c@qst=\count121
+\@indexfile=\write5
+\openout5 = `tensor_crossnorm.idx'.
 
 
 Writing index file tensor_crossnorm.idx
 (./tensor_crossnorm.aux)
 \openout1 = `tensor_crossnorm.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 127.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 127
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 128.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 128
 .
  (c:/w32tex/share/texmf-dist/tex/latex/txr/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 127.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 127
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 128.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 128
 .
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 127.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 127
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 128.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 128
 .
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 127.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 127.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 128.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 128.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
 
 (I search kanjifont definition file: . . ) (I search font definition file: . .
 . . . . . )
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 127.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 128.
 
  (c:/w32tex/share/texmf-dist/tex/latex/txr/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
@@ -380,49 +455,49 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: dvips.def on input line 99.
 )
-\Gin@req@height=\dimen148
-\Gin@req@width=\dimen149
+\Gin@req@height=\dimen176
+\Gin@req@width=\dimen177
 )
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 132.
+(Font)              scaled to size 16.60605pt on input line 133.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 132.
+(Font)              scaled to size 16.60605pt on input line 133.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 132.
+(Font)              scaled to size 11.53198pt on input line 133.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 132.
+(Font)              scaled to size 11.53198pt on input line 133.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 132.
-LaTeX Font Info:    Try loading font information for U+txsya on input line 132.
+(Font)              scaled to size 5.76599pt on input line 133.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 133.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 132.
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 133.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txmia on input line 132.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 133.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 132.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 133.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 132.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 133.
 
 (c:/w32tex/share/texmf-dist/tex/latex/jknappen/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 132.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 133.
 
 (c:/w32tex/share/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -430,35 +505,35 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 
 ]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 135.
+(Font)              scaled to size 9.60999pt on input line 136.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 135.
-LaTeX Font Info:    Try loading font information for OT1+txss on input line 135
+(Font)              scaled to size 9.60999pt on input line 136.
+LaTeX Font Info:    Try loading font information for OT1+txss on input line 136
 .
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/ot1txss.fd
 File: ot1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 135.
+(Font)              scaled to size 9.49997pt on input line 136.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 135.
+(Font)              scaled to size 23.90964pt on input line 136.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 135.
+(Font)              scaled to size 23.90964pt on input line 136.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 135.
+(Font)              scaled to size 23.90964pt on input line 136.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 135.
+(Font)              scaled to size 23.90964pt on input line 136.
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 135.
+(Font)              scaled to size 23.63593pt on input line 136.
  (./tensor_crossnorm.toc
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 1.
 )
-\tf@toc=\write5
-\openout5 = `tensor_crossnorm.toc'.
+\tf@toc=\write6
+\openout6 = `tensor_crossnorm.toc'.
 
 
 (./texfiles/tensor_product_multiple.tex
@@ -474,15 +549,18 @@ LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 (Font)              scaled to size 13.67995pt on input line 1.
  [1
 
-] [2] [3] [4] [5]) [6]
-(./tensor_crossnorm.aux) ) 
+] <xymatrix 3x2 200> <xymatrix 3x2
+200> [2] [3] [4] [5] [6] <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2
+158> <xymatrix 3x2 158> [7] <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix
+3x2 158> <xymatrix 3x2 158> [8]) (./texfiles/tensor_product_hilbert.tex)
+(./texfiles/crossnorm.tex) [9] (./tensor_crossnorm.aux) ) 
 Here is how much of TeX's memory you used:
- 3320 strings out of 493621
- 43500 string characters out of 6150087
- 116763 words of memory out of 5000000
- 6836 multiletter control sequences out of 15000+600000
- 35961 words of font info for 132 fonts, out of 8000000 for 9000
+ 4536 strings out of 493621
+ 56825 string characters out of 6150087
+ 152711 words of memory out of 5000000
+ 8020 multiletter control sequences out of 15000+600000
+ 36834 words of font info for 137 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 27i,19n,26p,262b,453s stack positions out of 5000i,500n,10000p,500000b,80000s
+ 27i,24n,26p,262b,712s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on tensor_crossnorm.dvi (7 pages, 38980 bytes).
+Output written on tensor_crossnorm.dvi (10 pages, 55232 bytes).

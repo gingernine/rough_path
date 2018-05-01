@@ -131,6 +131,12 @@
 					\label{eq:thm_universality_of_tensor_product}
 				\end{array}
 			\end{align}
+			\begin{align}
+				\xymatrix{
+					&\bigoplus_{i=1}^n E_i \ar[d]_-\otimes \ar[rd]^-{\Phi(T)} & \\
+					&\bigotimes_{i=1}^n E_i \ar[r]^-T & V \ar@{}[lu]<2ex>|\circlearrowright
+				}
+			\end{align}
 			また$\K$-線型空間$U_0$と多重線型写像$\iota:\bigoplus_{i=1}^n E_i \longrightarrow U_0$が，
 			任意の$\K$-線型空間$V$に対し
 			\begin{description}
@@ -149,7 +155,16 @@
 	\begin{align}
 		T(e_1 \otimes \cdots \otimes e_n) = e_1 \tilde{\otimes} \cdots \tilde{\otimes} e_n 
 	\end{align}
-	を満たす．
+	を満たす．特に任意の並べ替え$\varphi:\{1,\cdots,n\} \longrightarrow \{1,\cdots,n\}$に対し
+	\begin{align}
+		\begin{array}{ccc}
+		\bigotimes_{i=1}^{n} E_i & \cong & \bigotimes_{i=1}^{n} E_{\varphi(i)} \\
+		\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
+		e_1 \otimes \cdots \otimes e_n & \longleftrightarrow & e_{\varphi(1)} \otimes \cdots \otimes e_{\varphi(n)}
+		\end{array}
+	\end{align}
+	が成立する．
+	
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
@@ -232,6 +247,41 @@
 	\end{prf}
 	
 	\begin{screen}
+		\begin{thm}[スカラーとのテンソル積]
+			$E$を$\K$-線型空間とするとき，
+			$\K \otimes E$と$E$は
+			$f(\alpha \otimes e) = \alpha e$を満たす
+			線型写像$f:\K \otimes E \longmapsto E$により
+			同型となる．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		スカラ倍$\iota:(\alpha, e) \longmapsto \alpha e$は双線型である．
+		また定理\ref{thm:universality_of_tensor_product}の
+		$(\otimes)_1,(\otimes)_2$について，
+		\begin{align}
+			E = \Span{\Set{\alpha e}{\alpha \in \K,\ e \in E}}
+		\end{align}
+		より$(\otimes)_1$が得られ，かつ
+		任意の双線型写像$\delta:\K \times E \longrightarrow V$に対し
+		\begin{align}
+			f(e) \coloneqq \delta(1,e),
+			\quad (\forall e \in E)
+		\end{align}
+		で線型写像$f:E \longrightarrow V$を定めれば，
+		\begin{align}
+			f \circ \iota (\alpha,e) 
+			= f(\alpha e) 
+			= \delta(1,\alpha e)
+			= \alpha \delta(1,e)
+			= \delta (\alpha ,e)
+		\end{align}
+		が成り立つから$(\otimes)_2$が満たされる．
+		\QED
+	\end{prf}
+	
+	\begin{screen}
 		\begin{dfn}[線型写像のテンソル積]
 				$(E_i)_{i=1}^n$と$(F_i)_{i=1}^n$を$\K$-線型空間の族とする．
 				$f_i:E_i \longrightarrow F_i\ (i=1,\cdots,n)$が線型写像であるとき，
@@ -255,9 +305,9 @@
 	
 	\begin{screen}
 		\begin{thm}[テンソル積の基底]
-			$(E_i)_{i=1}^n$を$\K$-線型空間の族とし，各々の基底を
-			$\left( u^i_{\lambda_i} \right)_{\lambda_i \in \Lambda_i}\ (i=1,\cdots,n)$
-			とする．このとき$\left( u^1_{\lambda_1} \otimes 
+			$(E_i)_{i=1}^n$を$\K$-線型空間の族とし，$E_i$の基底を
+			$\left( u^i_{\lambda_i} \right)_{\lambda_i \in \Lambda_i}$
+			とする$(i=1,\cdots,n)$．このとき$\left( u^1_{\lambda_1} \otimes 
 			\cdots \otimes u^n_{\lambda_n} \right)_{\lambda_1,\cdots,\lambda_n}$
 			は$\bigotimes_{i=1}^n E_i$の基底となる．
 		\end{thm}
@@ -385,5 +435,130 @@
 				の一次独立性から$\left( u^1_{\lambda_1} \otimes 
 			\cdots \otimes u^n_{\lambda_n} \right)_{\lambda_1,\cdots,\lambda_n}$
 			の一次独立性が従う．
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}[結合律]
+		\label{thm:associativity_of_tensor_products}
+			$(E_i)_{i=1}^n$を$\K$-線型空間の族とする．
+			任意の$k=1,\cdots,n-1$に対し，
+			\begin{align}
+				\bigotimes_{i=1}^n E_i
+				=\biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr)
+			\end{align}
+			が成立する．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				$n$重線型写像$f:\bigoplus_{i=1}^n E_i \longrightarrow \biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr)$を
+				\begin{align}
+					f(e_1,\cdots,e_n) = (e_1 \otimes \cdots \otimes e_k) \otimes 
+					(e_{k+1} \otimes \cdots \otimes e_n),
+					\quad (\forall (e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i)
+				\end{align}
+				により定めれば，定理\ref{thm:universality_of_tensor_product}より
+				\begin{align}
+					F:(e_1 \otimes \cdots \otimes e_n)
+					\longmapsto (e_1 \otimes \cdots \otimes e_k) \otimes 
+					(e_{k+1} \otimes \cdots \otimes e_n)
+				\end{align}
+				を満たす線型写像$F:\bigotimes_{i=1}^n E_i \longrightarrow \biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr)$
+				が存在する:
+				\begin{align}
+					\xymatrix{
+						&\bigoplus_{i=1}^n E_i \ar[d]_-\otimes \ar[rd]^-f & \\
+						&\bigotimes_{i=1}^n E_i \ar[r]^-F & \biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr)
+					}
+				\end{align}
+				以降は$F$の逆写像を構成し$F$が全単射であることを示す．
+				
+			\item[第二段]
+				$u_{k+1} \in E_{k+1},\cdots,u_n \in E_n$を固定し
+				\begin{align}
+					\Phi_{u_{k+1},\cdots,u_n}(e_1,\cdots,e_n)
+					\coloneqq e_1 \otimes \cdots e_k \otimes u_{k+1} \otimes \cdots \otimes u_n
+				\end{align}
+				によって$n$重線型$\Phi_{u_{k+1},\cdots,u_n}:\bigoplus_{i=1}^k E_i \longrightarrow 
+				\bigotimes_{i=1}^n E_i$を定めれば，定理\ref{thm:universality_of_tensor_product}より
+				\begin{align}
+					G_{u_{k+1},\cdots,u_n}(e_1 \otimes \cdots \otimes e_k)
+					= e_1 \otimes \cdots e_k \otimes u_{k+1} \otimes \cdots \otimes u_n
+				\end{align}
+				を満たす線型写像$G_{u_{k+1},\cdots,u_n}:\bigotimes_{i=1}^k E_i \longrightarrow 
+				\bigotimes_{i=1}^n E_i$が存在する．
+				\begin{align}
+					\xymatrix{
+						&\bigoplus_{i=1}^k E_i \ar[d]_-\otimes \ar[rd]^-{\Phi_{u_{k+1},\cdots,u_n}} & \\
+						&\bigotimes_{i=1}^k E_i \ar[r]^-{G_{u_{k+1},\cdots,u_n}} & \bigotimes_{i=1}^n E_i
+					}
+				\end{align}
+			
+			\item[第三段]
+				任意の$v \in \bigotimes_{i=1}^k E_i$に対して
+				\begin{align}
+					\Psi_v: \bigoplus_{i=k+1}^n E_i
+					\ni (u_{k+1},\cdots,u_n)
+					\longmapsto G_{u_{k+1},\cdots,u_n}(v)
+				\end{align}
+				を定めれば，$\Psi_v$は$n$重線型であるから，定理\ref{thm:universality_of_tensor_product}より
+				\begin{align}
+					H_v(u_{k+1} \otimes \cdots \otimes u_n)
+					= \Psi_v(u_{k+1},\cdots,u_n)
+				\end{align}
+				を満たす線型写像$H_v:\bigotimes_{i=k+1}^n E_i \longrightarrow 
+				\bigotimes_{i=1}^n E_i$が存在する．
+				\begin{align}
+					\xymatrix{
+						&\bigoplus_{i=k+1}^n E_i \ar[d]_-\otimes \ar[rd]^-{\Psi_v} & \\
+						&\bigotimes_{i=k+1}^n E_i \ar[r]^-{H_v} & \bigotimes_{i=1}^n E_i
+					}
+				\end{align}
+				いま，$v \longmapsto \Psi_v$は線型であり，かつ
+				$\Psi_v$と$H_v$は線型同型で結ばれているから
+				$v \longmapsto H_v$の線型性が従う．
+				
+			\item[第四段]
+				$H_v$の線型性と$v \longmapsto H_v$の線型性より
+				\begin{align}
+					\Gamma:\biggl( \bigotimes_{i=1}^k E_i \biggr) \times \biggl( \bigotimes_{i=k+1}^n E_i \biggr) \ni (v,w) \longmapsto H_v(w)
+				\end{align}
+				により定める$\Gamma$は
+				\begin{align}
+					\Gamma(e_1 \otimes \cdots \otimes e_k, e_{k+1} \otimes \cdots \otimes e_n) 
+					&= H_{e_1 \otimes \cdots \otimes e_k}\left(e_{k+1} \otimes \cdots \otimes e_n) \right) \\
+					&= \Psi_{e_1 \otimes \cdots \otimes e_k}\left(e_{k+1},\cdots,e_n) \right) \\
+					&= G_{e_{k+1},\cdots,e_n}\left(e_1 \otimes \cdots \otimes e_k) \right) \\
+					&= \Phi_{e_{k+1},\cdots,e_n}\left(e_1, \cdots, e_k) \right) \\
+					&= e_1 \otimes \cdots \otimes e_n
+					\label{eq:thm_associativity_of_tensor_products}
+				\end{align}
+				を満たす双線型であり，定理\ref{thm:universality_of_tensor_product}より
+				\begin{align}
+					\xymatrix{
+						&\biggl( \bigotimes_{i=1}^k E_i \biggr) \times \biggl( \bigotimes_{i=k+1}^n E_i \biggr) \ar[d]_-\otimes \ar[rd]^-{\Gamma} & \\
+						&\biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr) \ar[r]^-{G} & \bigotimes_{i=1}^n E_i
+					}
+				\end{align}
+				を可換にする線型写像$G$が存在する．この$G$は$F$の逆写像である．実際，
+				(\refeq{eq:thm_associativity_of_tensor_products})より
+				\begin{align}
+					F \circ G \left( (e_1 \otimes \cdots \otimes e_k) \otimes (e_{k+1} \otimes \cdots \otimes e_n) \right)
+					&= F \left(\Gamma(e_1 \otimes \cdots \otimes e_k, e_{k+1} \otimes \cdots \otimes e_n) \right) \\
+					&= F (e_1 \otimes \cdots \otimes e_n) \\
+					&= (e_1 \otimes \cdots \otimes e_k) \otimes (e_{k+1} \otimes \cdots \otimes e_n)
+				\end{align}
+				かつ
+				\begin{align}
+					G \circ F \left( e_1 \otimes \cdots \otimes e_n \right)
+					&= G \left( (e_1 \otimes \cdots \otimes e_k) \otimes (e_{k+1} \otimes \cdots \otimes e_n) \right) \\
+					&= \Gamma\left(e_1 \otimes \cdots \otimes e_k,e_{k+1} \otimes \cdots \otimes e_n \right) \\
+					&= e_1 \otimes \cdots \otimes e_n
+				\end{align}
+				が得られ$F^{-1} = G$が従う．
+				\QED
 		\end{description}
 	\end{prf}
