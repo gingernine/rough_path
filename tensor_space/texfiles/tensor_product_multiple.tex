@@ -1,3 +1,30 @@
+\section{一時的}
+	\begin{screen}
+		\begin{thm}[可測関数列の各点極限の可測性]
+			$E$を位相空間とし，$C(E,\R)$により連続写像$E \longrightarrow \R$の全体を表す．
+			\begin{align}
+				\borel{E} = \sgmalg{\bigcup_{g \in C(E,\R)} \Set{g^{-1}(B)}{B \in \borel{\R}}}
+			\end{align}
+			が満たされている場合，可測空間$(X,\mathcal{M})$上の$E$-値可測関数列
+			$(f_n)_{n=1}^{\infty}$が各点で収束しているなら，
+			$f \coloneqq \lim_{n \to \infty} f_n$で定める$f$は
+			$\mathcal{M}/\borel{E}$-可測である．
+		\end{thm}
+	\end{screen}
+	\begin{prf}
+		任意の連続写像$g:E \longrightarrow \R$に対し
+		\begin{align}
+			\lim_{n \to \infty} g \left( f_n (x) \right)
+			= g \left( f (x) \right)
+		\end{align}
+		が成立するから$g \circ f$は可測$\mathcal{M}/\borel{\R}$であり，
+		\begin{align}
+			\bigcup_{g \in C(E,\R)} \Set{g^{-1}(B)}{B \in \borel{\R}}
+			\subset \Set{A \in \borel{E}}{f^{-1}(A) \in \mathcal{M}}
+		\end{align}
+		より$f$の$\mathcal{M}/\borel{E}$-可測性が出る．
+	\end{prf}
+
 \section{notation}
 	以下，零元のみの線型空間は考えない．
 	$E,E_i,F$を体$\K$上の線形空間とするとき，
