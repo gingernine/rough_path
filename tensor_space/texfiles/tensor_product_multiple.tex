@@ -1,12 +1,13 @@
 \section{一時的}
 	\begin{screen}
 		\begin{thm}[可測関数列の各点極限の可測性]
-			$E$を位相空間とし，$C(E,\R)$により連続写像$E \longrightarrow \R$の全体を表す．
+			$(X,\mathcal{M})$を可測空間，$E$を位相空間とし，
+			$C(E,\R)$により連続写像$E \longrightarrow \R$の全体を表す．このとき
 			\begin{align}
 				\borel{E} = \sgmalg{\bigcup_{g \in C(E,\R)} \Set{g^{-1}(B)}{B \in \borel{\R}}}
 			\end{align}
-			が満たされている場合，可測空間$(X,\mathcal{M})$上の$E$-値可測関数列
-			$(f_n)_{n=1}^{\infty}$が各点で収束しているなら，
+			が満たされているなら，各点収束する$\mathcal{M}/\borel{E}$-可測関数列
+			$(f_n)_{n=1}^{\infty}$に対し
 			$f \coloneqq \lim_{n \to \infty} f_n$で定める$f$は
 			$\mathcal{M}/\borel{E}$-可測である．
 		\end{thm}
