@@ -222,27 +222,28 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 
 \begin{screen}
 	\begin{dfn}[$p$-variation]
-		$[0,T]$上の$\R^d$値関数$x$に対し，$p$-variationを次で定める:
+		$(V,\Norm{\cdot}{})$をBanach空間とし，
+		$[0,T]$上の$V$値関数$x$と$[s,t] \subset [0,T]$に対して$p$-variationを次で定める:
 		\begin{align}
 			\Norm{x}{p,[s,t]}
 			\coloneqq \left\{ \sup{D \in \delta[s,t]}{\sum_{D} 
-				\left| x_{t_i} - x_{t_{i-1}} \right|^p }\right\}^{1/p}.
+				\Norm{x_{t_i} - x_{t_{i-1}}}{}^p }\right\}^{1/p}.
 		\end{align}
 		特に，$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と表記する．
-		また$p \geq 1$として，線形空間$B_{p,T}(\R^d)$を
+		また$p \geq 1$として，線形空間$B_{p,T}(V)$を
 		\begin{align}
-			B_{p,T}(\R^d)
-			\coloneqq \Set{x:[0,T] \longrightarrow \R^d}{x_0=0,\ x:\mbox{continuous},\ \Norm{x}{p} < \infty}
+			B_{p,T}(V)
+			\coloneqq \Set{x:[0,T] \longrightarrow V}{x_0=0,\ x:\mbox{continuous},\ \Norm{x}{p} < \infty}
 		\end{align}
 		により定める．
 	\end{dfn}
 \end{screen}
 
-次の結果によれば，$0 < p < 1$に対し$B_{p,T}(\R^d)$を定めても
+次の結果によれば，$0 < p < 1$に対し$B_{p,T}(V)$を定めても
 $0$の定数関数のみの空間でしかない．
 \begin{screen}
 	\begin{thm}[$0 < p < 1$に対して有界$p$-variationなら定数]
-		$x:[0,T] \longrightarrow \R^d$を連続関数とする．
+		$x:[0,T] \longrightarrow V$を連続関数とする．
 		このとき，$p \in (0, 1)$に対し$\Norm{x}{p} < \infty$が成り立つなら$x$は定数関数である．
 	\end{thm}
 \end{screen}
@@ -250,10 +251,10 @@ $0$の定数関数のみの空間でしかない．
 \begin{prf}
 	$t \in [0,T]$を任意に取り固定する．このとき全ての$D \in \delta[0,t]$に対して，
 	\begin{align}
-		|x_t - x_0| \leq \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|
-		&\leq \max{D}{\left| x_{t_i} - x_{t_{i-1}} \right|^{1-p}} 
-			\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \\
-		&\leq \max{D}{\left| x_{t_i} - x_{t_{i-1}} \right|^{1-p}} \Norm{x}{p}
+		\Norm{x_t - x_0}{} \leq \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}
+		&\leq \max{D}{\Norm{x_{t_i} - x_{t_{i-1}}}{}^{1-p}} 
+			\sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \\
+		&\leq \max{D}{\Norm{x_{t_i} - x_{t_{i-1}}}{}^{1-p}} \Norm{x}{p}
 	\end{align}
 	が成り立ち，$x$の一様連続性から右辺は$|D| \longrightarrow 0$で$0$に収束し，
 	$x_t = x_0$が従う．
@@ -262,18 +263,18 @@ $0$の定数関数のみの空間でしかない．
 
 \begin{screen}
 	\begin{thm}
-		$1 \leq p \leq q$に対し$B_{p,T}(\R^d) \subset B_{q,T}(\R^d)$
+		$1 \leq p \leq q$に対し$B_{p,T}(V) \subset B_{q,T}(V)$
 		が成立する．
 	\end{thm}
 \end{screen}
 
 \begin{prf}
-	任意の$x \in B_{p,T}(\R^d)$と$D \in \delta[0,T]$に対し
+	任意の$x \in B_{p,T}(V)$と$D \in \delta[0,T]$に対し
 	\begin{align}
-		\sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^q
-		&\leq \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \left| x_{t_i} - x_{t_{i-1}} \right|^{q-p} \\
-		&\leq 2^{q-p}\sup{t \in [0,T]}{\left| x_t \right|^{q-p}} \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \\
-		&\leq 2^{q-p}\sup{t \in [0,T]}{\left| x_t \right|^{q-p}} \Norm{x}{p}^p
+		\sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^q
+		&\leq \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \Norm{x_{t_i} - x_{t_{i-1}}}{}^{q-p} \\
+		&\leq 2^{q-p}\sup{t \in [0,T]}{\Norm{x_t}{}^{q-p}} \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \\
+		&\leq 2^{q-p}\sup{t \in [0,T]}{\Norm{x_t}{}^{q-p}} \Norm{x}{p}^p
 	\end{align}
 	が成立する．
 	\QED
@@ -281,39 +282,39 @@ $0$の定数関数のみの空間でしかない．
 
 $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta[s,t]$に対し
 \begin{align}
-	\left\{ \sum_D \left| (x_{t_i} + y_{t_i}) - (x_{t_{i-1}} + y_{t_{i-1}}) \right|^p \right\}^{1/p}
-	&\leq \left\{ \sum_D \left| x_{t_i} - x_{t_{i-1}} \right|^p \right\}^{1/p}
-		+ \left\{ \sum_D \left| y_{t_i} - y_{t_{i-1}} \right|^p \right\}^{1/p} \\
+	\left\{ \sum_D \Norm{(x_{t_i} + y_{t_i}) - (x_{t_{i-1}} + y_{t_{i-1}})}{}^p \right\}^{1/p}
+	&\leq \left\{ \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \right\}^{1/p}
+		+ \left\{ \sum_D \Norm{y_{t_i} - y_{t_{i-1}}}{}^p \right\}^{1/p} \\
 	&\leq \Norm{x}{p,[s,t]} + \Norm{y}{p,[s,t]}
 \end{align}
 が成り立ち$\Norm{x + y}{p,[s,t]} \leq \Norm{x}{p,[s,t]} + \Norm{y}{p,[s,t]}$を得る．
 
 \begin{screen}
 	\begin{thm}\label{thm:B_p_T_Banach_space}
-		$B_{p,T}(\R^d)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
+		$B_{p,T}(V)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
 	\end{thm}
 \end{screen}
 
 \begin{prf}完備性を示す．
 	\begin{description}
-		\item[第一段] $(x^n)_{n=1}^{\infty} \subset B_{p,T}(\R^d)$をCauchy列とすれば，
+		\item[第一段] $(x^n)_{n=1}^{\infty} \subset B_{p,T}(V)$をCauchy列とすれば，
 			任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
 			\begin{align}
 				\Norm{x^n - x^m}{p}
 				= \left\{ \sup{D \in \delta[0,T]}{\sum_{D} 
-				\left| \left( x^n_{t_i} - x^m_{t_i} \right) 
-				- \left(x^n_{t_{i-1}} - x^m_{t_{i-1}} \right) \right|^p }\right\}^{1/p} < \epsilon,
+				\Norm{\left( x^n_{t_i} - x^m_{t_i} \right) 
+				- \left(x^n_{t_{i-1}} - x^m_{t_{i-1}} \right)}{}^p }\right\}^{1/p} < \epsilon,
 				\quad (n,m > n_\epsilon)
 			\end{align}
 			を満たす．いま，任意の$t \in [0,T]$に対して$[0,T]$の分割$D = \{0 \leq t \leq T\}$
 			を考えれば
 			\begin{align}
-				|x^n_t - x^m_t| < \epsilon,
+				\Norm{x^n_t - x^m_t}{} < \epsilon,
 				\quad (n,m > n_\epsilon)
 			\end{align}
-			が得られ，実数の完備性より或る$x_t \in \R^d$が存在して
+			が得られ，$V$の完備性より或る$x_t \in \R^d$が存在して
 			\begin{align}
-				|x^n_t - x_t| < \epsilon
+				\Norm{x^n_t - x_t}{} < \epsilon
 				\quad (n > n_\epsilon)
 			\end{align}
 			を満たす．この収束は$t$に関して一様であるから，$t \longmapsto x_t$は0出発かつ連続である．
@@ -321,13 +322,13 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 		\item[第二段] $\Norm{x^n - x}{p} \longrightarrow 0\ (n \longrightarrow \infty)$を示す．
 			前段によれば，任意の$D \in \delta[0,T]$に対し
 			\begin{align}
-				\sum_D \left| (x^m_{t_i} - x^n_{t_i}) - (x^m_{t_{i-1}} - x^n_{t_{i-1}}) \right|^p
+				\sum_D \Norm{(x^m_{t_i} - x^n_{t_i}) - (x^m_{t_{i-1}} - x^n_{t_{i-1}})}{}^p
 				< \epsilon^p,
 				\quad (n,m > n_\epsilon)
 			\end{align}
 			が成り立っている．$D$はせいぜい有限個の分割であるから，$m \longrightarrow \infty$として
 			\begin{align}
-				\sum_D \left| (x_{t_i} - x^n_{t_i}) - (x_{t_{i-1}} - x^n_{t_{i-1}}) \right|^p
+				\sum_D \Norm{(x_{t_i} - x^n_{t_i}) - (x_{t_{i-1}} - x^n_{t_{i-1}})}{}^p
 				< \epsilon^p,
 				\quad (n > n_\epsilon)
 			\end{align}

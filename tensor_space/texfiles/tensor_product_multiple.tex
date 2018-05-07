@@ -125,6 +125,7 @@
 	
 	\begin{screen}
 		\begin{thm}[$\cdots \otimes 0 \otimes \cdots$は零ベクトル]
+		\label{thm:when_tensor_product_zero}
 			$(E_i)_{i=1}^n$を$\K$-線形空間の族とし，
 			テンソル積$\bigotimes_{i=1}^n E_i$を定める．
 			このとき，或る$i$で$e_i = 0$なら
@@ -330,6 +331,25 @@
 				が成り立つ．
 		\end{dfn}
 	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[零写像のテンソル積は零写像]
+		\label{thm:tensor_product_contains_zero_mapping_is_zero}
+			$\K$-線型空間の族$(E_i)_{i=1}^n$と$(F_i)_{i=1}^n$と
+			線型写像$f_i:E_i \longrightarrow F_i\ (i=1,\cdots,n)$について，
+			或る$f_i$が零写像なら
+			$f_1 \otimes \cdots \otimes f_n = 0$となる．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$f_i = 0$とすると，定理\ref{thm:when_tensor_product_zero}より
+		$f_1 \otimes \cdots \otimes f_n$は
+		$\Set{e_1 \otimes \cdots \otimes e_n}{e_i \in E_i}$上で0となる．
+		この空間は$\bigotimes_{i=1}^{n} E_i$を生成するから
+		$f_1 \otimes \cdots \otimes f_n = 0$が従う．
+		\QED
+	\end{prf}
 	
 	\begin{screen}
 		\begin{thm}[テンソル積の基底]

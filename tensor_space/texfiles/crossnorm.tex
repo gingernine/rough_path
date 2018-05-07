@@ -1,1 +1,77 @@
 \section{クロスノルム}
+	\begin{screen}
+		\begin{dfn}[クロスノルム]
+			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$において
+			\begin{align}
+				&\alpha(x \otimes y) \leq \Norm{x}{X} \Norm{y}{Y}, && (x \otimes y \in X \otimes Y), \\
+				&\Norm{x^* \otimes y^*}{(X \otimes Y, \alpha)^*} \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*},
+				&& (x^* \in X^*, y^* \in Y^*)
+			\end{align}
+			を満たすようなノルム$\alpha:X \otimes Y \longrightarrow \R$をクロスノルム(cross norm)と呼ぶ．
+			$(X \otimes Y, \alpha)$の完備化を$X \otimes_{\alpha} Y$と書く．
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}
+			$X,Y$を$\K$-Banach空間とする．クロスノルム$\alpha:X \otimes Y \longrightarrow \R$に対し次が成り立つ:
+		\end{thm}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{dfn}[インジェクティブノルム]
+			$\K$-Banach空間$X,Y$に対し
+			\begin{align}
+				\epsilon(v) \coloneqq
+				\sup{\Norm{x^*}{X^*}\leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (v) \right|},
+				\quad (v \in X \otimes Y)
+			\end{align}
+			により$\epsilon$を定めれば，これは$X \otimes Y$においてノルムとなる．
+			この$\epsilon$をインジェクティブノルム(injective norm)と呼ぶ．
+			また$(X \otimes Y, \epsilon)$の完備化を$X \otimes_{\epsilon} Y$と書く．
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[インジェクティブノルムは最小のクロスノルム]
+			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$において，
+			インジェクティブノルムは最小のクロスノルムである．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		始めに$\epsilon$がクロスノルムであることを示す．
+		先ずHahn-Banachの定理より
+		\begin{align}
+			\epsilon(x \otimes y) 
+			&= \sup{\Norm{x^*}{X^*}\leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (x \otimes y) \right|} \\
+			&= \sup{\Norm{x^*}{X^*} \leq 1}{\left| x^*(x) \right|}
+			\sup{\Norm{y^*}{Y^*} \leq 1}{\left| y^*(y) \right|} \\
+			&= \Norm{x}{X} \Norm{y}{Y},
+			\quad (\forall (x,y) \in X \times Y)
+		\end{align}
+		が成り立つ．また0でない$x^* \in X^*,\ y^* \in Y^*$に対しては
+		\begin{align}
+			\left| x^* \otimes y^* (v) \right|
+			\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \left( \frac{x^*}{\Norm{x^*}{X^*}} \otimes \frac{y^*}{\Norm{y^*}{Y^*}} \right) (v)
+			\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \epsilon(v)
+		\end{align}
+		が成立し，$x^*=0$或は$y^*=0$のときは
+		定理\ref{thm:tensor_product_contains_zero_mapping_is_zero}より
+		$x^* \otimes y^* = 0$が満たされ，
+		\begin{align}
+			\Norm{x^* \otimes y^*}{(X \otimes Y,\epsilon)} \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*}
+		\end{align}
+		を得る．いま，$\alpha$を任意のクロスノルムとすれば
+		\begin{align}
+			\left| x^* \otimes y^* (v) \right| \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \alpha(v),
+			\quad (\forall v \in X \otimes Y)
+		\end{align}
+		が成り立つから，特に$\Norm{x^*}{X^*} \leq 1,\ \Norm{y^*}{Y^*} \leq 1$のsupを取れば
+		\begin{align}
+			\epsilon(v) \leq \alpha(v),
+			\quad (\forall v \in X \otimes Y)
+		\end{align}
+		が従い$\epsilon$の最小性が出る．
+		\QED
+	\end{prf}

@@ -1,4 +1,59 @@
 \section{The notion of rough path}
+	連続かつ有界変動なパス$x:[0,T] \longrightarrow V$に対して次の積分
+	\begin{align}
+		\int_s^t X^1_{s,u} \otimes d x_u
+	\end{align}
+	を定めたい．ただし$X^1_{s,t} = x_t - x_s\ ((s,t) \in \Delta_T)$である．
+	いま，細分$D=\{s=u_0 < \cdots <u_n= t\},D'=\{s=v_0 < \cdots <v_m= t\} \in \delta[s,t]$
+	に対して，共通細分を$D''=\{s=w_0 < w_1 \cdots \leq t\}$と表し
+	\begin{align}
+		\tilde{X}^1_{s,w_k} &\coloneqq X^1_{s,u_i},
+		\quad (u_i \leq w_k \leq u_{i+1}), \\
+		\hat{X}^1_{s,w_k} &\coloneqq X^1_{s,v_j},
+		\quad (v_j \leq w_k \leq v_{j+1})
+	\end{align}
+	により$\tilde{X}^1,\hat{X}^1$を定める．このとき
+	\begin{align}
+		&\Norm{ \sum_D X^1_{s,u_{i-1}} \otimes X^1_{u_{i-1},u_i} - 
+			\sum_{D'} X^1_{s,v_{j-1}} \otimes X^1_{v_{j-1},v_j}}{V^{\otimes 2}} \\
+		&\qquad= \Norm{ \sum_D X^1_{s,u_{i-1}} \otimes X^1_{u_{i-1},u_i} - 
+			\sum_{D''} X^1_{s,w_{k-1}} \otimes X^1_{w_{k-1},w_k}}{V^{\otimes 2}} \\
+			&\quad\qquad + \Norm{ \sum_{D'} X^1_{s,v_{j-1}} \otimes X^1_{v_{j-1},v_j} - 
+			\sum_{D''} X^1_{s,w_{k-1}} \otimes X^1_{w_{k-1},w_k}}{V^{\otimes 2}} \\
+		&\qquad= \Norm{ \sum_{D''} \tilde{X}^1_{s,w_{k-1}} \otimes X^1_{w_{k-1},w_k} - 
+			\sum_{D''} X^1_{s,w_{k-1}} \otimes X^1_{w_{k-1},w_k}}{V^{\otimes 2}} \\
+			&\quad\qquad + \Norm{ \sum_{D''} \hat{X}^1_{s,w_{k-1}} \otimes X^1_{w_{k-1},w_k} - 
+			\sum_{D''} X^1_{s,w_{k-1}} \otimes X^1_{w_{k-1},w_k}}{V^{\otimes 2}} \\
+		&\qquad= \Norm{ \sum_{D''} \left(\tilde{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}} \right)
+		 	\otimes X^1_{w_{k-1},w_k}}{V^{\otimes 2}} \\
+			&\quad\qquad + \Norm{ \sum_{D''} \left( \hat{X}^1_{s,w_{k-1}} - X^1_{s,w_{k-1}} \right)
+			 \otimes X^1_{w_{k-1},w_k}}{V^{\otimes 2}} \\
+		&\qquad \leq \sum_{D''} \Norm{\tilde{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{} \Norm{X^1_{w_{k-1},w_k}}{}
+			+ \sum_{D''} \Norm{\hat{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{} \Norm{X^1_{w_{k-1},w_k}}{} \\
+		&\qquad \leq \max{k}{\Norm{\tilde{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{}} 
+			\Norm{X^1}{1,[s,t]} + \max{k}{\Norm{\hat{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{}} 
+			\Norm{X^1}{1,[s,t]}
+	\end{align}
+	が成立する．いま，$[s,t] \ni u \longmapsto X^1_{s,u}$は一様連続であるから
+	$|D|,|D'|\longrightarrow 0$として右辺は0に収束する．
+	従って$D_n \in \delta[s,t]$を$|D_n| \longrightarrow 0\ (n \longrightarrow \infty)$を満たす
+	細分列とすれば$\left(\sum_{D_n} X^1_{s,u_{i-1}} \otimes X^1_{u_{i-1},u_i} \right)_{n=1}^{\infty}$
+	は$V^{\otimes 2}$のCauchy列となり$\in V^{\otimes 2}$で収束する．別の細分列
+	$(D_m)_{m=1}^{\infty}\ (|D_m| \longrightarrow 0)$を取っても
+	\begin{align}
+		\Norm{ \sum_{D_n} X^1_{s,u_{i-1}} \otimes X^1_{u_{i-1},u_i} - 
+			\sum_{D_m} X^1_{s,v_{j-1}} \otimes X^1_{v_{j-1},v_j}}{V^{\otimes 2}}
+		\longrightarrow 0,
+		\quad (n,m \longrightarrow \infty)
+	\end{align}
+	が成り立つから極限は細分列に依らず定まり，従って
+	$\lim_{|D| \to 0} \sum_{D} X^1_{s,u_{i-1}} \otimes X^1_{u_{i-1},u_i}$が確定する．ここで
+	\begin{align}
+		X^2_{s,t} = \int_s^t X^1_{s,u} \otimes d x_u \coloneqq 
+		\lim_{|D| \to 0} \sum_{D} X^1_{s,u_{i-1}} \otimes X^1_{u_{i-1},u_i}
+	\end{align}
+	と定める．このとき$\Delta_T \ni (s,t) \longmapsto X^2_{s,t} \in V^{\otimes 2}$は連続である．
+	
 
 $V$を$\R$-上のBanach空間とする．
 $T(V) \coloneqq $
