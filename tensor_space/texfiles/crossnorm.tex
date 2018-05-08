@@ -1,23 +1,58 @@
 \section{クロスノルム}
+	$\K = \R$または$\K=\C$と考える．
 	\begin{screen}
 		\begin{dfn}[クロスノルム]
 			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$において
 			\begin{align}
-				&\alpha(x \otimes y) \leq \Norm{x}{X} \Norm{y}{Y}, && (x \otimes y \in X \otimes Y), \\
-				&\Norm{x^* \otimes y^*}{(X \otimes Y, \alpha)^*} \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*},
+				\alpha(x \otimes y) &\leq \Norm{x}{X} \Norm{y}{Y}, && (x \otimes y \in X \otimes Y), \\
+				\sup{\substack{v \in X \otimes Y \\ v \neq 0}}{\left| x^* \otimes y^* (v) \right|} &\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*}\alpha(v),
 				&& (x^* \in X^*, y^* \in Y^*)
 			\end{align}
-			を満たすようなノルム$\alpha:X \otimes Y \longrightarrow \R$をクロスノルム(cross norm)と呼ぶ．
-			$(X \otimes Y, \alpha)$の完備化を$X \otimes_{\alpha} Y$と書く．
+			を満たすようなノルム$\alpha:X \otimes Y \longrightarrow [0,\infty)$を
+			クロスノルム(cross norm)と呼ぶ．
 		\end{dfn}
 	\end{screen}
 	
 	\begin{screen}
 		\begin{thm}
-			$X,Y$を$\K$-Banach空間とする．クロスノルム$\alpha:X \otimes Y \longrightarrow \R$に対し次が成り立つ:
+			$\K$-Banach空間のテンソル積$X \otimes Y$上のクロスノルム$\alpha$は
+			次を満たす:
+			\begin{align}
+				&\alpha(x \otimes y) = \Norm{x}{X} \Norm{y}{Y}, && (x \otimes y \in X \otimes Y), \\
+				&\Norm{x^* \otimes y^*}{(X \otimes Y, \alpha)^*} = \Norm{x^*}{X^*} \Norm{y^*}{Y^*},
+				&& (x^* \in X^*, y^* \in Y^*).
+			\end{align}
 		\end{thm}
 	\end{screen}
 	
+	\begin{prf}
+		先ず，Hahn-Banachの定理より
+		\begin{align}
+			\Norm{x}{X} \Norm{y}{Y} 
+			&= \sup{\Norm{x^*}{X^*} \leq 1}{\left| \inprod<x,x^*> \right|} 
+				\sup{\Norm{y^*}{Y^*} \leq 1}{\left| \inprod<y,y^*> \right|} \\
+			&= \sup{\Norm{x^*}{X^*} \leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (x \otimes y) \right|} \\
+			&\leq \sup{\Norm{x^*}{X^*} \leq 1,\Norm{y^*}{Y^*} \leq 1}{\Norm{x^*}{X^*} \Norm{y^*}{Y^*}}\alpha(x \otimes y) \\
+			&= \alpha(x \otimes y)
+		\end{align}
+		が成り立ち$\alpha(x \otimes y) = \Norm{x}{X} \Norm{y}{Y}$を得る．
+		また$\alpha(x \otimes y) \leq \Norm{x}{X} \Norm{y}{Y}$であるから
+		\begin{align}
+			\Norm{x^*}{X^*} \Norm{y^*}{Y^*} 
+			&= \sup{\Norm{x}{X} \leq 1}{\left| \inprod<x,x^*> \right|}
+				\sup{\Norm{y}{Y} \leq 1}{\left| \inprod<y,y^*> \right|} \\
+			&= \sup{\Norm{x}{X} \leq 1,\Norm{y}{Y} \leq 1}{\left| x^* \otimes y^* (x \otimes y) \right|} \\
+			&\leq \sup{\alpha(x \otimes y) \leq 1}{\left| x^* \otimes y^* (x \otimes y) \right|} \\
+			&\leq \sup{\alpha(v) \leq 1}{\left| x^* \otimes y^* (v) \right|} \\
+			&= \Norm{x^* \otimes y^*}{(X \otimes Y, \alpha)^*}
+		\end{align}
+		が成立し$\Norm{x^* \otimes y^*}{(X \otimes Y, \alpha)^*} = \Norm{x^*}{X^*} \Norm{y^*}{Y^*}$
+		が出る．
+		\QED
+	\end{prf}
+	
+	$(X \otimes Y, \alpha)$の完備化を$X \hat{\otimes}_{\alpha} Y$と書く．
+	以下，実際クロスノルムが存在することを示す．
 	\begin{screen}
 		\begin{dfn}[インジェクティブノルム]
 			$\K$-Banach空間$X,Y$に対し
@@ -26,52 +61,242 @@
 				\sup{\Norm{x^*}{X^*}\leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (v) \right|},
 				\quad (v \in X \otimes Y)
 			\end{align}
-			により$\epsilon$を定めれば，これは$X \otimes Y$においてノルムとなる．
-			この$\epsilon$をインジェクティブノルム(injective norm)と呼ぶ．
-			また$(X \otimes Y, \epsilon)$の完備化を$X \otimes_{\epsilon} Y$と書く．
+			により定める$\epsilon$をインジェクティブノルム(injective norm)と呼ぶ．
 		\end{dfn}
 	\end{screen}
 	
 	\begin{screen}
 		\begin{thm}[インジェクティブノルムは最小のクロスノルム]
+		\label{thm:injective_norm_is_the_minimum_cross_norm}
 			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$において，
 			インジェクティブノルムは最小のクロスノルムである．
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}
-		始めに$\epsilon$がクロスノルムであることを示す．
-		先ずHahn-Banachの定理より
-		\begin{align}
-			\epsilon(x \otimes y) 
-			&= \sup{\Norm{x^*}{X^*}\leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (x \otimes y) \right|} \\
-			&= \sup{\Norm{x^*}{X^*} \leq 1}{\left| x^*(x) \right|}
-			\sup{\Norm{y^*}{Y^*} \leq 1}{\left| y^*(y) \right|} \\
-			&= \Norm{x}{X} \Norm{y}{Y},
-			\quad (\forall (x,y) \in X \times Y)
-		\end{align}
-		が成り立つ．また0でない$x^* \in X^*,\ y^* \in Y^*$に対しては
-		\begin{align}
-			\left| x^* \otimes y^* (v) \right|
-			\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \left( \frac{x^*}{\Norm{x^*}{X^*}} \otimes \frac{y^*}{\Norm{y^*}{Y^*}} \right) (v)
-			\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \epsilon(v)
-		\end{align}
-		が成立し，$x^*=0$或は$y^*=0$のときは
-		定理\ref{thm:tensor_product_contains_zero_mapping_is_zero}より
-		$x^* \otimes y^* = 0$が満たされ，
-		\begin{align}
-			\Norm{x^* \otimes y^*}{(X \otimes Y,\epsilon)} \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*}
-		\end{align}
-		を得る．いま，$\alpha$を任意のクロスノルムとすれば
-		\begin{align}
-			\left| x^* \otimes y^* (v) \right| \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \alpha(v),
-			\quad (\forall v \in X \otimes Y)
-		\end{align}
-		が成り立つから，特に$\Norm{x^*}{X^*} \leq 1,\ \Norm{y^*}{Y^*} \leq 1$のsupを取れば
-		\begin{align}
-			\epsilon(v) \leq \alpha(v),
-			\quad (\forall v \in X \otimes Y)
-		\end{align}
-		が従い$\epsilon$の最小性が出る．
-		\QED
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				$\epsilon$が$X \otimes Y$上のノルムであることを示す．実際，
+				\begin{align}
+					\left| x^* \otimes y^* (u+v) \right|
+					\leq \left| x^* \otimes y^* (u) \right|
+					+ \left| x^* \otimes y^* (v) \right|,
+					\quad (u,v \in X \otimes Y)
+				\end{align}
+				より$\epsilon(u + v) \leq \epsilon(u) + \epsilon(v)$が従い，また
+				スカラー$\alpha$に対し
+				\begin{align}
+					\epsilon(\alpha v)
+					= \sup{\Norm{x^*}{X^*}\leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (\alpha v) \right|}
+					= |\alpha| \sup{\Norm{x^*}{X^*}\leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (v) \right|}
+					= |\alpha| \epsilon(v)
+				\end{align}
+				も成立する．次に$v = 0 \Leftrightarrow \epsilon(v) = 0$を示す．
+				$v = 0$ならば任意の$x^* \otimes y^*$に対し$x^* \otimes y^* (v) = 0$
+				が成り立ち$\epsilon(v) = 0$が出る．
+				逆に$v \neq 0$とする．定理\ref{thm:tensor_product_is_bilinear}より
+				\begin{align}
+					v = \sum_{i=1}^{n} x_i \otimes y_i,
+					\quad (x_i \in X,\ y_i \in Y,\  i=1,\cdots,n)
+				\end{align}
+				と表現できるが，このとき$(x_i \otimes y_i)_{i=1}^{n}$を構成し直して
+				\begin{align}
+					v = \sum_{k=1}^{\ell} x_{i_k} \otimes \tilde{y}_{i_k},
+					\quad (x_{i_k} \neq x_{i_j}\ (k \neq j))
+					\label{eq:thm_injective_norm_is_the_minimum_cross_norm_1}
+				\end{align}
+				と書ける．実際，$i_1 \coloneqq 1$として
+				\begin{align}
+					\tilde{y}_{i_1} \coloneqq \sum_{x_1 = x_i} y_i
+				\end{align}
+				により$\tilde{y}_{i_1}$を定め，$x_i \neq x_1$を満たす最小の$i$
+				を$i_2$として再び
+				\begin{align}
+					\tilde{y}_{i_2} \coloneqq \sum_{x_{i_2} = x_i} y_i
+				\end{align}
+				により$\tilde{y}_{i_2}$を定め，この操作を有限回繰り返して
+				(\refeq{eq:thm_injective_norm_is_the_minimum_cross_norm_1})を得る．
+				いま，$v \neq 0$の仮定と定理\ref{thm:when_tensor_product_zero}により，
+				或る$k$に対し$x_{i_k}, \tilde{y}_{i_k} \neq 0$が満たされている．
+				\begin{align}
+					L \coloneqq \Span{\Set{x_{i_j}}{1 \leq j \leq \ell,\ j \neq k}}
+				\end{align}
+				により$X$の有限次元部分空間，すなわち閉部分空間を定めれば
+				$x_{i_k}$と$L$との距離$d$は正であり，Hahn-Banachの定理より
+				或る$x_k^* \in X^*$が存在して，$\Norm{x_k^*}{X^*} = 1$かつ
+				\begin{align}
+					&\inprod<x,x_k^*> = 0, \quad (\forall x \in L), \\
+					&\inprod<x_{i_k},x_k^*> = d > 0
+				\end{align}
+				を満たす．一方$\tilde{y}_{i_k}$に対しても，
+				Hahn-Banachの定理より或る$y_k^* \in Y^*$が存在して
+				$\inprod<\tilde{y}_{i_k},y_k^*> = \Norm{\tilde{y}_{i_k}}{Y}$かつ
+				$\Norm{y_k^*}{Y^*} = 1$を満たすから，
+				\begin{align}
+					0< d \Norm{\tilde{y}_{i_k}}{Y} = \left| x_k^* \otimes y_k^* (v) \right|
+					\leq \epsilon(v)
+				\end{align}
+				が成立する．対偶により$\epsilon(v) = 0$ならば$v = 0$が従う．
+				
+			\item[第二段]
+				$\epsilon$がクロスノルムであることを示す．
+				先ずHahn-Banachの定理より
+				\begin{align}
+					\epsilon(x \otimes y) 
+					&= \sup{\Norm{x^*}{X^*}\leq 1,\Norm{y^*}{Y^*} \leq 1}{\left| x^* \otimes y^* (x \otimes y) \right|} \\
+					&= \sup{\Norm{x^*}{X^*} \leq 1}{\left| \inprod<x,x^*> \right|}
+					\sup{\Norm{y^*}{Y^*} \leq 1}{\left| \inprod<y,y^*> \right|} \\
+					&= \Norm{x}{X} \Norm{y}{Y},
+					\quad (\forall (x,y) \in X \times Y)
+				\end{align}
+				が成り立つ．また0でない$x^* \in X^*,\ y^* \in Y^*$に対しては
+				\begin{align}
+					\left| x^* \otimes y^* (v) \right|
+					\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \left( \frac{x^*}{\Norm{x^*}{X^*}} \otimes \frac{y^*}{\Norm{y^*}{Y^*}} \right) (v)
+					\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \epsilon(v)
+				\end{align}
+				が成立し，$x^*=0$或は$y^*=0$のときは
+				定理\ref{thm:tensor_product_contains_zero_mapping_is_zero}より
+				$x^* \otimes y^* = 0$が満たされ，
+				\begin{align}
+					\Norm{x^* \otimes y^*}{(X \otimes Y,\epsilon)} \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*}
+				\end{align}
+				を得る．
+			
+			\item[第三段]
+				$\epsilon$が最小のクロスノルムであることを示す．$\alpha$を任意のクロスノルムとすれば
+				\begin{align}
+					\left| x^* \otimes y^* (v) \right| \leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \alpha(v),
+					\quad (\forall v \in X \otimes Y)
+				\end{align}
+				が成り立つから，特に$\Norm{x^*}{X^*} \leq 1,\ \Norm{y^*}{Y^*} \leq 1$のsupを取れば
+				\begin{align}
+					\epsilon(v) \leq \alpha(v),
+					\quad (\forall v \in X \otimes Y)
+				\end{align}
+				が従い$\epsilon$の最小性が出る．
+				\QED
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{dfn}[プロジェクティブノルム]
+			$\K$-Banach空間$X,Y$に対し，定理
+			\ref{thm:universality_of_tensor_product}により
+			\begin{align}
+				\begin{array}{ccc}
+					\Phi:\Hom{X \otimes Y}{\K} & \longrightarrow & \Ln{X \times Y}{\K}{2} \\
+					\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
+					T & \longmapsto & T \circ \otimes
+				\end{array}
+			\end{align}
+			により定まる線型同型$\Phi$が存在する．これを用いて
+			\begin{align}
+				\pi(v) \coloneqq
+				\sup{\substack{b \in \ContLn{X \times Y}{\K}{2} \\ \Norm{b}{\ContLn{X \times Y}{\K}{2}} \leq 1}}{\left| \Phi^{-1}(b)(v) \right|},
+				\quad (v \in X \otimes Y)
+			\end{align}
+			により定める$\pi$をプロジェクティブノルム(projective norm)と呼ぶ．
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[プロジェクティブノルムは最大のクロスノルム]
+			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$において，
+			プロジェクティブノルムは最大のクロスノルムである．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				$\pi$がノルムであることを示す．$v \neq 0$とすれば，
+				定理\ref{thm:injective_norm_is_the_minimum_cross_norm}の証明
+				と同様にして
+				\begin{align}
+					v = \sum_{i=1}^n x_i \otimes y_i,
+					\quad (x_i \in X,\ y_i \in Y,\ x_i \neq x_j\ (i \neq j))
+				\end{align}
+				と表すことができ，或る$i$で$x_i,y_i \neq 0$が満たされる．
+				Hahn-Banachの定理より
+				\begin{align}
+					&\Norm{x_i^*}{X^*} = \Norm{y_i^*}{Y^*} = 1, \\
+					&\inprod<x_i,x_i^*> > 0,
+						\quad \inprod<x_j,x_i^*> = 0,\quad (i \neq j) \\
+					&\inprod<y_i,y_i^*> = \Norm{y_i}{Y}
+				\end{align}
+				を満たす$x_i^* \in X^*$と$y^* \in Y^*$が存在するから，
+				\begin{align}
+					b(x,y) \coloneqq \inprod<x,x_i^*> \inprod<y,y_i^*>,
+					\quad (x \in X,\ y \in Y)
+				\end{align}
+				により双線型写像$b$を定めれば，$\Norm{b}{\ContLn{X \times Y}{\K}{2}}
+				\leq \Norm{x_i^*}{X^*} \Norm{y_i^*}{Y^*} = 1$かつ
+				\begin{align}
+					0 < b(x_i,y_i) = |\Phi^{-1}(b)(v)| \leq \pi(v)
+				\end{align}
+				が成立する．$\pi(0) = 0$と
+				劣加法性及び同次性は$\Phi^{-1}(b)$の線型性より従う．
+			
+			\item[第二段]
+				$\pi$がクロスノルムであることを示す．
+				先ず，任意の$x \in X,\ y \in Y$に対して
+				\begin{align}
+					\pi(x \otimes y) 
+					&= \sup{\substack{b \in \ContLn{X \times Y}{\K}{2} \\ \Norm{b}{\ContLn{X \times Y}{\K}{2}} \leq 1}}{\left| \Phi^{-1}(b)(x \otimes y) \right|} \\
+					& \leq \sup{\substack{b \in \ContLn{X \times Y}{\K}{2} \\ \Norm{b}{\ContLn{X \times Y}{\K}{2}} \leq 1}}{\Norm{b}{\ContLn{X \times Y}{\K}{2}}\Norm{x}{X} \Norm{y}{Y}} \\
+					&= \Norm{x}{X} \Norm{y}{Y}
+				\end{align}
+				が成立する．また0でない$x^* \in X^*,\ y^* \in Y^*$に対し
+				\begin{align}
+					b(x,y) \coloneqq \frac{x^*}{\Norm{x^*}{X^*}}(x)\frac{y^*}{\Norm{y^*}{Y^*}}(y),
+					\quad (x \in X,\ y \in Y)
+				\end{align}
+				により$\Norm{b}{\ContLn{X \times Y}{\K}{2}} \leq 1$を満たす有界双線型$b$を定めれば，
+				$\pi$の定義より
+				\begin{align}
+					\left| \Phi^{-1}(b)(v) \right| \leq \pi(v),
+					\quad (\forall v \in X \otimes Y)
+				\end{align}
+				が成り立つ．一方で写像のテンソル積の定義より
+				\begin{align}
+					\Phi^{-1}(b) = \frac{x^*}{\Norm{x^*}{X^*}} \otimes \frac{y^*}{\Norm{y^*}{Y^*}}
+					= \frac{1}{\Norm{x^*}{X^*}\Norm{y^*}{Y^*}} x^* \otimes y^*
+				\end{align}
+				が満たされるから
+				\begin{align}
+					\left| x^* \otimes y^*(v) \right| \leq \Norm{x^*}{X^*}\Norm{y^*}{Y^*} \pi(v),
+					\quad (\forall v \in X \otimes Y)
+				\end{align}
+				が従う．定理\ref{thm:tensor_product_contains_zero_mapping_is_zero}より
+				上式は$x^* = 0$或は$y^* = 0$の場合も込めて成立するから
+				\begin{align}
+					\Norm{x^* \otimes y^*}{(X \otimes Y,\pi)^*} \leq \Norm{x^*}{X^*}\Norm{y^*}{Y^*}
+				\end{align}
+				が得られる．
+				
+			\item[第三段]
+				$\alpha$を任意のクロスノルムとすれば，Hahn-Banachの定理より任意の$v \in X \otimes Y$に対し
+				\begin{align}
+					\alpha(v) = \phi_v(v),
+					\quad \Norm{\phi_v}{(X \otimes Y,\pi)^*} = 1
+				\end{align}
+				を満たす$\phi_v \in (X \otimes Y,\pi)^*$が存在する．
+				\begin{align}
+					\left| (\phi_v \circ \otimes)(x,y) \right|
+					= \left|\phi_v(x \otimes y)\right| 
+					\leq \pi(x \otimes y)
+					\leq \Norm{x}{X} \Norm{y}{Y},
+					\quad (\forall x \in X,\ y \in Y)
+				\end{align}
+				が成り立つから$\Norm{\phi_v \circ \otimes}{\ContLn{X \times Y}{\K}{2}} \leq 1$が従い，
+				$\pi$の定義より
+				\begin{align}
+					\alpha(v) = \phi_v(v) = \Phi^{-1}(\phi_v \circ \otimes)(v)
+					\leq \pi(v)
+				\end{align}
+				が得られる．$v \in X \otimes Y$は任意であったから
+				$\pi$の最大性が出る．
+				\QED
+		\end{description}
 	\end{prf}

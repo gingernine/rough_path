@@ -1,5 +1,4 @@
-\contentsline {section}{\numberline {0.1}一時的}{1}
-\contentsline {section}{\numberline {0.2}notation}{1}
-\contentsline {section}{\numberline {0.3}テンソル積}{2}
-\contentsline {section}{\numberline {0.4}テンソル積の内積}{10}
-\contentsline {section}{\numberline {0.5}クロスノルム}{10}
+\contentsline {section}{\numberline {0.1}notation}{1}
+\contentsline {section}{\numberline {0.2}テンソル積}{1}
+\contentsline {section}{\numberline {0.3}テンソル積の内積}{9}
+\contentsline {section}{\numberline {0.4}クロスノルム}{9}
