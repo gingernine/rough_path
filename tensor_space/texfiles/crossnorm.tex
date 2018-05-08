@@ -4,7 +4,7 @@
 		\begin{dfn}[クロスノルム]
 			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$において
 			\begin{align}
-				\alpha(x \otimes y) &\leq \Norm{x}{X} \Norm{y}{Y}, && (x \otimes y \in X \otimes Y), \\
+				\alpha(x \otimes y) &\leq \Norm{x}{X} \Norm{y}{Y}, && (x \otimes y \in X \otimes Y), \label{eq:cross_norm_def_1}\\
 				\sup{\substack{v \in X \otimes Y \\ v \neq 0}}{\left| x^* \otimes y^* (v) \right|} &\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*}\alpha(v),
 				&& (x^* \in X^*, y^* \in Y^*)
 			\end{align}
@@ -188,6 +188,7 @@
 					\Phi:\Hom{X \otimes Y}{\K} & \longrightarrow & \Ln{X \times Y}{\K}{2} \\
 					\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
 					T & \longmapsto & T \circ \otimes
+					\label{eq:dfn_projective_norm_isomorphism}
 				\end{array}
 			\end{align}
 			により定まる線型同型$\Phi$が存在する．これを用いて
@@ -202,8 +203,11 @@
 	
 	\begin{screen}
 		\begin{thm}[プロジェクティブノルムは最大のクロスノルム]
-			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$において，
-			プロジェクティブノルムは最大のクロスノルムである．
+		\label{thm:projective_norm_is_maximum_cross_norm}
+			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$上に
+			プロジェクティブノルム$\pi$を導入する．このときクロスノルムの定義
+			の(\refeq{eq:cross_norm_def_1})を満たす任意のセミノルム
+			$p$に対し$p \leq \pi$が成立し，特に$\pi$は最大のクロスノルムである．
 		\end{thm}
 	\end{screen}
 	
@@ -276,27 +280,140 @@
 				が得られる．
 				
 			\item[第三段]
-				$\alpha$を任意のクロスノルムとすれば，Hahn-Banachの定理より任意の$v \in X \otimes Y$に対し
+				$p$を(\refeq{eq:cross_norm_def_1})を満たすセミノルムとし，
+				$v \in X \otimes Y$を任意に取る．Hahn-Banachの定理より
 				\begin{align}
-					\alpha(v) = \phi_v(v),
-					\quad \Norm{\phi_v}{(X \otimes Y,\pi)^*} = 1
+					p(v) = \phi_v(v),
+					\quad |\phi_v(u)| \leq p(u)
+					\quad (\forall u \in X \otimes Y)
 				\end{align}
 				を満たす$\phi_v \in (X \otimes Y,\pi)^*$が存在する．
 				\begin{align}
 					\left| (\phi_v \circ \otimes)(x,y) \right|
 					= \left|\phi_v(x \otimes y)\right| 
-					\leq \pi(x \otimes y)
+					\leq p(x \otimes y)
 					\leq \Norm{x}{X} \Norm{y}{Y},
 					\quad (\forall x \in X,\ y \in Y)
 				\end{align}
 				が成り立つから$\Norm{\phi_v \circ \otimes}{\ContLn{X \times Y}{\K}{2}} \leq 1$が従い，
 				$\pi$の定義より
 				\begin{align}
-					\alpha(v) = \phi_v(v) = \Phi^{-1}(\phi_v \circ \otimes)(v)
+					p(v) = \phi_v(v) = \Phi^{-1}(\phi_v \circ \otimes)(v)
 					\leq \pi(v)
 				\end{align}
-				が得られる．$v \in X \otimes Y$は任意であったから
-				$\pi$の最大性が出る．
+				が得られる．
+				\QED
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}
+			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$にプロジェクトノルム
+			$\pi$を導入する．このとき次が成り立つ:
+			\begin{align}
+				\pi(v) = \inf{}{\Set{\sum_{i=1}^n \Norm{x_i}{X}\Norm{y_i}{Y}}{
+					v = \sum_{i=1}^n x_i \otimes y_i}}.
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				$X \otimes Y$上のセミノルム$\lambda$を次で定める:
+				\begin{align}
+					\lambda(v) \coloneqq \inf{}{\Set{\sum_{i=1}^n \Norm{x_i}{X}\Norm{y_i}{Y}}{
+					v = \sum_{i=1}^n x_i \otimes y_i}},
+					\quad (\forall v \in X \otimes Y)
+				\end{align}
+				このとき$\lambda$が式(\refeq{eq:cross_norm_def_1})かつ
+				$\lambda \geq \pi$を満たせば，
+				定理\ref{thm:projective_norm_is_maximum_cross_norm}より$\lambda = \pi$が従う．
+				
+			\item[第二段]
+				$\lambda$がセミノルムであることを示す．実際，任意に
+				$u,v \in X \otimes Y$を取り，
+				\begin{align}
+					u = \sum_{i=1}^{n} x_i \otimes y_i,
+					\quad v = \sum_{j=1}^m a_j \otimes b_j
+				\end{align}
+				を一つの表現とすれば，$\lambda$の定め方より
+				\begin{align}
+					\lambda(u+v) \leq \sum_{i=1}^{n} x_i \otimes y_i + \sum_{j=1}^{m} a_j \otimes b_j
+				\end{align}
+				が成り立つ．右辺を移項して
+				\begin{align}
+					\lambda(u+v) - \sum_{j=1}^{m} a_j \otimes b_j \leq \lambda(u) \leq \sum_{i=1}^{n} x_i \otimes y_i
+				\end{align}
+				かつ
+				\begin{align}
+					\lambda(u+v) - \lambda(u) \leq \lambda(v) \leq \sum_{j=1}^{m} a_j \otimes b_j
+				\end{align}
+				が従い$\lambda$の劣加法性を得る．また任意の$0 \neq \alpha \in \K,\ v \in X \otimes Y$に対し
+				\begin{align}
+					v = \sum_{i=1}^n x_i \otimes y_i
+				\end{align}
+				を一つの分割とすれば
+				\begin{align}
+					\alpha v = \sum_{i=1}^n (\alpha x_i) \otimes y_i
+				\end{align}
+				は$\alpha v$の一つの分割となるから
+				\begin{align}
+					\lambda(\alpha v) \leq \sum_{i=1}^n \Norm{\alpha x_i}{X} \Norm{y_i}{Y}
+					= |\alpha| \sum_{i=1}^n \Norm{x_i}{X} \Norm{y_i}{Y}
+				\end{align}
+				が成立し，$v$の分割について下限を取れば$\lambda(\alpha v) \leq |\alpha| \lambda(v)$
+				が従う．逆に
+				\begin{align}
+					\alpha v = \sum_{j=1}^m a_j \otimes b_j
+				\end{align}
+				とすれば
+				\begin{align}
+					\lambda(v) \leq \sum_{j=1}^m \Norm{\frac{1}{\alpha}a_j}{X} \Norm{b_j}{Y}
+					= \frac{1}{|\alpha|} \sum_{j=1}^m \Norm{a_j}{X} \Norm{b_j}{Y}
+				\end{align}
+				が成り立ち$|\alpha| \lambda(v) \leq \lambda(\alpha v)$
+				が従う．$v=0$なら$v = 0 \otimes y$より$\lambda(v) = 0$が満たされ
+				\begin{align}
+					\lambda(\alpha v) = |\alpha| \lambda(v),
+					\quad (\forall \alpha \in \K,\ v \in X \otimes Y)
+				\end{align}
+				が出る．
+				
+			\item[第三段]
+				$\lambda$の定め方より
+				\begin{align}
+					\lambda(x \otimes y) \leq \Norm{x}{X} \Norm{y}{Y},
+					\quad (\forall x \in X,\ y \in Y)
+				\end{align}
+				が成り立つ．よって$\lambda$は式(\refeq{eq:cross_norm_def_1})を満たす．
+				
+			\item[第四段]
+				任意に$v \in X \otimes Y$を取り
+				\begin{align}
+					v = \sum_{i=1}^{n} x_i \otimes y_i
+				\end{align}
+				を一つの分割とする．
+				$\Norm{b}{\ContLn{X \times Y}{\K}{2}} \leq 1$を満たす
+				$b \in \ContLn{X \times Y}{\K}{2}$と
+				式(\refeq{eq:dfn_projective_norm_isomorphism})の
+				$\Phi$に対し
+				\begin{align}
+					\left| \Phi^{-1}(b)(v) \right|
+					\leq \sum_{i=1}^{n} \left| \Phi^{-1}(b)(x_i \otimes y_i) \right|
+					= \sum_{i=1}^{n} \left| b(x_i,y_i) \right|
+					\leq \sum_{i=1}^{n} \Norm{x_i}{X} \Norm{y_i}{Y}
+				\end{align}
+				が成り立つから，$b$に無関係に
+				\begin{align}
+					\left| \Phi^{-1}(b)(v) \right| \leq \lambda(v)
+				\end{align}
+				が満たされ
+				\begin{align}
+					\pi(v) = \sup{\substack{b \in \ContLn{X \times Y}{\K}{2} \\ \Norm{b}{\ContLn{X \times Y}{\K}{2}} \leq 1}}{\left| \Phi^{-1}(b)(v) \right|}
+					\leq \lambda(v)
+				\end{align}
+				が従う．
 				\QED
 		\end{description}
 	\end{prf}
