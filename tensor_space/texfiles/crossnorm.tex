@@ -307,7 +307,7 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}
+		\begin{thm}[プロジェクティブノルムの表現]
 			$\K$-Banach空間$X,Y$のテンソル積$X \otimes Y$にプロジェクトノルム
 			$\pi$を導入する．このとき次が成り立つ:
 			\begin{align}
@@ -381,15 +381,15 @@
 				が出る．
 				
 			\item[第三段]
-				$\lambda$の定め方より
+				$\lambda$は式(\refeq{eq:cross_norm_def_1})を満たすことを示す．実際$\lambda$の定め方より
 				\begin{align}
 					\lambda(x \otimes y) \leq \Norm{x}{X} \Norm{y}{Y},
 					\quad (\forall x \in X,\ y \in Y)
 				\end{align}
-				が成り立つ．よって$\lambda$は式(\refeq{eq:cross_norm_def_1})を満たす．
+				が成り立つ．
 				
 			\item[第四段]
-				任意に$v \in X \otimes Y$を取り
+				$\lambda \geq \pi$を示す．いま，任意に$v \in X \otimes Y$を取り
 				\begin{align}
 					v = \sum_{i=1}^{n} x_i \otimes y_i
 				\end{align}
@@ -416,4 +416,35 @@
 				が従う．
 				\QED
 		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}
+			$X \otimes Y$を$\K$-Banach空間$X,Y$のテンソル積とし，
+			$\epsilon, \pi$をそれぞれインジェクティブノルムとクロスノルムとする．このとき
+			$X \otimes Y$上の任意のノルム$\alpha$に対し次が成立する:
+			\begin{align}
+				\mbox{$\alpha$がクロスノルム}
+				\quad \Leftrightarrow \quad 
+				\epsilon \leq \alpha \leq \pi.
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$(\Rightarrow)$はすでに示したから
+		$(\Leftarrow)$を示す．実際，任意の$x \in X,\ y \in Y$に対して
+		\begin{align}
+			\alpha(x \otimes y) \leq \pi(x \otimes y) \leq \Norm{x}{X} \Norm{y}{Y}
+		\end{align}
+		が成立し，また任意の$x^* \in X^*,\ y^* \in Y^*$に対して
+		\begin{align}
+			\left| x^* \otimes y^*(v) \right|
+			\leq \Norm{x^* \otimes y^*}{(X \otimes Y, \epsilon)^*} \epsilon(v)
+			\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*} \alpha(v),
+			\quad (\forall v \in X \otimes Y)
+		\end{align}
+		が満たされ$\Norm{x^* \otimes y^*}{(X \otimes Y, \alpha)^*} 
+		\leq \Norm{x^*}{X^*} \Norm{y^*}{Y^*}$が得られる．
+		\QED
 	\end{prf}
