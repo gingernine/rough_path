@@ -68,6 +68,8 @@
 \def\inf#1#2{\operatorname*{inf}_{#1} #2 } %下限
 \def\Vector#1{\mbox{\boldmath $#1$}} %ベクトルを太字表示
 \def\Norm#1#2{\left\|\, #1\, \right\|_{#2}} %ノルム
+\def\crossnorm#1#2{\alpha_{#2}\left( #1 \right)} %クロスノルム
+\def\compcrossnorm#1#2{\left|\, #1\, \right|_{#2}} %完備クロスノルム
 \def\Log#1{\operatorname{log} #1} %log
 \def\Det#1{\operatorname{det} ( #1 )} %行列式
 \def\Diag#1{\operatorname{diag} \left( #1 \right)} %行列の対角成分
@@ -140,10 +142,11 @@
 
 	\input{texfiles/p_variation}
 	\input{texfiles/proof_of_continuity_theorem}
-	\input{texfiles/Young_integral}
+	%\input{texfiles/Young_integral}
 	\input{texfiles/p_rough_path}
 
 \appendix
+	\input{../tensor_space/texfiles/completion_of_normed_space}
 	\input{../tensor_space/texfiles/multilinear_mapping}
 	\input{../tensor_space/texfiles/tensor_product_multiple}
 	\input{../tensor_space/texfiles/tensor_product_hilbert}

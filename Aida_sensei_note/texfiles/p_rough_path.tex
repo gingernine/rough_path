@@ -1,8 +1,83 @@
 \section{The notion of rough path}
-	$(V,\Norm{\cdot}{})$を$\R$-Banach空間とする．
-	$k \geq 2$の場合，代数的$k$重テンソル積$V^{\otimes_a k} = V \otimes_a \cdots \otimes_a V$に
-	クロスノルム(定義\ref{def:cross_norm})$\alpha_k$を導入し，
-	その完備化を$V^{\otimes k}$と表しノルムを$|\cdot|_k$と書く．
+	$(V,\Norm{\cdot}{})$を$\R$-Banach空間とする．また
+	$\otimes_a$により代数的テンソル積，或はその標準写像を表す．
+	$k \geq 2$の場合，$k$重テンソル積$V^{\otimes_a k} = V \otimes_a \cdots \otimes_a V$に
+	クロスノルム(定義\ref{def:cross_norm}) $\crossnorm{\cdot}{k}$を導入し，
+	その完備拡大を$(V^{\otimes k},\compcrossnorm{\cdot}{k})$と書く．
+	定理\ref{thm:tensor_product_with_scalar}
+	と定理\ref{thm:associativity_of_tensor_products}
+	によれば，任意の$0 \leq j \leq k$に対し
+	$V^{\otimes_a k}$と$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$は同型となる．
+	特に$k \geq 3$及び$1 \leq j \leq k-1$に対し，
+	定理\ref{thm:associativity_of_tensor_products}における線型同型を
+	\begin{align}
+		F_{j,k}:V^{\otimes_a k} \longrightarrow V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}
+	\end{align}
+	と表し，$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$上のノルムを
+	\begin{align}
+		\crossnorm{v}{j,k} \coloneqq \crossnorm{F_{j,k}^{-1}(v)}{k},
+		\quad \left( \forall v \in V^{\otimes_a j} \otimes_a V^{\otimes_a k-j} \right)
+	\end{align}
+	により定めれば，$F_{j,k}$は等長同型となる．一方で
+	$V^{\otimes_a i}$の$V^{\otimes i}$への等長埋め込みを$J_i$で表し
+	\begin{align}
+		\varphi_{j,k}:J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j} \ni (u,v)
+		& \longmapsto ( J_j^{-1}u,J_{k-j}^{-1}v ) &&\in V^{\otimes_a j} \times V^{\otimes_a k-j} \\
+		& \longmapsto F_{j,k}^{-1} (J_j^{-1}u \otimes_a J_{k-j}^{-1}v) &&\in V^{\otimes_a k} \\
+		& \longmapsto J_k F_{j,k}^{-1} (J_j^{-1}u \otimes_a J_{k-j}^{-1}v) &&\in V^{\otimes k}
+	\end{align}
+	により$\varphi_{j,k}:J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}
+	\longrightarrow V^{\otimes k}$を定めれば，$\varphi_{j,k}$は有界双線型写像である．
+	実際，$\otimes_a$の双線型性と埋め込み及び$F_{j,k}^{-1}$の線型性より
+	$\varphi_{j,k}$の双線型性が従い，また
+	\begin{align}
+		\compcrossnorm{\varphi_{j,k}(u,v)}{k}
+		&= \crossnorm{F_{j,k}^{-1} (J_j^{-1}u \otimes_a J_{k-j}^{-1}v)}{k} \\
+		&= \crossnorm{J_j^{-1}u}{j} \crossnorm{J_{k-j}^{-1}v}{k-j} \\
+		&= \compcrossnorm{u}{j} \compcrossnorm{v}{k-j}
+	\end{align}
+	が任意の$(u,v) \in J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}$に対して
+	成り立つから$\Norm{\varphi_{j,k}}{\ContLn{J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}}{V^{\otimes k}}{2}} = 1$を得る．
+	定理\ref{thm:expansion_of_multilinear_mapping}により
+	$\varphi_{j,k}$は或る双線型写像
+	$\psi_{j,k}:V^{\otimes j} \times V^{\otimes k-j} \longrightarrow V^{\otimes k}$
+	にノルム保存拡張され，$\psi_{j,k}$も
+	\begin{align}
+		\compcrossnorm{\psi_{j,k}(u,v)}{k} = \compcrossnorm{u}{j} \compcrossnorm{v}{k-j},
+		\quad (\forall (u,v) \in V^{\otimes j} \times V^{\otimes k-j})
+	\end{align}
+	を満たす:
+	
+	\begin{prf}
+		$(u,v)$に直積ノルムで収束する点列$(u_n,v_n) \in J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}\ (n=1,2,\cdots)$を取れば
+		\begin{align}
+			\compcrossnorm{\varphi_{j,k}(u_n,v_n) - \psi_{j,k}(u,v)}{k} \longrightarrow 0,
+			\quad (k \longrightarrow \infty)
+		\end{align}
+		が成り立つ．また
+		\begin{align}
+			\left| \compcrossnorm{u_n}{j} \compcrossnorm{v_n}{k-j} - 
+			\compcrossnorm{u}{j} \compcrossnorm{v}{k-j} \right|
+			&\leq \left| \compcrossnorm{u_n}{j} \compcrossnorm{v_n}{k-j} - 
+			\compcrossnorm{u_n}{j} \compcrossnorm{v}{k-j} \right| 
+			+ \left| \compcrossnorm{u_n}{j} \compcrossnorm{v}{k-j} - 
+			\compcrossnorm{u}{j} \compcrossnorm{v}{k-j} \right| \\
+			&\leq \compcrossnorm{u_n}{j} \compcrossnorm{v_n - v}{k-j} 
+			+ \compcrossnorm{u_n - u}{j} \compcrossnorm{v}{k-j} \\
+			&\longrightarrow 0, \quad (k \longrightarrow \infty)
+		\end{align}
+		も成立するから
+		\begin{align}
+			\left|\, \compcrossnorm{\psi_{j,k}(u,v)}{k} - \compcrossnorm{u}{j} \compcrossnorm{v}{k-j}\, \right|
+			&\leq \compcrossnorm{\varphi_{j,k}(u_n,v_n) - \psi_{j,k}(u,v)}{k}
+				+ \left| \compcrossnorm{u_n}{j} \compcrossnorm{v_n}{k-j} - 
+			\compcrossnorm{u}{j} \compcrossnorm{v}{k-j} \right| \\
+			& \longrightarrow 0, \quad (k \longrightarrow \infty)
+		\end{align}
+		が従い$\compcrossnorm{\psi_{j,k}(u,v)}{k} = \compcrossnorm{u}{j} \compcrossnorm{v}{k-j}$
+		が得られる．
+		\QED
+	\end{prf}
 	
 	$V^{\otimes 0} = \R$とし
 	$T(V) \coloneqq \bigoplus_{k=0}^{\infty} V^{\otimes k}$

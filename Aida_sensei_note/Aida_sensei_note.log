@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  9 MAY 2018 17:26
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  9 MAY 2018 21:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -394,49 +394,49 @@ Writing index file Aida_sensei_note.idx
 (./Aida_sensei_note.aux)
 \openout1 = `Aida_sensei_note.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 131.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 131
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 133.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 133
 .
  (c:/w32tex/share/texmf-dist/tex/latex/txr/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 131.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 131
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 133.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 133
 .
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 131.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 131
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 133.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 133
 .
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 131.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 131.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 133.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 133.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
 
 (I search kanjifont definition file: . . ) (I search font definition file: . .
 . . . . . )
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 131.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 133.
 
  (c:/w32tex/share/texmf-dist/tex/latex/txr/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
@@ -459,45 +459,45 @@ Package graphics Info: Driver file: dvips.def on input line 99.
 \Gin@req@width=\dimen177
 )
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 136.
+(Font)              scaled to size 16.60605pt on input line 138.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 136.
+(Font)              scaled to size 16.60605pt on input line 138.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 136.
+(Font)              scaled to size 11.53198pt on input line 138.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 136.
+(Font)              scaled to size 11.53198pt on input line 138.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 136.
-LaTeX Font Info:    Try loading font information for U+txsya on input line 136.
+(Font)              scaled to size 5.76599pt on input line 138.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 138.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 136.
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 138.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txmia on input line 136.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 138.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 136.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 138.
 
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 136.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 138.
 
 (c:/w32tex/share/texmf-dist/tex/latex/jknappen/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 136.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 138.
 
 (c:/w32tex/share/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -505,27 +505,27 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 
 ]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 139.
+(Font)              scaled to size 9.60999pt on input line 141.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 139.
-LaTeX Font Info:    Try loading font information for OT1+txss on input line 139
+(Font)              scaled to size 9.60999pt on input line 141.
+LaTeX Font Info:    Try loading font information for OT1+txss on input line 141
 .
 
 (c:/w32tex/share/texmf-dist/tex/latex/txr/ot1txss.fd
 File: ot1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 139.
+(Font)              scaled to size 9.49997pt on input line 141.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 139.
+(Font)              scaled to size 23.90964pt on input line 141.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 139.
+(Font)              scaled to size 23.90964pt on input line 141.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 139.
+(Font)              scaled to size 23.90964pt on input line 141.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 139.
+(Font)              scaled to size 23.90964pt on input line 141.
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 139.
+(Font)              scaled to size 23.63593pt on input line 141.
  (./Aida_sensei_note.toc
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 1.
@@ -563,22 +563,23 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
  [3] [4])
 (./texfiles/proof_of_continuity_theorem.tex [5] [6] [7] [8] [9] [10]
 Excluding 'comment' comment. [11] [12] [13] [14] [15] [16] [17])
-(./texfiles/Young_integral.tex [18] [19]) (./texfiles/p_rough_path.tex [20]
-[21]) (../tensor_space/texfiles/multilinear_mapping.tex [22] [23])
-(../tensor_space/texfiles/tensor_product_multiple.tex [24] [25] <xymatrix 3x2
-200> <xymatrix 3x2 200> [26] [27] [28] [29] <xymatrix 3x2 158> <xymatrix 3x2
-158> [30] <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix
-3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> [31])
+(./texfiles/p_rough_path.tex [18] [19] [20])
+(../tensor_space/texfiles/completion_of_normed_space.tex)
+(../tensor_space/texfiles/multilinear_mapping.tex [21] [22])
+(../tensor_space/texfiles/tensor_product_multiple.tex [23] [24] <xymatrix 3x2
+200> <xymatrix 3x2 200> [25] [26] [27] [28] [29] <xymatrix 3x2 158> <xymatrix
+3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix
+3x2 158> [30] <xymatrix 3x2 158> <xymatrix 3x2 158>)
 (../tensor_space/texfiles/tensor_product_hilbert.tex)
-(../tensor_space/texfiles/crossnorm.tex [32] [33] [34] [35] [36] [37]) [38]
-(./Aida_sensei_note.aux) ) 
+(../tensor_space/texfiles/crossnorm.tex [31] [32] [33] [34] [35] [36] [37])
+[38] (./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
- 4615 strings out of 493621
- 59310 string characters out of 6150087
- 158227 words of memory out of 5000000
- 8083 multiletter control sequences out of 15000+600000
+ 4616 strings out of 493621
+ 59400 string characters out of 6150087
+ 158269 words of memory out of 5000000
+ 8085 multiletter control sequences out of 15000+600000
  37401 words of font info for 140 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,24n,26p,316b,712s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (39 pages, 275996 bytes).
+Output written on Aida_sensei_note.dvi (39 pages, 273060 bytes).

@@ -12,8 +12,8 @@
 	により位相を導入する．
 	
 \section{テンソル積}
-	$n \geq 2$とする．体$\K$上の線形空間の族$(E_i)_{i=1}^n$に対して
-	テンソル積を定めたい．
+	$n \geq 2$として，体$\K$上の線形空間の族$(E_i)_{i=1}^n$に対して
+	テンソル積を定義する．
 	\begin{align}
 		\Lambda\biggl( \bigoplus_{i=1}^n E_i \biggr)
 		= \Set{b:\bigoplus_{i=1}^n E_i \longrightarrow \K}{\mbox{有限個の$e \in \bigoplus_{i=1}^n E_i$を除いて$b(e)=0$．}}
@@ -32,7 +32,7 @@
 		&\coloneqq
 		\Span{\Set{ \substack{\defunc_{e_1,\cdots,e_i + e_i',\cdots,e_n}
 			-\defunc_{e_1,\cdots,e_i,\cdots,e_n}
-			-\defunc{e_1,\cdots,e_i',\cdots,e_n},\\
+			-\defunc_{e_1,\cdots,e_i',\cdots,e_n},\\
 			\defunc_{e_1,\cdots,\lambda e_i,\cdots,e_n}
 			-\lambda\defunc_{e_1,\cdots,e_i,\cdots,e_n}}}{e_i,e_i' \in E_i,
 			\lambda \in \K,
@@ -42,7 +42,8 @@
 	$b \in \Lambda\biggl( \bigoplus_{i=1}^n E_i \biggr)$の$\Lambda_0\biggl( \bigoplus_{i=1}^n E_i \biggr)$に関する同値類を$[b]$と書く．そして
 	\begin{align}
 		E_1 \otimes \cdots \otimes E_n = \bigotimes_{i=1}^n E_i 
-		\coloneqq \Lambda\biggl( \bigoplus_{i=1}^n E_i \biggr)/\Lambda_0\biggl( \bigoplus_{i=1}^n E_i \biggr)
+		\coloneqq \Lambda\biggl( \bigoplus_{i=1}^n E_i \biggr)
+		\left/ \Lambda_0\biggl( \bigoplus_{i=1}^n E_i \biggr) \right.
 	\end{align}
 	で定める商空間を$(E_i)_{i=1}^n$のテンソル積と定義する．
 	また$(e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i$に対し
@@ -253,7 +254,7 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}[スカラーとのテンソル積]
+		\begin{thm}[スカラーとのテンソル積]\label{thm:tensor_product_with_scalar}
 			$E$を$\K$-線型空間とするとき，
 			$\K \otimes E$と$E$は
 			$f(\alpha \otimes e) = \alpha e$を満たす
