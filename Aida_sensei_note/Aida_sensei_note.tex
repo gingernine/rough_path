@@ -10,6 +10,7 @@
 \usepackage{ascmac}
 \usepackage{color}
 \usepackage{comment}
+\usepackage[matrix,arrow]{xy}
 
 \newtheoremstyle{mystyle}% % Name
 	{20pt}%                      % Space above
@@ -85,6 +86,7 @@
 \def\Re#1{\mathfrak{Re}#1} %実部
 \def\Im#1{\mathfrak{Im}#1} %虚部
 \def\Conv#1{\mathrm{Conv}\left[\left\{\, #1 \, \right\}\right]} %凸包
+\def\Span#1{\mathrm{Span}\left[ #1 \right]} %線型包
 \def\borel#1{\mathfrak{B}(#1)} %Borel集合族
 \def\open#1{\mathfrak{O}(#1)} %位相空間 #1 の位相
 \def\close#1{\mathfrak{A}(#1)} %%位相空間 #1 の閉集合系
@@ -93,6 +95,13 @@
 \def\rapid#1{\mathfrak{S}(#1)} %急減少空間
 \def\c#1{C(#1)} %有界実連続関数
 \def\cbound#1{C_{b} (#1)} %有界実連続関数
+\def\Dim#1{\mathrm{dim}#1} %次元
+\def\pmod#1{\mathrm{Mod}\ #1} %mod
+\def\Map#1#2{\mathrm{Map} \left(#1,#2\right)} %写像全体
+\def\Hom#1#2{\mathrm{Hom} \left(#1,#2\right)} %線形写像全体
+\def\Ln#1#2#3{\mathrm{Hom}^{(#3)} \left(#1,#2\right)} %多重線形写像全体
+\def\ContL#1#2{L \left(#1,#2\right)} %連続な線形写像全体
+\def\ContLn#1#2#3{L^{(#3)} \left(#1,#2\right)} %連続な多重線形写像全体
 \def\semiLp#1#2{\mathscr{L}^{#1} \left(#2\right)} %ノルム空間L^p
 \def\Lp#1#2{\operatorname{L}^{#1} \left(#2\right)} %ノルム空間L^p
 \def\cinf#1{C^{\infty} (#1)} %無限回連続微分可能関数
@@ -133,4 +142,9 @@
 	\input{texfiles/proof_of_continuity_theorem}
 	\input{texfiles/Young_integral}
 	\input{texfiles/p_rough_path}
+
+\appendix
+	\input{../tensor_space/texfiles/tensor_product_multiple}
+	\input{../tensor_space/texfiles/tensor_product_hilbert}
+	\input{../tensor_space/texfiles/crossnorm}
 \end{document}

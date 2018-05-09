@@ -302,7 +302,8 @@
 					= f_1(e_1)\otimes \cdots \otimes f_n(e_n),
 					\quad (\forall (e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i)
 				\end{align}
-				が成り立つ．
+				が成り立つ．$F_i = \K\ (i=1,\cdots,n)$の場合は$\otimes$を$\K$の乗法と考える
+				$(\bigotimes_{i=1}^n F_i = \K)$．
 		\end{dfn}
 	\end{screen}
 	
@@ -463,13 +464,16 @@
 	\begin{screen}
 		\begin{thm}[結合律]
 		\label{thm:associativity_of_tensor_products}
-			$(E_i)_{i=1}^n$を$\K$-線型空間の族とする．
-			任意の$k=1,\cdots,n-1$に対し，
+			$(E_i)_{i=1}^n$を$\K$-線型空間の族とし，
+			$k \in \{ 1,\cdots,n-1 \}$を任意に取る．このとき，次の対応関係を満たす
+			$F$は線型同型である:
 			\begin{align}
-				\bigotimes_{i=1}^n E_i
-				=\biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr)
+				\begin{array}{ccc}
+					F:\bigotimes_{i=1}^n E_i & \longrightarrow & \biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr) \\
+					\rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
+					e_1 \otimes \cdots \otimes e_n & \longmapsto & (e_1 \otimes \cdots \otimes e_k) \otimes (e_{k+1} \otimes \cdots \otimes e_n)
+				\end{array}
 			\end{align}
-			が成立する．
 		\end{thm}
 	\end{screen}
 	

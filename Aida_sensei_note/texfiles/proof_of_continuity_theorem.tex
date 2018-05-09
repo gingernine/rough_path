@@ -95,11 +95,11 @@
 	\end{screen}
 	
 	式(\refeq{eq:control_function_subadditivity})から$\omega(t,t)=0\ (\forall t \in [0,T])$が従う．
-	つまりcontrol functionは''対角線上で0になる''．
+	つまりcontrol functionは対角線上で0になる．
 	
 	\begin{screen}
 		\begin{dfn}[ノルム空間値写像の$p$-variation]
-			$(V,\Norm{\cdot}{})$をノルム空間，$p \geq 1$とする．
+			$(V,\Norm{\cdot}{})$をノルム空間，$p > 0$とする．
 			このとき連続写像$\psi:\Delta_T \longrightarrow V$に対する$p$-variationを
 			\begin{align}
 				\Norm{\psi}{p,[s,t]}
@@ -112,7 +112,7 @@
 	
 	\begin{screen}
 		\begin{thm}[$p$-variationが定めるcontrol function]
-			$(V,\Norm{\cdot}{})$をノルム空間，$p \geq 1$とする．
+			$(V,\Norm{\cdot}{})$をノルム空間，$p > 0$とする．
 			$\Norm{\psi}{p} < \infty$かつ$\psi_{t,t} = 0\ (\forall t \in [0,T])$を満たす連続写像$\psi:\Delta_T \longrightarrow V$に対して，
 			\begin{align}
 				\omega:\Delta_T \ni (s,t) \longmapsto \Norm{\psi}{p,[s,t]}^p
@@ -123,7 +123,7 @@
 	
 	\begin{prf}
 		$\Norm{\psi}{p} < \infty$の仮定より$\omega$は$[0,\infty)$値であるから，
-		以下では式(\refeq{eq:control_function_subadditivity})の成立と連続性を示す．
+		以下では式(\refeq{eq:control_function_subadditivity})と連続性を示す．
 		\begin{description}
 			\item[第一段]
 				$\omega$が式(\refeq{eq:control_function_subadditivity})を満たすことを示す．実際，
@@ -192,12 +192,12 @@
 				\begin{align}
 					\tilde{\omega}(s,u) + \tilde{\omega}(u,t) \leq \tilde{\omega}(s,t)
 				\end{align}
-				が成り立ち$\tilde{\omega}$は優加法性を持つ．また，もし
-				或る$[u,v] \subset [0,T]$に対して
+				が成り立つから$\tilde{\omega}$は優加法性を持つ．また，もし
+				或る$(u,v) \in \Delta_T$に対して
 				\begin{align}
 					\Norm{\psi_{u,v}}{}^p > \tilde{\omega}(u,v)
 				\end{align}
-				が成り立つと仮定すると
+				が成り立つと仮定すると($u = v$なら両辺0になるから$u < v$である)
 				\begin{align}
 					\Norm{\psi_{u,v}}{}^p > \tilde{\omega}(u,v) \geq \omega(u,v-h) \geq \Norm{\psi_{u,v-h}}{}^p,
 					\quad (\forall h > 0)
@@ -217,7 +217,7 @@
 					\inf{h>0}{\omega(t,t+h)} \eqqcolon \delta > 0
 					\label{eq:thm_continuity_of_norm_val_p_variation_2}
 				\end{align}
-				と仮定する．$\psi$の連続性より或る$h_1$が存在して
+				と仮定すれば，$\psi$の連続性より或る$h_1$が存在して
 				\begin{align}
 					\Norm{\psi_{t,t+h}}{}^p
 					 = \Norm{\psi_{t,t+h} - \psi_{t,t}}{}^p
@@ -225,7 +225,7 @@
 					\quad (\forall h < h_1)
 					\label{eq:thm_continuity_of_norm_val_p_variation_1}
 				\end{align}
-				が成立するから，任意に$h_0 < h_1$を取り固定する．
+				が成立する．ここで任意に$h_0 < h_1$を取り固定する．
 				一方で$\omega(t,t+h_0) \geq \delta$より
 				\begin{align}
 					\sum_{i=1}^{N} \Norm{\psi_{\tau_{i-1},\tau_i}}{}^p > \frac{7\delta}{8}
@@ -242,7 +242,7 @@
 				\begin{align}
 					\sum_{D'} \Norm{\psi_{t_{i-1},t_i}}{}^p > \frac{3 \delta}{4}
 				\end{align}
-				を満たすから，$D' \cup \{\tau_1 < \cdots, \tau_N = t+h_0\} \in \delta[t,t+h_0]$より
+				を満たすから，$D' \cup \{\tau_1 < \cdots, \tau_N = t+h_0\} \in \delta[t,t+h_0]$に対して
 				\begin{align}
 					\omega(t,t+h_0) > \sum_{D'} \Norm{\psi_{t_{i-1},t_i}}{}^p + \sum_{i=2}^{N} \Norm{\psi_{\tau_{i-1},\tau_i}}{}^p
 					> \frac{3\delta}{2}
@@ -272,10 +272,13 @@
 					\omega(s,t + h) - \epsilon
 					\leq \sum_D \Norm{\psi_{t_{i-1},t_i}}{}^p
 				\end{align}
-				を満たす$D \in \delta[s,t+h]$が存在する．
-				$D_1 \coloneqq [s,t] \cap D$とおいて
-				$D_1 = \{t_0 < \cdots < t_k\}$と表されているとする．
-				このとき$D_2 \coloneqq D \backslash \left( D_1 \cup \{ t_{k+1} \} \right)$として
+				を満たす$D \in \delta[s,t+h]$が存在し，
+				\begin{align}
+					D_1 \coloneqq \{t_0 < \cdots < t_k\} = [s,t] \cap D,
+					\quad 
+					D_2 \coloneqq D \backslash \left( D_1 \cup \{ t_{k+1} \} \right)
+				\end{align}
+				とおくと
 				\begin{align}
 					\omega(s,t + h) - \epsilon
 					&\leq \sum_{i=1}^{k} \Norm{\psi_{t_{i-1},t_i}}{}^p 
@@ -285,41 +288,89 @@
 						+ \sum_{D_2} \Norm{\psi_{t_{i-1},t_i}}{}^p \\
 					&\leq \omega(s,t) + \omega(t,t+h) + \Norm{\psi_{t_k,t_{k+1}}}{}^p - \Norm{\psi_{t_k,t}}{}^p
 				\end{align}
-				が成り立つ．$\psi$の(一様)連続性より$\Norm{\psi_{t_k,t_{k+1}}}{}^p \longrightarrow \Norm{\psi_{t_k,t}}{}^p\ (h \longrightarrow +0)$が成り立つから
+				が成り立つ．$\psi$の一様連続性より$\Norm{\psi_{t_k,t_{k+1}}}{}^p \longrightarrow \Norm{\psi_{t_k,t}}{}^p\ (h \longrightarrow +0)$が成り立つから
 				\begin{align}
-					\lim_{h \to +0} \omega(s,t+h) - \epsilon \leq \omega(s,t)
+					\lim_{h \to +0} \omega(s,t+h) - \epsilon \leq \omega(s,t),
+					\quad (\forall \epsilon > 0)
 				\end{align}
-				が従い，$\epsilon$の任意性より(\refeq{eq:thm_continuity_of_norm_val_p_variation_3})が出る．
-				同様にして$s \longmapsto \omega(s,t)$の左連続性も成立する．
+				が従い(\refeq{eq:thm_continuity_of_norm_val_p_variation_3})が出る．
+				同様に$(0,t] \ni s \longmapsto \omega(s,t)\ (\forall t \in (0,T])$
+				の左連続性も成立する．
 				
 			\item[第六段]
-				$\omega$の$(s,t) \in \Delta_T$における連続性を示す．$h,k \geq 0$として考えれば，
-				\begin{align}
-					&|\omega(s,t) - \omega(s-h,t-k)| \\
-					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s-h,t) - \omega(s-h,t-k)| \\
-					&\qquad= |\omega(s,t) - \omega(s-h,t)| + \omega(s-h,t) - \omega(s-h,t-k) \\
-					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + \omega(s-h,t) - \omega(s,t-k) \\
-					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s-h,t) - \omega(s,t)| + |\omega(s,t) - \omega(s,t-k)|, \\
-					&|\omega(s,t) - \omega(s+h,t+k)| \\
-					&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + |\omega(s+h,t) - \omega(s+h,t+k)| \\
-					&\qquad= |\omega(s,t) - \omega(s+h,t)| + \omega(s+h,t+k) - \omega(s+h,t) \\
-					&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + \omega(s,t+k) - \omega(s+h,t) \\
-					&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s,t+k) - \omega(s,t)| + |\omega(s,t) - \omega(s+h,t)|
-				\end{align}
-				が成り立ち，値の差は上述した連続性により縮まる．また
-				$|\omega(s,t) - \omega(s-h,t+k)|$については，
-				$h,k \longrightarrow +0$として$\omega(s-h,t+k)$は単調減少に$\omega(s,t)$に近づく．
-				単調性より極限は$h,k$の近づけ方に依らず
-				\begin{align}
-					\omega(s,t) = \lim_{h \to +0} \lim_{k \to +0} \omega(s-h,t+k) = \lim_{h,k \to +0} \omega(s-h,t+k)
-				\end{align}
-				となり，同様に
-				\begin{align}
-					\omega(s,t) = \lim_{h \to +0} \lim_{k \to +0} \omega(s+h,t-k) = \lim_{h,k \to +0} \omega(s+h,t-k)
-				\end{align}
-				も得られ，$\omega(s-h,t-k)$は$h,k \to 0\ $(近づけ方に依らない)として$\omega(s,t)$に収束し
-				$\omega$の連続性が出る．
-				\QED
+				$\omega$の$(s,t) \in \Delta_T$における連続性を示す．$h,k \geq 0$とする．
+				\begin{description}
+					\item[(A)] $(s,t)$を基準に第一象限の点について
+						\begin{align}
+							&|\omega(s,t) - \omega(s+h,t+k)| \\
+							&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + |\omega(s+h,t) - \omega(s+h,t+k)| \\
+							&\qquad= |\omega(s,t) - \omega(s+h,t)| + \omega(s+h,t+k) - \omega(s+h,t) \\
+							&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + \omega(s,t+k) - \omega(s+h,t) \\
+							&\qquad\leq |\omega(s,t) - \omega(s+h,t)| + |\omega(s,t+k) - \omega(s,t)| + |\omega(s,t) - \omega(s+h,t)|
+						\end{align}
+						が成り立つ．前段までに示した左右の連続性より，
+						近づけ方に依らず$h,k \longrightarrow +0$とすれば，
+						左辺をいくらでも0に近づけることができる．
+					
+					\item[(B)] $(s,t)$を基準に第三象限の点について
+						\begin{align}
+							&|\omega(s,t) - \omega(s-h,t-k)| \\
+							&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s-h,t) - \omega(s-h,t-k)| \\
+							&\qquad= |\omega(s,t) - \omega(s-h,t)| + \omega(s-h,t) - \omega(s-h,t-k) \\
+							&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + \omega(s-h,t) - \omega(s,t-k) \\
+							&\qquad\leq |\omega(s,t) - \omega(s-h,t)| + |\omega(s-h,t) - \omega(s,t)| + |\omega(s,t) - \omega(s,t-k)|,
+						\end{align}
+						が成り立つ．(A)と同じく$h,k \longrightarrow +0$として左辺は0に収束する．
+						
+					\item[(C)] $((h_n,k_n))_{n=1}^{\infty}$を
+						第一象限から$(0,0)$に近づく任意の点列とするとき，
+						\begin{align}
+							\lim_{n \to \infty} \omega(s-h_n, t+k_n) = \omega(s,t),
+							\quad \lim_{n \to \infty} \omega(s+h_n, t-k_n) = \omega(s,t)
+						\end{align}
+						が成り立つことを示す．これが示されれば
+						\begin{align}
+							\lim_{h,k \to +0} \omega(s-h, t+k) = \omega(s,t),
+							\quad \lim_{h,k \to +0} \omega(s+h, t-k) = \omega(s,t)
+						\end{align}
+						が従い，(A)(B)と併せて$\omega$の連続性が出る．背理法で証明する．いま，
+						\begin{align}
+							\alpha \coloneqq \lim_{n \to \infty} \omega(s-h_n, t+k_n)
+							> \omega(s,t)
+						\end{align}
+						と仮定して$\epsilon \coloneqq \alpha - \omega(s,t)$とおく．
+						$\lim_{t' \downarrow t}\omega(s,t') = \omega(s,t)$より
+						\begin{align}
+							0 \leq \omega(s,t') - \omega(s,t) < \frac{\epsilon}{3}
+						\end{align}
+						を満たす$t' > t$が存在し，また
+						$\lim_{s' \uparrow s}\omega(s',t') = \omega(s,t')$より
+						\begin{align}
+							0 \leq \omega(s',t') - \omega(s,t') < \frac{\epsilon}{3}
+						\end{align}
+						を満たす$s' < s$も存在する．このとき或る$n$で
+						$s' \leq s- h_n,\ t + k_n \leq t'$かつ
+						\begin{align}
+							|\omega(s-h_n, t+k_n) - \alpha| < \frac{\epsilon}{3}
+						\end{align}
+						が成立し，特に$(s-h_n, t+k_n) \subset (s',t')$より
+						\begin{align}
+							\omega(s-h_n, t+k_n) \leq \omega(s',t')
+						\end{align}
+						となるはずであるが，一方で
+						\begin{align}
+							\omega(s',t') < \frac{2}{3}\epsilon + \omega(s,t)
+							 = \alpha - \frac{\epsilon}{3}
+							 < \omega(s-h_n, t+k_n)
+						\end{align}
+						が従い矛盾が生じる．よって
+						\begin{align}
+							\lim_{n \to \infty} \omega(s-h_n, t+k_n) = \omega(s,t)
+						\end{align}
+						でなくてはならず，同様にして$\lim_{n \to \infty} \omega(s+h_n, t-k_n) = \omega(s,t)$
+						も得られる．
+						\QED
+				\end{description}
 		\end{description}
 	\end{prf}
 	

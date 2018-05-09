@@ -222,15 +222,15 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 
 \begin{screen}
 	\begin{dfn}[$p$-variation]
-		$(V,\Norm{\cdot}{})$をBanach空間とし，
-		$[0,T]$上の$V$値関数$x$と$[s,t] \subset [0,T]$に対して$p$-variationを次で定める:
+		$(V,\Norm{\cdot}{})$をノルム空間とし，
+		$[0,T]$上の$V$値写像$x$と$[s,t] \subset [0,T]$に対して$p$-variation $(p > 0)$を次で定める:
 		\begin{align}
 			\Norm{x}{p,[s,t]}
 			\coloneqq \left\{ \sup{D \in \delta[s,t]}{\sum_{D} 
 				\Norm{x_{t_i} - x_{t_{i-1}}}{}^p }\right\}^{1/p}.
 		\end{align}
 		特に，$\Norm{\cdot}{p,[0,T]}$を$\Norm{\cdot}{p}$と表記する．
-		また$p \geq 1$として，線形空間$B_{p,T}(V)$を
+		また$p \geq 1$として，線型空間$B_{p,T}(V)$を
 		\begin{align}
 			B_{p,T}(V)
 			\coloneqq \Set{x:[0,T] \longrightarrow V}{x_0=0,\ x:\mbox{continuous},\ \Norm{x}{p} < \infty}
@@ -240,11 +240,11 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 \end{screen}
 
 次の結果によれば，$0 < p < 1$に対し$B_{p,T}(V)$を定めても
-$0$の定数関数のみの空間でしかない．
+零写像のみの空間でしかない．
 \begin{screen}
 	\begin{thm}[$0 < p < 1$に対して有界$p$-variationなら定数]
-		$x:[0,T] \longrightarrow V$を連続関数とする．
-		このとき，$p \in (0, 1)$に対し$\Norm{x}{p} < \infty$が成り立つなら$x$は定数関数である．
+		$x:[0,T] \longrightarrow V$を連続写像とする．
+		このとき，$p \in (0, 1)$に対し$\Norm{x}{p} < \infty$が成り立つなら$x$は定数写像である．
 	\end{thm}
 \end{screen}
 
@@ -262,21 +262,21 @@ $0$の定数関数のみの空間でしかない．
 \end{prf}
 
 \begin{screen}
-	\begin{thm}
-		$1 \leq p \leq q$に対し$B_{p,T}(V) \subset B_{q,T}(V)$
-		が成立する．
+	\begin{thm}[$p$-variationの$p$に関する単調減少性]
+		$V$をノルム空間とするとき，$x:[0,T] \longrightarrow V$に対して
+		$1 \leq p \leq q$なら$\Norm{x}{p} \geq \Norm{x}{q}$が成立する．
+		特に$B_{p,T}(V) \subset B_{q,T}(V)$が従う．
 	\end{thm}
 \end{screen}
 
 \begin{prf}
-	任意の$x \in B_{p,T}(V)$と$D \in \delta[0,T]$に対し
+	$\left( \sum_{i} |a_i|^p \right)^{1/p} \leq \sum_{i} |a_i|\ (a_i \in \R,\ p \geq 1)$
+	により，任意の$x \in B_{p,T}(V)$と$D \in \delta[0,T]$に対し
 	\begin{align}
-		\sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^q
-		&\leq \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \Norm{x_{t_i} - x_{t_{i-1}}}{}^{q-p} \\
-		&\leq 2^{q-p}\sup{t \in [0,T]}{\Norm{x_t}{}^{q-p}} \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \\
-		&\leq 2^{q-p}\sup{t \in [0,T]}{\Norm{x_t}{}^{q-p}} \Norm{x}{p}^p
+		\left[ \sum_D \left( \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \right)^{q/p} \right]^{p/q}
+		\leq \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p
 	\end{align}
-	が成立する．
+	が満たされ$\Norm{x}{q} \leq \Norm{x}{p}$が成立する．
 	\QED
 \end{prf}
 
@@ -291,7 +291,7 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 
 \begin{screen}
 	\begin{thm}\label{thm:B_p_T_Banach_space}
-		$B_{p,T}(V)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
+		$V$がBanach空間のとき，$B_{p,T}(V)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
 	\end{thm}
 \end{screen}
 
