@@ -2,7 +2,8 @@
 \contentsline {section}{\numberline {0.2}連続性定理}{5}
 \contentsline {section}{\numberline {0.3}Young 積分}{19}
 \contentsline {section}{\numberline {0.4}The notion of rough path}{20}
-\contentsline {section}{\numberline {.1}notation}{22}
-\contentsline {section}{\numberline {.2}テンソル積}{22}
-\contentsline {section}{\numberline {.3}テンソル積の内積}{30}
-\contentsline {section}{\numberline {.4}クロスノルム}{30}
+\contentsline {section}{\numberline {.1}多重線型写像}{23}
+\contentsline {section}{\numberline {.2}notation}{24}
+\contentsline {section}{\numberline {.3}テンソル積}{24}
+\contentsline {section}{\numberline {.4}テンソル積の内積}{32}
+\contentsline {section}{\numberline {.5}クロスノルム}{32}

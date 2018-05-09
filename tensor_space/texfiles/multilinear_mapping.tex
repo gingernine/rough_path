@@ -1,0 +1,104 @@
+\section{多重線型写像}
+	
+	\begin{screen}
+		\begin{thm}[多重線型写像の一意拡張]
+			$(X_i)_{i=1}^{n}$をノルム空間，$Z$をBanach空間，
+			$Y_i$を$X_i$の稠密な部分空間とする$(i=1,\cdots,n)$．
+			このとき，有界$n$重線型写像
+			$b:\bigoplus_{i=1}^n Y_i \longrightarrow Z$は
+			$(X_i)_{i=1}^{n}$上の$Z$値$n$重線型写像$\tilde{b}$に一意に拡張され，
+			$b$と$\tilde{b}$の作用素ノルムは一致する．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$\bigoplus_{i=1}^n Y_i$は$\bigoplus_{i=1}^n X_i$で稠密であるから，
+		任意の$x = (x_1,\cdots,x_n) \in \bigoplus_{i=1}^n X_i$に対して
+		\begin{align}
+			\Norm{x - x^k}{\bigoplus_{i=1}^n X_i}
+			= \sum_{i=1}^n \Norm{x_i - x^k_i}{X_i} \longrightarrow 0,
+			\quad (k \longrightarrow \infty)
+		\end{align}
+		を満たす点列$x^k = (x^k_1,\cdots,x^k_n) \in \bigoplus_{i=1}^n Y_i\ (k=1,2,\cdots)$
+		が存在する．
+		\begin{align}
+			M_i \coloneqq \sup{k \geq 1}{\Norm{x^k_i}{X_i}},
+			\quad (i=1,\cdots,n)
+		\end{align}
+		とおけば，$M_i < \infty\ (i=1,\cdots,n)$より
+		\begin{align}
+			\Norm{b(x^k) - b(x^\ell)}{Z}
+			&= \left\|\, b(x^k_1,x^k_2,\cdots,x^k_n) - b(x^\ell_1,x^k_2,\cdots,x^k_n) \right. \\
+				&\quad + b(x^\ell_1,x^k_2,\cdots,x^k_n) - b(x^\ell_1,x^\ell_2,\cdots,x^k_n) \\
+				&\quad \cdots \\
+				&\quad \left. + b(x^\ell_1,\cdots,x^\ell_{n-1},x^k_n) - b(x^\ell_1,\cdots,x^\ell_n)\,  \right\|_Z \\
+			&\leq \Norm{b}{\ContLn{\bigoplus_{i=1}^n Y_i}{Z}{n}} \Norm{x^k_1 - x^\ell_1}{X_1} M_2 \cdots M_n \\
+			&\quad + \Norm{b}{\ContLn{\bigoplus_{i=1}^n Y_i}{Z}{n}} M_1 \Norm{x^k_2 - x^\ell_2}{X_2} M_3 \cdots M_n \\
+			&\quad \cdots \\
+			&\quad + \Norm{b}{\ContLn{\bigoplus_{i=1}^n Y_i}{Z}{n}} M_1 \cdots M_{n-1} \Norm{x^k_n - x^\ell_n}{X_n} \\
+			&\longrightarrow 0,
+			\quad (k,\ell \longrightarrow \infty)
+		\end{align}
+		が成り立ち，$Z$の完備性より$\lim_{k \to \infty}b(x^k)$が存在する．
+		別の収束列
+		$\bigoplus_{i=1}^n Y_i \ni y^m \longrightarrow x$を取れば
+		\begin{align}
+			\Norm{x^k_i - y^m_i}{X_i} \leq \Norm{x^k_i - x_i}{X_i} + \Norm{x_i - y^m_i}{X_i}
+			\longrightarrow 0,
+			\quad (k,m \longrightarrow \infty,\ i=1,\cdots,n)
+		\end{align}
+		より$\Norm{b(x^k) - b(y^m)}{Z} \longrightarrow 0\ (k,m \longrightarrow \infty)$が従い
+		\begin{align}
+			\lim_{k \to \infty} b(x^k) = \lim_{m \to \infty} b(y^m)
+		\end{align}
+		が得られ，これにより
+		写像$\tilde{b}:x \longmapsto \lim_{k \to \infty} b(x^k)$が定まる．
+		この$\tilde{b}$は$b$の拡張であり，有界かつ$n$重線型性を持つ．先ず$n$重線型性を示す．
+		$x = (x_1,x_2,\cdots,x_n)$と$y = (y_1,x_2,\cdots,x_n)$に対し
+		\begin{align}
+			\Norm{x - x^k}{\bigoplus_{i=1}^n X_i} 
+			\longrightarrow 0,
+			\quad \Norm{y - y^k}{\bigoplus_{i=1}^n X_i} 
+			\longrightarrow 0
+		\end{align}
+		を満たす点列$(x^k)_{k=1}^\infty,(y^k)_{m=1}^\infty \subset \bigoplus_{i=1}^n Y_i$を取れば
+		\begin{align}
+			&\Norm{\tilde{b}(\alpha x_1 + \beta y_1,x_2,\cdots,x_n) 
+				- \alpha \tilde{b}(x_1,\cdots,x_n)
+				- \beta \tilde{b}(y_1,\cdots,x_n)}{Z} \\
+			&\leq \Norm{\tilde{b}(\alpha x_1 + \beta y_1,x_2,\cdots,x_n)
+				- b(\alpha x^k_1 + \beta y^k_1,x^k_2,\cdots,x^k_n)}{Z} \\
+				&\quad + |\alpha| \Norm{\tilde{b}(x_1,\cdots,x_n)
+				- b(x^k_1,\cdots,x^k_n)}{Z} \\
+				&\quad + |\beta| \Norm{\tilde{b}(y_1,\cdots,x_n)
+				- b(y^k_1,\cdots,x^k_n)}{Z} \\
+			&\longrightarrow 0,
+			\quad (k \longrightarrow \infty)
+		\end{align}
+		が成り立ち，$\tilde{b}$の第一成分に関する線型性を得る．他の成分も同じである．
+		また任意の$x \in \bigoplus_{i=1}^\infty X_i$に対して
+		収束列$(x^k)_{k=1}^\infty \subset \bigoplus_{i=1}^n Y_i$を取れば，
+		任意の$\epsilon > 0$に対し或る$k$が存在して
+		\begin{align}
+			\Norm{\tilde{b}(x)}{Z} \leq \Norm{b(x^k)}{Z} + \epsilon
+		\end{align}
+		かつ
+		\begin{align}
+			\Norm{x^k_i}{X_i} \leq \Norm{x_i}{X_i} + \epsilon,
+			\quad (i=1,\cdots,n)
+		\end{align}
+		が満たされ
+		\begin{align}
+			\Norm{\tilde{b}(x)}{Z} \leq \Norm{b(x^k)}{Z} + \epsilon
+			\leq \Norm{b}{\ContLn{\bigoplus_{i=1}^n Y_i}{Z}{n}} \prod_{i=1}^n \left( \Norm{x_i}{X_i} + \epsilon \right) + \epsilon
+		\end{align}
+		が従う．$x$及び$\epsilon$の任意性より$\Norm{\tilde{b}}{\ContLn{\bigoplus_{i=1}^n X_i}{Z}{n}}
+		\leq \Norm{b}{\ContLn{\bigoplus_{i=1}^n Y_i}{Z}{n}}$が成り立ち，
+		$\tilde{b}$は$b$の拡張だから
+		\begin{align}
+			\Norm{\tilde{b}}{\ContLn{\bigoplus_{i=1}^n X_i}{Z}{n}}
+			= \Norm{b}{\ContLn{\bigoplus_{i=1}^n Y_i}{Z}{n}}
+		\end{align}
+		が出る．拡張の一意性は$\bigoplus_{i=1}^n Y_i$の稠密性と$\tilde{b}$の連続性による．
+		\QED
+	\end{prf}

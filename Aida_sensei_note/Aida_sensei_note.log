@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  9 MAY 2018 10:07
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  9 MAY 2018 17:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,30 +551,34 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 21.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 30.
- [1
 
-] Excluding 'comment' comment.
-Excluding 'comment' comment. [2]
+Overfull \vbox (2.41103pt too high) has occurred while \output is active []
+
+
+[1
+
+] Excluding 'comment' comment. Excluding 'comment' comment. [2]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 218.
  [3] [4])
 (./texfiles/proof_of_continuity_theorem.tex [5] [6] [7] [8] [9] [10]
 Excluding 'comment' comment. [11] [12] [13] [14] [15] [16] [17])
 (./texfiles/Young_integral.tex [18] [19]) (./texfiles/p_rough_path.tex [20]
-[21]) (../tensor_space/texfiles/tensor_product_multiple.tex [22] [23]
-<xymatrix 3x2 200> <xymatrix 3x2 200> [24] [25] [26] [27] [28] <xymatrix 3x2
-158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2
-158> <xymatrix 3x2 158> [29] <xymatrix 3x2 158> <xymatrix 3x2 158>)
+[21]) (../tensor_space/texfiles/multilinear_mapping.tex [22] [23])
+(../tensor_space/texfiles/tensor_product_multiple.tex [24] [25] <xymatrix 3x2
+200> <xymatrix 3x2 200> [26] [27] [28] [29] <xymatrix 3x2 158> <xymatrix 3x2
+158> [30] <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix
+3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> [31])
 (../tensor_space/texfiles/tensor_product_hilbert.tex)
-(../tensor_space/texfiles/crossnorm.tex [30] [31] [32] [33] [34] [35] [36])
-[37] (./Aida_sensei_note.aux) ) 
+(../tensor_space/texfiles/crossnorm.tex [32] [33] [34] [35] [36] [37]) [38]
+(./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
- 4611 strings out of 493621
- 59179 string characters out of 6150087
- 158215 words of memory out of 5000000
- 8082 multiletter control sequences out of 15000+600000
+ 4615 strings out of 493621
+ 59310 string characters out of 6150087
+ 158227 words of memory out of 5000000
+ 8083 multiletter control sequences out of 15000+600000
  37401 words of font info for 140 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,24n,26p,316b,712s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (38 pages, 262144 bytes).
+Output written on Aida_sensei_note.dvi (39 pages, 275996 bytes).

@@ -1,7 +1,24 @@
 \section{The notion of rough path}
 	$(V,\Norm{\cdot}{})$を$\R$-Banach空間とする．
-	$V^{\otimes 0} = \R$とし$T(V) \coloneqq \bigoplus_{k=0}^{\infty} V^{\otimes k}$
-	とおく．各テンソル積におけるノルムを$\Norm{}{k}$と表す．
+	$k \geq 2$の場合，代数的$k$重テンソル積$V^{\otimes_a k} = V \otimes_a \cdots \otimes_a V$に
+	クロスノルム(定義\ref{def:cross_norm})$\alpha_k$を導入し，
+	その完備化を$V^{\otimes k}$と表しノルムを$|\cdot|_k$と書く．
+	
+	$V^{\otimes 0} = \R$とし
+	$T(V) \coloneqq \bigoplus_{k=0}^{\infty} V^{\otimes k}$
+	とおく．
+	
+	ここで
+	\begin{align}
+		(c_i)_{i=0}^{\infty} = (a_i)_{i=0}^{\infty} \otimes (b_i)_{i=0}^{\infty}
+	\end{align}
+	を
+	\begin{align}
+		c_i = \sum_{j=0}^{i} a_{j} \otimes b_{i-j}
+	\end{align}
+	により定めれば
+	
+	各テンソル積におけるノルムを$\Norm{}{k}$と表す．
 	
 	連続かつ有界変動なパス$x:[0,T] \longrightarrow V$に対して次の積分
 	\begin{align}
