@@ -2,7 +2,7 @@
 	$(V,\Norm{\cdot}{})$を$\R$-Banach空間とする．また
 	$\otimes_a$により代数的テンソル積，或はその標準写像を表す．
 	$k \geq 2$の場合，$k$重テンソル積$V^{\otimes_a k} = V \otimes_a \cdots \otimes_a V$に
-	クロスノルム$\crossnorm{\cdot}{k}$を導入し，
+	プロジェクティブノルム$\projectivenorm{\cdot}{k}$を導入し，
 	その完備拡大を$(V^{\otimes k},\compcrossnorm{\cdot}{k})$と書く．
 	定理\ref{thm:tensor_product_with_scalar}
 	と定理\ref{thm:associativity_of_tensor_products}
@@ -14,26 +14,76 @@
 		F_{j,k}:V^{\otimes_a k} \longrightarrow V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}
 	\end{align}
 	と表し，$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$上にプロジェクティブノルムを導入し，
-	$\pi_{j,k}$と書く．このとき
-	\begin{align}
-		\alpha_k \circ F^{-1}_{j,k} \leq \pi_{j,k}
-	\end{align}
-	が成立する．
-	$v \in V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$の任意の分割
-	\begin{align}
-		v = \sum_{n,m} \left( v^n_1 \otimes_a \cdots \otimes_a v^n_j \right) 
-		\otimes_a \left( v^m_{j+1} \otimes_a \cdots \otimes_a v^m_{k} \right),
-		\quad (v^n_i,v^m_i \in V)
-	\end{align}
-	に対して，定理\ref{thm:expression_of_projective_norm}より，
-	$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$の
-	プロジェクティブノルムを$\pi_{j,k}$と書けば
-	\begin{align}
-		\crossnorm{F_{j,k}^{-1}(v)} \leq \sum_{i=1}^n \crossnorm{}{k}
-		\crossnorm{v}{j,k} \coloneqq \crossnorm{F_{j,k}^{-1}(v)}{k},
-		\quad \left( \forall v \in V^{\otimes_a j} \otimes_a V^{\otimes_a k-j} \right)
-	\end{align}
-	により定めれば，$F_{j,k}$は等長同型となる．一方で
+	これを$\pi_{j,k}$と書く．
+	\begin{screen}
+		\begin{thm}
+			このとき次が成立する．特に，$F_{j,k}$は等長同型である．
+			\begin{align}
+				\pi_k \circ F^{-1}_{j,k} = \pi_{j,k}.
+			\end{align}
+			
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				$\pi_k \circ F^{-1}_{j,k} \leq \pi_{j,k}$が成り立つことを示す．
+				$v \in V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$の分割
+				\begin{align}
+					v = \sum_{r} u^r \otimes_a v^r,
+					\quad (u^r \in V^{\otimes_a j},\ v^r \in V^{\otimes_a k-j})
+				\end{align}
+				を任意に取り，一旦固定する．このとき$u^r,v^r$の任意の分割
+				\begin{align}
+					u^r = \sum_{n(r)} u^{n(r)}_1 \otimes_a \cdots \otimes_a u^{n(r)}_j, 
+					\quad v^r = \sum_{m(r)} v^{m(r)}_{j+1} \otimes_a \cdots \otimes_a v^{m(r)}_{k},
+					\quad (v^{n(r)}_i,v^{m(r)}_i \in V)
+				\end{align}
+				に対して
+				\begin{align}
+					\projectivenorm{F^{-1}_{j,k}(v)}{k}
+					&\leq \sum_{r} \sum_{n(r),m(r)} \projectivenorm{u^{n(r)}_1 \otimes_a \cdots \otimes_a u^{n(r)}_j \otimes_a v^{m(r)}_{j+1} \otimes_a \cdots \otimes_a v^{m(r)}_{k}}{k} \\
+					&= \sum_{r} \sum_{n(r),m(r)} \Norm{u^{n(r)}_1}{} \cdots \Norm{u^{n(r)}_j}{} \Norm{v^{m(r)}_{j+1}}{} \cdots \Norm{v^{m(r)}_k}{} \\
+					&= \sum_{r} \left\{ \sum_{n(r)} \Norm{u^{n(r)}_1}{} \cdots \Norm{u^{n(r)}_j}{} \right\} \left\{ \sum_{m(r)} \Norm{v^{m(r)}_{j+1}}{} \cdots \Norm{v^{m(r)}_k}{} \right\} 
+				\end{align}
+				が成り立つから，分割の任意性と定理\ref{thm:expression_of_projective_norm}より
+				\begin{align}
+					\projectivenorm{F^{-1}_{j,k}(v)}{k} 
+					\leq \sum_r \projectivenorm{u^r}{j}\projectivenorm{v^r}{k-j}
+				\end{align}
+				を得る．$v$の分割について下限を取れば，
+				再び定理\ref{thm:expression_of_projective_norm}により
+				\begin{align}
+					\projectivenorm{F^{-1}_{j,k}(v)}{k} \leq \projectivenorm{v}{j,k}
+				\end{align}
+				が出る．
+			
+			\item[第二段]
+				$\pi_k \circ F^{-1}_{j,k} \geq \pi_{j,k}$が成り立つことを示す．
+				$v \in V^{\otimes_a k}$の任意の分割
+				\begin{align}
+					v = \sum_n v^n_1 \otimes_a \cdots \otimes_a v^n_k,
+					\quad (v^n_i \in V,\ i=1,\cdots,k)
+				\end{align}
+				を取れば，
+				\begin{align}
+					\projectivenorm{F_{j,k}(v)}{j,k}
+					&\leq \sum_n \projectivenorm{\left( v^n_1 \otimes_a \cdots \otimes_a v^n_j \right) \otimes_a \left( v^n_j \otimes_a \cdots \otimes_a v^n_k \right)}{j,k} \\
+					&= \sum_n \projectivenorm{v^n_1 \otimes_a \cdots \otimes_a v^n_j}{j}
+						\projectivenorm{v^n_j \otimes_a \cdots \otimes_a v^n_k}{k-j} \\
+					&= \sum_n \Norm{v^n_1}{} \cdots \Norm{v^n_k}{}
+				\end{align}
+				が成立する．従って定理\ref{thm:expression_of_projective_norm}より
+				\begin{align}
+					\projectivenorm{F_{j,k}(v)}{j,k} \leq \projectivenorm{v}{k}
+				\end{align}
+				が得られる．
+				\QED
+		\end{description}
+	\end{prf}
+	
+	
 	$V^{\otimes_a i}$の$V^{\otimes i}$への等長埋め込みを$J_i$で表し
 	\begin{align}
 		\varphi_{j,k}:J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j} \ni (u,v)
@@ -47,20 +97,26 @@
 	$\varphi_{j,k}$の双線型性が従い，また
 	\begin{align}
 		\compcrossnorm{\varphi_{j,k}(u,v)}{k}
-		&= \crossnorm{F_{j,k}^{-1} (J_j^{-1}u \otimes_a J_{k-j}^{-1}v)}{k} \\
-		&= \crossnorm{J_j^{-1}u}{j} \crossnorm{J_{k-j}^{-1}v}{k-j} \\
+		&= \projectivenorm{F_{j,k}^{-1} (J_j^{-1}u \otimes_a J_{k-j}^{-1}v)}{k} \\
+		&= \projectivenorm{J_j^{-1}u \otimes_a J_{k-j}^{-1}v}{j,k} \\
+		&= \projectivenorm{J_j^{-1}u}{j} \projectivenorm{J_{k-j}^{-1}v}{k-j} \\
 		&= \compcrossnorm{u}{j} \compcrossnorm{v}{k-j}
 	\end{align}
 	が任意の$(u,v) \in J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}$に対して
 	成り立つから$\Norm{\varphi_{j,k}}{\ContLn{J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}}{V^{\otimes k}}{2}} = 1$を得る．
-	定理\ref{thm:expansion_of_multilinear_mapping}より
+	従って，定理\ref{thm:expansion_of_multilinear_mapping}より
 	$\varphi_{j,k}$は$V^{\otimes j} \times V^{\otimes k-j}$上の或る双線型
-	$\psi_{j,k}$にノルム保存拡張され，$\psi_{j,k}$もまた
-	\begin{align}
-		\compcrossnorm{\psi_{j,k}(u,v)}{k} = \compcrossnorm{u}{j} \compcrossnorm{v}{k-j},
-		\quad (\forall (u,v) \in V^{\otimes j} \times V^{\otimes k-j})
-	\end{align}
-	を満たす:
+	$\psi_{j,k}$にノルム保存拡張される．
+	
+	\begin{screen}
+		\begin{thm}
+			$\psi_{j,k}$は次を満たす:
+			\begin{align}
+				\compcrossnorm{\psi_{j,k}(u,v)}{k} = \compcrossnorm{u}{j} \compcrossnorm{v}{k-j},
+				\quad (\forall (u,v) \in V^{\otimes j} \times V^{\otimes k-j}).
+			\end{align}
+		\end{thm}
+	\end{screen}
 	
 	\begin{prf}
 		$(u,v)$に直積ノルムで収束する点列$(u_n,v_n) \in J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}\ (n=1,2,\cdots)$を取れば
