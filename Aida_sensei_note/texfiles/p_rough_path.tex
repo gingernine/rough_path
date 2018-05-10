@@ -105,7 +105,7 @@
 	が任意の$(u,v) \in J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}$に対して
 	成り立つから$\Norm{\varphi_{j,k}}{\ContLn{J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}}{V^{\otimes k}}{2}} = 1$を得る．
 	従って，定理\ref{thm:expansion_of_multilinear_mapping}より
-	$\varphi_{j,k}$は$V^{\otimes j} \times V^{\otimes k-j}$上の或る双線型
+	$\varphi_{j,k}$は$V^{\otimes j} \times V^{\otimes k-j}$上の或る唯一の双線型
 	$\psi_{j,k}$にノルム保存拡張される．
 	
 	\begin{screen}
@@ -178,7 +178,7 @@
 	\end{align}
 	により定め，次の直積ノルムを導入する:
 	\begin{align}
-		|a| \coloneqq \sum_{k=0}^n \compcrossnorm{a^k}{k},
+		\compcrossnorm{a}{} \coloneqq \sum_{k=0}^n \compcrossnorm{a^k}{k},
 		\quad (a = (a^k)_{k=0}^n \in T^{(n)}(V)).
 	\end{align}
 	いま，写像$X:\Delta_T \longrightarrow T^{(n)}(V)$に対して
@@ -190,13 +190,44 @@
 	とおく．
 	
 	\begin{screen}
+		\begin{dfn}[finite $p$-variation]
+			$p \geq 1$とする．$X:\Delta_T \longrightarrow T^{(n)}(V)$に対して
+			或るコントロール関数$\omega$が存在して
+			\begin{align}
+				\compcrossnorm{X^i_{s,t}}{k} \leq \omega(s,t)^{i/p},
+				\quad (\forall i=1,\cdots,n,\ \forall (s,t) \in \Delta_T)
+				\label{eq:def_finite_p_variation}
+			\end{align}
+			を満たすとき，$X$は有限$p$-変動(finite $p$-variation)を持つという．
+		\end{dfn}
+	\end{screen}
+	
+	(\refeq{eq:def_finite_p_variation})を満たす$\omega$が存在する場合，
+	$p \geq n$ならば$\Norm{X}{p} < \infty$が成り立つ．実際，
+	\begin{align}
+		\sum_D \compcrossnorm{X^i_{s,t}}{k}^{p/i} \leq \omega(0,T),
+		\quad (\forall D \in \delta[0,T],\ i=1,\cdots,n)
+	\end{align}
+	となり$\Norm{X^i}{p/i} < \infty\ (i=1,\cdots,n)$が従い，
+	$p/i \geq 1\ (i=1,\cdots,n)$だから
+	定理\ref{thm:p_variation_monotonously_decreasing_2}により
+	\begin{align}
+		\Norm{X^i}{p} \leq \Norm{X^i}{p/i}\ (i=1,\cdots,n)
+	\end{align}
+	が満たされる．よって任意の$D \in \delta[0,T]$に対して
+	\begin{align}
+		\sum_D \compcrossnorm{X_{t_{i-1},t_i}}{}^p
+		= \sum_D \left( \compcrossnorm{X^0_{t_{i-1},t_i}}{1}^p +  \right)
+	\end{align}
+	
+	\begin{screen}
 		\begin{dfn}[finite total $p$-variation]
-			$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$
-			について，任意の$1 \leq i \leq n$に対して
+			$p \geq 1$とする．$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$
+			が有限総$p$-変動(finite total $p$-variation)を持つとは，任意の$1 \leq i \leq n$に対して
 			\begin{align}
 				\Norm{X^i}{p/i} < \infty
 			\end{align}
-			が満たされるとき，$X$は finite total $p$-variation を持つという．また次を定める:
+			が満たされることをいう．また次を定める:
 			\begin{align}
 				C_{0,p} \left(\Delta_T,T^{(n)}(V) \right)
 				\coloneqq \Set{X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)}{\mbox{$X$ has finite total $p$-variation}}	.
