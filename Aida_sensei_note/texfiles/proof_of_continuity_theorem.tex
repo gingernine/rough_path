@@ -110,6 +110,91 @@
 		\end{dfn}
 	\end{screen}
 	
+	再定義した$p$-variationに対しても
+	定理\ref{thm:p_variation_0_1}，\ref{thm:p_variation_monotonously_decreasing}，
+	\ref{thm:B_p_T_Banach_space}が成立する．
+	\begin{screen}
+		\begin{thm}[定理\ref{thm:p_variation_0_1}のアナロジー]
+			$V$をノルム空間，$X:\Delta_T \longrightarrow V$を連続写像とする．
+			このとき，$X_{t,t} = 0\ (\forall t \in [0,T])$かつ
+			$p \in (0, 1)$に対し$\Norm{X}{p} < \infty$が満たされれば$X \equiv 0$である．
+		\end{thm}
+	\end{screen}
+
+	\begin{prf}
+		$(s,t) \in \Delta_T$を任意に取り固定する．このとき全ての$D \in \delta[s,t]$に対して，
+		\begin{align}
+			\Norm{X_{s,t}}{} \leq \sum_D \Norm{X_{t_{i-1},t_i}}{}
+			&\leq \max{D}{\Norm{X_{t_{i-1},t_i}}{}^{1-p}} 
+				\sum_D \Norm{X_{t_{i-1},t_i}}{}^p \\
+			&\leq \max{D}{\Norm{X_{t_{i-1},t_i}}{}^{1-p}} \Norm{X}{p}
+		\end{align}
+		が成り立ち，$X$の一様連続性から右辺は$|D| \longrightarrow 0$で$0$に収束し，
+		$X_{s,t} = 0$が従う．
+		\QED
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}[定理\ref{thm:p_variation_monotonously_decreasing}のアナロジー]
+			$V$をノルム空間とするとき，$x:[0,T] \longrightarrow V$に対して
+			$1 \leq p \leq q$なら$\Norm{X}{p} \geq \Norm{X}{q}$が成立する．
+		\end{thm}
+	\end{screen}
+	
+	ノルム空間$(V,\Norm{\cdot}{})$に対し
+	\begin{align}
+		\tilde{B}_{p,T}(V)
+		\coloneqq \Set{X:\Delta_T \longrightarrow V}{\mbox{continuous},\ \Norm{X}{p} < \infty}
+	\end{align}
+	により線型空間を定めれば，定理\ref{thm:B_p_T_Banach_space}のアナロジーを得る．
+	
+	\begin{screen}
+		\begin{thm}\label{thm:B_p_T_Banach_space_2}
+			$V$がBanach空間のとき，$\tilde{B}_{p,T}(V)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
+		\end{thm}
+	\end{screen}
+
+\begin{prf}完備性を示す．
+	\begin{description}
+		\item[第一段] $(X^n)_{n=1}^{\infty} \subset \tilde{B}_{p,T}(V)$をCauchy列とすれば，
+			任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
+			\begin{align}
+				\Norm{X^n - X^m}{p}
+				= \left\{ \sup{D \in \delta[0,T]}{\sum_{D} 
+				\Norm{X^n_{t_{i-1},t_i} - X^m_{t_{i-1},t_i}}{}^p }\right\}^{1/p} < \epsilon,
+				\quad (n,m > n_\epsilon)
+			\end{align}
+			を満たす．任意の$(s,t) \in \Delta_T$に対して分割$D = \{0 \leq s \leq t \leq T\}$
+			を取れば
+			\begin{align}
+				\Norm{X^n_{s,t} - X^m_{s,t}}{} < \epsilon,
+				\quad (n,m > n_\epsilon)
+			\end{align}
+			が成り立ち，$V$の完備性より或る$X_{s,t} \in \R^d$が存在して
+			\begin{align}
+				\Norm{X^n_{s,t} - X_{s,t}}{} < \epsilon
+				\quad (n > n_\epsilon)
+			\end{align}
+			となる．この収束は$(s,t)$に関して一様であるから$X$は連続である．
+			
+		\item[第二段] $\Norm{X^n - X}{p} \longrightarrow 0\ (n \longrightarrow \infty)$を示す．
+			前段より，任意の$D \in \delta[0,T]$に対し
+			\begin{align}
+				\sum_D \Norm{X^n_{t_{i-1},t_i} - X^m_{t_{i-1},t_i}}{}^p
+				< \epsilon^p,
+				\quad (n,m > n_\epsilon)
+			\end{align}
+			が満たされる．$D$は有限分割であるから，$m \longrightarrow \infty$として
+			\begin{align}
+				\sum_D \Norm{X^n_{t_{i-1},t_i} - X_{t_{i-1},t_i}}{}^p
+				< \epsilon^p,
+				\quad (n > n_\epsilon)
+			\end{align}
+			が従い，$D$の任意性より$\Norm{X^n - X}{p} < \epsilon\ (n > n_\epsilon)$を得る．
+			\QED
+	\end{description}
+\end{prf}
+
 	\begin{screen}
 		\begin{thm}[$p$-variationが定めるcontrol function]
 			$(V,\Norm{\cdot}{})$をノルム空間，$p > 0$とする．

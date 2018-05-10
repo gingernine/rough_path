@@ -1,9 +1,10 @@
 \contentsline {section}{\numberline {0.1}導入}{1}
 \contentsline {section}{\numberline {0.2}連続性定理}{5}
-\contentsline {section}{\numberline {0.3}The notion of rough path}{19}
-\contentsline {section}{\numberline {.1}ノルム空間の完備拡大}{22}
-\contentsline {section}{\numberline {.2}多重線型写像}{22}
-\contentsline {section}{\numberline {.3}notation}{23}
-\contentsline {section}{\numberline {.4}テンソル積}{23}
-\contentsline {section}{\numberline {.5}テンソル積の内積}{31}
-\contentsline {section}{\numberline {.6}クロスノルム}{31}
+\contentsline {section}{\numberline {0.3}The notion of rough path}{20}
+\contentsline {chapter}{\numberline {付録A}多重線型写像・クロスノルム}{25}
+\contentsline {section}{\numberline {A.1}ノルム空間の完備拡大}{25}
+\contentsline {section}{\numberline {A.2}多重線型写像}{25}
+\contentsline {section}{\numberline {A.3}notation}{26}
+\contentsline {section}{\numberline {A.4}テンソル積}{27}
+\contentsline {section}{\numberline {A.5}テンソル積の内積}{35}
+\contentsline {section}{\numberline {A.6}クロスノルム}{35}

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  9 MAY 2018 21:13
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  10 MAY 2018 09:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,35 +551,45 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 21.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 30.
+ [1
 
-Overfull \vbox (2.41103pt too high) has occurred while \output is active []
-
-
-[1
-
-] Excluding 'comment' comment. Excluding 'comment' comment. [2]
+] Excluding 'comment' comment.
+Excluding 'comment' comment. [2]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 218.
+(Font)              scaled to size 4.805pt on input line 217.
  [3] [4])
-(./texfiles/proof_of_continuity_theorem.tex [5] [6] [7] [8] [9] [10]
-Excluding 'comment' comment. [11] [12] [13] [14] [15] [16] [17])
-(./texfiles/p_rough_path.tex [18] [19] [20])
+(./texfiles/proof_of_continuity_theorem.tex [5] [6] [7] [8] [9] [10] [11]
+Excluding 'comment' comment. [12] [13] [14] [15] [16] [17] [18] [19])
+(./texfiles/p_rough_path.tex [20] [21] [22] [23]) [24]
+付録A
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 19.9311pt on input line 149.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 19.9311pt on input line 149.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 19.9311pt on input line 149.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 19.9311pt on input line 149.
+LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
+(Font)              scaled to size 19.70294pt on input line 149.
 (../tensor_space/texfiles/completion_of_normed_space.tex)
-(../tensor_space/texfiles/multilinear_mapping.tex [21] [22])
-(../tensor_space/texfiles/tensor_product_multiple.tex [23] [24] <xymatrix 3x2
-200> <xymatrix 3x2 200> [25] [26] [27] [28] [29] <xymatrix 3x2 158> <xymatrix
-3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix
-3x2 158> [30] <xymatrix 3x2 158> <xymatrix 3x2 158>)
+(../tensor_space/texfiles/multilinear_mapping.tex [25
+
+])
+(../tensor_space/texfiles/tensor_product_multiple.tex [26] [27] <xymatrix 3x2
+200> <xymatrix 3x2 200> [28] [29] [30] [31] [32] <xymatrix 3x2 158> <xymatrix
+3x2 158> [33] <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158>
+<xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> [34])
 (../tensor_space/texfiles/tensor_product_hilbert.tex)
-(../tensor_space/texfiles/crossnorm.tex [31] [32] [33] [34] [35] [36] [37])
-[38] (./Aida_sensei_note.aux) ) 
+(../tensor_space/texfiles/crossnorm.tex [35] [36] [37] [38] [39] [40]) [41]
+(./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
- 4616 strings out of 493621
- 59400 string characters out of 6150087
- 158269 words of memory out of 5000000
- 8085 multiletter control sequences out of 15000+600000
- 37401 words of font info for 140 fonts, out of 8000000 for 9000
+ 4628 strings out of 493621
+ 59634 string characters out of 6150087
+ 160339 words of memory out of 5000000
+ 8097 multiletter control sequences out of 15000+600000
+ 39220 words of font info for 146 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,24n,26p,316b,712s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (39 pages, 273060 bytes).
+Output written on Aida_sensei_note.dvi (42 pages, 289916 bytes).

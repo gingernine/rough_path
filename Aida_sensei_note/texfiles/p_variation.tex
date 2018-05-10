@@ -4,14 +4,14 @@
 	$x = (x^1,\cdots,x^d),\ a=(a^i_j)_{1 \leq i \leq m,1 \leq j \leq d}$と書く．
 	また$T > 0$を固定し$C^1 = C^1([0,T] \rightarrow \R^d)$とおく．
 	（端点においては片側微分を考える．）
-	区間$[s,t] \subset [0,T]$の分割を
+	$[s,t] \subset [0,T]$の有限分割を
 	$D = \{s = t_0 < t_1 < \cdots < t_N = t\}$で表現し，
-	分割の全体を$\delta[s,t]$とおく．
+	有限分割の全体を$\delta[s,t]$とおく．
 	$|D| \coloneqq \max{1 \leq i \leq N}{\left| t_i - t_{i-1} \right|}$とし，
 	\begin{align}
 		\sum_D = \sum_{i=1}^{N}
 	\end{align}
-	と略記する．
+	と略記する．また線型空間を扱うときは零元のみの空間は考えない．
 
 	\begin{screen}
 		\begin{thm}[Riemann-Stieltjes積分]\label{thm:existence_of_Riemann_Stieltjes_integral}
@@ -191,11 +191,8 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 \begin{prf}
 	$C^1$の第一可算性により点列連続性と連続性は一致するから，
 	$x^n \longrightarrow x$のとき$I_{s,t}(x^n) \longrightarrow I_{s,t}(x)$
-	が従うことを示せばよい．
-	\begin{align}
-		M \coloneqq \sup{u \in [s,t]}{|f(x_u)|} < \infty
-	\end{align}
-	を定めれば
+	が従うことを示せばよい．いま，$M \coloneqq \sup{u \in [s,t]}{|f(x_u)|} < \infty$
+	とおけば
 	\begin{align}
 		&\left| \int_s^t f(x^n_u)\ dx^n_u
 			- \int_s^t f(x_u)\ dx_u \right|
@@ -207,13 +204,15 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 			+ \sup{u \in [s,t]}{\left| f(x^n_u) - f(x_u) \right|} \Norm{x}{C^1}(t-s)
 			\label{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}
 	\end{align}
-	が成り立つ．いま，任意に$\epsilon > 0$を取れば，或る$\epsilon > \delta > 0$が存在して
-	$v,w \in x([s,t]),\ |v - w| < \delta$なら$|f(v) - f(w)| < \epsilon$
-	を満たす（一様連続）．すなわち$\Norm{x^{(n)} - x}{C^1} < \delta$なら
+	が成り立つ．$\Norm{x^n - x}{C^1} \longrightarrow 0$の仮定より
+	$(x^n)_{n=1}^\infty$及び$x$の値域は或るコンパクト集合$K$に含まれるから，
+	$K$上での$f$の一様連続性より任意の$\epsilon > 0$に対し或る$\epsilon > \delta > 0$が存在して
+	$v,w \in K,\ |v - w| < \delta$なら$|f(v) - f(w)| < \epsilon$
+	が満たされる．すなわち$\Norm{x^n - x}{C^1} < \delta$なら
 	\begin{align}
-		\sup{t \in [s,t]}{\left|f(x^n_t) - f(x_t) \right|} < \epsilon
+		\sup{u \in [s,t]}{\left|f(x^n_u) - f(x_u) \right|} < \epsilon
 	\end{align}
-	が成立する．$\Norm{x^n - x}{C^1} \longrightarrow 0$の仮定より，
+	が成立する．$\Norm{x^n - x}{C^1} \longrightarrow 0$より，
 	或る自然数$N$が存在して$\Norm{x^n - x}{C^1} < \delta\ (n > N)$が満たされるから，
 	$(\refeq{eq:thm_T_s_t_continuous_w_r_t_C1_norm_2}) < \epsilon[M(t-s) + \Norm{x}{C^1}(t-s)]\ (n > N)$
 	が成り立ち$I_{s,t}(x^n) \longrightarrow I_{s,t}(x)$が従う．
@@ -242,7 +241,7 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 次の結果によれば，$0 < p < 1$に対し$B_{p,T}(V)$を定めても
 零写像のみの空間でしかない．
 \begin{screen}
-	\begin{thm}[$0 < p < 1$に対して有界$p$-variationなら定数]
+	\begin{thm}[$0 < p < 1$に対して有界$p$-variationなら定数]\label{thm:p_variation_0_1}
 		$x:[0,T] \longrightarrow V$を連続写像とする．
 		このとき，$p \in (0, 1)$に対し$\Norm{x}{p} < \infty$が成り立つなら$x$は定数写像である．
 	\end{thm}
@@ -262,7 +261,7 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 \end{prf}
 
 \begin{screen}
-	\begin{thm}[$p$-variationの$p$に関する単調減少性]
+	\begin{thm}[$p$-variationの$p$に関する単調減少性]\label{thm:p_variation_monotonously_decreasing}
 		$V$をノルム空間とするとき，$x:[0,T] \longrightarrow V$に対して
 		$1 \leq p \leq q$なら$\Norm{x}{p} \geq \Norm{x}{q}$が成立する．
 		特に$B_{p,T}(V) \subset B_{q,T}(V)$が従う．
@@ -270,8 +269,13 @@ $C^1$は次で定めるノルム$\Norm{\cdot}{C^1}$によりBanach空間とな�
 \end{screen}
 
 \begin{prf}
-	$\left( \sum_{i} |a_i|^p \right)^{1/p} \leq \sum_{i} |a_i|\ (a_i \in \R,\ p \geq 1)$
-	により，任意の$x \in B_{p,T}(V)$と$D \in \delta[0,T]$に対し
+	$a,b \geq 0,\ r \geq 1$に対し$a^r + b^r \leq (a+b)^r$が成り立つから
+	\begin{align}
+		\left[ \sum_{i=1}^n a_i^r \right]^{1/r} 
+		\leq \sum_{i=1}^n a_i,
+		\quad (a_i \geq 0,\ n \geq 1,\ r \geq 1)
+	\end{align}
+	を得る．従って任意の$x:[0,T] \longrightarrow V$と$D \in \delta[0,T]$に対し
 	\begin{align}
 		\left[ \sum_D \left( \Norm{x_{t_i} - x_{t_{i-1}}}{}^p \right)^{q/p} \right]^{p/q}
 		\leq \sum_D \Norm{x_{t_i} - x_{t_{i-1}}}{}^p
@@ -326,7 +330,7 @@ $p \geq 1$の場合，Minkowskiの不等式によれば，任意の$D \in \delta
 				< \epsilon^p,
 				\quad (n,m > n_\epsilon)
 			\end{align}
-			が成り立っている．$D$はせいぜい有限個の分割であるから，$m \longrightarrow \infty$として
+			が成り立っている．$D$は有限分割であるから，$m \longrightarrow \infty$として
 			\begin{align}
 				\sum_D \Norm{(x_{t_i} - x^n_{t_i}) - (x_{t_{i-1}} - x^n_{t_{i-1}})}{}^p
 				< \epsilon^p,
