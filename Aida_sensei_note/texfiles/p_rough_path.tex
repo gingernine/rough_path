@@ -1,9 +1,10 @@
 \section{The notion of rough path}
-	$(V,\Norm{\cdot}{})$を$\R$-Banach空間とする．また
+	$(V,\Norm{\cdot}{})$を$\R$-Banach空間とする$(V \neq \{0\})$．また
 	$\otimes_a$により代数的テンソル積，或はその標準写像を表す．
 	$k \geq 2$の場合，$k$重テンソル積$V^{\otimes_a k} = V \otimes_a \cdots \otimes_a V$に
 	プロジェクティブノルム$\projectivenorm{\cdot}{k}$を導入し，
 	その完備拡大を$(V^{\otimes k},\compcrossnorm{\cdot}{k})$と書く．
+	また$k=0,1$に対しては$V^{\otimes 0} = \R,\ V^{\otimes 1} = V$とする．
 	定理\ref{thm:tensor_product_with_scalar}
 	と定理\ref{thm:associativity_of_tensor_products}
 	によれば，任意の$0 \leq j \leq k$に対し
@@ -17,7 +18,7 @@
 	これを$\pi_{j,k}$と書く．
 	\begin{screen}
 		\begin{thm}
-			このとき次が成立する．特に，$F_{j,k}$は等長同型である．
+			このとき次式が成立する．特に，$F_{j,k}$は等長同型である．
 			\begin{align}
 				\pi_k \circ F^{-1}_{j,k} = \pi_{j,k}.
 			\end{align}
@@ -109,7 +110,7 @@
 	$\psi_{j,k}$にノルム保存拡張される．
 	
 	\begin{screen}
-		\begin{thm}
+		\begin{thm}\label{thm:property_of_the_completion_of_the_projective_norm}
 			$\psi_{j,k}$は次を満たす:
 			\begin{align}
 				\compcrossnorm{\psi_{j,k}(u,v)}{k} = \compcrossnorm{u}{j} \compcrossnorm{v}{k-j},
@@ -156,6 +157,7 @@
 	\begin{align}
 		u \otimes_{j,k} v = \psi_{j,k}(u,v),
 		\quad (\forall (u,v) \in V^{\otimes j} \times V^{\otimes k-j}).
+		\label{eq:def_of_otimes_for_completion_V_tensor_k}
 	\end{align}
 	このとき，$(a^k)_{k=0}^{\infty},(b^k)_{k=0}^{\infty} \in T(V)$に対する
 	二項関係$(a^k)_{k=0}^{\infty} \otimes (b^k)_{k=0}^{\infty} \eqqcolon (c^k)_{k=0}^{\infty}$を
@@ -180,6 +182,7 @@
 	\begin{align}
 		\compcrossnorm{a}{} \coloneqq \sum_{k=0}^n \compcrossnorm{a^k}{k},
 		\quad (a = (a^k)_{k=0}^n \in T^{(n)}(V)).
+		\label{eq:def_norm_on_truncated_tensor_algebra}
 	\end{align}
 	いま，写像$X:\Delta_T \longrightarrow T^{(n)}(V)$に対して
 	$X_{s,t} = (X^0_{s,t},\cdots,X^n_{s,t}),\ ((s,t) \in \Delta_T)$と書いて
@@ -194,40 +197,36 @@
 			$p \geq 1$とする．$X:\Delta_T \longrightarrow T^{(n)}(V)$に対して
 			或るコントロール関数$\omega$が存在して
 			\begin{align}
-				\compcrossnorm{X^i_{s,t}}{k} \leq \omega(s,t)^{i/p},
+				\compcrossnorm{X^i_{s,t}}{i} \leq \omega(s,t)^{i/p},
 				\quad (\forall i=1,\cdots,n,\ \forall (s,t) \in \Delta_T)
 				\label{eq:def_finite_p_variation}
 			\end{align}
-			を満たすとき，$X$は有限$p$-変動(finite $p$-variation)を持つという．
+			を満たすとき，$X$は有限$p$-変動(finite $p$-variation)であるという．\footnotemark
 		\end{dfn}
 	\end{screen}
-	
-	(\refeq{eq:def_finite_p_variation})を満たす$\omega$が存在する場合，
-	$p \geq n$ならば$\Norm{X}{p} < \infty$が成り立つ．実際，
-	\begin{align}
-		\sum_D \compcrossnorm{X^i_{s,t}}{k}^{p/i} \leq \omega(0,T),
-		\quad (\forall D \in \delta[0,T],\ i=1,\cdots,n)
-	\end{align}
-	となり$\Norm{X^i}{p/i} < \infty\ (i=1,\cdots,n)$が従い，
-	$p/i \geq 1\ (i=1,\cdots,n)$だから
-	定理\ref{thm:p_variation_monotonously_decreasing_2}により
-	\begin{align}
-		\Norm{X^i}{p} \leq \Norm{X^i}{p/i}\ (i=1,\cdots,n)
-	\end{align}
-	が満たされる．よって任意の$D \in \delta[0,T]$に対して
-	\begin{align}
-		\sum_D \compcrossnorm{X_{t_{i-1},t_i}}{}^p
-		= \sum_D \left( \compcrossnorm{X^0_{t_{i-1},t_i}}{1}^p +  \right)
-	\end{align}
+	\footnotetext{
+		$X:\Delta_T \longrightarrow T^{(n)}(V)$が有限$p$-変動であることと
+		$\Norm{X}{p} < \infty$が満たされることは同値であるかどうかを考察する．
+		実際，$X^0 \equiv 1$を満たし，かつ有限$p$-変動を持つような$X$が存在する場合，
+		\begin{align}
+			\mbox{$D$の分割小区間の数}
+			= \sum_D \compcrossnorm{X^0_{t_{i-1},t_i}}{0}^p
+			\leq \sum_D \compcrossnorm{X_{t_{i-1},t_i}}{}^p
+			\leq \Norm{X}{p}^p,
+			\quad (\forall D \in \delta[0,T])
+		\end{align}
+		が成り立つから，$\Norm{X}{p} = \infty$となる．
+		しかしこのような$X$が存在するかは未だ示していないので脚注メモ．
+	}
 	
 	\begin{screen}
 		\begin{dfn}[finite total $p$-variation]
 			$p \geq 1$とする．$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$
-			が有限総$p$-変動(finite total $p$-variation)を持つとは，任意の$1 \leq i \leq n$に対して
+			が有限総$p$-変動(finite total $p$-variation)とは，任意の$1 \leq i \leq n$に対して
 			\begin{align}
 				\Norm{X^i}{p/i} < \infty
 			\end{align}
-			が満たされることをいう．また次を定める:
+			が満たされることをいう．また次の線型空間を定める:
 			\begin{align}
 				C_{0,p} \left(\Delta_T,T^{(n)}(V) \right)
 				\coloneqq \Set{X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)}{\mbox{$X$ has finite total $p$-variation}}	.
@@ -238,7 +237,7 @@
 	\begin{screen}
 		\begin{dfn}[乗法的汎関数]
 			次の式(Chen's identity)を満たす$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$
-			を$n$次の乗法的汎関数(multiplicative functional)と呼ぶ:
+			を$n$次の乗法的汎関数(multiplicative functional of degree $n$)と呼ぶ:
 			\begin{align}
 				X_{s,u} \otimes X_{u,t} = X_{s,t},
 				\quad (\forall 0 \leq s \leq u \leq t \leq T).
@@ -246,14 +245,14 @@
 		\end{dfn}
 	\end{screen}
 	
-	$C_0 \left(\Delta_T,T^{(n)}(V) \right)$の定義で
-	$X^0 \equiv 1$としたが，
-	$X:\Delta_T \longrightarrow T^{(n)}(V)$が Chen's identity を満たすには
-	$X^0 \equiv 1$或は0である必要がある．実際，
-	$X^0_{s,t} = X^0_{s,t} \otimes_{0,0} X^0_{s,t} = X^0_{s,t}X^0_{s,t}$が成り立たなければならない．
-	
+	$C_0 \left(\Delta_T,T^{(n)}(V) \right)$の定義には
+	$X^0 \equiv 1$という条件が含まれている．
+	実際，$X:\Delta_T \longrightarrow T^{(n)}(V)$が Chen's identity を満たすには
+	$X^0 \equiv 1$或は0である必要がある．理由は，
+	$X^0_{s,t} = X^0_{s,t} \otimes_{0,0} X^0_{s,t} = X^0_{s,t}X^0_{s,t}$を得るためである．
+	特に，次の定理が成立するためには$X^0 \equiv 1$が満たされていなくてはならない．
 	\begin{screen}
-		\begin{lem}
+		\begin{lem}\label{lem:multiplicative_functional_vanishes_on_diagonal}
 			$X:\Delta_T \longrightarrow T^{(n)}(V)$が
 			Chen's identity を満たせば$X^k_{t,t} = 0\ (1 \leq k \leq n)$が成り立つ．
 		\end{lem}
@@ -272,14 +271,44 @@
 				+ X^2_{t,t} \otimes_{0,1} X^0_{t,t}
 			= X^2_{t,t} + X^2_{t,t}
 		\end{align}
-		より$X^2_{t,t} = 0$が成立し，帰納的に$X^k_{t,t} = 0\ (1 \leq k \leq n)$が出る．
+		より$X^2_{t,t} = 0$が成立し，帰納的に$X^k_{t,t} = 0\ (1 \leq k \leq n)$を得る．
 		\QED
 	\end{prf}
 	
 	\begin{screen}
 		\begin{thm}
+			$n$次乗法的汎関数$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$に対し，
+			$X$が有限$p$-変動であることと有限総$p$-変動であることは同値である．
 		\end{thm}
 	\end{screen}
+	
+	\begin{prf}
+		$n$次乗法的汎関数$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$が有限総$p$-変動のとき，
+		\begin{align}
+			\omega(s,t) \coloneqq \sum_{i=1}^n \Norm{X^i}{p/i,[s,t]}^{p/i},
+			\quad ((s,t) \in \Delta_T)
+		\end{align}
+		で$\omega$を定めれば，
+		補題\ref{lem:multiplicative_functional_vanishes_on_diagonal}と
+		定理\ref{thm:control_function_defined_by_p_variation}により
+		$\omega$はコントロール関数となる．このとき
+		\begin{align}
+			\compcrossnorm{X^i_{s,t}}{i}
+			\leq \Norm{X^i}{p/i,[s,t]}
+			\leq \omega(s,t)^{i/p},
+			\quad (\forall i = 1,\cdots,n,\ \forall (s,t) \in \Delta_T)
+		\end{align}
+		が成り立つから$X$は有限$p$-変動である．逆に$X$が有限$p$-変動なら，
+		(\refeq{eq:def_finite_p_variation})を満たす$\omega$を取れば
+		\begin{align}
+			\sum_D \compcrossnorm{X^i_{t_{i-1},t_i}}{i}^{p/i}
+			\leq \sum_D \omega(t_{i-1},t_i)
+			\leq \omega(0,T),
+			\quad (\forall D \in \delta[0,T],\ i=1,\cdots,n)
+		\end{align}
+		が成立し$\Norm{X^i}{p/i} < \infty\ (i=1,\cdots,n)$が従うので$X$は有限総$p$-変動である．
+		\QED
+	\end{prf}
 	
 	連続かつ有界変動なパス$x:[0,T] \longrightarrow V$に対して次の積分
 	\begin{align}
@@ -336,47 +365,97 @@
 	\end{align}
 	と定める．このとき$\Delta_T \ni (s,t) \longmapsto X^2_{s,t} \in V^{\otimes 2}$は連続である．
 	
-\begin{screen}
-	\begin{thm}
-		$\Omega_p(V)$は次で定める距離
-		\begin{align}
-			d_p(X,Y) \coloneqq \max{1 \leq i \leq [p]}{\Norm{X^i - Y^i}{p/i}}
-		\end{align}
-		により完備距離空間となる．
-	\end{thm}
-\end{screen}
-
-\begin{prf}
-	$(X^k)_{k=1}^{\infty}$をCauchy列とすれば，
-	任意の$\epsilon > 0$に対し或る$K \in \N$が存在して
-	\begin{align}
-		\Norm{X^{k,i} - X^{\ell,i}}{p/i} < \epsilon,
-		\quad (\forall k,\ell > K,\ 1 \leq i \leq [p])
-	\end{align}
-	が成立する．よって定理(\ref{thm:B_p_T_Banach_space})より
-	各$i$に対し或る$X^i \in B_{p/i,T}(V)$が存在して
-	\begin{align}
-		\Norm{X^{k,i} - X^i}{p/i}
-		\longrightarrow 0
-		\quad (k \longrightarrow \infty,\ 1 \leq i \leq [p])
-	\end{align}
-	を満たす．$X:\Delta_T \longrightarrow T^{(n)}(V)$を
-	\begin{align}
-		X_{s,t} \coloneqq (1,X^1_{s,t},\cdots,X^n_{s,t}),
-		\quad ((s,t) \in \Delta_T)
-	\end{align}
-	により定めれば，$X^i$の連続性より$X$も連続である．さらに任意の$D \in \delta[0,T]$に対して
-	\begin{align}
-		\sum_D \Norm{X^k_{t_{i-1},t_i} - X_{t_{i-1},t_i}}{}^p
-		&= \sum_D \left( \Norm{X^{k,1}_{t_{i-1},t_i} - X^1_{t_{i-1},t_i}}{} + \cdots + \Norm{X^{k,n}_{t_{i-1},t_i} - X^n_{t_{i-1},t_i}}{} \right)^p \\
-		&\leq (n+1)^p \sum_D \left( \Norm{X^{k,1}_{t_{i-1},t_i} - X^1_{t_{i-1},t_i}}{}^p + \cdots + \Norm{X^{k,n}_{t_{i-1},t_i} - X^n_{t_{i-1},t_i}}{}^p \right) \\
-		&\leq (n+1)^p \left( \Norm{X^{k,1}_{t_{i-1},t_i} - X^1_{t_{i-1},t_i}}{p}^p + \cdots + \Norm{X^{k,n}_{t_{i-1},t_i} - X^n_{t_{i-1},t_i}}{p}^p \right)
-	\end{align}
-	が成立するから，定理より
-	\begin{align}
-		\sup{D}{\sum_D \Norm{X^k_{t_{i-1},t_i} - X_{t_{i-1},t_i}}{}^p}
-		\longrightarrow 0 \quad (k \longrightarrow \infty)
-	\end{align}
-	が従い$X$の$p$-variationの有界性が出る．
-	\QED
+	\begin{screen}
+		\begin{dfn}[$p$-ラフパス]
+			$p \geq 1$とし，$p$を超えない最大の整数を$[p]$で表す．
+			有限$p$-変動を持つ$[p]$次乗法的汎関数を
+			$p$-ラフパスと呼び，その全体を$\Omega_p(V)$と書く:
+			\begin{align}
+				\Omega_p(V) 
+				= \Set{X \in C_0\left( \Delta_T,T^{([p])}(V) \right)}{
+					\mbox{multiplicative with degree $[p]$,
+					 and has finite $p$-variation}}.
+			\end{align}
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}\label{thm:p_rough_path_complete_dist}
+			$\Omega_p(V)$は次で定める距離により完備距離空間となる:
+			\begin{align}
+				d_p(X,Y) \coloneqq \max{1 \leq i \leq [p]}{\Norm{X^i - Y^i}{p/i}}.
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	$X \in \Omega_p(V)$は$X^0 \equiv 1$を満たすから，
+	$\max{1 \leq i \leq [p]}{\Norm{\cdot}{p/i}}$は$\Omega_p(V)$においてノルムとはならない．
+	
+	\begin{prf}完備性を示す．
+		\begin{description}
+			\item[第一段] 極限を構成する．いま，
+			任意の$X = (X^0,X^1,\cdots,X^{[p]}) \in \Omega_p(V)$に対して
+			\begin{align}
+				X^i \in \tilde{B}_{p/i,T}\left( V^{\otimes i} \right),
+				\quad (\forall i=1,\cdots,[p]) 
+			\end{align}
+			が満たされるから，定理\ref{thm:B_p_T_Banach_space_2}より任意のCauchy列
+			$\left( X^k = (X^{k,0},\cdots,X^{k,[p]}) \right)_{k=1}^{\infty} \subset \Omega_p(V)$
+			に対して
+			\begin{align}
+				\Norm{X^{k,i} - X^i}{p/i} \longrightarrow 0
+				\quad (k \longrightarrow \infty,\ \forall i=1,\cdots,[p])
+				\label{eq:thm_p_rough_path_complete_dist_2}
+			\end{align}
+			を満たす$X^i \in B_{p/i,T}\left( V^{\otimes i} \right)$が存在する．
+			ここで$X:\Delta_T \longrightarrow T^{([p])}(V)$を
+			\begin{align}
+				X_{s,t} \coloneqq (1,X^1_{s,t},\cdots,X^n_{s,t}),
+				\quad (\forall (s,t) \in \Delta_T)
+			\end{align}
+			により定めれば，$X^i$の連続性と$T^{([p])}(V)$におけるノルムの定義
+			(\refeq{eq:def_norm_on_truncated_tensor_algebra})より
+			$X$は連続写像である．
+		
+		\item[第二段] $X$が Chen's identity を満たすことを示す．
+			各$1 \leq i \leq [p]$について，
+			\begin{align}
+				X^i_{s,t} = \sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t},
+				\quad (\forall 0 \leq s \leq u \leq t \leq T)
+				\label{eq:thm_p_rough_path_complete_dist_1}
+			\end{align}
+			が成立すればよい．実際，
+			\begin{align}
+				\compcrossnorm{X^{k,i}_{s,t} - X^i_{s,t}}{i}
+				\leq \Norm{X^{k,i} - X^i}{p/i} \longrightarrow 0,
+				\quad (k \longrightarrow \infty,\ \forall 0 \leq s \leq t \leq T)
+			\end{align}
+			かつ，定理\ref{thm:property_of_the_completion_of_the_projective_norm}及び
+			双線型写像$\otimes_{j,i}:V^{\otimes j} \times V^{\otimes i-j} 
+			\longrightarrow V^{\otimes i}$
+			の定義(\refeq{eq:def_of_otimes_for_completion_V_tensor_k})より
+			\begin{align}
+				\compcrossnorm{X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t}}{i}
+				= \compcrossnorm{X^j_{s,u}}{j} \compcrossnorm{X^{i-j}_{u,t}}{i-j},
+				\quad (\forall 0 \leq j \leq i)
+			\end{align}
+			が満たされているから，任意の$0 \leq s \leq t \leq T$に対して
+			\begin{align}
+				\compcrossnorm{X^i_{s,t} - \sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t}}{i}
+				&\leq \compcrossnorm{X^i_{s,t} - X^{k,i}_{s,t}}{i}
+					+ \compcrossnorm{\sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t} 
+					- \sum_{j=0}^i X^{k,j}_{s,u} \otimes_{j,i} X^{k,i-j}_{u,t}}{i} \\
+				&\leq \compcrossnorm{X^i_{s,t} - X^{k,i}_{s,t}}{i}
+					+ \sum_{j=0}^i \compcrossnorm{X^j_{s,u} - X^{k,j}_{s,u}}{j}
+						\compcrossnorm{X^{i-j}_{u,t}}{i-j} \\
+					&\qquad + \sum_{j=0}^i \compcrossnorm{X^{k,j}_{s,u}}{j}
+						\compcrossnorm{X^{i-j}_{u,t} - X^{k,i-j}_{u,t}}{i-j} \\
+				&\longrightarrow 0,
+				\quad (k \longrightarrow \infty)
+			\end{align}
+			が従い(\refeq{eq:thm_p_rough_path_complete_dist_1})を得る．
+			すなわち$X$は$p$-ラフパスであり，(\refeq{eq:thm_p_rough_path_complete_dist_2})より
+			$d_p(X^k,X) \longrightarrow 0\ (k \longrightarrow \infty)$が出る．
+			\QED
+	\end{description}
 \end{prf}

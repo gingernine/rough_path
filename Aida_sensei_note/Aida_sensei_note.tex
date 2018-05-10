@@ -1,4 +1,5 @@
-\documentclass[11pt,a4paper]{jsreport}
+\documentclass[a4j,10.5pt,oneside,openany]{jsbook}
+%\documentclass[11pt,a4paper]{jsreport}
 %
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm}
@@ -123,24 +124,26 @@
 \setlength{\textwidth}{\fullwidth}
 \setlength{\textheight}{40\baselineskip}
 \addtolength{\textheight}{\topskip}
-\setlength{\voffset}{-0.2in}
-\setlength{\topmargin}{0pt}
-\setlength{\headheight}{0pt}
-\setlength{\headsep}{0pt}
+
+%\setlength{\textwidth}{\fullwidth}
+%\setlength{\textheight}{40\baselineskip}
+%\addtolength{\textheight}{\topskip}
+%\setlength{\voffset}{-0.2in}
+%\setlength{\topmargin}{0pt}
+%\setlength{\headheight}{0pt}
+%\setlength{\headsep}{0pt}
 %
 \title{ゼミ用ノート\\会田先生の資料''Rough path analysis:An Introduction''}
 \author{基礎工学研究科システム創成専攻\\学籍番号29C17095\\百合川尚学}
 \date{\today}
 
 \begin{document}
-%
-%
 
 \mathtoolsset{showonlyrefs = true}
 \maketitle
-
-\newpage
 \tableofcontents
+\frontmatter
+\mainmatter
 
 	\input{texfiles/p_variation}
 	\input{texfiles/proof_of_continuity_theorem}
@@ -149,9 +152,24 @@
 
 \appendix
 \chapter{多重線型写像・クロスノルム}
+	以下，零元のみの線型空間は考えない．すなわち以下で扱う全ての線型空間には基底が存在する．
+	$E,E_i,F$を体$\K$上の線形空間とするとき，
+	$\Hom{E}{F}$で$E$から$F$への$\K$-線型写像の全体を表す．
+	また$\Ln{E_1 \times \cdots \times E_n}{F}{n}$
+	で$E_1 \times \cdots \times E_n$から$F$への$\K$-$n$重線型写像の全体を表す．
+	$X$をノルム空間と考えるときは，
+	特に指定しなければノルムを$\Norm{\cdot}{X}$と書いてノルム位相を導入する．
+	$X$に何らかのノルム$\Norm{}{}$が定まっているとき，$(X,\Norm{}{})$
+	の位相的双対空間を$(X,\Norm{}{})^*$と書く．
+	ノルム空間の族$(X_i)_{i=1}^{n}$の
+	直和$\bigoplus_{i=1}^n X_i$には直積ノルム$\Norm{\cdot}{X_1} + \cdots + \Norm{\cdot}{X_n}$
+	により位相を導入する．
+	
 	\input{../tensor_space/texfiles/completion_of_normed_space}
 	\input{../tensor_space/texfiles/multilinear_mapping}
 	\input{../tensor_space/texfiles/tensor_product_multiple}
 	\input{../tensor_space/texfiles/tensor_product_hilbert}
 	\input{../tensor_space/texfiles/crossnorm}
+\newpage
+\printindex
 \end{document}

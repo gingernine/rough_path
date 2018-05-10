@@ -83,19 +83,19 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{dfn}[control function]
+		\begin{dfn}[コントロール関数]
 			関数$\omega:\Delta_T \longrightarrow [0,\infty)$
 			が連続かつ任意の$s \leq u \leq t$に対して
 			\begin{align}
 				\omega(s,u) + \omega(u,t) \leq \omega(s,t)
 				\label{eq:control_function_subadditivity}
 			\end{align}
-			を満たすとき，$\omega$をcontrol functionと呼ぶ．
+			を満たすとき，$\omega$をコントロール関数(control function)と呼ぶ．
 		\end{dfn}
 	\end{screen}
 	
 	式(\refeq{eq:control_function_subadditivity})から$\omega(t,t)=0\ (\forall t \in [0,T])$が従う．
-	つまりcontrol functionは対角線上で0になる．
+	つまりコントロール関数は対角線上で0になる．
 	
 	\begin{screen}
 		\begin{dfn}[ノルム空間値写像の$p$-variation]
@@ -198,6 +198,7 @@
 
 	\begin{screen}
 		\begin{thm}[$p$-variationが定めるcontrol function]
+		\label{thm:control_function_defined_by_p_variation}
 			$(V,\Norm{\cdot}{})$をノルム空間，$p > 0$とする．
 			$\Norm{\psi}{p} < \infty$かつ$\psi_{t,t} = 0\ (\forall t \in [0,T])$を満たす連続写像$\psi:\Delta_T \longrightarrow V$に対して，
 			\begin{align}

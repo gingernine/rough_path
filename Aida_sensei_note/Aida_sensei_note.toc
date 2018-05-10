@@ -4,7 +4,6 @@
 \contentsline {chapter}{\numberline {付録A}多重線型写像・クロスノルム}{26}
 \contentsline {section}{\numberline {A.1}ノルム空間の完備拡大}{26}
 \contentsline {section}{\numberline {A.2}多重線型写像}{26}
-\contentsline {section}{\numberline {A.3}notation}{27}
-\contentsline {section}{\numberline {A.4}テンソル積}{28}
-\contentsline {section}{\numberline {A.5}テンソル積の内積}{36}
-\contentsline {section}{\numberline {A.6}クロスノルム}{36}
+\contentsline {section}{\numberline {A.3}テンソル積}{28}
+\contentsline {section}{\numberline {A.4}テンソル積の内積}{36}
+\contentsline {section}{\numberline {A.5}クロスノルム}{36}
