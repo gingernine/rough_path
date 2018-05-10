@@ -4,6 +4,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm}
 \usepackage{makeidx}
+\makeindex
 \usepackage{txfonts}
 \usepackage{mathrsfs} %花文字
 \usepackage{mathtools} %参照式のみ式番号表示
@@ -117,23 +118,12 @@
 \def\cexp#1#2{\operatorname{E} \left[ #1 \ \middle|\ #2 \right]} %条件付期待値
 \def\tExp#1{\tilde{\operatorname{E}} \left[ #1 \right]} %拡張期待値
 \def\tcexp#1#2{\tilde{\operatorname{E}} \left[ #1 \ \middle|\ #2 \right]} %拡張条件付期待値
-%\renewcommand{\contentsname}{\bm Index}
-%
-\makeindex
-%
+
 \setlength{\textwidth}{\fullwidth}
 \setlength{\textheight}{40\baselineskip}
 \addtolength{\textheight}{\topskip}
 
-%\setlength{\textwidth}{\fullwidth}
-%\setlength{\textheight}{40\baselineskip}
-%\addtolength{\textheight}{\topskip}
-%\setlength{\voffset}{-0.2in}
-%\setlength{\topmargin}{0pt}
-%\setlength{\headheight}{0pt}
-%\setlength{\headsep}{0pt}
-%
-\title{ゼミ用ノート\\会田先生の資料''Rough path analysis:An Introduction''}
+\title{ゼミ用ノート\\会田先生の資料``Rough path analysis:An Introduction''}
 \author{基礎工学研究科システム創成専攻\\学籍番号29C17095\\百合川尚学}
 \date{\today}
 
@@ -145,6 +135,7 @@
 \frontmatter
 \mainmatter
 
+\chapter{}
 	\input{texfiles/p_variation}
 	\input{texfiles/proof_of_continuity_theorem}
 	%\input{texfiles/Young_integral}
@@ -170,6 +161,14 @@
 	\input{../tensor_space/texfiles/tensor_product_multiple}
 	\input{../tensor_space/texfiles/tensor_product_hilbert}
 	\input{../tensor_space/texfiles/crossnorm}
-\newpage
+
+\begin{thebibliography}{数字}
+  \bibitem{key1} S. Aida, Rough path analysis: an introduction.
+  \bibitem{key2} T. Lyons and Z. Qian, System control and rough paths, Oxford science publications, 2002.
+  \bibitem{key3} K. Friz and Nicholas B. Victor, Multidimensional stochastic processes as rough path: theory and applications, 2009.
+  \bibitem{key4} M. Sugiura and M. Yokonuma, ジョルダン標準形・テンソル代数, 岩波基礎数学選書, 1990.
+  \bibitem{key5} Y. Hirai, 自主ゼミ： Normal Approximations with Malliavin Calculus: From Stein's Method to Universality 用ノート, 2015. 
+\end{thebibliography}
+
 \printindex
 \end{document}
