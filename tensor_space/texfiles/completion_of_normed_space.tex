@@ -1,1 +1,112 @@
 \section{ノルム空間の完備拡大}
+	$\K$を$\R$或は$\C$と考える．
+	\begin{screen}
+		\begin{thm}[完備拡大の存在定理]
+			$(X,\Norm{\cdot}{X})$を$\K$上のノルム空間とするとき，次を満たす
+			Banach空間$(Y,\Norm{\cdot}{Y})$と線型等長写像$J:X \longrightarrow Y$が
+			存在する:
+			\begin{description}
+				\item[(e1)] $JX$は$Y$において稠密である．
+				\item[(e2)] 別のBanach空間$(Z,\Norm{\cdot}{Z})$と線型等長$K:X \longrightarrow Z$
+					が存在して(e1)を満たすとき，$F \circ J = K$を満たす線型同型
+					$F:Y \longrightarrow Z$が存在する．
+					\begin{align}
+						\xymatrix{
+							Y \ar@{-}[r] & F \ar[r] & Z \\
+							& X \ar@{^{(}->}[lu]^-J \ar@{}[u]|\circlearrowleft \ar@{^{(}->}[ru]_-K & 
+						}
+					\end{align}
+				\item[(e3)] $X$が内積空間なら$Y$はHilbert空間である．
+			\end{description}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				$X$のCauchy列の全体を
+				$Cauchy(X)$で表す．任意の$(x_n),(y_n) \in Cauchy(X)$に対し
+				\begin{align}
+					\left| \Norm{x_n - y_n}{X} - \Norm{x_m - y_m}{X} \right|
+					\leq \Norm{x_n - x_m}{X} + \Norm{y_n - y_m}{X}
+				\end{align}
+				が成り立つから，$\left( \Norm{x_n - y_n}{X} \right)_{n=1}^\infty$は
+				$\R$のCauchy列をなして収束し，
+				\begin{align}
+					(x_n)\ R\ (y_n)
+					\DEF \lim_{n \to \infty} \Norm{x_n - y_n}{X} = 0
+				\end{align}
+				により$Cauchy(X)$に同値関係$R$が定まる．
+				$Cauchy(X)$は，線型演算を
+				\begin{align}
+					(x_n) + (y_n) \coloneqq (x_n + y_n),
+					\quad \alpha (x_n) \coloneqq (\alpha x_n)
+				\end{align}
+				で定義すれば線型空間となるから，これを$R$で割った次の商
+				\begin{align}
+					Y \coloneqq Cauchy(X) / R
+				\end{align}
+				は線型空間である．
+				$(x_n)$の$R$に関する同値類を$[(x_n)]$と表すとき，
+				\begin{align}
+					\Norm{[(x_n)]}{Y} \coloneqq \lim_{n \to \infty} \Norm{x_n}{X}
+				\end{align}
+				はwell-definedであり$Y$においてノルムとなる．
+			
+			\item[第二段]
+				任意の$x \in X$に対し$x_n = x\ (\forall n \geq 1)$を満たす
+				$(x_n)$を$\zeta_x$と書けば，
+				\begin{align}
+					J: X \ni x \longmapsto [\zeta_x] \in Y
+				\end{align}
+				により等長線型が定まる．実際，
+				\begin{align}
+					\Norm{J (\alpha u + \beta v) - \alpha J u - \beta J v}{Y}
+					= \Norm{[\zeta_{\alpha u + \beta v}] - \alpha [\zeta_u] - \beta [\zeta_v]}{Y}
+					= \Norm{[\zeta_{\alpha u + \beta v} - \alpha \zeta_u - \beta \zeta_v]}{Y}
+					= 0
+				\end{align}
+				により線型性が得られ，
+				\begin{align}
+					\Norm{J x}{X} = \lim_{n \to \infty} \Norm{x_n}{X}
+					= \Norm{x}{X},
+					\quad (\forall x \in X)
+				\end{align}
+				により等長性を得る．
+			
+			\item[第三段]
+				任意の$y \in Y$に対し，その代表を$(x_n)$とすれば，
+				\begin{align}
+					\Norm{y - [\zeta_{x_m}]}{Y}
+					= \lim_{n \to \infty} \Norm{x_n - x_m}{X}
+					\longrightarrow 0
+					\quad (m \longrightarrow \infty)
+				\end{align}
+				が成り立つから$J X$は$Y$で稠密である．
+				
+			\item[第四段]
+				$(Y,\Norm{\cdot}{Y})$の完備性を示す．$(y_n)$を$Y$の
+				Cauchy列とすれば，
+				\begin{align}
+					\Norm{y_n - J x_n}{Y} < \frac{1}{n},
+					\quad (\forall n = 1,2,\cdots)
+				\end{align}
+				を満たす$(x_n) \subset X$が存在する．
+				\begin{align}
+					\Norm{x_n - x_m}{X}
+					= \Norm{J x_n - J x_m}{Y}
+					< \frac{1}{n} + \Norm{y_n - y_m}{Y} + \frac{1}{m}
+					\longrightarrow 0
+					\quad (n,m \longrightarrow \infty)
+				\end{align} 
+				より$(x_n) \in Cauchy(X)$が従い，$y \coloneqq [(x_n)]$とおけば
+				\begin{align}
+					\Norm{y - y_m}{Y}
+					\leq \Norm{y - J x_m}{Y} + \Norm{J x_m - y_m}{Y}
+					< \lim_{n \to \infty} \Norm{x_n - x_m}{X} + \frac{1}{m}
+					\longrightarrow 0
+					\quad (m \longrightarrow \infty)
+				\end{align}
+				が成り立ち$Y$の完備性が出る．
+		\end{description}
+	\end{prf}
