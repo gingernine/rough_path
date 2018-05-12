@@ -1,10 +1,10 @@
 \section{ノルム空間の完備拡大}
 	$\K$を$\R$或は$\C$と考える．
 	\begin{screen}
-		\begin{thm}[任意のノルム空間には完備拡大が存在する]\label{thm:expansion_of_normed_space}
+		\begin{thm}[ノルム空間の完備化]\label{thm:expansion_of_normed_space}
 			$(X,\Norm{\cdot}{X})$を$\K$上のノルム空間とするとき，次の(e1)と(e2)を満たす
 			$\K$-Banach空間$(Y,\Norm{\cdot}{Y})$と
-			線型等長写像$J:X \longrightarrow Y$が存在する:
+			線型等長写像$J:X \longrightarrow Y\ (\Norm{x}{X} = \Norm{J x}{Y})$が存在する:
 			\begin{description}
 				\item[(e1)] $JX$は$Y$において稠密である．
 				\item[(e2)] 別の$\K$-Banach空間$(Z,\Norm{\cdot}{Z})$と線型等長$K:X \longrightarrow Z$
@@ -42,12 +42,12 @@
 					\quad \DEF \quad \lim_{n \to \infty} \Norm{x_n - x'_n}{X} = 0
 				\end{align}
 				により$Cauchy(X)$に同値関係$R$が定まる．
-				$Cauchy(X)$は，$0 \in X$の列を零元と定め，線型演算を
+				$Cauchy(X)$は，$0 \in X$の列を零元と定め，
 				\begin{align}
 					(x_n) + (x'_n) \coloneqq (x_n + x'_n),
 					\quad \alpha (x_n) \coloneqq (\alpha x_n)
 				\end{align}
-				で定義すれば線型空間となるから，これを$R$で割った次の商
+				を線型演算とすれば線型空間となるから，これを$R$で割った次の商
 				\begin{align}
 					Y \coloneqq Cauchy(X) / R
 				\end{align}

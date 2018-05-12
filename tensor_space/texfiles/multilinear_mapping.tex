@@ -1,7 +1,175 @@
-\section{多重線型写像}
+\section{ノルム空間上の多重線型写像}
+	[参照元:平井\cite{key7}]
+	$\K$を$\R$または$\C$と考える．また$n \geq 1$とする．
+	\begin{screen}
+		\begin{dfn}[有界な多重線型写像]
+			$(X_i)_{i=1}^n$及び$Y$を全て$\K$上のノルム空間とするとき，
+			有界な$n$重線型写像の全体を$\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}$で表す．
+			つまり任意の$f \in \ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}$に対して
+			次を満たす定数$C \geq 0$が存在する:
+			\begin{align}
+				\Norm{f(x_1,\cdots,x_n)}{Y} \leq C \Norm{x_1}{X_1}\cdots\Norm{x_n}{X_n},
+				\quad (\forall x_i \in X_i,\ i=1,\cdots,n).
+				\label{eq:def_bounced_multilinear_mapping}
+			\end{align}
+		\end{dfn}
+	\end{screen}
 	
 	\begin{screen}
-		\begin{thm}[多重線型写像の一意拡張]\label{thm:expansion_of_multilinear_mapping}
+		\begin{thm}[有界$\Leftrightarrow$連続]
+			$(X_i)_{i=1}^n$及び$Y$を全て$\K$上のノルム空間とする．
+			任意の$f \in \Ln{\bigoplus_{i=1}^n X_i}{Y}{n}$に対して，
+			$f$が連続であることと$f$が有界であることは一致する．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				$f \in \Ln{\bigoplus_{i=1}^n X_i}{Y}{n}$が連続であるとする．このとき
+				$f$は$0 \in \bigoplus_{i=1}^n X_i$で連続であるから，
+				或る$\delta_1,\cdots,\delta_n > 0$が存在して
+				$\Norm{x_1}{X_1} \leq \delta_1,\cdots,\Norm{x_n}{X_n} \leq \delta_n$が
+				満たされている限り
+				\begin{align}
+					\Norm{f(x_1,\cdots,x_n)}{Y} \leq 1
+				\end{align}
+				が成立する．よって任意の$x_i \in X_i\ (x_i \neq 0,\ i=1,\cdots,n)$に対して
+				\begin{align}
+					\frac{\delta_1 \cdots \delta_n}{\Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}}
+					\Norm{f(x_1,\cdots,x_n)}{Y}
+					= \Norm{f\biggl(\delta_1 \frac{x_1}{\Norm{x_1}{X_1}}, \cdots, \delta_n \frac{x_n}{\Norm{x_n}{X_n}} \biggr)}{Y}
+					\leq 1
+				\end{align}
+				が従い
+				\begin{align}
+					\Norm{f(x_1,\cdots,x_n)}{Y} \leq \frac{1}{\delta_1 \cdots \delta_n} \Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}
+				\end{align}
+				を得る．或る$i$で$x_i = 0$であっても上の不等式は満たされるから$f$は有界である．
+			
+			\item[第二段]
+				$f$が有界であるとする．このとき或る定数$C \geq 0$が存在して
+				(\refeq{eq:def_bounced_multilinear_mapping})を満たし，
+				\begin{align}
+					\Norm{f(x_1,\cdots,x_n) - f(y_1,\cdots,y_n)}{Y}
+						&\leq \|\, f(x_1,x_2,\cdots,x_n) - f(y_1,x_2,\cdots,x_n) \\
+						&\quad + f(y_1,x_2,\cdots,x_n) - f(y_1,y_2,\cdots,x_n) \\
+						&\quad \cdots \\
+						&\quad + f(y_1,\cdots,y_{n-1},x_n) - f(y_1,\cdots,y_n)\, \|_Y \\
+					&\leq C \Norm{x_1 - y_1}{X_1} \Norm{x_2}{X_2} \cdots \Norm{x_n}{X_n} \\
+						&\quad + C \Norm{y_1}{X_1} \Norm{x_2 - y_2}{X_2} \cdots \Norm{x_n}{X_n} \\
+						&\quad + C \Norm{y_1}{X_1} \cdots \Norm{y_{n-1}}{X_{n-1}} \Norm{x_n - y_n}{X_n} \\
+					&\longrightarrow 0
+					\quad \left( \Norm{(x_1,\cdots,x_n) - (y_1,\cdots,y_n)}{\bigoplus_{i=1}^n X_i} \longrightarrow 0 \right)
+				\end{align}
+				が成り立つから$f$の連続性が出る．
+				\QED
+		\end{description}
+	\end{prf}
+	
+	$(X_i)_{i=1}^n$及び$Y$を全て$\K$上のノルム空間とする．
+	このとき$f \in \ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}$の作用素ノルムは次で定まる:
+	\begin{align}
+		\Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}}
+		\coloneqq \inf{}{\Set{C \geq 0}{\Norm{f(x_1,\cdots,x_n)}{Y} \leq C \Norm{x_1}{X_1}\cdots\Norm{x_n}{X_n},\ (\forall x_i \in X_i,\ i=1,\cdots,n)}}.
+	\end{align}
+	下限の定義より次が成立する:
+	\begin{align}
+		\Norm{f(x_1,\cdots,x_n)}{Y} \leq \Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}} 
+		\Norm{x_1}{X_1}\cdots\Norm{x_n}{X_n},
+		\quad (\forall x_i \in X_i,\ i=1,\cdots,n).
+		\label{eq:operator_norm_of_multilinear_mapping}
+	\end{align}
+	実際，(\refeq{eq:operator_norm_of_multilinear_mapping})が満たされない場合，
+	或る$(u_1,\cdots,u_n) \in \bigoplus_{i=1}^n X_i\
+	 (u_i \neq 0,\ i=1,\cdots,n)$が存在して
+	\begin{align}
+		\frac{\Norm{f(u_1,\cdots,u_n)}{Y}}{\Norm{u_1}{X_1}\cdots\Norm{u_n}{X_n}} 
+		> \Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}}
+	\end{align}
+	が成立するが，実数の連続性より
+	\begin{align}
+		\frac{\Norm{f(u_1,\cdots,u_n)}{Y}}{\Norm{u_1}{X_1}\cdots\Norm{u_n}{X_n}} 
+		> \delta > \Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}}
+	\end{align}
+	を満たす$\delta$が存在し，
+	\begin{align}
+		\Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}} 
+		&< \delta \\
+		&\leq \inf{}{\Set{C \geq 0}{\Norm{f(x_1,\cdots,x_n)}{Y} \leq C \Norm{x_1}{X_1}\cdots\Norm{x_n}{X_n},\ (\forall x_i \in X_i,\ i=1,\cdots,n)}} \\
+		&= \Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}}
+	\end{align}
+	が従い矛盾が生じる．
+	
+	\begin{screen}
+		\begin{thm}[多重線型写像の作用素ノルム]
+			$(X_i)_{i=1}^n$及び$Y$を全て$\K$上のノルム空間とする．
+			このとき，任意の$f \in \ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}$に対して次が成立する:
+			\begin{align}
+				\Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}}
+				= \sup{\substack{\Norm{x_i}{X_i} = 1 \\ i=1,\cdots,n}}{\Norm{f(x_1,\cdots,x_n)}{Y}}
+				= \sup{\substack{\Norm{x_i}{X_i} \leq 1 \\ i=1,\cdots,n}}{\Norm{f(x_1,\cdots,x_n)}{Y}}
+				= \sup{\substack{\Norm{x_i}{X_i} \neq 0 \\ i=1,\cdots,n}}{
+					\frac{\Norm{f(x_1,\cdots,x_n)}{Y}}{\Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}}}.
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}$(\mbox{第四式}) \leq (\mbox{第一式}) \leq (\mbox{第二式}) \leq (\mbox{第三式}) \leq (\mbox{第四式})$を示す．
+		\begin{description}
+			\item[第一段]
+				式(\refeq{eq:operator_norm_of_multilinear_mapping})より次を得る:
+				\begin{align}
+					\sup{\substack{\Norm{x_i}{X_i} \neq 0 \\ i=1,\cdots,n}}{
+					\frac{\Norm{f(x_1,\cdots,x_n)}{Y}}{\Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}}}
+					\leq \Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}}.
+				\end{align}
+			
+			\item[第二段]
+				任意の$0 \neq x_i \in X_i\ (i=1,\cdots,n)$に対して
+				\begin{align}
+					\Norm{f(x_1,\cdots,x_n)}{Y}
+					&= \Norm{x_1}{X_1}\cdots\Norm{x_n}{X_n}\Norm{f \biggl( \frac{x_1}{\Norm{x_1}{X_1}},\cdots,\frac{x_n}{\Norm{x_n}{X_n}} \biggr)}{Y} \\
+					&\leq \Norm{x_1}{X_1}\cdots\Norm{x_n}{X_n} \sup{\substack{\Norm{x_i}{X_i} = 1 \\ i=1,\cdots,n}}{\Norm{f(x_1,\cdots,x_n)}{Y}}
+				\end{align}
+				が成立するから
+				\begin{align}
+					\Norm{f}{\ContLn{\bigoplus_{i=1}^n X_i}{Y}{n}}
+					\leq 
+					\sup{\substack{\Norm{x_i}{X_i} = 1 \\ i=1,\cdots,n}}{\Norm{f(x_1,\cdots,x_n)}{Y}}
+				\end{align}
+				が従う．
+			
+			\item[第三段]
+				上限を取る範囲の大小より
+				\begin{align}
+					\sup{\substack{\Norm{x_i}{X_i} = 1 \\ i=1,\cdots,n}}{\Norm{f(x_1,\cdots,x_n)}{Y}}
+					\leq \sup{\substack{\Norm{x_i}{X_i} \leq 1 \\ i=1,\cdots,n}}{\Norm{f(x_1,\cdots,x_n)}{Y}}
+				\end{align}
+				が出る．
+				
+			\item[第四段]
+				$0 < \Norm{x_i}{X_i} \leq 1\ (i=1,\cdots,n)$ならば
+				\begin{align}
+					\Norm{f(x_1,\cdots,x_n)}{Y}
+					&= \Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n} \frac{\Norm{f(x_1,\cdots,x_n)}{Y}}{\Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}} \\
+					&\leq \frac{\Norm{f(x_1,\cdots,x_n)}{Y}}{\Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}} \\
+					&\leq \sup{\substack{\Norm{x_i}{X_i} \neq 0 \\ i=1,\cdots,n}}{
+					\frac{\Norm{f(x_1,\cdots,x_n)}{Y}}{\Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}}}
+				\end{align}
+				が成立するから
+				\begin{align}
+					\sup{\substack{\Norm{x_i}{X_i} \leq 1 \\ i=1,\cdots,n}}{\Norm{f(x_1,\cdots,x_n)}{Y}}
+					\leq \sup{\substack{\Norm{x_i}{X_i} \neq 0 \\ i=1,\cdots,n}}{
+					\frac{\Norm{f(x_1,\cdots,x_n)}{Y}}{\Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}}}
+				\end{align}
+				が得られる．
+				\QED
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}[有界な多重線型写像の一意拡張]\label{thm:expansion_of_multilinear_mapping}
 			$n \geq 1$とする．$(X_i)_{i=1}^{n}$をノルム空間，$Z$をBanach空間，
 			$Y_i$を$X_i$の稠密な部分空間とする$(i=1,\cdots,n)$．
 			このとき，有界$n$重線型写像
