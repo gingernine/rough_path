@@ -3,14 +3,19 @@
 	$\otimes_a$により代数的テンソル積，或はその標準写像を表す．
 	$k \geq 2$の場合，$k$重テンソル積$V^{\otimes_a k} = V \otimes_a \cdots \otimes_a V$に
 	プロジェクティブノルム$\projectivenorm{\cdot}{k}$を導入し，
-	その完備拡大を$(V^{\otimes k},\compcrossnorm{\cdot}{k})$と書く．
+	その完備拡大を$(V^{\otimes k},\compcrossnorm{\cdot}{k})$と書く
+	\footnote{
+		$V$が有限次元なら$V^{\otimes_a k}$も有限次元であるから，
+		有限次元ノルム空間の完備性より
+		$\left( V^{\otimes_a k},\projectivenorm{\cdot}{k} \right)$を完備化する必要はない．
+	}．
 	$k=0,1$に対しては$V^{\otimes 0} = \R,\ V^{\otimes 1} = V$とし，
 	$\compcrossnorm{\cdot}{0} \coloneqq \mbox{$\R$の絶対値}$，及び
-	$\compcrossnorm{\cdot}{1} \coloneqq \Norm{}{}$と定める．
+	$\compcrossnorm{\cdot}{1} \coloneqq \Norm{\cdot}{}$と定める．
 	定理\ref{thm:tensor_product_with_scalar}
 	と定理\ref{thm:associativity_of_tensor_products}
 	によれば，任意の$0 \leq j \leq k$に対し
-	$V^{\otimes_a k}$と$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$は同型となる．
+	$V^{\otimes_a k}$と$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$は線型同型となる．
 	特に$k \geq 3$及び$1 \leq j \leq k-1$に対し，
 	定理\ref{thm:associativity_of_tensor_products}における線型同型を
 	\begin{align}
