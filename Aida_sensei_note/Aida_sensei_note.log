@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  13 MAY 2018 00:05
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  13 MAY 2018 00:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -607,12 +607,12 @@ No file Aida_sensei_note.ind.
 
 ] (./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
- 4672 strings out of 493621
- 60715 string characters out of 6150087
- 158781 words of memory out of 5000000
- 8139 multiletter control sequences out of 15000+600000
+ 4673 strings out of 493621
+ 60721 string characters out of 6150087
+ 158784 words of memory out of 5000000
+ 8140 multiletter control sequences out of 15000+600000
  39809 words of font info for 147 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,24n,26p,316b,757s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (49 pages, 339988 bytes).
+Output written on Aida_sensei_note.dvi (49 pages, 340224 bytes).
