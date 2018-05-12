@@ -1,14 +1,14 @@
 \section{ノルム空間の完備拡大}
 	$\K$を$\R$或は$\C$と考える．
 	\begin{screen}
-		\begin{thm}[完備拡大の存在定理]
+		\begin{thm}[完備拡大の存在定理]\label{thm:expansion_of_normed_space}
 			$(X,\Norm{\cdot}{X})$を$\K$上のノルム空間とするとき，次を満たす
-			Banach空間$(Y,\Norm{\cdot}{Y})$と線型等長写像$J:X \longrightarrow Y$が
-			存在する:
+			$\K$-Banach空間$(Y,\Norm{\cdot}{Y})$と
+			線型等長写像$J:X \longrightarrow Y$が存在する:
 			\begin{description}
 				\item[(e1)] $JX$は$Y$において稠密である．
-				\item[(e2)] 別のBanach空間$(Z,\Norm{\cdot}{Z})$と線型等長$K:X \longrightarrow Z$
-					が存在して(e1)を満たすとき，$F \circ J = K$を満たす線型同型
+				\item[(e2)] 別の$\K$-Banach空間$(Z,\Norm{\cdot}{Z})$と線型等長$K:X \longrightarrow Z$
+					が存在して(e1)を満たすとき，$F \circ J = K$を満たす等長同型
 					$F:Y \longrightarrow Z$が存在する．
 					\begin{align}
 						\xymatrix{
@@ -16,7 +16,12 @@
 							& X \ar@{^{(}->}[lu]^-J \ar@{}[u]|\circlearrowleft \ar@{^{(}->}[ru]_-K & 
 						}
 					\end{align}
-				\item[(e3)] $X$が内積空間なら$Y$はHilbert空間である．
+				\item[(e3)] $X$が内積空間なら$Y$はHilbert空間であり，
+					それぞれ内積を$\inprod<\cdot,\cdot>_X,\inprod<\cdot,\cdot>_Y$と書けば次が成り立つ:
+					\begin{align}
+						\inprod<J x, J x'>_Y = \inprod<x,x'>_X,
+						\quad (\forall x,x' \in X).
+					\end{align}
 			\end{description}
 		\end{thm}
 	\end{screen}
@@ -25,21 +30,21 @@
 		\begin{description}
 			\item[第一段]
 				$X$のCauchy列の全体を
-				$Cauchy(X)$で表す．任意の$(x_n),(y_n) \in Cauchy(X)$に対し
+				$Cauchy(X)$で表す．任意の$(x_n),(x'_n) \in Cauchy(X)$に対し
 				\begin{align}
-					\left| \Norm{x_n - y_n}{X} - \Norm{x_m - y_m}{X} \right|
-					\leq \Norm{x_n - x_m}{X} + \Norm{y_n - y_m}{X}
+					\left|\, \Norm{x_n - x'_n}{X} - \Norm{x_m - x'_m}{X}\, \right|
+					\leq \Norm{x_n - x_m}{X} + \Norm{x'_n - x'_m}{X}
 				\end{align}
-				が成り立つから，$\left( \Norm{x_n - y_n}{X} \right)_{n=1}^\infty$は
+				が成り立つから，$\left( \Norm{x_n - x'_n}{X} \right)_{n=1}^\infty$は
 				$\R$のCauchy列をなして収束し，
 				\begin{align}
-					(x_n)\ R\ (y_n)
-					\DEF \lim_{n \to \infty} \Norm{x_n - y_n}{X} = 0
+					(x_n)\ R\ (x'_n)
+					\quad \DEF \quad \lim_{n \to \infty} \Norm{x_n - x'_n}{X} = 0
 				\end{align}
 				により$Cauchy(X)$に同値関係$R$が定まる．
-				$Cauchy(X)$は，線型演算を
+				$Cauchy(X)$は，$0 \in X$の列を零元と定め，線型演算を
 				\begin{align}
-					(x_n) + (y_n) \coloneqq (x_n + y_n),
+					(x_n) + (x'_n) \coloneqq (x_n + x'_n),
 					\quad \alpha (x_n) \coloneqq (\alpha x_n)
 				\end{align}
 				で定義すれば線型空間となるから，これを$R$で割った次の商
@@ -47,42 +52,66 @@
 					Y \coloneqq Cauchy(X) / R
 				\end{align}
 				は線型空間である．
-				$(x_n)$の$R$に関する同値類を$[(x_n)]$と表すとき，
+				$(x_n)$の$R$に関する同値類を$[(x_n)]$と表すとき
 				\begin{align}
 					\Norm{[(x_n)]}{Y} \coloneqq \lim_{n \to \infty} \Norm{x_n}{X}
+					\label{eq:thm_expansion_of_normed_space_1}
 				\end{align}
-				はwell-definedであり$Y$においてノルムとなる．
+				はwell-definedであり，$\Norm{\cdot}{Y}$は$Y$においてノルムとなる．
 			
 			\item[第二段]
 				任意の$x \in X$に対し$x_n = x\ (\forall n \geq 1)$を満たす
 				$(x_n)$を$\zeta_x$と書けば，
 				\begin{align}
 					J: X \ni x \longmapsto [\zeta_x] \in Y
+					\label{eq:thm_expansion_of_normed_space_2}
 				\end{align}
 				により等長線型が定まる．実際，
+				任意の$\alpha,\beta \in \K,\ u,v \in X$に対して
 				\begin{align}
 					\Norm{J (\alpha u + \beta v) - \alpha J u - \beta J v}{Y}
 					= \Norm{[\zeta_{\alpha u + \beta v}] - \alpha [\zeta_u] - \beta [\zeta_v]}{Y}
 					= \Norm{[\zeta_{\alpha u + \beta v} - \alpha \zeta_u - \beta \zeta_v]}{Y}
 					= 0
 				\end{align}
-				により線型性が得られ，
+				が成り立つから$J$は線型であり，
 				\begin{align}
-					\Norm{J x}{X} = \lim_{n \to \infty} \Norm{x_n}{X}
+					\Norm{J x}{Y} = \lim_{n \to \infty} \Norm{x_n}{X}
 					= \Norm{x}{X},
 					\quad (\forall x \in X)
 				\end{align}
-				により等長性を得る．
+				より等長性も得られる．
 			
 			\item[第三段]
-				任意の$y \in Y$に対し，その代表を$(x_n)$とすれば，
+				(e1)を示す．
+				いま，任意に$y = [(x_n)] \in Y$と
+				$\epsilon > 0$を取る．このとき或る$N \in \N$が存在して
+				\begin{align}
+					\Norm{x_n - x_m}{X} < \frac{\epsilon}{2},
+					\quad (\forall n,m > N)
+				\end{align}
+				を満たす．$m > N$を満たす$m$を任意に一つ選んで
+				\begin{align}
+					\epsilon_m \coloneqq \lim_{n \to \infty} \Norm{x_n - x_m}{X}
+				\end{align}
+				とおけば，また或る$N' \in \N\ (N' > N)$が存在して
+				\begin{align}
+					\left| \epsilon_m - \Norm{x_n - x_m}{X} \right| < \frac{\epsilon}{2},
+					\quad (\forall n > N')
+				\end{align}
+				が成立し
+				\begin{align}
+					\epsilon_m < \frac{\epsilon}{2} + \Norm{x_n - x_m}{X} < \epsilon,
+					\quad (\forall m > N)
+				\end{align}
+				が従う．すなわち，$J X$の点列$[\zeta_{x_1}],[\zeta_{x_2}],\cdots$は
+				$y$にノルム収束する:
 				\begin{align}
 					\Norm{y - [\zeta_{x_m}]}{Y}
 					= \lim_{n \to \infty} \Norm{x_n - x_m}{X}
 					\longrightarrow 0
-					\quad (m \longrightarrow \infty)
+					\quad (m \longrightarrow \infty).
 				\end{align}
-				が成り立つから$J X$は$Y$で稠密である．
 				
 			\item[第四段]
 				$(Y,\Norm{\cdot}{Y})$の完備性を示す．$(y_n)$を$Y$の
@@ -91,7 +120,7 @@
 					\Norm{y_n - J x_n}{Y} < \frac{1}{n},
 					\quad (\forall n = 1,2,\cdots)
 				\end{align}
-				を満たす$(x_n) \subset X$が存在する．
+				を満たす$\{x_1,x_2,\cdots\} \subset X$が存在する．このとき
 				\begin{align}
 					\Norm{x_n - x_m}{X}
 					= \Norm{J x_n - J x_m}{Y}
@@ -108,5 +137,100 @@
 					\quad (m \longrightarrow \infty)
 				\end{align}
 				が成り立ち$Y$の完備性が出る．
+				
+			\item[第五段]
+				$(Y,\Norm{\cdot}{Y})$とは別のBanach空間$(Z,\Norm{\cdot}{Z})$
+				と線型等長$K:X \longrightarrow Z$
+				が存在して(e1)を満たすとき，
+				\begin{align}
+					\tilde{F}: J X \ni y \longmapsto K \circ J^{-1}(y),
+					\quad \tilde{G}: K X \ni z \longmapsto J \circ K^{-1} (z)
+				\end{align}
+				により定める等長線型$\tilde{F},\tilde{G}$は
+				\begin{align}
+					&\tilde{F} \circ \tilde{G} (z) = z,
+					\quad (\forall z \in K X), \\
+					&\tilde{G} \circ \tilde{F} (y) = y,
+					\quad (\forall y \in J X)
+				\end{align}
+				を満たす．
+				定理\ref{thm:expansion_of_multilinear_mapping}より
+				$\tilde{F},\tilde{G}$は$Y,Z$上の線型写像$F,G$に一意的にノルム保存拡張され，
+				このとき，任意の$y \in Y$及び$z \in Z$それぞれ対しノルム収束する
+				$J X$の点列$(y_n)$，$K X$の点列$(z_n)$を取れば，
+				\begin{align}
+					\Norm{F \circ G (z) - z}{Z}
+					\leq \Norm{F \circ G (z) - \tilde{F} \circ \tilde{G} (z_n)}{Z}
+						+ \Norm{z_n - z}{Z}
+					\longrightarrow 0 \quad (n \longrightarrow \infty), \\
+					\Norm{G \circ F (y) - y}{Y}
+					\leq \Norm{G \circ F (y) - \tilde{G} \circ \tilde{F} (y_n)}{Y}
+						+ \Norm{y_n - y}{Y}
+					\longrightarrow 0 \quad (n \longrightarrow \infty)
+				\end{align}
+				が成り立ち$F = G^{-1}$が従う．よって$F:Y \longrightarrow Z$は等長同型であり
+				\begin{align}
+					F \circ J = \tilde{F} \circ J 
+					= \left( K \circ J^{-1} \right) \circ J 
+					= K \circ \left( J^{-1} \circ J \right)
+					= K
+				\end{align}
+				を満たす．
+			
+			\item[第六段]
+				$X$が内積空間の場合，$X$の内積を$\inprod<\cdot,\cdot>_X$と書く．
+				いま，任意の$(x_n),(x'_n) \in Cauchy(X)$に対して
+				\begin{align}
+					\left| \inprod<x_n,x'_n>_X - \inprod<x_m,x'_m>_X \right|
+					\leq \Norm{x_n - x_m}{X}\Norm{x'_n}{X} + \Norm{x_m}{X}\Norm{x'_n - x'_m}{X} 
+					\longrightarrow 0
+					\quad (n,m \longrightarrow \infty)
+				\end{align}
+				が成り立つから$\lim_{n \to \infty} \inprod<x_n,x'_n>_X$は$\K$で収束する．ここで
+				\begin{align}
+					b(y,y') \coloneqq \lim_{n \to \infty} \inprod<x_n, x'_n>_X,
+					\quad \left( \forall y = [(x_n)],\ y' = [(x'_n)] \in Y \right)
+				\end{align}
+				と定めれば，$b$はwell-definedであり$Y \times Y$上の双線型となる．
+				実際，$[(x_n)] = [(\tilde{x}_n)],\ [(x'_n)] = [(\tilde{x}'_n)]$に対して
+				\begin{align}
+					\left| \inprod<x_n,x'_n>_X - \inprod<\tilde{x}_n,\tilde{x}'_n>_X \right|
+					\leq \Norm{x_n - \tilde{x}_n}{X}\Norm{x'_n}{X} 
+						+ \Norm{\tilde{x}_n}{X}\Norm{x'_n - \tilde{x}'_n}{X} 
+					\longrightarrow 0
+					\quad (n \longrightarrow \infty)
+				\end{align}
+				が成り立つから$b$はwell-definedであり，また任意の$\alpha,\beta \in \K$と
+				$y,y',y_1 = [(x^1_n)],\ y_2 = [(x^2_n)] \in Y$に対し
+				\begin{align}
+					\left| b(\alpha y_1 + \beta y_2,y') - \alpha b(y_1,y') - \beta b(y_2,y') \right|
+					&\leq \left| b(\alpha y_1 + \beta y_2,y') - \inprod<\alpha x^1_n + \beta x^2_n,x'_n>_X \right| \\
+					&\qquad+ \left| \alpha b(y_1,y') - \alpha \inprod<x^1_n,x'_n>_X \right|
+					+ \left| \beta b(y_2,y') - \beta \inprod<x^2_n,x'_n>_X \right| \\
+					&\longrightarrow 0 \quad (n \longrightarrow \infty)
+				\end{align}
+				かつ$b(y,y') = \conj{b(y',y)}$ (共役対称性)が満たされ$b$の双線型性が出る．また
+				\begin{align}
+					b(y,y) = \lim_{n \to \infty} \Norm{x_n}{X}^2 = 0
+					\quad \Leftrightarrow \quad y = [(x_n)] = 0,
+					\quad (\forall y = [(x_n)] \in Y)
+				\end{align}
+				も得られる．従って
+				\begin{align}
+					\inprod<y,y'>_Y \coloneqq b(y,y'),
+					\quad (\forall y,y' \in Y)
+				\end{align}
+				とおけば$\inprod<\cdot,\cdot>_Y$は$Y$の内積となる．
+				(\refeq{eq:thm_expansion_of_normed_space_1})で定めるノルムと
+				$\inprod<\cdot,\cdot>_Y$により導入するノルムは一致するから，
+				前段の結果により$Y$は$\inprod<\cdot,\cdot>_Y$を内積とするHilbert空間である．
+				また(\refeq{eq:thm_expansion_of_normed_space_2})で定める等長線型$J$について
+				\begin{align}
+					\inprod<Jx,Jx'>_Y = \lim_{n \to \infty} \inprod<x,x'>_X 
+					= \inprod<x,x'>_X,
+					\quad (\forall x,x' \in X)
+				\end{align}
+				が成立する．
+				\QED
 		\end{description}
 	\end{prf}
