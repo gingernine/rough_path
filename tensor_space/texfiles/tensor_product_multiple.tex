@@ -72,7 +72,7 @@
 			&= \lambda \left[ \defunc_{e_1,\cdots,e_i,\cdots,e_n} \right] \\
 			&= \lambda (e_1 \otimes \cdots \otimes e_i \otimes \cdots \otimes e_n) 
 		\end{align}
-		が成立するから$\otimes$は多重線型である．また
+		が成立するから$\otimes$は$n$重線型である．また
 		任意に$u = [b] \in E \otimes F$を取れば
 		\begin{align}
 			b = \sum_{j=1}^m k_j \defunc_{e^j_i,\cdots,e^j_n},
@@ -131,7 +131,7 @@
 					&\bigotimes_{i=1}^n E_i \ar[r]^-T & V \ar@{}[lu]<2ex>|\circlearrowright
 				}
 			\end{align}
-			また$\K$-線型空間$U_0$と多重線型写像$\iota:\bigoplus_{i=1}^n E_i \longrightarrow U_0$が，
+			また$\K$-線型空間$U_0$と$n$重線型写像$\iota:\bigoplus_{i=1}^n E_i \longrightarrow U_0$が，
 			任意の$\K$-線型空間$V$に対し
 			\begin{description}
 				\item[$(\otimes)_1$] $U_0$は$\iota$の像で生成される．
@@ -164,8 +164,8 @@
 		\begin{description}
 			\item[第一段]
 				$T \in \Hom{\bigotimes_{i=1}^n E_i}{V}$の線型性と
-				$\otimes$の多重線型性より
-				$T \circ \otimes$は多重線型である．
+				$\otimes$の$n$重線型性より
+				$T \circ \otimes$は$n$重線型である．
 				
 			\item[第二段]
 				$\Phi(T_1) = \Phi(T_2)$ならば
@@ -193,14 +193,31 @@
 					\Lambda\biggl( \bigoplus_{i=1}^n E_i \biggr) 
 					= \Span{\Set{\defunc_{e_1,\cdots,e_n}}{(e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i}}
 				\end{align}
-				であるから$\varphi_1 = \varphi_2$が従い$F$の単射性を得る．また
+				より$\varphi_1 = \varphi_2$が従い$F$の単射性が得られる．また
 				$g \in \Map{\bigoplus_{i=1}^n E_i}{V}$に対して
 				\begin{align}
 					\varphi(a) \coloneqq \sum_{\substack{e \in \bigoplus_{i=1}^n E_i \\ a(e) \neq 0}} a(e) g(e),
 					\quad (a \in \Lambda(\bigoplus_{i=1}^n E_i))
 				\end{align}
-				により$\varphi$を定めれば，$\varphi \in \Hom{\Lambda(\bigoplus_{i=1}^n E_i)}{V}$が満たされ
-				$F$の全射性が従う．
+				により$\varphi$を定めれば，$\varphi \in \Hom{\Lambda(\bigoplus_{i=1}^n E_i)}{V}$より
+				\footnote{
+					加法について，$\left( \Set{e}{a(e) \neq 0} \cup \Set{e}{a'(e) \neq 0} \right) 
+					\cap \Set{e}{(a+a')(e) \neq 0} = \Set{e}{(a+a')(e) \neq 0}$より
+					\begin{align}
+						\varphi(a) + \varphi(a')
+						&= \sum_{a(e) \neq 0} a(e) g(e) + \sum_{a'(e) \neq 0} a'(e) g(e) \\
+						&= \sum_{\substack{a(e) \neq 0 \\ (a + a')(e) = 0}} a(e) g(e)
+						+ \sum_{\substack{a(e) \neq 0 \\ (a + a')(e) \neq 0}} a(e) g(e)
+						+ \sum_{\substack{a'(e) \neq 0 \\ (a + a')(e) = 0}} a'(e) g(e)
+						+ \sum_{\substack{a'(e) \neq 0 \\ (a + a')(e) \neq 0}} a'(e) g(e) \\
+						&= \sum_{\substack{a(e) \neq 0 \\ (a + a')(e) \neq 0}} a(e) g(e)
+						+ \sum_{\substack{a'(e) \neq 0 \\ (a + a')(e) \neq 0}} a'(e) g(e) \\
+						&= \sum_{\substack{(a + a')(e) \neq 0}} (a + a')(e) g(e) \\
+						&= \varphi(a + a')
+					\end{align}
+					が従う．
+				}
+				$F$の全射性が出る．
 				
 			\item[第四段]
 				任意に$b \in \Ln{\bigoplus_{i=1}^n E_i}{V}{n}$を取り
@@ -211,12 +228,12 @@
 					&b(e_1,\cdots,\lambda e_i,\cdots,e_n) - \lambda b(e_1,\cdots,e_i,\cdots,e_n) \\
 					&\qquad = h(\defunc_{e_1,\cdots,\lambda e_i,\cdots,e_n} - \lambda \defunc_{e_1,\cdots,e_i,\cdots,e_n})
 				\end{align}
-				が成り立ち，$b$の双線型性により$h$は$\Lambda_0(\bigoplus_{i=1}^n E_i)$上で0である．従って
+				が成り立ち，$b$の$n$重線型性により$h$は$\Lambda_0(\bigoplus_{i=1}^n E_i)$上で0である．従って
 				\begin{align}
 					T([b]) \coloneqq h(b),
 					\quad (b \in \Lambda(\bigoplus_{i=1}^n E_i))
 				\end{align}
-				で定める$T$はwell-definedであり，$T \in \Hom{\bigoplus_{i=1}^n E_i}{V}$かつ
+				で定める$T$はwell-definedであり，$T \in \Hom{\bigotimes_{i=1}^n E_i}{V}$かつ
 				\begin{align}	
 					b(e_1,\cdots,e_n) = h(\defunc_{e_1,\cdots,e_n}) = (T \circ \otimes) (e_1,\cdots,e_n),
 					\quad (\forall (e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i)
@@ -287,7 +304,7 @@
 				\end{align}
 				により定める$b$は$n$重線型であり，定理\ref{thm:universality_of_tensor_product}
 				より$b = g \circ \otimes$を満たす
-				$g:\bigotimes_{i=1}^{n} E_i \longrightarrow \bigotimes_{i=1}^{n} F_i$がただ一つ存在する．
+				$g \in \Hom{\bigotimes_{i=1}^{n} E_i}{\bigotimes_{i=1}^{n} F_i}$がただ一つ存在する．
 				$g$を$f_1 \otimes \cdots \otimes f_n$と表記して線型写像のテンソル積と定義する．いま，
 				\begin{align}
 					f_1 \otimes \cdots \otimes f_n(e_1 \otimes \cdots \otimes e_n)
