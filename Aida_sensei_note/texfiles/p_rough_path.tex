@@ -365,10 +365,10 @@
 	従って，$|D_n| \longrightarrow 0\ (n \longrightarrow \infty)$を満たす細分列$D_n \in \delta[s,t]$を
 	取れば$\left(\sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} \right)_{n=1}^{\infty}$
 	は$V^{\otimes 2}$のCauchy列となり$V^{\otimes 2}$で収束する．別の細分列
-	$(D_m)_{m=1}^{\infty} \subset \delta[s,t]\ (|D_m| \longrightarrow 0)$を取っても
+	$(\tilde{D}_m)_{m=1}^{\infty} \subset \delta[s,t]\ (|\tilde{D}_m| \longrightarrow 0)$を取っても
 	\begin{align}
 		\compcrossnorm{ \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - 
-			\sum_{D_m} X^1_{s,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j}}{2}
+			\sum_{\tilde{D}_m} X^1_{s,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j}}{2}
 		\longrightarrow 0,
 		\quad (n,m \longrightarrow \infty)
 	\end{align}
@@ -495,7 +495,7 @@
 		\begin{dfn}[$p$-ラフパス]
 			$p \geq 1$とし，$p$を超えない最大の整数を$[p]$で表す．
 			有限$p$-変動を持つ$[p]$次乗法的汎関数を
-			$p$-ラフパスと呼び，その全体を$\Omega_p(V)$と書く:
+			$p$-ラフパス($p$-rough path)と呼び，その全体を$\Omega_p(V)$と書く:
 			\begin{align}
 				\Omega_p(V) 
 				= \Set{X \in C_0\left( \Delta_T,T^{([p])}(V) \right)}{
