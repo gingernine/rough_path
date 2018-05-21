@@ -349,9 +349,9 @@
 	\begin{screen}
 		\begin{thm}[テンソル積の基底]
 			$(E_i)_{i=1}^n$を$\K$-線型空間の族とし，$E_i$の基底を
-			$\left( u^i_{\lambda_i} \right)_{\lambda_i \in \Lambda_i}$
-			とする$(i=1,\cdots,n)$．このとき$\left( u^1_{\lambda_1} \otimes 
-			\cdots \otimes u^n_{\lambda_n} \right)_{\lambda_1,\cdots,\lambda_n}$
+			$\left\{ u^i_{\lambda_i} \right\}_{\lambda_i \in \Lambda_i}$
+			とする$(i=1,\cdots,n)$．このとき$\left\{ u^1_{\lambda_1} \otimes 
+			\cdots \otimes u^n_{\lambda_n} \right\}_{\lambda_1,\cdots,\lambda_n}$
 			は$\bigotimes_{i=1}^n E_i$の基底となる．
 		\end{thm}
 	\end{screen}
@@ -359,168 +359,63 @@
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
-				任意の$e_1 \otimes \cdots \otimes e_n \in \bigotimes_{i=1}^n E_i$は
-				$\left( u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n} 
-				\right)_{\lambda_1,\cdots,\lambda_n}$
+				$\left\{ u^1_{\lambda_1} \otimes 
+				\cdots \otimes u^n_{\lambda_n} \right\}_{\lambda_1,\cdots,\lambda_n}$
+				が$\bigotimes_{i=1}^n E_i$を張ることを示す．実際，
+				任意の$e_1 \otimes \cdots \otimes e_n$は
+				$\left\{ u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n} 
+				\right\}_{\lambda_1,\cdots,\lambda_n}$
 				の線型結合で表現されるから，式(\refeq{eq:thm_tensor_product_is_bilinear})より
 				\begin{align}
 					\bigotimes_{i=1}^n E_i = \Span{\Set{u^1_{\lambda_1} \otimes 
 				\cdots \otimes u^n_{\lambda_n}}{\lambda_i \in \Lambda_i,\ i=1,\cdots,n}}
 				\end{align}
-				が成立する．以下，数段にわたり$\left( u^1_{\lambda_1} \otimes 
-				\cdots \otimes u^n_{\lambda_n} \right)_{\lambda_1,\cdots,\lambda_n}$
-				の一次独立性を示す．
+				が成立する．
 				
 			\item[第二段]
-				いま，各$u^i_{\lambda_i}$の生成する一次元空間を
-				$U^i_{\lambda_i}$と表し
+				$\left\{ u^1_{\lambda_1} \otimes 
+				\cdots \otimes u^n_{\lambda_n} \right\}_{\lambda_1,\cdots,\lambda_n}$
+				の一次独立性を示す．
+				$\left\{ u^i_{\lambda_i} \right\}_{\lambda_i \in \Lambda_i}$に対する
+				双対基底を$\left\{ f^i_{\lambda_i} \right\}_{\lambda_i \in \Lambda_i}$
+				と書けば，各$f^i_{\lambda_i}$は
 				\begin{align}
-					V_i \coloneqq \bigoplus_{\lambda_i \in \Lambda_i} U^i_{\lambda_i},
-					\quad (i=1,\cdots,n)
-				\end{align}
-				とおく．このとき，
-				\begin{align}
-					\bigotimes_{i=1}^n E_i 
-					\cong \bigotimes_{i=1}^n V_i
-					\cong \bigoplus_{\lambda_1,\cdots,\lambda_n} U^1_{\lambda_1} \otimes \cdots \otimes U^n_{\lambda_n}
-				\end{align}
-				が成立することを示す．
-			
-			\item[第三段]
-				第一の同型を定める写像$f$を構成する．
-				$\left( u^i_{\lambda_i} \right)_{\lambda_i \in \Lambda_i}$
-				は$E_i$の基底であるから，任意の$e_i \in E_i$は
-				\begin{align}
-					e_i = \sum_{\substack{\lambda_i \in \Lambda_i \\ c_{\lambda_i}(e_i) \neq 0}}
-					c_{\lambda_i}(e_i) u^i_{\lambda_i},
-					\quad \left( c_{\lambda_i}(e_i) \in \K,\ (\forall \lambda_i \in \Lambda_i) \right)
-				\end{align}
-				と一意に表現できる．従って，$e_i$に対応する$V_i$の元$w_i(e_i)$を
-				\begin{align}
-					w_i(e_i):\Lambda_i \ni \lambda_i \longmapsto c_{\lambda_i}(e_i) u^i_{\lambda_i}
-				\end{align}
-				により定めれば，
-				$w_i(e_i) = w_i(e'_i)$ならば$e_i = e'_i$が満たされるから
-				\begin{align}
-					f_i:E_i \ni e_i \longmapsto w_i(e_i) \in V_i
-				\end{align}
-				により定める線型写像$f_i$は同型写像である．
-				このとき，写像のテンソル積
-				\begin{align}
-					f_1 \otimes \cdots \otimes f_n:
-					\bigotimes_{i=1}^n E_i \longrightarrow \bigotimes_{i=1}^n V_i
-				\end{align}
-				は線型同型となる．実際，$f_i$の逆写像$f^{-1}_i$のテンソル積
-				\begin{align}
-					f^{-1}_1 \otimes \cdots \otimes f^{-1}_n:
-					\bigotimes_{i=1}^n V_i \longrightarrow \bigotimes_{i=1}^n E_i
-				\end{align}
-				によって
-				\begin{align}
-					f^{-1}_1 \otimes \cdots \otimes f^{-1}_n \circ 
-						f_1 \otimes \cdots \otimes f_n
-						(e_1 \otimes \cdots \otimes e_n)
-					&= f^{-1}_1 \otimes \cdots \otimes f^{-1}_n
-						\left( f_1(e_1) \otimes \cdots \otimes f_n(e_n) \right) \\
-						&= (e_1 \otimes \cdots \otimes e_n),
-						\quad \biggl(\forall e_i \otimes \cdots \otimes e_n \in \bigotimes_{i=1}^n E_i\biggr) \\
-					f_1 \otimes \cdots \otimes f_n \circ 
-						f^{-1}_1 \otimes \cdots \otimes f^{-1}_n
-						(v_1 \otimes \cdots \otimes v_n) 
-					&= f_1 \otimes \cdots \otimes f_n
-						\left( f^{-1}_1(v_1) \otimes \cdots \otimes f^{-1}_n(v_n) \right) \\
-						&= (v_1 \otimes \cdots \otimes v_n),
-						\quad \biggl(\forall v_i \otimes \cdots \otimes v_n \in \bigotimes_{i=1}^n V_i\biggr)
-				\end{align}
-				が成立し，式(\refeq{eq:thm_tensor_product_is_bilinear})より
-				$f^{-1}_1 \otimes \cdots \otimes f^{-1}_n \circ 
-				f_1 \otimes \cdots \otimes f_n$も
-				$f_1 \otimes \cdots \otimes f_n \circ 
-				f^{-1}_1 \otimes \cdots \otimes f^{-1}_n$
-				もそれぞれ$\bigotimes_{i=1}^n E_i,\bigotimes_{i=1}^n V_i$上の恒等写像に一致するので
-				$(f_1 \otimes \cdots \otimes f_n)^{-1} = f^{-1}_1 \otimes \cdots \otimes f^{-1}_n$
-				を得る．ここで$f \coloneqq f_1 \otimes \cdots \otimes f_n$とする．
-				
-			\item[第四段]
-				第二の同型を定める写像$g$を構成する．
-				\begin{align}
-					\bigoplus_{i=1}^n V_i \ni (v_1,\cdots,v_n) \longmapsto \left( v_1(\lambda_1)\otimes\cdots\otimes v_n(\lambda_n) \right)_{\lambda_1,\cdots,\lambda_n}
-					\in \bigoplus_{\lambda_1,\cdots,\lambda_n} U^1_{\lambda_1} \otimes \cdots \otimes U^n_{\lambda_n}
-				\end{align}
-				は$n$重線型写像であるから，普遍性より或る$g \in \Hom{\bigotimes_{i=1}^n V_i}{\bigoplus_{\lambda_1,\cdots,\lambda_n} U^1_{\lambda_1} \otimes \cdots \otimes U^n_{\lambda_n}}$
-				が唯一つ存在して
-				\begin{align}
-					g(v_1 \otimes \cdots \otimes v_n)
-					= \left( v_1(\lambda_1)\otimes\cdots\otimes v_n(\lambda_n) \right)_{\lambda_1,\cdots,\lambda_n},
-					\quad (\forall v_i \in V_i,\ \forall i=1,\cdots,n)
-				\end{align}
-				を満たす．これが求める線型同型である．以下，$g$の逆写像$h$の存在を示す．
-				\begin{align}
-					\iota_{\lambda_i}:U^i_{\lambda_i}
-					\longrightarrow V_i,
-					\quad (\lambda_i \in \Lambda_i,\ i=1,\cdots,n)
-				\end{align}
-				を，次を満たす標準単射として定める:
-				\begin{align}
-					\left(\iota_{\lambda_i}(u)\right)(\lambda)
-					= \begin{cases}
-						u, & (\lambda = \lambda_i), \\
+					f^i_{\lambda_i}(u^i_\lambda) =
+					\begin{cases}
+						1, & (\lambda = \lambda_i), \\
 						0, & (\lambda \neq \lambda_i),
 					\end{cases}
-					\quad (\lambda \in \Lambda_i,\ u \in U^i_{\lambda_i}).
+					\quad \forall \lambda \in \Lambda_i
 				\end{align}
-				$\iota_{\lambda_i}$は線型であるから
-				$\iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}:
-				U^1_{\lambda_1} \otimes \cdots \otimes U^n_{\lambda_n} \longrightarrow
-				\bigotimes_{i=1}^n V_i$
-				が定義され，
+				を満たし，双対基底により構成する写像のテンソル積
+				$f^1_{\lambda_1} \otimes \cdots \otimes f^n_{\lambda_n}$について
 				\begin{align}
-					h:w \longmapsto \sum_{\lambda_1,\cdots,\lambda_n} \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( w(\lambda_1,\cdots,\lambda_n) \right)
-				\end{align}
-				により線型写像$h:W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n} \longrightarrow
-				\bigotimes_{i=1}^n V_i$が定めれば$g^{-1} = h$が成り立つ．実際，
-				\begin{align}
-					g \circ h(w)
-					&= g \Biggl( \sum_{\lambda_1,\cdots,\lambda_n} \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( w(\lambda_1,\cdots,\lambda_n) \right) \Biggr) \\
-					&= \sum_{\lambda_1,\cdots,\lambda_n} g \left( \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( w(\lambda_1,\cdots,\lambda_n) \right) \right) \\
-					&= w
-				\end{align}
-				が任意の$w \in \bigoplus_{\lambda_1,\cdots,\lambda_n} 
-				W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n}$に対して成立し，
-				かつ任意の$v_1 \otimes \cdots \otimes v_n$に対し
-				\begin{align}
-					h \circ g (v_1 \otimes \cdots \otimes v_n)
-					&= \sum_{\lambda_1,\cdots,\lambda_n} \iota_{\lambda_1} \otimes \cdots \otimes \iota_{\lambda_n}\left( v_1(\lambda_1)\otimes \cdots \otimes v_n(\lambda_n) \right) \\
-					&= \sum_{\lambda_1,\cdots,\lambda_n}
-						\iota_{\lambda_1}(v_1(\lambda_1)) \otimes \cdots \otimes \iota_{\lambda_n}(v_n(\lambda_n)) \\
-					&= \Biggl( \sum_{\lambda_1 \in \Lambda_1} \iota_{\lambda_1}(v_1(\lambda_1)) \Biggr) \otimes \cdots \otimes \Biggl( \sum_{\lambda_n \in \Lambda_n} \iota_{\lambda_n}(v_n(\lambda_n)) \Biggr) \\
-					&= v_1 \otimes \cdots \otimes v_n
-				\end{align}
-				が成り立つから$g^{-1} = h$が従う．よって$g$は線型同型である．
-				
-			\item[第三段]
-				いま，$g \circ f_1 \otimes \cdots \otimes f_n$によって
-				$\bigotimes_{i=1}^n E_i$と$\bigoplus_{\lambda_1,\cdots,\lambda_n} 
-				W^1_{\lambda_1} \otimes \cdots \otimes W^n_{\lambda_n}$
-				は同型に対応し，
-				\begin{align}
-					w_{\lambda_1,\cdots,\lambda_n}(\nu_1,\cdots,\nu_n)
-					\coloneqq 
+					f^1_{\lambda_1} \otimes \cdots \otimes f^n_{\lambda_n}(u^1_{\nu_1} \otimes 
+					\cdots \otimes u^n_{\nu_n}) = 
 					\begin{cases}
-						u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n}, & (\lambda_1,\cdots,\lambda_n) = (\nu_1,\cdots,\nu_n), \\
-						0, & (\lambda_1,\cdots,\lambda_n) \neq (\nu_1,\cdots,\nu_n)
+						1, & (\nu_1,\cdots,\nu_n) = (\lambda_1,\cdots,\lambda_n), \\
+						0, & (\nu_1,\cdots,\nu_n) \neq (\lambda_1,\cdots,\lambda_n),
 					\end{cases}
+					\quad \forall (\nu_1,\cdots,\nu_n) \in \prod_{i=1}^n \Lambda_i
 				\end{align}
-				として$w_{\lambda_1,\cdots,\lambda_n}$を定めれば
+				が成立する．従って，
 				\begin{align}
-					u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n}
-					\xmapsto{g \circ f_1 \otimes \cdots \otimes f_n}
-					w_{\lambda_1,\cdots,\lambda_n}
+					0 = \sum_{j=1}^k \alpha_j \left(u^1_{\lambda^{(j)}_1} \otimes 
+					\cdots \otimes u^n_{\lambda^{(j)}_n} \right),
+					\quad (\alpha_j \in \K,\ j=1,\cdots,k)
 				\end{align}
-				が成り立つ．$\left( w_{\lambda_1,\cdots,\lambda_n} \right)$
-				の一次独立性から$\left( u^1_{\lambda_1} \otimes 
-			\cdots \otimes u^n_{\lambda_n} \right)_{\lambda_1,\cdots,\lambda_n}$
-			の一次独立性が従う．
+				を満たすような任意の線型結合に対し(ただし$i \neq j$なら$(\lambda_1^{(i)},\cdots,\lambda_n^{(i)}) \neq (\lambda_1^{(j)},\cdots,\lambda_n^{(j)})$)
+				\begin{align}
+					\alpha_j = f^1_{\lambda^{(j)}_1} \otimes \cdots \otimes f^n_{\lambda^{(j)}_n}
+					\biggl( \sum_{j=1}^k \alpha_j \left(u^1_{\lambda^{(j)}_1} \otimes 
+					\cdots \otimes u^n_{\lambda^{(j)}_n} \right) \biggr)
+					= 0,
+					\quad (j=1,\cdots,k)
+				\end{align}
+				が従い$\left\{ u^1_{\lambda_1} \otimes 
+				\cdots \otimes u^n_{\lambda_n} \right\}_{\lambda_1,\cdots,\lambda_n}$
+				の一次独立性を得る．
+				\QED
 		\end{description}
 	\end{prf}
 	
