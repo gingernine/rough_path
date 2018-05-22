@@ -1,2 +1,57 @@
 \section{テンソル積の内積}
+	$(H_i)_{i=1}^n$を$\R$上の内積空間の族として，
+	そのテンソル積$\bigotimes_{i=1}^n H_i$上に内積を導入する．
+	ここで各$H_i$の内積を$\inprod<\cdot,\cdot>_i$と書く．
+	いま，任意に$y_i \in H_i,\ i=1,\cdots,n$を取り
+	\begin{align}
+		\Phi_{y_1,\cdots,y_n}:
+		\bigoplus_{i=1}^n H_i \ni (x_1,\cdots,x_n)
+		\longmapsto \inprod<x_1,y_1>_1 \cdots \inprod<x_n,y_n>_n
+	\end{align}
+	とおけば，$\Phi_{y_1,\cdots,y_n}$は$n$重線型であるから
+	或る
 	
+	\begin{screen}
+		\begin{thm}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf} $s$は双線型性を持つ写像として定めたから，後は対称性と正定値性及び$s(u,u)=0 \Leftrightarrow u=0$
+		を示せばよい．
+		\begin{description}
+			\item[第一段]
+				任意の$u \in \bigotimes_{i=1}^n H_i$に対し$s(u,u) \geq 0$が成り立つことを示す．
+				
+			\item[第一段]
+				$s(u,u)=0 \Leftrightarrow u=0,\ (u \in \bigotimes_{i=1}^n H_i)$が成り立つことを示す．
+				定理\ref{thm:basis_of_tensor_product}より，
+				基底$\left\{ e^i_{\lambda_i} \right\}_{\lambda_i \in \Lambda_i} \subset H_i$
+				に対し$\left\{ e^1_{\lambda_1} \otimes \cdots \otimes e^n_{\lambda_n} \right\}_{\lambda_1,\cdots,\lambda_n}$
+				は$\bigotimes_{i=1}^n H_i$の基底となるから，任意の
+				$u \in \bigotimes_{i=1}^n H_i$は
+				\begin{align}
+					u = \sum_{j=1}^k \alpha_j \left( e^1_{\lambda^{(j)}_1} \otimes \cdots \otimes e^n_{\lambda^{(j)}_n} \right)
+					= \sum_{j=1}^k e^1_{\lambda^{(j)}_1} \otimes \cdots \otimes \left( \alpha_j e^n_{\lambda^{(j)}_n} \right),
+					\quad (\alpha_j \neq 0,\ j=1,\cdots,k)
+				\end{align}
+				と表現できる．
+			
+			\item[第三段]
+				$s$の対称性を示す．
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{dfn}[テンソル積上の内積]
+		\end{dfn}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[$\sigma$はクロスノルム]
+		\end{thm}
+	\end{screen}
+	
+	\begin{screen}
+		\begin{thm}[$H_i$が有限次元なら$\sigma$と$\pi$は同値]
+		\end{thm}
+	\end{screen}

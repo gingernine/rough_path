@@ -305,9 +305,9 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{dfn}[線型写像のテンソル積]
-				$(E_i)_{i=1}^n$と$(F_i)_{i=1}^n$を$\K$-線型空間の族とする．
-				$f_i:E_i \longrightarrow F_i\ (i=1,\cdots,n)$が線型写像であるとき，
+		\begin{dfn}[線型写像のテンソル積]\label{def:tensor_products_of_linear_maps}
+				$(E_i)_{i=1}^n$と$(F_i)_{i=1}^n$を$\K$-線型空間の族とするとき，
+				$f_i \in \Hom{E_i}{F_i}$に対し
 				\begin{align}
 					b: \bigoplus_{i=1}^n E_i \ni (e_1,\cdots,e_n)
 					\longmapsto f_1(e_1)\otimes \cdots \otimes f_n(e_n)
@@ -316,14 +316,64 @@
 				により定める$b$は$n$重線型であり，定理\ref{thm:universality_of_tensor_product}
 				より$b = g \circ \otimes$を満たす
 				$g \in \Hom{\bigotimes_{i=1}^{n} E_i}{\bigotimes_{i=1}^{n} F_i}$がただ一つ存在する．
-				$g$を$f_1 \otimes \cdots \otimes f_n$と表記して線型写像のテンソル積と定義する．特に，
+				この$g$を$f_1 \otimes \cdots \otimes f_n$と表記して線型写像のテンソル積と定義する．特に次が成り立つ:
 				\begin{align}
 					f_1 \otimes \cdots \otimes f_n(e_1 \otimes \cdots \otimes e_n)
 					= f_1(e_1)\otimes \cdots \otimes f_n(e_n),
-					\quad (\forall (e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i)
+					\quad (\forall (e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i).
 				\end{align}
-				が成り立つ．
-				%$F_i = \K\ (i=1,\cdots,n)$の場合は$\otimes$を$\K$の乗法と考える$(\bigotimes_{i=1}^n F_i = \K)$．
+		\end{dfn}
+	\end{screen}
+	
+	$n \geq 2$とする．係数体$\K$の$n$個の直和$\K \oplus \cdots \oplus \K$において，
+	\begin{align}
+		\phi:\K \oplus \cdots \oplus \K \ni (x_1,\cdots,x_n)
+		\longmapsto x_1 \cdots x_n \in \K\ \footnotemark
+	\end{align}
+	\footnotetext{
+		$x_1 \cdots x_n$は$\K$の乗法により$x_1,\cdots,x_n$を掛け合わせたものである．
+	}
+	で定める$\phi$は$n$重線型であるから，
+	或る線型写像$F:\K \otimes \cdots \otimes \K\ \mbox{($n$ copies)} \longrightarrow \K$
+	が存在して
+	\begin{align}
+		F(x_1 \otimes \cdots \otimes x_n) = x_1 \cdots x_n,
+		\quad (\forall x_1 \otimes \cdots \otimes x_n \in \K \otimes \cdots \otimes \K)
+		\label{eq:tensor_products_of_linear_forms_1}
+	\end{align}
+	を満たす．またこの$F$に対して
+	\begin{align}
+		\psi:\K \ni x \longmapsto x \otimes 1 \otimes \cdots \otimes 1 
+		\in \K \otimes \cdots \otimes \K\ 
+		\mbox{($n$ copies)}\ \footnotemark
+	\end{align}
+	が逆写像となるから$F$は線型同型である．
+	\footnotetext{
+		1は$\K$の単位元を表す．
+	}
+	
+	\begin{screen}
+		\begin{dfn}[線型形式のテンソル積]
+			$(E_i)_{i=1}^n$を$\K$-線型空間の族とするとき，
+			線型形式$f_i \in \Hom{E_i}{\K}$のテンソル積
+			$f_1 \otimes \cdots \otimes f_n$は，
+			前定義\ref{def:tensor_products_of_linear_maps}に従えば次の対応
+			\begin{align}
+				\bigotimes_{i=1}^n E_i \ni e_1 \otimes \cdots \otimes e_n
+				\longmapsto f_1(e_1) \otimes \cdots \otimes f_n(e_n)
+				\in \K \otimes \cdots \otimes \K\ (\mbox{$n$ copies})
+			\end{align}
+			を満たす線型写像であるが，以後便宜上，線型形式については，
+			式(\refeq{eq:tensor_products_of_linear_forms_1})の線型同型$F$との合成
+			$F \circ (f_1 \otimes \cdots \otimes f_n)$を
+			線型形式のテンソル積$f_1 \otimes \cdots \otimes f_n$として再定義する．i.e.
+			\begin{align}
+				f_1 \otimes \cdots \otimes f_n(e_1 \otimes \cdots \otimes e_n)
+				= f_1(e_1) \cdots f_n(e_n),
+				\quad (\forall e_1 \otimes \cdots \otimes e_n \in \bigotimes_{i=1}^n E_i).
+			\end{align}
+			特に，$f_1 \otimes \cdots \otimes f_n$もまた$\bigotimes_{i=1}^n E_i$
+			上の線型形式となっている．
 		\end{dfn}
 	\end{screen}
 	
@@ -347,7 +397,7 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}[テンソル積の基底]
+		\begin{thm}[テンソル積の基底]\label{thm:basis_of_tensor_product}
 			$(E_i)_{i=1}^n$を$\K$-線型空間の族とし，$E_i$の基底を
 			$\left\{ u^i_{\lambda_i} \right\}_{\lambda_i \in \Lambda_i}$
 			とする$(i=1,\cdots,n)$．このとき$\left\{ u^1_{\lambda_1} \otimes 
