@@ -1,18 +1,83 @@
 \section{テンソル積の内積}
-	$(H_i)_{i=1}^n$を$\R$上の内積空間の族として，
-	そのテンソル積$\bigotimes_{i=1}^n H_i$上に内積を導入する．
-	ここで各$H_i$の内積を$\inprod<\cdot,\cdot>_i$と書く．
-	いま，任意に$y_i \in H_i,\ i=1,\cdots,n$を取り
-	\begin{align}
-		\Phi_{y_1,\cdots,y_n}:
-		\bigoplus_{i=1}^n H_i \ni (x_1,\cdots,x_n)
-		\longmapsto \inprod<x_1,y_1>_1 \cdots \inprod<x_n,y_n>_n
-	\end{align}
-	とおけば，$\Phi_{y_1,\cdots,y_n}$は$n$重線型であるから
-	或る
+	[参考:\cite{key8}(pp. 1-24), \cite{key7}] 
+	$(H_i)_{i=1}^n$を$\R$-Hilbert空間の族として，$\bigotimes_{i=1}^n H_i$に内積を導入する．
+	$H_i$の内積を$\inprod<\cdot,\cdot>_{H_i}$と書く．
+	\begin{description}
+		\item[第一段] 
+			任意に$y_i \in H_i,\ i=1,\cdots,n$を取り
+			\begin{align}
+				\Phi_{y_1,\cdots,y_n}:
+				\bigoplus_{i=1}^n H_i \ni (x_1,\cdots,x_n)
+				\longmapsto \inprod<x_1,y_1>_{H_1} \cdots \inprod<x_n,y_n>_{H_n}
+			\end{align}
+			とおけば，$\Phi_{y_1,\cdots,y_n}$は$n$重線型であるから
+			或る$\Psi_{y_1,\cdots,y_n} \in \Hom{\bigotimes_{i=1}^n H_i}{\R}$がただ一つ存在して
+			\begin{align}
+				\Psi_{y_1,\cdots,y_n} \circ \otimes = \Phi_{y_1,\cdots,y_n}
+			\end{align}
+			を満たす．
+			
+		\item[第二段]
+			任意の$u \in \bigotimes_{i=1}^n H_i$に対し
+			$\bigoplus_{i=1}^n H_i \ni (y_1,\cdots,y_n) \longmapsto \Psi_{y_1,\cdots,y_n}(u)$
+			は$n$重線型である．実際，
+			\begin{align}
+				u = \sum_{j=1}^k x^j_1 \otimes \cdots \otimes x^j_n
+			\end{align}
+			と表せるとき，任意の$\alpha,\beta \in \R$と$y_i,z_i \in H_i$に対して
+			\begin{align}
+				\Psi_{y_1,\cdots,\alpha y_i + \beta z_i,\cdots,y_n}(u)
+				&= \sum_{j=1}^k \Psi_{y_1,\cdots,\alpha y_i + \beta z_i,\cdots,y_n}(x^j_1 \otimes \cdots \otimes x^j_n) \\
+				&= \sum_{j=1}^k \inprod<x^j_1,y_1>_{H_1} \cdots \inprod<x^j_i,\alpha y_i + \beta z_i>_{H_i} \cdots \inprod<x^j_n,y_n>_{H_n} \\
+				&= \alpha \sum_{j=1}^k \inprod<x^j_1,y_1>_{H_1} \cdots \inprod<x^j_i,y_i>_{H_i} \cdots \inprod<x^j_n,y_n>_{H_n} \\
+				&\quad + \beta \sum_{j=1}^k \inprod<x^j_1,y_1>_{H_1} \cdots \inprod<x^j_i,z_i>_{H_i} \cdots \inprod<x^j_n,y_n>_{H_n} \\
+				&= \alpha \sum_{j=1}^k \Psi_{y_1,\cdots,y_i,\cdots,y_n}(x^j_1 \otimes \cdots \otimes x^j_n)
+				+ \beta \sum_{j=1}^k \Psi_{y_1,\cdots,z_i,\cdots,y_n}(x^j_1 \otimes \cdots \otimes x^j_n) \\
+				&= \alpha \Psi_{y_1,\cdots,y_i,\cdots,y_n}(u)
+				+ \beta \Psi_{y_1,\cdots,z_i,\cdots,y_n}(u)
+			\end{align}
+			が成立する．従って或る$F_u \in \Hom{\bigotimes_{i=1}^n H_i}{\R}$がただ一つ存在して
+			\begin{align}
+				F_u(y_1 \otimes \cdots \otimes y_n) = \Psi_{y_1,\cdots,y_n}(u),
+				\quad (\forall y_1 \otimes \cdots \otimes y_n \in \bigotimes_{i=1}^n H_i)
+			\end{align}
+			を満たす．
+			
+		\item[第三段]
+			任意の$v \in \bigotimes_{i=1}^n H_i$に対し
+			$\bigotimes_{i=1}^n H_i \ni u \longmapsto F_u(v)$は線型性を持つ．実際，
+			\begin{align}
+				v = \sum_{j=1}^k x^j_1 \otimes \cdots \otimes x^j_n
+			\end{align}
+			と表せるとき，任意の$\alpha,\beta \in \R$と$u,w \in \bigotimes_{i=1}^n H_i$に対して
+			\begin{align}
+				F_{\alpha u + \beta w}(v)
+				&= \sum_{j=1}^k F_{\alpha u + \beta w}(x^j_1 \otimes \cdots \otimes x^j_n) \\
+				&= \sum_{j=1}^k \Psi_{x^j_1, \cdots, x^j_n}(\alpha u + \beta w) \\
+				&= \alpha \sum_{j=1}^k \Psi_{x^j_1, \cdots, x^j_n}(u)
+					+ \beta \sum_{j=1}^k \Psi_{x^j_1, \cdots, x^j_n}(w) \\
+				&= \alpha F_{u}(v) + \beta F_{w}(v)
+			\end{align}
+			が成立する．従って
+			\begin{align}
+				s(u,v) \coloneqq F_u(v),
+				\quad (\forall u,v \in \bigotimes_{i=1}^n H_i)
+				\label{eq:def_inner_product_of_tensor_product}
+			\end{align}
+			により定める$s:\bigotimes_{i=1}^n H_i \times \bigotimes_{i=1}^n H_i \longrightarrow \R$
+			は双線型形式である．
+	\end{description}
 	
 	\begin{screen}
 		\begin{thm}
+			式(\refeq{eq:def_inner_product_of_tensor_product})で定める$s$は
+			$\bigotimes_{i=1}^n H_i$の内積となる．また任意の
+			$x_1 \otimes \cdots \otimes x_n,\ y_1 \otimes \cdots \otimes y_n 
+			\in \bigotimes_{i=1}^n H_i$に対し次を満たす:
+			\begin{align}
+				s(x_1 \otimes \cdots \otimes x_n,y_1 \otimes \cdots \otimes y_n)
+				= \inprod<x_1,y_1>_{H_1} \cdots \inprod<x_n,y_n>_{H_n}.
+			\end{align}
 		\end{thm}
 	\end{screen}
 	
@@ -25,7 +90,7 @@
 			\item[第一段]
 				$s(u,u)=0 \Leftrightarrow u=0,\ (u \in \bigotimes_{i=1}^n H_i)$が成り立つことを示す．
 				定理\ref{thm:basis_of_tensor_product}より，
-				基底$\left\{ e^i_{\lambda_i} \right\}_{\lambda_i \in \Lambda_i} \subset H_i$
+				基底$\left\{ e^i_{\lambda_i} \right\}_{\lambda_i \in \Lambda_i} \subset H_i,\ (i=1,\cdots,n)$
 				に対し$\left\{ e^1_{\lambda_1} \otimes \cdots \otimes e^n_{\lambda_n} \right\}_{\lambda_1,\cdots,\lambda_n}$
 				は$\bigotimes_{i=1}^n H_i$の基底となるから，任意の
 				$u \in \bigotimes_{i=1}^n H_i$は
@@ -43,6 +108,10 @@
 	
 	\begin{screen}
 		\begin{dfn}[テンソル積上の内積]
+			式(\refeq{eq:def_inner_product_of_tensor_product})で定めた双線型形式$s$を
+			$\inprod<\cdot,\cdot>$と書き直して$\bigotimes_{i=1}^n H_i$の内積とする．
+			また$\sigma(u) \coloneqq \sqrt{\inprod<u,u>},\ (u \in \bigotimes_{i=1}^n H_i)$
+			によりノルム$\sigma$を導入する．
 		\end{dfn}
 	\end{screen}
 	
@@ -50,6 +119,23 @@
 		\begin{thm}[$\sigma$はクロスノルム]
 		\end{thm}
 	\end{screen}
+	
+	\begin{prf}
+		\begin{description}
+			\item[第二段]
+				\begin{align}
+					(x^*_1 \otimes \cdots \otimes x^*_n)(x)
+					&= \sum_{j=1}^{k} (x^*_1 \otimes \cdots \otimes x^*_n)(x^j_1 \otimes \cdots \otimes x^j_n)
+					= \sum_{j=1}^{k} x^*_1(x^j_1) \cdots x^*_n(x^j_n) \\
+					&= \sum_{j=1}^{k} \inprod<x^j_1,a_1>_{H_1} \cdots \inprod<x^j_n,a_n>_{H_n}
+					= \sum_{j=1}^{k} \inprod<x^j_1 \otimes \cdots \otimes x^j_n,a_1 \otimes \cdots \otimes a_n>
+					= \inprod<x,a_1 \otimes \cdots \otimes a_n> \\
+					&\leq \sigma(x) \sigma(a_1 \otimes \cdots \otimes a_n)
+					= \sigma(x) \Norm{a_1}{H_1} \cdots \Norm{a_n}{H_n} \\
+					&= \sigma(x) \Norm{x^*_1}{H^*_1} \cdots \Norm{x^*_n}{H^*_n}
+				\end{align}
+		\end{description}
+	\end{prf}
 	
 	\begin{screen}
 		\begin{thm}[$H_i$が有限次元なら$\sigma$と$\pi$は同値]
