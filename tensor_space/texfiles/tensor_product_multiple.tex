@@ -202,21 +202,21 @@
 				\end{align}
 				により$\varphi$を定めれば，$\varphi \in \Hom{\Lambda(\bigoplus_{i=1}^n E_i)}{V}$より
 				\footnote{
-					加法について，$\left( \Set{e}{a(e) \neq 0} \cup \Set{e}{a'(e) \neq 0} \right) 
+					$\left( \Set{e}{a(e) \neq 0} \cup \Set{e}{a'(e) \neq 0} \right) 
 					\cap \Set{e}{(a+a')(e) \neq 0} = \Set{e}{(a+a')(e) \neq 0}$より
 					\begin{align}
 						\varphi(a) + \varphi(a')
-						&= \sum_{a(e) \neq 0} a(e) g(e) + \sum_{a'(e) \neq 0} a'(e) g(e) \\
-						&= \sum_{\substack{a(e) \neq 0 \\ (a + a')(e) = 0}} a(e) g(e)
+						&= \sum_{a(e) \neq 0} a(e) g(e) + \sum_{a'(e) \neq 0} a'(e) g(e)
+						= \sum_{\substack{a(e) \neq 0 \\ (a + a')(e) = 0}} a(e) g(e)
 						+ \sum_{\substack{a(e) \neq 0 \\ (a + a')(e) \neq 0}} a(e) g(e)
 						+ \sum_{\substack{a'(e) \neq 0 \\ (a + a')(e) = 0}} a'(e) g(e)
 						+ \sum_{\substack{a'(e) \neq 0 \\ (a + a')(e) \neq 0}} a'(e) g(e) \\
 						&= \sum_{\substack{a(e) \neq 0 \\ (a + a')(e) \neq 0}} a(e) g(e)
-						+ \sum_{\substack{a'(e) \neq 0 \\ (a + a')(e) \neq 0}} a'(e) g(e) \\
-						&= \sum_{\substack{(a + a')(e) \neq 0}} (a + a')(e) g(e) \\
-						&= \varphi(a + a')
+						+ \sum_{\substack{a'(e) \neq 0 \\ (a + a')(e) \neq 0}} a'(e) g(e) 
+						= \sum_{\substack{(a + a')(e) \neq 0}} (a + a')(e) g(e) 
+						= \varphi(a + a')
 					\end{align}
-					が得られる．スカラ倍は$\varphi(\beta a) = \sum_{(\beta a)(e) \neq 0} (\beta a)(e)g(e) = \beta \sum_{a(e) \neq 0} a(e)g(e) = \beta \varphi(a)$より従う．
+					$\varphi$の加法性を得る．スカラ倍は$\varphi(\beta a) = \sum_{(\beta a)(e) \neq 0} (\beta a)(e)g(e) = \beta \sum_{a(e) \neq 0} a(e)g(e) = \beta \varphi(a)\ (\beta \neq 0)$及び$\varphi(0) = 0$より従う．
 				}
 				$F$の全射性が出る．
 				
@@ -359,10 +359,7 @@
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
-				$\left\{ u^1_{\lambda_1} \otimes 
-				\cdots \otimes u^n_{\lambda_n} \right\}_{\lambda_1,\cdots,\lambda_n}$
-				が$\bigotimes_{i=1}^n E_i$を張ることを示す．実際，
-				任意の$e_1 \otimes \cdots \otimes e_n$は
+				任意の$e_1 \otimes \cdots \otimes e_n \in \bigotimes_{i=1}^n E_i$は
 				$\left\{ u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n} 
 				\right\}_{\lambda_1,\cdots,\lambda_n}$
 				の線型結合で表現されるから，式(\refeq{eq:thm_tensor_product_is_bilinear})より
@@ -398,7 +395,8 @@
 					\end{cases}
 					\quad \forall (\nu_1,\cdots,\nu_n) \in \prod_{i=1}^n \Lambda_i
 				\end{align}
-				が成立する．従って，
+				が成立する．従って$u^1_{\lambda_1} \otimes \cdots \otimes u^n_{\lambda_n}$
+				は全て零ではなく，かつ
 				\begin{align}
 					0 = \sum_{j=1}^k \alpha_j \left(u^1_{\lambda^{(j)}_1} \otimes 
 					\cdots \otimes u^n_{\lambda^{(j)}_n} \right),
@@ -446,9 +444,10 @@
 				\end{align}
 				により定めれば，定理\ref{thm:universality_of_tensor_product}より
 				\begin{align}
-					F:(e_1 \otimes \cdots \otimes e_n)
-					\longmapsto (e_1 \otimes \cdots \otimes e_k) \otimes 
-					(e_{k+1} \otimes \cdots \otimes e_n)
+					F(e_1 \otimes \cdots \otimes e_n)
+					= (e_1 \otimes \cdots \otimes e_k) \otimes 
+					(e_{k+1} \otimes \cdots \otimes e_n),
+					\quad (\forall (e_1,\cdots,e_n) \in \bigoplus_{i=1}^n E_i)
 				\end{align}
 				を満たす線型写像$F:\bigotimes_{i=1}^n E_i \longrightarrow \biggl( \bigotimes_{i=1}^k E_i \biggr) \bigotimes \biggl( \bigotimes_{i=k+1}^n E_i \biggr)$
 				が存在する:
@@ -464,13 +463,13 @@
 				$u_{k+1} \in E_{k+1},\cdots,u_n \in E_n$を固定し
 				\begin{align}
 					\Phi_{u_{k+1},\cdots,u_n}(e_1,\cdots,e_n)
-					\coloneqq e_1 \otimes \cdots e_k \otimes u_{k+1} \otimes \cdots \otimes u_n
+					\coloneqq e_1 \otimes \cdots \otimes e_k \otimes u_{k+1} \otimes \cdots \otimes u_n
 				\end{align}
-				によって$n$重線型$\Phi_{u_{k+1},\cdots,u_n}:\bigoplus_{i=1}^k E_i \longrightarrow 
+				によって$k$重線型$\Phi_{u_{k+1},\cdots,u_n}:\bigoplus_{i=1}^k E_i \longrightarrow 
 				\bigotimes_{i=1}^n E_i$を定めれば，定理\ref{thm:universality_of_tensor_product}より
 				\begin{align}
 					G_{u_{k+1},\cdots,u_n}(e_1 \otimes \cdots \otimes e_k)
-					= e_1 \otimes \cdots e_k \otimes u_{k+1} \otimes \cdots \otimes u_n
+					= e_1 \otimes \cdots \otimes e_k \otimes u_{k+1} \otimes \cdots \otimes u_n
 				\end{align}
 				を満たす線型写像$G_{u_{k+1},\cdots,u_n}:\bigotimes_{i=1}^k E_i \longrightarrow 
 				\bigotimes_{i=1}^n E_i$が存在する．
@@ -488,7 +487,7 @@
 					\ni (u_{k+1},\cdots,u_n)
 					\longmapsto G_{u_{k+1},\cdots,u_n}(v)
 				\end{align}
-				を定めれば，$\Psi_v$は$n$重線型であるから，定理\ref{thm:universality_of_tensor_product}より
+				を定めれば，$\Psi_v$は$n-k$重線型であるから，定理\ref{thm:universality_of_tensor_product}より
 				\begin{align}
 					H_v(u_{k+1} \otimes \cdots \otimes u_n)
 					= \Psi_v(u_{k+1},\cdots,u_n)
@@ -502,7 +501,7 @@
 					}
 				\end{align}
 				いま，$v \longmapsto \Psi_v$は線型であり，かつ
-				$\Psi_v$と$H_v$は線型同型で結ばれているから
+				$\Psi_v$と$H_v$は一対一対応であるから
 				$v \longmapsto H_v$の線型性が従う．
 				
 			\item[第四段]
@@ -513,10 +512,10 @@
 				により定める$\Gamma$は
 				\begin{align}
 					\Gamma(e_1 \otimes \cdots \otimes e_k, e_{k+1} \otimes \cdots \otimes e_n) 
-					&= H_{e_1 \otimes \cdots \otimes e_k}\left(e_{k+1} \otimes \cdots \otimes e_n) \right) \\
-					&= \Psi_{e_1 \otimes \cdots \otimes e_k}\left(e_{k+1},\cdots,e_n) \right) \\
-					&= G_{e_{k+1},\cdots,e_n}\left(e_1 \otimes \cdots \otimes e_k) \right) \\
-					&= \Phi_{e_{k+1},\cdots,e_n}\left(e_1, \cdots, e_k) \right) \\
+					&= H_{e_1 \otimes \cdots \otimes e_k}\left(e_{k+1} \otimes \cdots \otimes e_n \right) \\
+					&= \Psi_{e_1 \otimes \cdots \otimes e_k}\left(e_{k+1},\cdots,e_n \right) \\
+					&= G_{e_{k+1},\cdots,e_n}\left(e_1 \otimes \cdots \otimes e_k \right) \\
+					&= \Phi_{e_{k+1},\cdots,e_n}\left(e_1, \cdots, e_k \right) \\
 					&= e_1 \otimes \cdots \otimes e_n
 					\label{eq:thm_associativity_of_tensor_products}
 				\end{align}
@@ -542,7 +541,7 @@
 					&= \Gamma\left(e_1 \otimes \cdots \otimes e_k,e_{k+1} \otimes \cdots \otimes e_n \right) \\
 					&= e_1 \otimes \cdots \otimes e_n
 				\end{align}
-				が得られ$F^{-1} = G$が従う．
+				が満たされ$F^{-1} = G$が従う．
 				\QED
 		\end{description}
 	\end{prf}

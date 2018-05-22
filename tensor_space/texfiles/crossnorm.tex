@@ -142,9 +142,7 @@
 					&\leq \Norm{x_1^*}{X_1^*} \cdots \Norm{x_n^*}{X_n^*} \left[ \frac{x_1^*}{\Norm{x_1^*}{X_1^*}} \otimes \cdots \otimes \frac{x_n^*}{\Norm{x_n^*}{X_n^*}} \right] (v) \\
 					&\leq \Norm{x_1^*}{X_1^*} \cdots \Norm{x_n^*}{X_n^*} \epsilon(v)
 				\end{align}
-				が成立し，或る$i$で$x_i^*$が零写像のときは
-				定理\ref{thm:tensor_product_contains_zero_mapping_is_zero}より
-				$x_1^* \otimes \cdots \otimes x_n^* = 0$が満たされ，
+				が成立し
 				\begin{align}
 					\Norm{x_1^* \otimes \cdots \otimes x_n^*}{(\bigotimes_{i=1}^n X_i,\epsilon)} \leq \Norm{x_1^*}{X_1^*} \cdots \Norm{x_n^*}{X_n^*}
 				\end{align}
@@ -255,20 +253,18 @@
 					= \frac{1}{\Norm{x_1^*}{X_1^*} \cdots \Norm{x_n^*}{X_n^*}} 
 						x_1^* \otimes \cdots \otimes x_n^*
 				\end{align}
-				が満たされるから
+				となり，
 				\begin{align}
 					\left| x_1^* \otimes \cdots \otimes x_n^*(v) \right| 
 						\leq \Norm{x_1^*}{X_1^*} \cdots \Norm{x_n^*}{X_n^*} \pi(v),
 					\quad (\forall v \in \bigotimes_{i=1}^n X_i)
 				\end{align}
-				が従う．定理\ref{thm:tensor_product_contains_zero_mapping_is_zero}より
-				$x_1^* \otimes \cdots \otimes x_n^* = 0$なら
-				どれか一つは$x_i^* = 0$であるから
+				が従い
 				\begin{align}
 					\Norm{x_1^* \otimes \cdots \otimes x_n^*}{(\bigotimes_{i=1}^n X_i,\pi)^*} 
 					\leq \Norm{x_1^*}{X_1^*} \cdots \Norm{x_n^*}{X_n^*}
 				\end{align}
-				が得られる．
+				が出る．
 				
 			\item[第三段]
 				$p$を(\refeq{eq:cross_norm_def_1})を満たすセミノルムとし，
@@ -302,7 +298,7 @@
 			$\K$-Banach空間の族$(X_i)_{i=1}^n$のテンソル積$\bigotimes_{i=1}^n X_i$
 			にプロジェクトノルム$\pi$を導入する．このとき次が成り立つ:
 			\begin{align}
-				\pi(v) = \inf{}{\Set{\sum_{i=1}^n \Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}}{
+				\pi(v) = \inf{}{\Set{\sum_{j=1}^m \Norm{x^j_1}{X_1} \cdots \Norm{x^j_n}{X_n}}{
 					v = \sum_{j=1}^m x^j_1 \otimes \cdots \otimes x^j_n}}.
 			\end{align}
 		\end{thm}
@@ -313,7 +309,7 @@
 			\item[第一段]
 				$x_1 \otimes \cdots \otimes x_n$上のセミノルム$\lambda$を次で定める:
 				\begin{align}
-					\lambda(v) \coloneqq \inf{}{\Set{\sum_{i=1}^n \Norm{x_1}{X_1} \cdots \Norm{x_n}{X_n}}{
+					\lambda(v) \coloneqq \inf{}{\Set{\sum_{j=1}^m \Norm{x^j_1}{X_1} \cdots \Norm{x^j_n}{X_n}}{
 					v = \sum_{j=1}^m x^j_1 \otimes \cdots \otimes x^j_n}},
 					\quad (\forall v \in \bigotimes_{i=1}^n X_i).
 				\end{align}
