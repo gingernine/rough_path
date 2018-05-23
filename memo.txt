@@ -1,0 +1,5 @@
+https://mathoverflow.net/questions/222649/comparing-norms-of-tensor-product-of-two-hilbert-spaces
+https://math.stackexchange.com/questions/35191/operator-norm-and-tensor-norms
+https://math.stackexchange.com/questions/1246986/when-do-injective-and-projective-tensor-norms-agree
+https://math.stackexchange.com/questions/349585/norm-of-a-tensor-product-of-operators
+https://mathoverflow.net/questions/277070/tensor-product-space-with-projective-norm-is-incomplete

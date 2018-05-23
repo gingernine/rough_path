@@ -23,11 +23,11 @@
 	\end{align}
 	と表せば，$F_{j,k}$は
 	\begin{align}
-		F_{0,k}(e) &= 1 \otimes_a e, && (\forall e \in V^{\otimes_a k}), \\
-		F_{j,k}(e_1 \otimes_a \cdots \otimes_a e_k) 
-			&= (e_1 \otimes_a \cdots \otimes_a e_{j}) \otimes_a (e_{j+1} \otimes_a \cdots \otimes_a e_k), 
-			&& (\forall e_1 \otimes_a \cdots \otimes_a e_k \in V^{\otimes_a k},\ 1 \leq j \leq k-1), \\
-		F_{k,k}(e) &= e \otimes_a 1, && (\forall e \in V^{\otimes_a k})
+		F_{0,k}(v) &= 1 \otimes_a v, && (\forall v \in V^{\otimes_a k}), \\
+		F_{j,k}(v_1 \otimes_a \cdots \otimes_a v_k) 
+			&= (v_1 \otimes_a \cdots \otimes_a v_{j}) \otimes_a (v_{j+1} \otimes_a \cdots \otimes_a v_k), 
+			&& (\forall v_1 \otimes_a \cdots \otimes_a v_k \in V^{\otimes_a k},\ 1 \leq j \leq k-1), \\
+		F_{k,k}(v) &= v \otimes_a 1, && (\forall v \in V^{\otimes_a k})
 	\end{align}
 	を満たす．また$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$上にプロジェクティブノルムを導入し，
 	これを$\pi_{j,k}$と書く．
@@ -44,12 +44,12 @@
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
-				$j=0$のとき，任意の$e \in V^{\otimes_a k}$に対し
+				$j=0$のとき，任意の$v \in V^{\otimes_a k}$に対し
 				\begin{align}
-					\projectivenorm{F_{0,k}(e)}{0,k}
-					= \projectivenorm{1 \otimes_a e}{0,k}
-					= \projectivenorm{1}{0}\projectivenorm{e}{k}
-					= \projectivenorm{e}{k}
+					\projectivenorm{F_{0,k}(v)}{0,k}
+					= \projectivenorm{1 \otimes_a v}{0,k}
+					= \projectivenorm{1}{0}\projectivenorm{v}{k}
+					= \projectivenorm{v}{k}
 				\end{align}
 				が成り立ち$\pi_k \circ F^{-1}_{0,k} = \pi_{0,k}$を得る．
 				同様にして$\pi_k \circ F^{-1}_{k,k} = \pi_{k,k}$も出る．
@@ -182,7 +182,7 @@
 	とおく．また上で定めた双線型写像$\psi_{j,k}$を$\otimes_{j,k}$と書き直す:
 	\begin{align}
 		u \otimes_{j,k} v = \psi_{j,k}(u,v),
-		\quad (\forall (u,v) \in V^{\otimes j} \times V^{\otimes k-j}).
+		\quad (\forall (u,v) \in V^{\otimes j} \times V^{\otimes k-j},\ 0 \leq j \leq k,\ k \geq 0).
 		\label{eq:def_of_otimes_for_completion_V_tensor_k}
 	\end{align}
 	このとき，$(a^k)_{k=0}^{\infty},(b^k)_{k=0}^{\infty} \in T(V)$に対する
