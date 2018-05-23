@@ -111,7 +111,12 @@
 	\end{prf}
 	
 	
-	$V^{\otimes_a i}$の$V^{\otimes i}$への等長埋め込みを$J_i$で表し($i=0,1$の場合$J_i$は恒等写像)，
+	$V^{\otimes_a i}$の$V^{\otimes i}$への等長埋め込みを$J_i$で表し
+	($J_i$の終集合を$J_i V^{\otimes_a i}$と考える
+	\footnote{
+		$J_i$の終集合を$J_i V^{\otimes_a i}$と考えれば全単射であるから
+		逆写像$J_i^{-1}$が存在する．
+	}．$i=0,1$の場合$J_i$は恒等写像)，
 	\begin{align}
 		J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j} \ni (u,v)
 		& \longmapsto ( J_j^{-1}u,J_{k-j}^{-1}v ) &&\in V^{\otimes_a j} \times V^{\otimes_a k-j} \\
@@ -193,12 +198,11 @@
 	\end{align}
 	で$c_k \in V^{\otimes k}$を定めれば，
 	有限個の$k$を除いて$c_k = 0$となり$c = (c_k)_{k=0}^{\infty} \in T(V)$が満たされる．
-	従って，この対応を
+	これで定まる二項算法を
 	\begin{align}
 		c = a \otimes b
 	\end{align}
-	と書けば$\otimes$は$T(V)$の二項算法として定まり，
-	また次の主張により$T(V)$は$\otimes$を乗法として代数となる．
+	と書けば，次の二つの主張により$T(V)$は$\otimes$を乗法として代数となる．
 	
 	\begin{screen}
 		\begin{thm}[$\otimes$は$T(V)$の乗法となる]\label{thm:otimes_is_a_multiplication}
@@ -293,29 +297,84 @@
 		\end{description}	
 	\end{prf}
 	
+	\begin{screen}
+		\begin{thm}[$T(V)$の単位元の定義]
+			任意の$k \geq 0$，および任意の$\alpha \in \R$と$v \in V^{\otimes k}$に対し
+			\begin{align}
+				\alpha \otimes_{0,k} v = v \otimes_{k,k} \alpha = \alpha v
+			\end{align}
+			が成立する．特に，$e_0 \coloneqq 1,\ e_k \coloneqq 0\ (k \geq 0)$
+			として定める$e=(e_k)_{k=1}^\infty \in T(V)$は$\otimes$に関する単位元である:
+			\begin{align}
+				\mbox{i.e.}\quad
+				e \otimes a = a \otimes e = a,
+				\quad (\forall a \in T(V))
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$v \in J_k V^{\otimes_a k}$の場合は
+		(\refeq{bilinear_map_on_algebraic_Banach_tensor_products})
+		の対応関係により
+		\begin{align}
+			\alpha \otimes_{0,k} v
+			= J_k F_{0,k}^{-1}\left( \alpha \otimes_a J_k^{-1}v \right)
+			= J_k \left( \alpha J_k^{-1}v \right)
+			= J_k J_k^{-1} \alpha v
+			= \alpha v
+		\end{align}
+		が成立する．一般の$v \in V^{\otimes k}$に対しては，
+		$\lim_{n \to \infty} \compcrossnorm{v-v_n}{k} = 0$を満たす
+		$\{v_n\}_{n=1}^\infty \subset J_k V^{\otimes_a k}$を取れば
+		\begin{align}
+			\compcrossnorm{\alpha v - \alpha \otimes_{0,k} v}{k}
+			\leq \compcrossnorm{\alpha v - \alpha v_n}{k}
+				+ \compcrossnorm{\alpha \otimes_{0,k} v_n - \alpha \otimes_{0,k} v}{k}
+			= 2|\alpha| \compcrossnorm{v-v_n}{k}
+			\longrightarrow 0
+			\quad (n \longrightarrow \infty)
+		\end{align}
+		が成立し$\alpha v = \alpha \otimes_{0,k} v$が得られる．
+		同様にして$\alpha v = v \otimes_{k,k} \alpha$も成り立つ．
+		従って，任意の$a \in T(V)$に対し
+		\begin{align}
+			(e \otimes a)_k
+			&= \sum_{j=0}^k e_j \otimes_{j,k} a_{k-j}
+			= 1 \otimes_{0,k} a_k \\
+			&= a_k
+			= a_k \otimes_{k,k} 1
+			= \sum_{j=0}^k a_j \otimes_{j,k} e_{k-j}
+			= (a \otimes e)_k,
+			\quad (k=0,1,2,\cdots)
+		\end{align}
+		が満たされ$e \otimes a = a \otimes e = a$が出る．
+		\QED
+	\end{prf}
+	
 	$n \geq 0$に対して
 	\begin{align}
 		T^{(n)}(V) \coloneqq \bigoplus_{k=0}^{n} V^{\otimes k}
 	\end{align}
-	とおき，同様に$\otimes$を
+	とおき，$T(V)$の場合と同様に乗法$\otimes$を
 	\begin{align}
-		(c^k)_{k=0}^n = (a^k)_{k=0}^n \otimes (b^k)_{k=0}^n,
-		\quad c^k = \sum_{j=0}^{k} a^j \otimes_{j,k} b^{k-j},
-		\quad (k=0,\cdots,n)
+		a \otimes b,\quad
+		\Biggl((a \otimes b)_k \coloneqq \sum_{j=0}^{k} a_j \otimes_{j,k} b_{k-j},\ k=1,\cdots,n \Biggr),
+		\quad a,b \in T^{(n)}(V)
 	\end{align}
-	により定め，次の直積ノルムを導入する:
+	により定め，次の直積ノルムでノルム位相を導入する:
 	\begin{align}
-		\compcrossnorm{a}{} \coloneqq \sum_{k=0}^n \compcrossnorm{a^k}{k},
-		\quad (a = (a^k)_{k=0}^n \in T^{(n)}(V)).
+		\compcrossnorm{a}{} \coloneqq \sum_{k=0}^n \compcrossnorm{a_k}{k},
+		\quad (a = (a_k)_{k=0}^n \in T^{(n)}(V)).
 		\label{eq:def_norm_on_truncated_tensor_algebra}
 	\end{align}
-	いま，写像$X:\Delta_T \longrightarrow T^{(n)}(V)$に対して
-	$X_{s,t} = (X^0_{s,t},\cdots,X^n_{s,t}),\ ((s,t) \in \Delta_T)$と書いて
+	また，写像$X:\Delta_T \longrightarrow T^{(n)}(V)$に対して
+	$X_{s,t} = (X^0_{s,t},\cdots,X^n_{s,t}),\ ((s,t) \in \Delta_T)$と表記し
 	\begin{align}
 		C_0 \left(\Delta_T,T^{(n)}(V) \right)
 		\coloneqq \Set{X:\Delta_T \longrightarrow T^{(n)}(V)}{\mbox{continuous},\ X^0 \equiv 1}
 	\end{align}
-	とおく．
+	を定める．
 	
 	\begin{screen}
 		\begin{dfn}[finite $p$-variation]
