@@ -29,7 +29,7 @@
 			&& (\forall v_1 \otimes_a \cdots \otimes_a v_k \in V^{\otimes_a k},\ 1 \leq j \leq k-1), \\
 		F_{k,k}(v) &= v \otimes_a 1, && (\forall v \in V^{\otimes_a k})
 	\end{align}
-	を満たす．また$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$上にプロジェクティブノルムを導入し，
+	を満たす．また$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$上にもプロジェクティブノルムを導入し，
 	これを$\pi_{j,k}$と書く．
 	\begin{screen}
 		\begin{thm}
@@ -185,16 +185,43 @@
 		\quad (\forall (u,v) \in V^{\otimes j} \times V^{\otimes k-j},\ 0 \leq j \leq k,\ k \geq 0).
 		\label{eq:def_of_otimes_for_completion_V_tensor_k}
 	\end{align}
-	このとき，$(a^k)_{k=0}^{\infty},(b^k)_{k=0}^{\infty} \in T(V)$に対する
-	二項関係$(a^k)_{k=0}^{\infty} \otimes (b^k)_{k=0}^{\infty} \eqqcolon (c^k)_{k=0}^{\infty}$を
+	このとき，任意の$a=(a_k)_{k=0}^{\infty},\ b=(b_k)_{k=0}^{\infty} \in T(V)$に対し
 	\begin{align}
-		c^k = \sum_{j=0}^{k} a^j \otimes_{j,k} b^{k-j},
+		c_k \coloneqq \sum_{j=0}^{k} a_j \otimes_{j,k} b_{k-j},
 		\quad (k=0,1,2,\cdots)
 	\end{align}
-	により定めれば，
-	$c^k \in V^{\otimes k}\ (k=0,1,\cdots)$かつ
-	有限個の$k$を除いて$c^k = 0$となるから$(c^k)_{k=0}^\infty \in T(V)$が成立し，
-	$\otimes$は$T(V)$において結合則?を満たす双線型な積となる．$n \geq 0$に対して
+	で$c_k \in V^{\otimes k}$を定めれば，
+	有限個の$k$を除いて$c_k = 0$となり$c = (c_k)_{k=0}^{\infty} \in T(V)$が満たされる．
+	従って，この対応を
+	\begin{align}
+		c = a \otimes b
+	\end{align}
+	と書けば$\otimes$は$T(V)$の二項算法として定まり，
+	また次の主張により$T(V)$は$\otimes$を乗法として代数となる．
+	\begin{screen}
+		\begin{thm}[$\otimes$は$T(V)$の乗法]
+			$\otimes$は$T(V)$において結合則を満たす双線型写像である．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$\otimes$の双線型性は各$\otimes_{j,k}$の双線型性より従う．
+		また任意の$a,b,c \in T(V)$に対し
+		\begin{align}
+			((a \otimes b) \otimes c)_k
+			&= \sum_{j=0}^k (a \otimes b)_j \otimes_{j,k} c_{k-j} \\
+			&= \sum_{j=0}^k \sum_{r=0}^j \left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j} \\
+			&= \sum_{j=0}^k \sum_{r=0}^j a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) \\
+			&= \sum_{r=0}^k \sum_{j=r}^k a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) \\
+			&= \sum_{r=0}^k a_r \otimes_{r,k} (b \otimes c)_{k-r} \\
+			&= (a \otimes (b \otimes c))_k,
+			\quad (\forall k = 0,1,2,\cdots)
+		\end{align}
+		が成立するから$\otimes$は結合則を満たす．
+		\QED
+	\end{prf}
+	
+	$n \geq 0$に対して
 	\begin{align}
 		T^{(n)}(V) \coloneqq \bigoplus_{k=0}^{n} V^{\otimes k}
 	\end{align}
