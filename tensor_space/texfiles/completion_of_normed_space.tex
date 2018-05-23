@@ -47,11 +47,15 @@
 					(x_n) + (x'_n) \coloneqq (x_n + x'_n),
 					\quad \alpha (x_n) \coloneqq (\alpha x_n)
 				\end{align}
-				を線型演算とすれば線型空間となるから，これを$R$で割った次の商
+				を線型演算とすれば線型空間となり，
 				\begin{align}
-					Y \coloneqq Cauchy(X) / R
+					N \coloneqq \Set{(x_n) \in Cauchy(X)}{(x_n)\ R\ (0)}
 				\end{align}
-				は線型空間である．
+				は部分空間となるから，次の商
+				\begin{align}
+					Y \coloneqq Cauchy(X) / N
+				\end{align}
+				は適当な線型演算により線型空間となる．
 				$(x_n)$の$R$に関する同値類を$[(x_n)]$と表すとき
 				\begin{align}
 					\Norm{[(x_n)]}{Y} \coloneqq \lim_{n \to \infty} \Norm{x_n}{X}

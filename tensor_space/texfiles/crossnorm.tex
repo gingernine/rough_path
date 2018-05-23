@@ -4,15 +4,18 @@
 		\begin{dfn}[クロスノルム]\label{def:cross_norm}
 			$\K$-Banach空間の族$(X_i)_{i=1}^n$のテンソル積$\bigotimes_{i=1}^n X_i$において
 			\begin{align}
-				\alpha(x_1 \otimes \cdots \otimes x_n) &\leq \Norm{x_1}{X_1} \Norm{x_2}{X_2} \cdots \Norm{x_n}{X_n}, && (x_i \in X_i), \label{eq:cross_norm_def_1}\\
+				\alpha(x_1 \otimes \cdots \otimes x_n) &\leq \Norm{x_1}{X_1} \Norm{x_2}{X_2} \cdots \Norm{x_n}{X_n}, && (\forall x_i \in X_i,\ i=1,\cdots,n), \label{eq:cross_norm_def_1}\\
 				\sup{\substack{v \in \bigotimes_{i=1}^n X_i \\ v \neq 0}}{\left| x_1^* \otimes \cdots \otimes x_n^* (v) \right|} &\leq \Norm{x_1^*}{X_1^*} \Norm{x_2^*}{X_2^*} \cdots \Norm{x_n^*}{X_n^*}\alpha(v),
-				&& (x_i^* \in X_i^*) \label{eq:cross_norm_def_2}
+				&& (\forall x_i^* \in X_i^*,\ i=1,\cdots,n) \label{eq:cross_norm_def_2}
 			\end{align}
 			を満たすようなノルム$\alpha:\bigotimes_{i=1}^n X_i \longrightarrow [0,\infty)$を
-			クロスノルム(cross norm)と呼ぶ．
+			クロスノルム(cross norm)と呼ぶ\footnotemark．
 		\end{dfn}
 	\end{screen}
-	
+	\footnotetext{
+		\cite{key8}ではこの二性質を満たすものをリーゾナブルクロスノルムと分類するが，
+		本稿ではクロスノルムと書くだけにする．
+	}
 	\begin{screen}
 		\begin{thm}
 			$\K$-Banach空間の族$(X_i)_{i=1}^{n}$のテンソル積

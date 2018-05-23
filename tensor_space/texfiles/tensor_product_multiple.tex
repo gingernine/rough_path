@@ -264,43 +264,20 @@
 		\begin{thm}[スカラーとのテンソル積]\label{thm:tensor_product_with_scalar}
 			$E$を$\K$-線型空間とするとき，
 			$\K \otimes E$と$E$は
-			$f(\alpha \otimes e) = \alpha e$を満たす
-			線型写像$f:\K \otimes E \longmapsto E$により
+			線型写像$f:\K \otimes E \ni 1 \otimes e \longmapsto e \in E\ \footnotemark
+			$により
 			同型となる．同様に$E \otimes \K$と$E$は
-			$g(e \otimes \alpha) = \alpha e$を満たす
-			線型写像$g$により
-			同型となる．
+			線型写像$g:E \otimes \K \ni e \otimes 1 \longmapsto e \in E$
+			により同型となる．
 		\end{thm}
 	\end{screen}
-	
+	\footnotetext{
+		1は$\K$の単位元を表す．
+	}
 	\begin{prf}
-		スカラ倍$\iota:(\alpha, e) \longmapsto \alpha e$は双線型である．
-		また定理\ref{thm:universality_of_tensor_product}の
-		$(\otimes)_1,(\otimes)_2$について，
-		\begin{align}
-			E = \Span{\Set{\alpha e}{\alpha \in \K,\ e \in E}}
-		\end{align}
-		より$(\otimes)_1$が従い，かつ
-		任意の双線型写像$\delta:\K \times E \longrightarrow V$に対し
-		\begin{align}
-			\tau(e) \coloneqq \delta(1,e),
-			\quad (\forall e \in E)
-		\end{align}
-		で線型写像$\tau:E \longrightarrow V$を定めれば，
-		\begin{align}
-			\tau \circ \iota (\alpha,e) 
-			= \tau(\alpha e) 
-			= \delta(1,\alpha e)
-			= \alpha \delta(1,e)
-			= \delta (\alpha ,e)
-		\end{align}
-		となり$(\otimes)_2$が満たされる．従って，定理\ref{thm:universality_of_tensor_product}より
-		$f \circ \otimes = \iota$を満たす線型同型$f:\K \otimes E \longrightarrow E$が存在して
-		\begin{align}
-			f(\alpha \otimes e) = \iota(\alpha,e) = \alpha e,
-			\quad (\forall \alpha \in \K,\ e \in E)
-		\end{align}
-		が成立する．
+		$\K \otimes E = \Span{\Set{\alpha \otimes e}{\alpha \in \K,\ e \in E}} 
+		= \Set{1 \otimes e}{e \in E}$が成り立つから
+		$f$は全単射となる．
 		\QED
 	\end{prf}
 	
@@ -345,12 +322,9 @@
 	\begin{align}
 		\psi:\K \ni x \longmapsto x \otimes 1 \otimes \cdots \otimes 1 
 		\in \K \otimes \cdots \otimes \K\ 
-		\mbox{($n$ copies)}\ \footnotemark
+		\mbox{($n$ copies)}
 	\end{align}
 	が逆写像となるから$F$は線型同型である．
-	\footnotetext{
-		1は$\K$の単位元を表す．
-	}
 	
 	\begin{screen}
 		\begin{dfn}[線型形式のテンソル積]

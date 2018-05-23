@@ -9,25 +9,33 @@
 		有限次元ノルム空間の完備性より
 		$\left( V^{\otimes_a k},\projectivenorm{\cdot}{k} \right)$を完備化する必要はない．
 	}．
-	$k=0,1$に対しては$V^{\otimes 0} = \R,\ V^{\otimes 1} = V$とし，
-	$\compcrossnorm{\cdot}{0} \coloneqq \mbox{$\R$の絶対値}$，及び
-	$\compcrossnorm{\cdot}{1} \coloneqq \Norm{\cdot}{}$と定める．
+	$k=0,1$に対しては$V^{\otimes 0} \coloneqq \R,\ V^{\otimes 1} \coloneqq V$とし，
+	$\compcrossnorm{\cdot}{0} = \projectivenorm{\cdot}{0} \coloneqq \mbox{$\R$の絶対値}$，及び
+	$\compcrossnorm{\cdot}{1} = \projectivenorm{\cdot}{1} \coloneqq \Norm{\cdot}{}$と定める．
 	定理\ref{thm:tensor_product_with_scalar}
 	と定理\ref{thm:associativity_of_tensor_products}
 	によれば，任意の$0 \leq j \leq k$に対し
 	$V^{\otimes_a k}$と$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$は線型同型となる．
-	特に$k \geq 3$及び$1 \leq j \leq k-1$に対し，
-	定理\ref{thm:associativity_of_tensor_products}における線型同型を
+	この同型写像を
 	\begin{align}
-		F_{j,k}:V^{\otimes_a k} \longrightarrow V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}
+		F_{j,k}:V^{\otimes_a k} \longrightarrow V^{\otimes_a j} \otimes_a V^{\otimes_a k-j},
+		\quad 0 \leq j \leq k
 	\end{align}
-	と表し，$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$上にプロジェクティブノルムを導入し，
+	と表せば，$F_{j,k}$は
+	\begin{align}
+		F_{0,k}(e) &= 1 \otimes_a e, && (\forall e \in V^{\otimes_a k}), \\
+		F_{j,k}(e_1 \otimes_a \cdots \otimes_a e_k) 
+			&= (e_1 \otimes_a \cdots \otimes_a e_{j}) \otimes_a (e_{j+1} \otimes_a \cdots \otimes_a e_k), 
+			&& (\forall e_1 \otimes_a \cdots \otimes_a e_k \in V^{\otimes_a k},\ 1 \leq j \leq k-1), \\
+		F_{k,k}(e) &= e \otimes_a 1, && (\forall e \in V^{\otimes_a k})
+	\end{align}
+	を満たす．また$V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$上にプロジェクティブノルムを導入し，
 	これを$\pi_{j,k}$と書く．
 	\begin{screen}
 		\begin{thm}
-			このとき次式が成立する．特に，$F_{j,k}$は等長同型である．
+			このとき次式が成立する．特に，$F_{j,k},\ (0 \leq j \leq k)$は等長同型である．
 			\begin{align}
-				\pi_k \circ F^{-1}_{j,k} = \pi_{j,k}.
+				\pi_k \circ F^{-1}_{j,k} = \pi_{j,k}, \quad 0 \leq j \leq k.
 			\end{align}
 			
 		\end{thm}
@@ -36,7 +44,18 @@
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
-				$\pi_k \circ F^{-1}_{j,k} \leq \pi_{j,k}$が成り立つことを示す．
+				$j=0$のとき，任意の$e \in V^{\otimes_a k}$に対し
+				\begin{align}
+					\projectivenorm{F_{0,k}(e)}{0,k}
+					= \projectivenorm{1 \otimes_a e}{0,k}
+					= \projectivenorm{1}{0}\projectivenorm{e}{k}
+					= \projectivenorm{e}{k}
+				\end{align}
+				が成り立ち$\pi_k \circ F^{-1}_{0,k} = \pi_{0,k}$を得る．
+				同様にして$\pi_k \circ F^{-1}_{k,k} = \pi_{k,k}$も出る．
+				
+			\item[第二段]
+				$\pi_k \circ F^{-1}_{j,k} \leq \pi_{j,k},\ (1 \leq j \leq k-1)$が成り立つことを示す．
 				$v \in V^{\otimes_a j} \otimes_a V^{\otimes_a k-j}$の分割
 				\begin{align}
 					v = \sum_{r} u^r \otimes_a v^r,
@@ -67,8 +86,8 @@
 				\end{align}
 				が出る．
 			
-			\item[第二段]
-				$\pi_k \circ F^{-1}_{j,k} \geq \pi_{j,k}$が成り立つことを示す．
+			\item[第三段]
+				$\pi_k \circ F^{-1}_{j,k} \geq \pi_{j,k},\ (1 \leq j \leq k-1)$が成り立つことを示す．
 				$v \in V^{\otimes_a k}$の任意の分割
 				\begin{align}
 					v = \sum_n v^n_1 \otimes_a \cdots \otimes_a v^n_k,
@@ -92,7 +111,7 @@
 	\end{prf}
 	
 	
-	$V^{\otimes_a i}$の$V^{\otimes i}$への等長埋め込みを$J_i$で表し，
+	$V^{\otimes_a i}$の$V^{\otimes i}$への等長埋め込みを$J_i$で表し($i=0,1$の場合$J_i$は恒等写像)，
 	\begin{align}
 		J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j} \ni (u,v)
 		& \longmapsto ( J_j^{-1}u,J_{k-j}^{-1}v ) &&\in V^{\otimes_a j} \times V^{\otimes_a k-j} \\
@@ -118,7 +137,8 @@
 	
 	\begin{screen}
 		\begin{thm}\label{thm:property_of_the_completion_of_the_projective_norm}
-			$\psi_{j,k}:V^{\otimes j} \times V^{\otimes k-j} \longrightarrow V^{\otimes k}$
+			$0 \leq j \leq k$とする．
+			このとき，$\psi_{j,k}:V^{\otimes j} \times V^{\otimes k-j} \longrightarrow V^{\otimes k}$
 			は次を満たす:
 			\begin{align}
 				\compcrossnorm{\psi_{j,k}(u,v)}{k} = \compcrossnorm{u}{j} \compcrossnorm{v}{k-j},

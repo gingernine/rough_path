@@ -70,22 +70,52 @@
 	
 	\begin{screen}
 		\begin{thm}
-			式(\refeq{eq:def_inner_product_of_tensor_product})で定める$s$は
-			$\bigotimes_{i=1}^n H_i$の内積となる．また任意の
+			$s$は$\bigotimes_{i=1}^n H_i$の内積となり，任意の
 			$x_1 \otimes \cdots \otimes x_n,\ y_1 \otimes \cdots \otimes y_n 
 			\in \bigotimes_{i=1}^n H_i$に対し次を満たす:
 			\begin{align}
 				s(x_1 \otimes \cdots \otimes x_n,y_1 \otimes \cdots \otimes y_n)
 				= \inprod<x_1,y_1>_{H_1} \cdots \inprod<x_n,y_n>_{H_n}.
+				\label{eq:def_inner_product_of_tensor_product_2}
 			\end{align}
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf} $s$は双線型性を持つ写像として定めたから，後は対称性と正定値性及び$s(u,u)=0 \Leftrightarrow u=0$
+	\begin{prf} $s$は双線型性を持つように定めたから，後は対称性と正定値性及び$s(u,u)=0 \Leftrightarrow u=0$
 		を示せばよい．
 		\begin{description}
 			\item[第一段]
+				任意の$x_1 \otimes \cdots \otimes x_n,\ y_1 \otimes \cdots \otimes y_n 
+				\in \bigotimes_{i=1}^n H_i$に対し
+				\begin{align}
+					s(x_1 \otimes \cdots \otimes x_n,y_1 \otimes \cdots \otimes y_n)
+					&= F_{x_1 \otimes \cdots \otimes x_n}(y_1 \otimes \cdots \otimes y_n)
+					= \Psi_{y_1,\cdots,y_n}(x_1 \otimes \cdots \otimes x_n)
+					= \Phi_{y_1,\cdots,y_n}(x_1, \cdots, x_n) \\
+					&= \inprod<x_1,y_1>_{H_1} \cdots \inprod<x_n,y_n>_{H_n}
+				\end{align}
+				が成り立ち(\refeq{eq:def_inner_product_of_tensor_product_2})を得る．
+				また$s(x_1 \otimes \cdots \otimes x_n,y_1 \otimes \cdots \otimes y_n)
+				= s(y_1 \otimes \cdots \otimes y_n,x_1 \otimes \cdots \otimes x_n)$
+				も従う．
+				
+			\item[第二段]
+				$s$の対称性を示す．任意の$u,v \in \bigotimes_{i=1}^n H_i$に対し分割を
+				\begin{align}
+					u = \sum_{j=1}^k x^j_1 \otimes \cdots \otimes x^j_n,
+					\quad v = \sum_{r=1}^m y^r_1 \otimes \cdots \otimes y^r_n
+				\end{align}
+				と表せば，前段の結果より
+				\begin{align}
+					s(u,v) &= \sum_{j=1}^k \sum_{r=1}^m s(x^j_1 \otimes \cdots \otimes x^j_n,y^r_1 \otimes \cdots \otimes y^r_n) \\
+					&= \sum_{r=1}^m \sum_{j=1}^k s(y^r_1 \otimes \cdots \otimes y^r_n,x^j_1 \otimes \cdots \otimes x^j_n) \\
+					&= s(v,u)
+				\end{align}
+				となる．
+				
+			\item[第三段]
 				任意の$u \in \bigotimes_{i=1}^n H_i$に対し$s(u,u) \geq 0$が成り立つことを示す．
+				実際，
 				
 			\item[第一段]
 				$s(u,u)=0 \Leftrightarrow u=0,\ (u \in \bigotimes_{i=1}^n H_i)$が成り立つことを示す．
@@ -100,9 +130,6 @@
 					\quad (\alpha_j \neq 0,\ j=1,\cdots,k)
 				\end{align}
 				と表現できる．
-			
-			\item[第三段]
-				$s$の対称性を示す．
 		\end{description}
 	\end{prf}
 	
@@ -117,12 +144,30 @@
 	
 	\begin{screen}
 		\begin{thm}[$\sigma$はクロスノルム]
+			$\sigma$はクロスノルムである．
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}
+	\begin{prf} 定義\ref{def:cross_norm}の(\refeq{eq:cross_norm_def_1})と
+		(\refeq{eq:cross_norm_def_2})を満たすことを示せばよい．
 		\begin{description}
+			\item[第一段]
+				式(\refeq{eq:def_inner_product_of_tensor_product_2})より
+				(\refeq{eq:cross_norm_def_1})が従う．
+				
 			\item[第二段]
+				任意に$x^*_i \in H^*_i$を取れば，RieszのHilbert空間の表現定理より
+				或る$a_i \in H_i$がただ一つ存在して
+				\begin{align}
+					x^*_i(\cdot) = \inprod<\cdot,a_i>_{H_i},
+					\quad \Norm{x^*_i}{H^*_i} = \Norm{a_i}{H_i},
+					\quad i=1,\cdots,n
+				\end{align}
+				を満たす．Cauchy-Schwartzの不等式と併せれば，任意の
+				\begin{align}
+					x = \sum_{j=1}^{k} x^j_1 \otimes \cdots \otimes x^j_n \in \bigotimes_{i=1}^n H_i
+				\end{align}
+				に対し
 				\begin{align}
 					(x^*_1 \otimes \cdots \otimes x^*_n)(x)
 					&= \sum_{j=1}^{k} (x^*_1 \otimes \cdots \otimes x^*_n)(x^j_1 \otimes \cdots \otimes x^j_n)
@@ -134,6 +179,8 @@
 					= \sigma(x) \Norm{a_1}{H_1} \cdots \Norm{a_n}{H_n} \\
 					&= \sigma(x) \Norm{x^*_1}{H^*_1} \cdots \Norm{x^*_n}{H^*_n}
 				\end{align}
+				が成立し(\refeq{eq:cross_norm_def_2})を得る．
+				\QED
 		\end{description}
 	\end{prf}
 	
