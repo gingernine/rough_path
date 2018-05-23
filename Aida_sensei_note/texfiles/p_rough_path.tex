@@ -117,6 +117,7 @@
 		& \longmapsto ( J_j^{-1}u,J_{k-j}^{-1}v ) &&\in V^{\otimes_a j} \times V^{\otimes_a k-j} \\
 		& \longmapsto F_{j,k}^{-1} (J_j^{-1}u \otimes_a J_{k-j}^{-1}v) &&\in V^{\otimes_a k} \\
 		& \longmapsto J_k F_{j,k}^{-1} (J_j^{-1}u \otimes_a J_{k-j}^{-1}v) &&\in V^{\otimes k}
+		\label{bilinear_map_on_algebraic_Banach_tensor_products}
 	\end{align}
 	の対応関係により定まる写像$:J_j V^{\otimes_a j} \times J_{k-j} V^{\otimes_a k-j}
 	\longrightarrow V^{\otimes k}$を$\varphi_{j,k}$と書けば，$\varphi_{j,k}$は有界双線型写像である．
@@ -198,27 +199,98 @@
 	\end{align}
 	と書けば$\otimes$は$T(V)$の二項算法として定まり，
 	また次の主張により$T(V)$は$\otimes$を乗法として代数となる．
+	
 	\begin{screen}
-		\begin{thm}[$\otimes$は$T(V)$の乗法]
+		\begin{thm}[$\otimes$は$T(V)$の乗法となる]\label{thm:otimes_is_a_multiplication}
 			$\otimes$は$T(V)$において結合則を満たす双線型写像である．
 		\end{thm}
 	\end{screen}
 	
-	\begin{prf}
-		$\otimes$の双線型性は各$\otimes_{j,k}$の双線型性より従う．
-		また任意の$a,b,c \in T(V)$に対し
-		\begin{align}
-			((a \otimes b) \otimes c)_k
-			&= \sum_{j=0}^k (a \otimes b)_j \otimes_{j,k} c_{k-j} \\
-			&= \sum_{j=0}^k \sum_{r=0}^j \left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j} \\
-			&= \sum_{j=0}^k \sum_{r=0}^j a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) \\
-			&= \sum_{r=0}^k \sum_{j=r}^k a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) \\
-			&= \sum_{r=0}^k a_r \otimes_{r,k} (b \otimes c)_{k-r} \\
-			&= (a \otimes (b \otimes c))_k,
-			\quad (\forall k = 0,1,2,\cdots)
-		\end{align}
-		が成立するから$\otimes$は結合則を満たす．
-		\QED
+	\begin{prf} $\otimes$の双線型性は各$\otimes_{j,k}$の双線型性より従う．
+		以下，$\otimes$の結合性を示す．
+		\begin{description}
+			\item[第一段]
+				任意の$a,b,c \in T(V)$及び$0 \leq r \leq j \leq k$に対して
+				\begin{align}
+					\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
+					= a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
+					\label{eq:thm_otimes_is_a_multiplication_1}
+				\end{align}
+				が成立すれば$\otimes$は結合的である．実際，上式が満たされていれば次が従う:
+				\begin{align}
+					&((a \otimes b) \otimes c)_k
+					= \sum_{j=0}^k (a \otimes b)_j \otimes_{j,k} c_{k-j} \\
+					&= \sum_{j=0}^k \sum_{r=0}^j \left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
+					= \sum_{j=0}^k \sum_{r=0}^j a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
+					= \sum_{r=0}^k \sum_{j=r}^k a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) \\
+					&= \sum_{r=0}^k a_r \otimes_{r,k} (b \otimes c)_{k-r} \\
+					&= (a \otimes (b \otimes c))_k,
+					\quad (\forall k = 0,1,2,\cdots).
+				\end{align}
+			
+			\item[第二段]
+				$a_r \in J_r V^{\otimes_a r},\ b_{j-r} \in J_{j-r} V^{\otimes_a j-r},
+				\ c_{k-j} \in J_{k-j} V^{\otimes_a k-j}$として
+				(\refeq{eq:thm_otimes_is_a_multiplication_1})を示す．
+				この場合，(\refeq{bilinear_map_on_algebraic_Banach_tensor_products})の対応関係により
+				\begin{align}
+					\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
+					&= J_k F_{j,k}^{-1}\left( F_{r,j}^{-1} \left( J_r^{-1}a_r \otimes_a J_{j-r}^{-1} b_{j-r} \right) \otimes_a J_{k-j}^{-1} c_{k-j} \right), \\
+					a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
+					&= J_k F_{r,k}^{-1}\left( J_r^{-1}a_r \otimes_a F_{j-r,k-j}^{-1} \left( J_{j-r}^{-1} b_{j-r} \otimes_a J_{k-j}^{-1} c_{k-j} \right) \right)
+				\end{align}
+				となる．ここで
+				\begin{align}
+					J_r^{-1} a_r = \sum_{i_1 = 1}^{I_1} v_1^{i_1} \otimes_a \cdots \otimes_a v_r^{i_1},
+					\quad J_{j-r}^{-1} b_{j-r} \sum_{i_2 = 1}^{I_2} v_{r+1}^{i_2} \otimes_a \cdots \otimes_a v_j^{i_2},
+					\quad J_{k-j}^{-1} c_{k-j} \sum_{i_3 = 1}^{I_3} v_{j+1}^{i_3} \otimes_a \cdots \otimes_a v_k^{i_3}
+				\end{align}
+				と表現できるから
+				\begin{align}
+					&F_{j,k}^{-1}\left( F_{r,j}^{-1} \left( J_r^{-1}a_r \otimes_a J_{j-r}^{-1} b_{j-r} \right) \otimes_a J_{k-j}^{-1} c_{k-j} \right) \\
+					&\qquad = \sum_{i_1=1}^{I_1}\sum_{i_2=1}^{I_2}\sum_{i_3=1}^{I_3} 
+						v_1^{i_1} \otimes_a \cdots \otimes_a v_r^{i_1}
+						\otimes_a v_{r+1}^{i_2} \otimes_a \cdots \otimes_a v_j^{i_2}
+						\otimes_a v_{j+1}^{i_3} \otimes_a \cdots \otimes_a v_k^{i_3} \\
+					&\qquad = 	F_{r,k}^{-1}\left( J_r^{-1}a_r \otimes_a F_{j-r,k-j}^{-1} \left( J_{j-r}^{-1} b_{j-r} \otimes_a J_{k-j}^{-1} c_{k-j} \right) \right)
+				\end{align}
+				が成立し，$J_k$の単射性から(\refeq{eq:thm_otimes_is_a_multiplication_1})が得られる．
+			
+			\item[第三段]
+				一般に$a_r \in V^{\otimes r},\ b_{j-r} \in V^{\otimes j-r},
+				\ c_{k-j} \in V^{\otimes k-j}$の場合，
+				\begin{align}
+					\compcrossnorm{a_r^n - a_r}{r} \longrightarrow 0,
+					\quad \compcrossnorm{b_{j-r}^n - b_{j-r}}{j-r} \longrightarrow 0,
+					\quad \compcrossnorm{c_{k-j}^n - c_{k-j}}{k-j} \longrightarrow 0,
+					\quad (n \longrightarrow \infty)
+				\end{align}
+				を満たす点列$\left\{ a_r^n \right\}_{n=1}^\infty \subset J_r V^{\otimes_a r},\ 
+				\left\{ b_{j-r}^n \right\}_{n=1}^\infty \subset J_{j-r} V^{\otimes_a j-r},\ 
+				\left\{ c_{k-j}^n \right\}_{n=1}^\infty \subset J_{k-j} V^{\otimes_a k-j}$
+				を取れば，前段の結果より
+				\begin{align}
+					&\compcrossnorm{\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
+					- a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)}{k} \\
+					&\qquad \leq \compcrossnorm{\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j} - \left( a^n_r \otimes_{r,j} b^n_{j-r} \right) \otimes_{j,k} c^n_{k-j}}{k} \\
+					&\qquad\qquad + \compcrossnorm{a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) - a^n_r \otimes_{r,k} \left( b^n_{j-r} \otimes_{j-r,k-r} c^n_{k-j} \right)}{k} \\
+					&\qquad \leq \compcrossnorm{a_r \otimes_{r,j} b_{j-r}}{j} \compcrossnorm{c_{k-j} - c^n_{k-j}}{k-j} 
+						+ \compcrossnorm{a_r \otimes_{r,j} b_{j-r} - a^n_r \otimes_{r,j} b^n_{j-r}}{j} \compcrossnorm{c^n_{k-j}}{k-j} \\
+					&\qquad\qquad + \compcrossnorm{a_r}{r} \compcrossnorm{b_{j-r} \otimes_{j-r,k-r} c_{k-j} - b^n_{j-r} \otimes_{j-r,k-r} c^n_{k-j}}{k-r}
+						+ \compcrossnorm{a_r - a_r^n}{r} \compcrossnorm{b^n_{j-r} \otimes_{j-r,k-r} c^n_{k-j}}{k-r} \\
+					&\qquad \leq \compcrossnorm{a_r}{r} \compcrossnorm{b_{j-r}}{j-r} \compcrossnorm{c_{k-j} - c^n_{k-j}}{k-j} 
+						+ \left\{ \compcrossnorm{a_r-a^n_r}{r} \compcrossnorm{b_{j-r}}{j-r} 
+						+ \compcrossnorm{a^n_r}{r} \compcrossnorm{b_{j-r} - b^n_{j-r}}{j-r} \right\} \compcrossnorm{c^n_{k-j}}{k-j} \\
+					&\qquad\qquad + \compcrossnorm{a_r}{r} 
+						\left\{ \compcrossnorm{b_{j-r} - b^n_{j-r}}{j-r} \compcrossnorm{c_{k-j}}{k-j} 
+						+ \compcrossnorm{b^n_{j-r}}{j-r} \compcrossnorm{c_{k-j}-c^n_{k-j}}{k-j} \right\}
+						+ \compcrossnorm{a_r - a_r^n}{r} \compcrossnorm{b^n_{j-r}}{j-r} \compcrossnorm{c^n_{k-j}}{k-j} \\
+					&\qquad \longrightarrow 0
+					\quad (n \longrightarrow \infty) 
+				\end{align}
+				が従い(\refeq{eq:thm_otimes_is_a_multiplication_1})が出る．
+				\QED
+		\end{description}	
 	\end{prf}
 	
 	$n \geq 0$に対して
