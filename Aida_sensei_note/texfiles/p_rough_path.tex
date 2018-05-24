@@ -392,8 +392,9 @@
 	\end{screen}
 	\footnotetext{
 		$X:\Delta_T \longrightarrow T^{(n)}(V)$が有限$p$-変動であることと
-		$\Norm{X}{p} < \infty$が満たされることは同値であるかどうかを考察する．
-		実際，$X^0 \equiv 1$を満たし，かつ有限$p$-変動を持つような$X$が存在する場合，
+		$\Norm{X}{p}$が有限であることは一致しない．
+		実際，後述のシグネチャー$X=(X^0,\cdots,X^n)$
+		は有限$p$-変動であるが，その定義より$X^0 \equiv 1$が満たされているから
 		\begin{align}
 			\mbox{$D$の分割小区間の数}
 			= \sum_D \compcrossnorm{X^0_{t_{i-1},t_i}}{0}^p
@@ -401,8 +402,7 @@
 			\leq \Norm{X}{p}^p,
 			\quad (\forall D \in \delta[0,T])
 		\end{align}
-		が成り立つから，$\Norm{X}{p} = \infty$となる．
-		しかしこのような$X$が存在するかは未だ示していないので脚注メモ．
+		が成り立ち$\Norm{X}{p} = \infty$となる．
 	}
 	
 	\begin{screen}
@@ -713,60 +713,25 @@
 		\end{dfn}
 	\end{screen}
 	
-	$S(x)_{[s,t]}$の最初の$n+1$成分を抜き取り
-	\begin{align}
-		S_n(x): \Delta_T \ni (s,t) \longmapsto S_n(x)_{[s,t]} \coloneqq
-		(1,X^1_{s,t},\cdots,X^n_{s,t})
-		\in T^{(n)}(V)
-	\end{align}
-	とおく．
-	
 	\begin{screen}
-		\begin{thm}[$S_n(x)$は$n$次乗法的]
-			$S_n(x):\Delta_T \longrightarrow T^{(n)}(V)$
-			は$n$次乗法的汎関数である．
+		\begin{thm}[逐次積分により定まる乗法的汎関数]
+			任意の$n \geq 1$に対し，$S(x)_{[s,t]}$の最初の
+			$n+1$個\footnotemark
+			の元の族を$S_n(x)_{[s,t]} = (X^0_{s,t},X^1_{s,t},\cdots,X^n_{s,t}),\ 
+			(\forall (s,t) \in \Delta_T)$
+			と書けば，$S_n(x)$は$n$次乗法的である．
 		\end{thm}
 	\end{screen}
 	
 	\begin{prf}
-		\begin{description}
-			\item[第四段]
-				(\refeq{eq:signature_of_path_2})を示す．
-				$u$を節点に含む$[s,t]$の細分列$\left(D_n\right)_{n=1}^\infty,
-				\ (|D_n| \longrightarrow 0)$を取り，
-				$u$を境に
-				\begin{align}
-					D_n = D^1_n + D^2_n,
-					\quad D_n &= \{s=u^n_0 < \cdots < u < \cdots < u^n_{m_n} = t\}, \\
-					D^1_n &= \{s=u^n_0 < \cdots < u\},
-					\quad D^2_n = \{u < \cdots < u^n_{m_n} = t\}
-				\end{align}
-				と分割する．このとき
-				\begin{align}
-					&\compcrossnorm{X^2_{s,t} - \left( X^2_{s,u} + X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
-					&\leq \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
-						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} 
-						+ \sum_{D^2_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
-						- \left( X^2_{s,u} + X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
-					&\leq \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
-						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - X^2_{s,u}}{2} \\
-						&+ \compcrossnorm{\sum_{D^2_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
-						- \left( X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
-					&\leq \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
-						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - X^2_{s,u}}{2} \\
-						&+ \compcrossnorm{\sum_{D^2_n} \left( X^1_{s,u_{i-1}} - X^1_{u,u_{i-1}} \right) \otimes_{1,2} X^1_{u_{i-1},u_i} + \sum_{D^2_n} X^1_{u,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
-						- \left( X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
-					&= \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
-						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - X^2_{s,u}}{2} \\
-						&+ \compcrossnorm{\sum_{D^2_n} X^1_{u,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
-						- X^2_{u,t}}{2}
-				\end{align}
-		\end{description}	
+		補題\refeq{lem:signature_of_path}より
+		$S_n(x) \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$が従うから，以下では
+		任意の$k \geq 0$と$0 \leq s \leq u \leq t \leq T$に対して
+		\begin{align}
+			X^k_{s,t} = \sum_{j=0}^k X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}.
+		\end{align}
+		が成り立つことを示す．
 	\end{prf}
-	
-	\begin{align}
-		X^k_{s,t} = \sum_{j=0}^k X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}
-	\end{align}
 	
 	\begin{screen}
 		\begin{dfn}[$p$-ラフパス]
