@@ -5,9 +5,10 @@
 	プロジェクティブノルム$\projectivenorm{\cdot}{k}$を導入し，
 	その完備拡大を$(V^{\otimes k},\compcrossnorm{\cdot}{k})$と書く
 	\footnote{
-		$V$が有限次元なら$V^{\otimes_a k}$も有限次元であるから，
-		有限次元ノルム空間の完備性より
-		$\left( V^{\otimes_a k},\projectivenorm{\cdot}{k} \right)$を完備化する必要はない．
+		$V$が有限次元なら$V^{\otimes_a k}$も有限次元であるから
+		$V^{\otimes k} = V^{\otimes_a k},\ \compcrossnorm{\cdot}{k} = \projectivenorm{\cdot}{k}$
+		でよい．しかし一般に$\left( V^{\otimes_a k},\projectivenorm{\cdot}{k} \right)$
+		は完備ではない(\cite{key10} (p. 17), \cite{key9})．
 	}．
 	$k=0,1$に対しては$V^{\otimes 0} \coloneqq \R,\ V^{\otimes 1} \coloneqq V$とし，
 	$\compcrossnorm{\cdot}{0} = \projectivenorm{\cdot}{0} \coloneqq \mbox{$\R$の絶対値}$，及び
@@ -246,8 +247,8 @@
 				となる．ここで
 				\begin{align}
 					J_r^{-1} a_r = \sum_{i_1 = 1}^{I_1} v_1^{i_1} \otimes_a \cdots \otimes_a v_r^{i_1},
-					\quad J_{j-r}^{-1} b_{j-r} \sum_{i_2 = 1}^{I_2} v_{r+1}^{i_2} \otimes_a \cdots \otimes_a v_j^{i_2},
-					\quad J_{k-j}^{-1} c_{k-j} \sum_{i_3 = 1}^{I_3} v_{j+1}^{i_3} \otimes_a \cdots \otimes_a v_k^{i_3}
+					\quad J_{j-r}^{-1} b_{j-r} = \sum_{i_2 = 1}^{I_2} v_{r+1}^{i_2} \otimes_a \cdots \otimes_a v_j^{i_2},
+					\quad J_{k-j}^{-1} c_{k-j} = \sum_{i_3 = 1}^{I_3} v_{j+1}^{i_3} \otimes_a \cdots \otimes_a v_k^{i_3}
 				\end{align}
 				と表現できるから
 				\begin{align}
@@ -298,10 +299,11 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}[$T(V)$の単位元の定義]
+		\begin{thm}[$T(V)$の単位元]
 			任意の$k \geq 0$，および任意の$\alpha \in \R$と$v \in V^{\otimes k}$に対し
 			\begin{align}
 				\alpha \otimes_{0,k} v = v \otimes_{k,k} \alpha = \alpha v
+				\label{eq:thm_identity_element_of_T_V}
 			\end{align}
 			が成立する．特に，$e_0 \coloneqq 1,\ e_k \coloneqq 0\ (k \geq 0)$
 			として定める$e=(e_k)_{k=1}^\infty \in T(V)$は$\otimes$に関する単位元である:
@@ -377,7 +379,7 @@
 	を定める．
 	
 	\begin{screen}
-		\begin{dfn}[finite $p$-variation]
+		\begin{dfn}[有限$p$-変動]
 			$p \geq 1$とする．$X:\Delta_T \longrightarrow T^{(n)}(V)$に対して
 			或るコントロール関数$\omega$が存在して
 			\begin{align}
@@ -404,11 +406,12 @@
 	}
 	
 	\begin{screen}
-		\begin{dfn}[finite total $p$-variation]
+		\begin{dfn}[有限総$p$-変動]
 			$p \geq 1$とする．$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$
-			が有限総$p$-変動(finite total $p$-variation)とは，任意の$1 \leq i \leq n$に対して
+			が有限総$p$-変動(finite total $p$-variation)とは
 			\begin{align}
-				\Norm{X^i}{p/i} < \infty
+				\Norm{X^i}{p/i} < \infty,
+				\quad \forall i=1,\cdots,n
 			\end{align}
 			が満たされることをいう．また次の線型空間を定める:
 			\begin{align}
@@ -429,53 +432,48 @@
 		\end{dfn}
 	\end{screen}
 	
-	$C_0 \left(\Delta_T,T^{(n)}(V) \right)$の定義には
-	$X^0 \equiv 1$という条件が含まれている．
-	実際，$X:\Delta_T \longrightarrow T^{(n)}(V)$が Chen's identity を満たすには
-	$X^0 \equiv 1$或は0である必要がある．理由は，
-	$X^0_{s,t} = X^0_{s,t} \otimes_{0,0} X^0_{s,t} = X^0_{s,t}X^0_{s,t}$を得るためである．
-	特に，次の定理が成立するためには$X^0 \equiv 1$が満たされていなくてはならない．
 	\begin{screen}
 		\begin{lem}\label{lem:multiplicative_functional_vanishes_on_diagonal}
-			$X:\Delta_T \longrightarrow T^{(n)}(V)$が$X^0 \equiv 0$かつ
-			Chen's identity を満たせば$X^k_{t,t} = 0\ (1 \leq k \leq n)$が成り立つ．
+			$X:\Delta_T \longrightarrow T^{(n)}(V)$が$X^0 \equiv 1$かつ
+			Chen's identity を満たせば$X^k_{t,t} = 0,
+			\ (0 \leq \forall t \leq T,\ 1 \leq \forall k \leq n)$.
 		\end{lem}
 	\end{screen}
 	
 	\begin{prf}
 		任意に$t \in [0,T]$を取る．
-		$X^k_{t,t} = \sum_{j=0}^{k} X^j_{t,t} \otimes_{j,k} X^{k-j}_{t,t}$より，先ず
+		$X^k_{t,t} = \sum_{j=0}^{k} X^j_{t,t} \otimes_{j,k} X^{k-j}_{t,t}$
+		と式(\refeq{eq:thm_identity_element_of_T_V})より，先ず
 		\begin{align}
-			X^1_{t,t} = X^0_{t,t} \otimes_{0,1} X^1_{t,t} + X^1_{t,t} \otimes_{0,1} X^0_{t,t}
+			X^1_{t,t} = X^0_{t,t} \otimes_{0,1} X^1_{t,t} + X^1_{t,t} \otimes_{1,1} X^0_{t,t}
 			= X^1_{t,t} + X^1_{t,t}
 		\end{align}
 		が成り立ち$X^1_{t,t} = 0$が従う．同様に
 		\begin{align}
-			X^2_{t,t} = X^0_{t,t} \otimes_{0,1} X^2_{t,t} + X^1_{t,t} \otimes_{0,1} X^1_{t,t}
-				+ X^2_{t,t} \otimes_{0,1} X^0_{t,t}
+			X^2_{t,t} = X^0_{t,t} \otimes_{0,2} X^2_{t,t} + X^1_{t,t} \otimes_{1,2} X^1_{t,t}
+				+ X^2_{t,t} \otimes_{2,2} X^0_{t,t}
 			= X^2_{t,t} + X^2_{t,t}
 		\end{align}
-		より$X^2_{t,t} = 0$が成立し，帰納的に$X^k_{t,t} = 0\ (1 \leq k \leq n)$を得る．
+		より$X^2_{t,t} = 0$が成立し，帰納的に$X^k_{t,t} = 0\ (1 \leq k \leq n)$が出る．
 		\QED
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}
-			$n$次乗法的汎関数$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$に対し，
-			$X$が有限$p$-変動であることと有限総$p$-変動であることは同値である．
+		\begin{thm}\label{thm:fin_p_var_and_fin_ttl_p_var_is_equiv_for_multiplicative}
+			$n$次乗法的汎関数については
+			有限$p$-変動であることと有限総$p$-変動であることは同値である($p \geq 1$)．
 		\end{thm}
 	\end{screen}
 	
 	\begin{prf}
-		$n$次乗法的汎関数$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$が有限総$p$-変動のとき，
+		$X \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$を$n$次乗法的とする．
+		$X$が有限総$p$-変動ならば，補題\ref{lem:multiplicative_functional_vanishes_on_diagonal}と
+		定理\ref{thm:control_function_defined_by_p_variation}により
 		\begin{align}
 			\omega(s,t) \coloneqq \sum_{i=1}^n \Norm{X^i}{p/i,[s,t]}^{p/i},
 			\quad ((s,t) \in \Delta_T)
 		\end{align}
-		で$\omega$を定めれば，
-		補題\ref{lem:multiplicative_functional_vanishes_on_diagonal}と
-		定理\ref{thm:control_function_defined_by_p_variation}により
-		$\omega$はコントロール関数となる．このとき
+		で定める$\omega$はコントロール関数となる．このとき
 		\begin{align}
 			\compcrossnorm{X^i_{s,t}}{i}
 			\leq \Norm{X^i}{p/i,[s,t]}
@@ -483,14 +481,14 @@
 			\quad (\forall i = 1,\cdots,n,\ \forall (s,t) \in \Delta_T)
 		\end{align}
 		が成り立つから$X$は有限$p$-変動である．逆に$X$が有限$p$-変動なら，
-		(\refeq{eq:def_finite_p_variation})を満たす$\omega$を取れば
+		(\refeq{eq:def_finite_p_variation})を満たす$\omega$に対し
 		\begin{align}
 			\sum_D \compcrossnorm{X^i_{t_{i-1},t_i}}{i}^{p/i}
 			\leq \sum_D \omega(t_{i-1},t_i)
 			\leq \omega(0,T),
-			\quad (\forall D \in \delta[0,T],\ i=1,\cdots,n)
+			\quad (\forall D \in \delta[0,T],\ \forall i=1,\cdots,n)
 		\end{align}
-		が成立し$\Norm{X^i}{p/i} < \infty\ (i=1,\cdots,n)$が従うので$X$は有限総$p$-変動である．
+		が満たされ$\Norm{X^i}{p/i} < \infty,\ i=1,\cdots,n$が従うので$X$は有限総$p$-変動である．
 		\QED
 	\end{prf}
 	
@@ -500,122 +498,153 @@
 		\quad (\forall (s,t) \in \Delta_T)
 	\end{align}
 	とおけば，$X^1:\Delta_T \longrightarrow V$は連続かつ$\Norm{X^1}{1} < \infty$を満たす．
-	このとき次の積分
-	\begin{align}
-		\int_s^t X^1_{s,u} \otimes d x_u
-		\coloneqq \lim_{|D| \to 0} \sum_{D} X^1_{s,t_{i-1}} \otimes_{1,2} X^1_{t_{i-1},t_i}
-	\end{align}
-	を定めたい．右辺が$V^{\otimes 2}$で収束することを示せばよい．
-	いま，細分$D=\{s=u_0 < \cdots <u_n= t\},D'=\{s=v_0 < \cdots <v_m= t\} \in \delta[s,t]$
-	を任意に取り，これらの共通細分を$D''=\{s=w_0 < \cdots < w_r = t\}$と表して
-	\begin{align}
-		\begin{cases}
-			\tilde{X}^1_{s,w_k} \coloneqq X^1_{s,u_i}, & (u_i \leq w_k \leq u_{i+1}), \\
-			\hat{X}^1_{s,w_k} \coloneqq X^1_{s,v_j}, & (v_j \leq w_k \leq v_{j+1}),
-		\end{cases}
-		\quad (k=0,1,\cdots,r)
-	\end{align}
-	で$\tilde{X}^1,\hat{X}^1$を定めれば，
-	定理\ref{thm:property_of_the_completion_of_the_projective_norm}より
-	\begin{align}
-		&\compcrossnorm{ \sum_D X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - 
-			\sum_{D'} X^1_{s,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j}}{2} \\
-		&\qquad\leq \compcrossnorm{ \sum_D X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - 
-			\sum_{D''} X^1_{s,w_{k-1}} \otimes_{1,2} X^1_{w_{k-1},w_k}}{2}
-			+ \compcrossnorm{ \sum_{D'} X^1_{s,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j} - 
-			\sum_{D''} X^1_{s,w_{k-1}} \otimes_{1,2} X^1_{w_{k-1},w_k}}{2} \\
-		&\qquad= \compcrossnorm{ \sum_{D''} \tilde{X}^1_{s,w_{k-1}} \otimes_{1,2} X^1_{w_{k-1},w_k} - 
-			\sum_{D''} X^1_{s,w_{k-1}} \otimes_{1,2} X^1_{w_{k-1},w_k}}{2} 
-			+ \compcrossnorm{ \sum_{D''} \hat{X}^1_{s,w_{k-1}} \otimes_{1,2} X^1_{w_{k-1},w_k} - 
-			\sum_{D''} X^1_{s,w_{k-1}} \otimes_{1,2} X^1_{w_{k-1},w_k}}{2} \\
-		&\qquad= \compcrossnorm{ \sum_{D''} \left(\tilde{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}} \right)
-		 	\otimes_{1,2} X^1_{w_{k-1},w_k}}{2}
-			+ \compcrossnorm{ \sum_{D''} \left( \hat{X}^1_{s,w_{k-1}} - X^1_{s,w_{k-1}} \right)
-			 \otimes_{1,2} X^1_{w_{k-1},w_k}}{2} \\
-		&\qquad\leq \sum_{D''} \compcrossnorm{\tilde{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{1} \compcrossnorm{X^1_{w_{k-1},w_k}}{1}
-			+ \sum_{D''} \compcrossnorm{\hat{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{1} \compcrossnorm{X^1_{w_{k-1},w_k}}{1} \\
-		&\qquad\leq \max{k}{\compcrossnorm{\tilde{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{1}} 
-			\Norm{X^1}{1,[s,t]} + \max{k}{\compcrossnorm{\hat{X}^1_{s,w_{k-1}} -  X^1_{s,w_{k-1}}}{1}} 
-			\Norm{X^1}{1,[s,t]}
-	\end{align}
-	が成立する．$[s,t] \ni u \longmapsto X^1_{s,u}$は一様連続であるから，
-	$|D|,|D'|\longrightarrow 0$として右辺は0に収束する．
-	従って，$|D_n| \longrightarrow 0\ (n \longrightarrow \infty)$を満たす細分列$D_n \in \delta[s,t]$を
-	取れば$\left(\sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} \right)_{n=1}^{\infty}$
-	は$V^{\otimes 2}$のCauchy列となり$V^{\otimes 2}$で収束する．別の細分列
-	$(\tilde{D}_m)_{m=1}^{\infty} \subset \delta[s,t]\ (|\tilde{D}_m| \longrightarrow 0)$を取っても
-	\begin{align}
-		\compcrossnorm{ \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - 
-			\sum_{\tilde{D}_m} X^1_{s,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j}}{2}
-		\longrightarrow 0,
-		\quad (n,m \longrightarrow \infty)
-	\end{align}
-	が成り立つから極限は細分列に依らず確定し，これにより
-	$\lim_{|D| \to 0} \sum_{D} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}$が存在する．この極限を
-	\begin{align}
-		X^2_{s,t} = \int_s^t X^1_{s,u} \otimes d x_u \coloneqq 
-		\lim_{|D| \to 0} \sum_{D} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
-		\label{eq:signature_of_path_1}
-	\end{align}
-	と表記すれば次が成立する:
+	このとき，
+	\begin{screen}
+		\begin{lem}\label{lem:def_integration_of_continuous_mapping_by_X_1}
+			任意の$(s,t) \in \Delta_T$と
+			連続写像$Y:\Delta_T \longrightarrow V^{\otimes k},\ (k \geq 1)$
+			に対して次の積分が$V^{\otimes k+1}$で確定する:
+			\begin{align}
+				\int_s^t Y_{s,u} \otimes d x_u
+				\coloneqq \lim_{|D| \to 0} \sum_{D} Y_{s,t_{i-1}} \otimes_{k,k+1} X^1_{t_{i-1},t_i}
+				\label{eq:def_integration_of_continuous_mapping_by_X_1}
+			\end{align}
+		\end{lem}
+	\end{screen}
+	
+	\begin{prf}
+		$D=\{s=u_0 < \cdots <u_n= t\},\ D'=\{s=v_0 < \cdots <v_m= t\} \in \delta[s,t]$
+		を任意に取り，共通細分を$D''=\{s=w_0 < \cdots < w_r = t\}$と表して
+		\begin{align}
+			\begin{cases}
+				\tilde{Y}_{s,w_k} \coloneqq Y_{s,u_i}, & (u_i \leq w_k \leq u_{i+1}), \\
+				\hat{Y}_{s,w_k} \coloneqq Y_{s,v_j}, & (v_j \leq w_k \leq v_{j+1}),
+			\end{cases}
+			\quad (k=0,1,\cdots,r)
+		\end{align}
+		で$\tilde{Y},\hat{Y}$を定めれば，
+		定理\ref{thm:property_of_the_completion_of_the_projective_norm}より
+		\begin{align}
+			&\compcrossnorm{ \sum_D Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i} - 
+				\sum_{D'} Y_{s,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j}}{k+1} \\
+			&\quad\leq \compcrossnorm{ \sum_D Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i} - 
+				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1}
+				+ \compcrossnorm{ \sum_{D'} Y_{s,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j} - 
+				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} \\
+			&\quad= \compcrossnorm{ \sum_{D''} \tilde{Y}_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k} - 
+				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} 
+				+ \compcrossnorm{ \sum_{D''} \hat{Y}_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k} - 
+				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} \\
+			&\quad= \compcrossnorm{ \sum_{D''} \left(\tilde{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}} \right)
+		 		\otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1}
+				+ \compcrossnorm{ \sum_{D''} \left( \hat{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}} \right)
+				\otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} \\
+			&\quad\leq \sum_{D''} \compcrossnorm{\tilde{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k} \compcrossnorm{X^1_{w_{k-1},w_k}}{1}
+				+ \sum_{D''} \compcrossnorm{\hat{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k} \compcrossnorm{X^1_{w_{k-1},w_k}}{1} \\
+			&\quad\leq \max{k}{\compcrossnorm{\tilde{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k}} 
+				\Norm{X^1}{1,[s,t]} + \max{k}{\compcrossnorm{\hat{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k}} \Norm{X^1}{1,[s,t]}
+		\end{align}
+		が成立する．いま，$[s,t] \ni u \longmapsto Y_{s,u}$は一様連続であるから，
+		$|D|,|D'|\longrightarrow 0$として右辺は0に収束する．
+		従って$|D_n| \longrightarrow 0\ (n \longrightarrow \infty)$を満たす細分列$D_n \in \delta[s,t]$を
+		取れば，$\left(\sum_{D_n} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i} \right)_{n=1}^{\infty}$
+		は$V^{\otimes k+1}$のCauchy列となり$V^{\otimes k+1}$で収束する．別の細分列
+		$\tilde{D}_m \in \delta[s,t],\ (|\tilde{D}_m| \longrightarrow 0)$を取っても
+		\begin{align}
+			\compcrossnorm{ \sum_{D_n} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i} - 
+				\sum_{\tilde{D}_m} Y_{s,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j}}{k+1}
+			\longrightarrow 0,
+			\quad (n,m \longrightarrow \infty)
+		\end{align}
+		が成り立つから，極限は細分列に依らず確定する．従って補題の主張が得られる．
+		\QED
+	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}
-			(\refeq{eq:signature_of_path_1})で定める
-			$\Delta_T \ni (s,t) \longmapsto X^2_{s,t} \in V^{\otimes 2}$は連続かつ有界変動であり，
-			更に次を満たす:
+		\begin{lem}\label{lem:signature_of_path}
+			(\refeq{eq:def_integration_of_continuous_mapping_by_X_1})の積分を
 			\begin{align}
-				X^2_{s,t} = X^2_{s,u} + X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t},
-				\quad (\forall 0 \leq s \leq t \leq T).
-				\label{eq:signature_of_path_2}
+				Z_{s,t} \coloneqq \int_s^t Y_{s,u} \otimes d x_u,
+				\quad (\forall (s,t) \in \Delta_T)
+				\label{eq:signature_of_path_1}
 			\end{align}
-		\end{thm}
+			とおけば，$Z:\Delta_T \longrightarrow V^{\otimes k+1}$は連続かつ有界変動である．
+		\end{lem}
 	\end{screen}
 	
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
-				$X^2$が有界変動であることを示す．任意に$(s,t) \in \Delta_T\ (s < t)$
+				$Z$が有界変動であることを示す．いま，任意に$(s,t) \in \Delta_T\ (s < t)$
 				\footnote{
-					$s=t$なら，$X^1_{s,t} = 0$より$X^2_{s,t} = 0$が成り立つ．
+					$s=t$なら，$X^1_{s,t} = 0$より$Z_{s,t} = 0$が成り立つ．
 				}を取る．
 				\begin{align}
-					M \coloneqq \sup{(x,y) \in \Delta_T}{\compcrossnorm{X^1_{x,y}}{1}}
+					M \coloneqq \sup{(x,y) \in \Delta_T}{\compcrossnorm{Y_{x,y}}{1}}
 				\end{align}
-				とおけば$X^1$の連続性より$M < \infty$であり，
+				とおけば$Y$の連続性より$M < \infty$となり，
 				任意の$\epsilon > 0$に対し或る$D \in \delta[s,t]$が存在して
 				\begin{align}
-					\compcrossnorm{X^2_{s,t}}{2}
-					\leq \epsilon + \compcrossnorm{\sum_{D} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2}
-					\leq \epsilon + \sum_D \compcrossnorm{X^1_{s,u_{i-1}}}{1}
+					\compcrossnorm{Z_{s,t}}{k+1}
+					\leq \epsilon + \compcrossnorm{\sum_{D} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1}
+					\leq \epsilon + \sum_D \compcrossnorm{Y_{s,u_{i-1}}}{k}
 					\compcrossnorm{X^1_{t_{i-1},t_i}}{1} 
 					\leq \epsilon + M \Norm{X^1}{1,[s,t]}
 				\end{align}
-				が成立するから，$\epsilon > 0$と$(s,t)$の任意性より
+				が成立する．$\epsilon > 0$と$(s,t)$の任意性より
 				\begin{align}
-					\compcrossnorm{X^2_{s,t}}{2} \leq M \Norm{X^1}{1,[s,t]},
+					\compcrossnorm{Z_{s,t}}{k+1} \leq M \Norm{X^1}{1,[s,t]},
 					\quad (\forall (s,t) \in \Delta_T)
 				\end{align}
-				が従い$\Norm{X^2}{1} \leq M \Norm{X^1}{1}$を得る．
+				が従い$\Norm{Z}{1} \leq M \Norm{X^1}{1}$\ (1-変動ノルム)を得る．
 				
 			\item[第二段]
-				点$(s,s)\ (\forall s \in [0,T])$において$X^2$が連続であること示す．
+				点$(s,s)\ (\forall s \in [0,T])$において$Z$が連続であること示す．
 				実際，定理\ref{thm:control_function_defined_by_p_variation}より
 				\begin{align}
 					\Delta_T \ni (s,t) \longmapsto \Norm{X^1}{1,[s,t]}
+					\label{map:lem_signature_of_path_1}
 				\end{align}
 				はコントロール関数であるから，
 				\begin{align}
-					&\compcrossnorm{X^2_{t,u} - X^2_{s,s}}{2}
-					= \compcrossnorm{X^2_{t,u}}{2}
+					&\compcrossnorm{Z_{t,u} - Z_{s,s}}{k+1}
+					= \compcrossnorm{Z_{t,u}}{k+1}
 					\leq M \Norm{X^1}{1,[t,u]}
 					\longrightarrow 0 \quad ((t,u) \longrightarrow (s,s))
 				\end{align}
-				が成立し$X^2$の$(s,s)$における連続性を得る．
+				が成立し$Z$の$(s,s)$における連続性を得る．
 			
 			\item[第三段]
-				$s < t$を満たす点$(s,t) \in \Delta_T$において$X^2$が連続であること示す．
+				$s < t$を満たす点$(s,t) \in \Delta_T$において$Z$が連続であること示す．
 				いま，任意に$\epsilon > 0$を取る．
+				\begin{description}
+					\item[(1)] (\refeq{map:lem_signature_of_path_1})がコントロール関数であるから，
+						或る$\eta_1 > 0$が存在して$|s-a|,|t-b| < \eta_1$ならば
+						\begin{align}
+							\Norm{X^1}{1,[s \wedge a,s \vee a]},\ 
+							\Norm{X^1}{1,[t \wedge b,t \vee b]} < \epsilon
+						\end{align}
+						が満たされる．
+						
+					\item[(2)] 或る$\eta_2 > 0$が存在して$|s-a|,|t-b| < \eta_2$ならば
+						$[s,t] \cap [a,b] \neq \emptyset$が満たされる．
+						
+					\item[(3)] $Y$は$\Delta_T$上一様連続であるから，
+						或る$\eta_3 > 0$が存在して$|s-a| < \eta_3$なら
+						\begin{align}
+							\compcrossnorm{Y_{s,u} - Y_{a,u}}{k} < \epsilon,
+							\quad (s,a \leq \forall u \leq T)
+						\end{align}
+						が満たされる．
+						
+					\item[(4)] 補題\ref{lem:def_integration_of_continuous_mapping_by_X_1}
+						より或る$\eta_4 > 0$が存在して$|D_1|,|D_2| < \eta_4$なら
+						\begin{align}
+							\compcrossnorm{Z_{s,t} - \sum_{D_1} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1} < \epsilon,
+					\quad \compcrossnorm{Z_{a,b} - \sum_{D_2} Y_{a,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j}}{k+1} < \epsilon
+						\end{align}
+						が満たされる．
+				\end{description}
 				このとき，$X^1$の一様連続性により，或る$0 < c < t-s$が存在して，
 				$(a,b) \in \Delta_T$が$|a-s| < c$を満たす限り
 				\begin{align}
@@ -662,12 +691,79 @@
 					\compcrossnorm{X^2_{s,t} - X^2_{a,b}}{2} < \left[ 3 \Norm{X^1}{1} + 2\right]\epsilon
 				\end{align}
 				が従う．これにより$X^2$の$(s,t)$における連続性を得る．
-			
+		\end{description}	
+	\end{prf}
+	
+	\begin{screen}
+		\begin{dfn}[パスのシグネチャー]
+			有界変動な連続写像$x:[0,T] \longrightarrow V = V^{\otimes 1}$に対して
+			$X^1_{s,t} \coloneqq x_t-x_s,\ (\forall (s,t) \in \Delta_T)$とおけば，
+			補題\ref{lem:def_integration_of_continuous_mapping_by_X_1}より逐次的に
+			次を構成する:
+			\begin{align}
+				V^{\otimes i+1} \ni X^{i+1}_{s,t} \coloneqq \int_s^t X^i_{s,u} \otimes dx_u,
+				\quad (\forall (s,t) \in \Delta_T,\ i=1,2,\cdots)
+			\end{align}
+			ここで
+			$S(x)_{[s,t]} \coloneqq (1,X^1_{s,t},X^2_{s,t},\cdots)$
+			とおき，特に$S(x)_{[0,T]}$をパス$x$のシグネチャー(signature of path $x$)と呼ぶ．
+		\end{dfn}
+	\end{screen}
+	
+	$S(x)_{[s,t]}$の最初の$n+1$成分を抜き取り
+	\begin{align}
+		S_n(x): \Delta_T \ni (s,t) \longmapsto S_n(x)_{[s,t]} \coloneqq
+		(1,X^1_{s,t},\cdots,X^n_{s,t})
+		\in T^{(n)}(V)
+	\end{align}
+	とおく．
+	
+	\begin{screen}
+		\begin{thm}[$S_n(x)$は$n$次乗法的]
+			$S_n(x):\Delta_T \longrightarrow T^{(n)}(V)$
+			は$n$次乗法的汎関数である．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		\begin{description}
 			\item[第四段]
 				(\refeq{eq:signature_of_path_2})を示す．
-		\end{description}
-		
+				$u$を節点に含む$[s,t]$の細分列$\left(D_n\right)_{n=1}^\infty,
+				\ (|D_n| \longrightarrow 0)$を取り，
+				$u$を境に
+				\begin{align}
+					D_n = D^1_n + D^2_n,
+					\quad D_n &= \{s=u^n_0 < \cdots < u < \cdots < u^n_{m_n} = t\}, \\
+					D^1_n &= \{s=u^n_0 < \cdots < u\},
+					\quad D^2_n = \{u < \cdots < u^n_{m_n} = t\}
+				\end{align}
+				と分割する．このとき
+				\begin{align}
+					&\compcrossnorm{X^2_{s,t} - \left( X^2_{s,u} + X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
+					&\leq \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
+						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} 
+						+ \sum_{D^2_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
+						- \left( X^2_{s,u} + X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
+					&\leq \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
+						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - X^2_{s,u}}{2} \\
+						&+ \compcrossnorm{\sum_{D^2_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
+						- \left( X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
+					&\leq \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
+						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - X^2_{s,u}}{2} \\
+						&+ \compcrossnorm{\sum_{D^2_n} \left( X^1_{s,u_{i-1}} - X^1_{u,u_{i-1}} \right) \otimes_{1,2} X^1_{u_{i-1},u_i} + \sum_{D^2_n} X^1_{u,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
+						- \left( X^1_{s,u} \otimes_{1,2} X^1_{u,t} + X^2_{u,t} \right)}{2} \\
+					&= \compcrossnorm{X^2_{s,t} - \sum_{D_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
+						&+ \compcrossnorm{\sum_{D^1_n} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i} - X^2_{s,u}}{2} \\
+						&+ \compcrossnorm{\sum_{D^2_n} X^1_{u,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
+						- X^2_{u,t}}{2}
+				\end{align}
+		\end{description}	
 	\end{prf}
+	
+	\begin{align}
+		X^k_{s,t} = \sum_{j=0}^k X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}
+	\end{align}
 	
 	\begin{screen}
 		\begin{dfn}[$p$-ラフパス]
@@ -699,14 +795,19 @@
 			\item[第一段] 極限を構成する．いま，
 			任意の$X = (X^0,X^1,\cdots,X^{[p]}) \in \Omega_p(V)$に対して
 			\begin{align}
-				X^i \in \tilde{B}_{p/i,T}\left( V^{\otimes i} \right),
+				X^i \in B_{p/i,T}\left( V^{\otimes i} \right),\footnotemark
 				\quad (\forall i=1,\cdots,[p]) 
 			\end{align}
-			が満たされるから，定理\ref{thm:B_p_T_Banach_space_2}より任意のCauchy列
-			$\left( X^k = (X^{k,0},\cdots,X^{k,[p]}) \right)_{k=1}^{\infty} \subset \Omega_p(V)$
+			\footnotetext{
+				$B_{p/i,T}\left( V^{\otimes i} \right)$の定義は
+				(p. \pageref{def:Banach_space_of_continuous_mapping_on_V})
+				の(\refeq{def:Banach_space_of_continuous_mapping_on_V})．
+			}
+			が満たされるから，定理\ref{thm:B_p_T_Banach_space_2}より$\Omega_p(V)$の任意のCauchy列
+			$\left( X^{(k)} = (X^{(k),0},\cdots,X^{(k),[p]}) \right)_{k=1}^{\infty}$
 			に対して
 			\begin{align}
-				\Norm{X^{k,i} - X^i}{p/i} \longrightarrow 0
+				\Norm{X^{(k),i} - X^i}{p/i} \longrightarrow 0
 				\quad (k \longrightarrow \infty,\ \forall i=1,\cdots,[p])
 				\label{eq:thm_p_rough_path_complete_dist_2}
 			\end{align}
@@ -716,49 +817,49 @@
 				X_{s,t} \coloneqq (1,X^1_{s,t},\cdots,X^n_{s,t}),
 				\quad (\forall (s,t) \in \Delta_T)
 			\end{align}
-			により定めれば，$X^i$の連続性と$T^{([p])}(V)$におけるノルムの定義
-			(\refeq{eq:def_norm_on_truncated_tensor_algebra})より
-			$X$は連続写像である．
+			により定めれば，(\refeq{eq:thm_p_rough_path_complete_dist_2})及び
+			$X^i,\ i=1,\cdots,n$の連続性より
+			$X \in C_{0,p} \left(\Delta_T,T^{([p])}(V) \right)$となる．
 		
 		\item[第二段] $X$が Chen's identity を満たすことを示す．
-			各$1 \leq i \leq [p]$について，
+			これが示されれば，前段の結果と
+			定理\ref{thm:fin_p_var_and_fin_ttl_p_var_is_equiv_for_multiplicative}
+			より$X$は有限$p$-変動となり$X \in \Omega_p(V)$が従う．各$1 \leq i \leq [p]$に対して
+			次が成立すればよい:
 			\begin{align}
 				X^i_{s,t} = \sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t},
-				\quad (\forall 0 \leq s \leq u \leq t \leq T)
+				\quad (\forall 0 \leq s \leq u \leq t \leq T).
 				\label{eq:thm_p_rough_path_complete_dist_1}
 			\end{align}
-			が成立すればよい．実際，
+			実際，(\refeq{eq:thm_p_rough_path_complete_dist_2})より
 			\begin{align}
-				\compcrossnorm{X^{k,i}_{s,t} - X^i_{s,t}}{i}
-				\leq \Norm{X^{k,i} - X^i}{p/i} \longrightarrow 0,
+				\compcrossnorm{X^{(k),i}_{s,t} - X^i_{s,t}}{i}
+				\leq \Norm{X^{(k),i} - X^i}{p/i} \longrightarrow 0,
 				\quad (k \longrightarrow \infty,\ \forall 0 \leq s \leq t \leq T)
 			\end{align}
-			かつ，定理\ref{thm:property_of_the_completion_of_the_projective_norm}及び
-			双線型写像$\otimes_{j,i}:V^{\otimes j} \times V^{\otimes i-j} 
-			\longrightarrow V^{\otimes i}$
-			の定義(\refeq{eq:def_of_otimes_for_completion_V_tensor_k})より
+			が成り立ち，かつ定理\ref{thm:property_of_the_completion_of_the_projective_norm}より
 			\begin{align}
 				\compcrossnorm{X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t}}{i}
 				= \compcrossnorm{X^j_{s,u}}{j} \compcrossnorm{X^{i-j}_{u,t}}{i-j},
 				\quad (\forall 0 \leq j \leq i)
 			\end{align}
-			が満たされているから，任意の$0 \leq s \leq t \leq T$に対して
+			が満たされるから，任意の$0 \leq s \leq t \leq T$に対して
 			\begin{align}
 				\compcrossnorm{X^i_{s,t} - \sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t}}{i}
-				&\leq \compcrossnorm{X^i_{s,t} - X^{k,i}_{s,t}}{i}
+				&\leq \compcrossnorm{X^i_{s,t} - X^{(k),i}_{s,t}}{i}
 					+ \compcrossnorm{\sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t} 
-					- \sum_{j=0}^i X^{k,j}_{s,u} \otimes_{j,i} X^{k,i-j}_{u,t}}{i} \\
-				&\leq \compcrossnorm{X^i_{s,t} - X^{k,i}_{s,t}}{i}
-					+ \sum_{j=0}^i \compcrossnorm{X^j_{s,u} - X^{k,j}_{s,u}}{j}
+					- \sum_{j=0}^i X^{(k),j}_{s,u} \otimes_{j,i} X^{(k),i-j}_{u,t}}{i} \\
+				&\leq \compcrossnorm{X^i_{s,t} - X^{(k),i}_{s,t}}{i}
+					+ \sum_{j=0}^i \compcrossnorm{X^j_{s,u} - X^{(k),j}_{s,u}}{j}
 						\compcrossnorm{X^{i-j}_{u,t}}{i-j} \\
-					&\qquad + \sum_{j=0}^i \compcrossnorm{X^{k,j}_{s,u}}{j}
-						\compcrossnorm{X^{i-j}_{u,t} - X^{k,i-j}_{u,t}}{i-j} \\
+					&\qquad + \sum_{j=0}^i \compcrossnorm{X^{(k),j}_{s,u}}{j}
+						\compcrossnorm{X^{i-j}_{u,t} - X^{(k),i-j}_{u,t}}{i-j} \\
 				&\longrightarrow 0,
 				\quad (k \longrightarrow \infty)
 			\end{align}
 			が従い(\refeq{eq:thm_p_rough_path_complete_dist_1})を得る．
-			則ち$X$は$p$-ラフパスであり，(\refeq{eq:thm_p_rough_path_complete_dist_2})より
-			$d_p(X^k,X) \longrightarrow 0\ (k \longrightarrow \infty)$が成り立つ．
+			(\refeq{eq:thm_p_rough_path_complete_dist_2})より
+			$d_p(X^{(k)},X) \longrightarrow 0\ (k \longrightarrow \infty)$が成り立ち定理の主張が得られる．
 			\QED
 	\end{description}
 \end{prf}

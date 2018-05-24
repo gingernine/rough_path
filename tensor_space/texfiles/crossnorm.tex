@@ -315,9 +315,18 @@
 					v = \sum_{j=1}^m x^j_1 \otimes \cdots \otimes x^j_n}},
 					\quad (\forall v \in \bigotimes_{i=1}^n X_i).
 				\end{align}
-				このとき$\lambda$が式(\refeq{eq:cross_norm_def_1})かつ
-				$\lambda \geq \pi$を満たせば，
-				定理\ref{thm:projective_norm_is_maximum_cross_norm}より$\lambda = \pi$が従う．
+				いま，任意に$v \in \bigotimes_{i=1}^n X_i$を取れば，$v$の任意の分割
+				\begin{align}
+					v = \sum_{j=1}^{m} x^j_1 \otimes \cdots \otimes x^j_n.
+				\end{align}
+				に対し
+				\begin{align}
+					\pi(v) \leq \sum_{j=1}^m \pi \left( x^j_1 \otimes \cdots \otimes x^j_n \right)
+					= \sum_{j=1}^m \Norm{x^j_1}{X_1} \cdots \Norm{x^j_n}{X_n}
+				\end{align}
+				が満たされ$\pi \leq \lambda$が従う．
+				よって$\lambda$が式(\refeq{eq:cross_norm_def_1})を満たせば，
+				定理\ref{thm:projective_norm_is_maximum_cross_norm}より$\lambda = \pi$が得られる．
 				
 			\item[第二段]
 				$\lambda$がセミノルムであることを示す．実際，任意に
@@ -381,33 +390,6 @@
 					\quad (\forall x_i \in X_i,\ i=1,\cdots,n)
 				\end{align}
 				が成り立つ．
-				
-			\item[第四段]
-				$\lambda \geq \pi$を示す．いま，任意に$v \in \bigotimes_{i=1}^n X_i$を取り，
-				次の分割を持つとする:
-				\begin{align}
-					v = \sum_{j=1}^{m} x^j_1 \otimes \cdots \otimes x^j_n.
-				\end{align}
-				$\Norm{b}{\ContLn{\bigoplus_{i=1}^n X_i}{\K}{n}} \leq 1$を満たす
-				$b \in \ContLn{\bigoplus_{i=1}^n X_i}{\K}{n}$と
-				式(\refeq{eq:dfn_projective_norm_isomorphism})の
-				$\Phi$に対し
-				\begin{align}
-					&\left| \Phi^{-1}(b)(v) \right|
-					\leq \sum_{j=1}^{m} \left| \Phi^{-1}(b)(x^j_1 \otimes \cdots \otimes x^j_n) \right| \\
-					&\qquad = \sum_{j=1}^{m} \left| b(x^j_1,\cdots,x^j_n) \right|
-					\leq \sum_{j=1}^{m} \Norm{x^j_1}{X_1} \cdots \Norm{x^j_n}{X_n}
-				\end{align}
-				が成り立つから，$b$に無関係に
-				\begin{align}
-					\left| \Phi^{-1}(b)(v) \right| \leq \lambda(v)
-				\end{align}
-				が満たされ
-				\begin{align}
-					\pi(v) = \sup{\substack{b \in \ContLn{\bigoplus_{i=1}^n X_i}{\K}{n} \\ \Norm{b}{\ContLn{\bigoplus_{i=1}^n X_i}{\K}{n}} \leq 1}}{\left| \Phi^{-1}(b)(v) \right|}
-					\leq \lambda(v)
-				\end{align}
-				が従う．
 				\QED
 		\end{description}
 	\end{prf}

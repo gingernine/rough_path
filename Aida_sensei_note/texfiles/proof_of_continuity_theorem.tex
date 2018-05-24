@@ -52,10 +52,8 @@
 		\end{align}
 		が成り立つ．$[0,T] \ni t \longmapsto x_t$の連続性より，
 		最下段式中の$x_s + r(x_u - x_s)\ (0 \leq r \leq 1,\ s \leq u \leq t)$は或るコンパクト集合$K$に含まれ，
-		$f$が$C^2$-級関数であるから
-		\begin{align}
-			M \coloneqq \sum_{i,j,k,v} \sup{x \in K}{\left|\partial_v \partial_k f_j^i(x) \right|}
-		\end{align}
+		$f$が$C^2$-級関数であるから$
+		M \coloneqq \sum_{i,j,k,v} \sup{x \in K}{\left|\partial_v \partial_k f_j^i(x) \right|}$
 		として$M < \infty$を定めれば
 		\begin{align}
 			&\left| \int_s^t 
@@ -65,7 +63,7 @@
 			&\qquad \leq M \int_s^t |X^1_{s,u}|^2 |\dot{x}_u|\ du \\
 			&\qquad \leq M \Norm{x}{C^1}^3 \int_s^t (u - s)^2\ du
 		\end{align}
-		が出る．特に$D \in \delta[s,t]$に対して
+		となる．特に$D \in \delta[s,t]$に対して
 		\begin{align}
 			&\sum_D \int_{t_{i-1}}^{t_i} (u - t_{i-1})^2\ du
 			\leq \sum_D |D| \int_{t_{i-1}}^{t_i} (u - t_{i-1})\ du \\
@@ -144,20 +142,21 @@
 	
 	ノルム空間$(V,\Norm{\cdot}{})$に対し
 	\begin{align}
-		\tilde{B}_{p,T}(V)
+		B_{p,T}(V)
 		\coloneqq \Set{X:\Delta_T \longrightarrow V}{\mbox{continuous},\ \Norm{X}{p} < \infty}
+		\label{def:Banach_space_of_continuous_mapping_on_V}
 	\end{align}
-	により線型空間を定めれば，定理\ref{thm:B_p_T_Banach_space}のアナロジーを得る．
+	として線型空間$B_{p,T}(V)$を定めれば，定理\ref{thm:B_p_T_Banach_space}のアナロジーを得る．
 	
 	\begin{screen}
 		\begin{thm}\label{thm:B_p_T_Banach_space_2}
-			$V$がBanach空間のとき，$\tilde{B}_{p,T}(V)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
+			$V$がBanach空間のとき，$B_{p,T}(V)$は$\Norm{\cdot}{p}$をノルムとするBanach空間である．
 		\end{thm}
 	\end{screen}
 
 \begin{prf}完備性を示す．
 	\begin{description}
-		\item[第一段] $(X^n)_{n=1}^{\infty} \subset \tilde{B}_{p,T}(V)$をCauchy列とすれば，
+		\item[第一段] $(X^n)_{n=1}^{\infty}$を$B_{p,T}(V)$のCauchy列とすれば，
 			任意の$\epsilon > 0$に対して或る$n_\epsilon \in \N$が存在し
 			\begin{align}
 				\Norm{X^n - X^m}{p}
@@ -197,14 +196,14 @@
 \end{prf}
 
 	\begin{screen}
-		\begin{thm}[$p$-variationが定めるcontrol function]
+		\begin{thm}[$p$-変動が定めるコントロール関数]
 		\label{thm:control_function_defined_by_p_variation}
-			$(V,\Norm{\cdot}{})$をノルム空間，$p > 0$とする．
+			$(V,\Norm{\cdot}{})$をノルム空間，$p > 0$とする．このとき，
 			$\Norm{\psi}{p} < \infty$かつ$\psi_{t,t} = 0\ (\forall t \in [0,T])$を満たす連続写像$\psi:\Delta_T \longrightarrow V$に対して，
 			\begin{align}
 				\omega:\Delta_T \ni (s,t) \longmapsto \Norm{\psi}{p,[s,t]}^p
 			\end{align}
-			により定める$\omega$はcontrol functionである．
+			により定める$\omega$はコントロール関数である．
 		\end{thm}
 	\end{screen}
 	
