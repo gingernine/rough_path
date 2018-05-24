@@ -492,7 +492,7 @@
 		\QED
 	\end{prf}
 	
-	実際に乗法的汎関数を構成する．有界変動な連続写像$x:[0,T] \longrightarrow V = V^{\otimes 1}$に対して
+	実際に乗法的汎関数を構成する．有界変動な連続写像$x:[0,T] \longrightarrow V$に対して
 	\begin{align}
 		X^1_{s,t} \coloneqq x_t - x_s,
 		\quad (\forall (s,t) \in \Delta_T)
@@ -580,7 +580,7 @@
 					$s=t$なら，$X^1_{s,t} = 0$より$Z_{s,t} = 0$が成り立つ．
 				}を取る．
 				\begin{align}
-					M \coloneqq \sup{(x,y) \in \Delta_T}{\compcrossnorm{Y_{x,y}}{1}}
+					M \coloneqq \sup{(x,y) \in \Delta_T}{\compcrossnorm{Y_{x,y}}{k}}
 				\end{align}
 				とおけば$Y$の連続性より$M < \infty$となり，
 				任意の$\epsilon > 0$に対し或る$D \in \delta[s,t]$が存在して
@@ -616,28 +616,27 @@
 			
 			\item[第三段]
 				$s < t$を満たす点$(s,t) \in \Delta_T$において$Z$が連続であること示す．
-				いま，任意に$\epsilon > 0$を取る．
+				いま，任意に$\epsilon > 0$を取れば，
 				\begin{description}
-					\item[(1)] (\refeq{map:lem_signature_of_path_1})がコントロール関数であるから，
+					\item[(i)] (\refeq{map:lem_signature_of_path_1})がコントロール関数であるから，
 						或る$\eta_1 > 0$が存在して$|s-a|,|t-b| < \eta_1$ならば
 						\begin{align}
-							\Norm{X^1}{1,[s \wedge a,s \vee a]},\ 
-							\Norm{X^1}{1,[t \wedge b,t \vee b]} < \epsilon
+							\Norm{X^1}{1,[s \wedge a,s \vee a]} < \epsilon, 
+							\quad \Norm{X^1}{1,[t \wedge b,t \vee b]} < \epsilon
 						\end{align}
 						が満たされる．
 						
-					\item[(2)] 或る$\eta_2 > 0$が存在して$|s-a|,|t-b| < \eta_2$ならば
+					\item[(ii)] 或る$\eta_2 > 0$が存在して$|s-a|,|t-b| < \eta_2$ならば
 						$[s,t] \cap [a,b] \neq \emptyset$が満たされる．
 						
-					\item[(3)] $Y$は$\Delta_T$上一様連続であるから，
+					\item[(iii)] $Y$は$\Delta_T$上一様連続であるから，
 						或る$\eta_3 > 0$が存在して$|s-a| < \eta_3$なら
 						\begin{align}
-							\compcrossnorm{Y_{s,u} - Y_{a,u}}{k} < \epsilon,
-							\quad (s,a \leq \forall u \leq T)
+							\sup{}{\Set{\compcrossnorm{Y_{s,u} - Y_{a,u}}{k}}{(s \vee a) \leq u \leq T}} < \epsilon
 						\end{align}
 						が満たされる．
 						
-					\item[(4)] 補題\ref{lem:def_integration_of_continuous_mapping_by_X_1}
+					\item[(iv)] 補題\ref{lem:def_integration_of_continuous_mapping_by_X_1}
 						より或る$\eta_4 > 0$が存在して$|D_1|,|D_2| < \eta_4$なら
 						\begin{align}
 							\compcrossnorm{Z_{s,t} - \sum_{D_1} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1} < \epsilon,
@@ -645,61 +644,65 @@
 						\end{align}
 						が満たされる．
 				\end{description}
-				このとき，$X^1$の一様連続性により，或る$0 < c < t-s$が存在して，
-				$(a,b) \in \Delta_T$が$|a-s| < c$を満たす限り
+				ここで$\eta \coloneqq \eta_1 \wedge \eta_2 \wedge \eta_3$として，
+				$|s-a|,|t-b| < \eta,\ |D_1|,|D_2| < \eta_4$を満たす$(a,b),D_1,D_2$を取り
 				\begin{align}
-					&\compcrossnorm{X^1_{s,u} - X^1_{a,u}}{1} < \epsilon,
-					\quad (s \vee a \leq \forall u \leq T)
+					\Omega_3 &\coloneqq (D_1 \cup D_2) \cap [s,t] \cap [a,b], \\
+					\Omega_1 &\coloneqq D_1 \cup D_3,
+						\quad \Omega_1^< \coloneqq \Omega_1 \cap [0,a],
+						\quad \Omega_1^> \coloneqq \Omega_1 \cap [b,T], \\
+					\Omega_2 &\coloneqq D_2 \cup D_3,
+						\quad \Omega_2^< \coloneqq \Omega_2 \cap [0,s],
+						\quad \Omega_2^> \coloneqq \Omega_2 \cap [t,T]
 				\end{align}
-				が成立する．一方(\refeq{eq:signature_of_path_1})より，
-				或る$\eta > 0$が存在して
-				$D_1 \in \delta[s,t],\ D_2 \in \delta[a,b]$
-				が$|D_1|,|D_2| < \eta$を満たす限り
+				とおけば，$\Omega_1 = \Omega_1^< \cup \Omega_3 \cup \Omega_1^>,\ 
+				\Omega_2 = \Omega_2^< \cup \Omega_3 \cup \Omega_2^>$と分割できる．
+				このとき(i)(ii)(iii)が満たされるから
 				\begin{align}
-					\compcrossnorm{X^2_{s,t} - \sum_{D_1} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} < \epsilon,
-					\quad \compcrossnorm{X^2_{a,b} - \sum_{D_2} X^1_{a,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j}}{2} < \epsilon
-				\end{align}
-				が成立する．また或る$\eta' > 0$が存在して$0 < v-u < \eta'$なら
-				\begin{align}
-					\compcrossnorm{X^1_{u,v}}{1} < \epsilon
-				\end{align}
-				となる．ここで$|s-a| < c,|D_1|,|D_2| < \eta \wedge \eta'$を満たす
-				$(a,b),D_1,D_2$を取り
-				\begin{align}
-					D_3 \coloneqq (D_1 \cup D_2) \cap [s,t] \cap [a,b],
-					\quad D'_1 \coloneqq D_1 \cup D_3,
-					\quad D'_2 \coloneqq D_2 \cup D_3
-				\end{align}
-				とおけば，$[s,t] \cap [a,b]$上で$D'_1$と$D'_2$の分割点は一致するので
-				\begin{align}
-					&\compcrossnorm{\sum_{D'_1} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
-						- \sum_{D'_2} X^1_{a,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j}}{2} \\
-					&\qquad\leq \compcrossnorm{\sum_{D_3} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}
-						- \sum_{D_3} X^1_{a,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2} \\
-					&\quad\qquad + \compcrossnorm{\sum_{D'_1 \backslash D_3} X^1_{s,u_{i-1}} \otimes_{1,2} X^1_{u_{i-1},u_i}}{2}
-					+ \compcrossnorm{\sum_{D'_2 \backslash D_3} X^1_{a,v_{j-1}} \otimes_{1,2} X^1_{v_{j-1},v_j}}{2} \\
-					&\qquad\leq \sum_{D_3} \compcrossnorm{X^1_{s,u_{i-1}} - X^1_{a,u_{i-1}}}{1}
+					&\compcrossnorm{\sum_{\Omega_1} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}
+						- \sum_{\Omega_2} Y_{a,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j}}{k+1} \\
+					&\quad\leq \compcrossnorm{\sum_{\Omega_3} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}
+						- \sum_{\Omega_3} Y_{a,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1} \\
+					&\quad\qquad + \compcrossnorm{\sum_{\Omega_1^<} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1} 
+					+ \compcrossnorm{\sum_{\Omega_1^>} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1} \\
+					&\quad\qquad + \compcrossnorm{\sum_{\Omega_2^<} Y_{a,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1} 
+					+ \compcrossnorm{\sum_{\Omega_2^>} Y_{a,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j}}{k+1} \\
+					&\quad\leq \sum_{\Omega_3} \compcrossnorm{Y_{s,u_{i-1}} - Y_{a,u_{i-1}}}{k}
 					\compcrossnorm{X^1_{u_{i-1},u_i}}{1}
-					+ \sum_{D'_1 \backslash D_3} \compcrossnorm{X^1_{s,u_{i-1}}}{1}
+					+ \sum_{\Omega_1^<} \compcrossnorm{Y_{s,u_{i-1}}}{k}
 						\compcrossnorm{X^1_{u_{i-1},u_i}}{1}
-						+ \sum_{D'_2 \backslash D_3} \compcrossnorm{X^1_{a,v_{j-1}}}{1}
+					+ \sum_{\Omega_1^>} \compcrossnorm{Y_{s,u_{i-1}}}{k}
+						\compcrossnorm{X^1_{u_{i-1},u_i}}{1} \\
+					&\quad\qquad + \sum_{\Omega_2^<} \compcrossnorm{Y_{a,v_{j-1}}}{k}
+						\compcrossnorm{X^1_{v_{j-1},v_i}}{1} 
+					+ \sum_{\Omega_2^>} \compcrossnorm{Y_{a,v_{j-1}}}{k}
 						\compcrossnorm{X^1_{v_{j-1},v_i}}{1} \\
-					&\qquad< 3 \Norm{X^1}{1} \epsilon 
+					&\quad\leq \sup{u \in [s \vee a, T]}{\compcrossnorm{Y_{s,u} - Y_{a,u}}{k}}
+						\Norm{X^1}{1}
+						+ M \left( \Norm{X^1}{1,[s,s \vee a]}
+						+ \Norm{X^1}{1,[a,s \vee a]} 
+						+ \Norm{X^1}{1,[t,t \vee b]} 
+						+ \Norm{X^1}{1,[b,t \vee b]} \right) \\
+					&\quad< \left( \Norm{X^1}{1} + 4 M \right) \epsilon 
 				\end{align}
-				が成り立ち
+				が成立し，(iv)と併せれば
 				\begin{align}
-					\compcrossnorm{X^2_{s,t} - X^2_{a,b}}{2} < \left[ 3 \Norm{X^1}{1} + 2\right]\epsilon
+					\compcrossnorm{Z_{s,t} - Z_{a,b}}{k+1} 
+					< \left( \Norm{X^1}{1} + 4 M + 2\right)\epsilon,
+					\quad (|s-a|,|t-b| < \eta)
 				\end{align}
-				が従う．これにより$X^2$の$(s,t)$における連続性を得る．
+				が従い$Z$の$(s,t)$における連続性が得られる．
+				\QED
 		\end{description}	
 	\end{prf}
 	
 	\begin{screen}
 		\begin{dfn}[パスのシグネチャー]
-			有界変動な連続写像$x:[0,T] \longrightarrow V = V^{\otimes 1}$に対して
+			有界変動な連続写像$x:[0,T] \longrightarrow V$に対して
 			$X^1_{s,t} \coloneqq x_t-x_s,\ (\forall (s,t) \in \Delta_T)$とおけば，
-			補題\ref{lem:def_integration_of_continuous_mapping_by_X_1}より逐次的に
-			次を構成する:
+			補題\ref{lem:def_integration_of_continuous_mapping_by_X_1}と
+			補題\ref{lem:signature_of_path}により逐次的に
+			次を構成することができる:
 			\begin{align}
 				V^{\otimes i+1} \ni X^{i+1}_{s,t} \coloneqq \int_s^t X^i_{s,u} \otimes dx_u,
 				\quad (\forall (s,t) \in \Delta_T,\ i=1,2,\cdots)

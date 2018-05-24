@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  25 MAY 2018 03:05
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  25 MAY 2018 04:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -592,7 +592,7 @@ Excluding 'comment' comment. [12] [13] [14] [15] [16] [17] [18])
 (./texfiles/p_rough_path.tex [19] [20] [21] [22] [23] [24] [25] [26] [27]
 
 LaTeX Warning: Reference `eq:signature_of_path_2' on page 28 undefined on input
- line 731.
+ line 734.
 
 [28] [29]) [30]
 付録A
@@ -628,10 +628,10 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  4705 strings out of 493621
  61888 string characters out of 6150087
- 159006 words of memory out of 5000000
+ 161006 words of memory out of 5000000
  8172 multiletter control sequences out of 15000+600000
  39809 words of font info for 147 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,24n,26p,316b,757s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (58 pages, 406236 bytes).
+Output written on Aida_sensei_note.dvi (58 pages, 407392 bytes).
