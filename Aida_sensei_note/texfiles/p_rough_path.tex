@@ -637,7 +637,8 @@
 						が満たされる．
 						
 					\item[(iv)] 補題\ref{lem:def_integration_of_continuous_mapping_by_X_1}
-						より或る$\eta_4 > 0$が存在して$|D_1|,|D_2| < \eta_4$なら
+						より或る$\eta_4 > 0$が存在して$|D_1|,|D_2| < \eta_4,\ 
+						(D_1 \in \delta[s,t],\ D_2 \in \delta[a,b])$なら
 						\begin{align}
 							\compcrossnorm{Z_{s,t} - \sum_{D_1} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}}{k+1} < \epsilon,
 					\quad \compcrossnorm{Z_{a,b} - \sum_{D_2} Y_{a,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j}}{k+1} < \epsilon
@@ -648,10 +649,10 @@
 				$|s-a|,|t-b| < \eta,\ |D_1|,|D_2| < \eta_4$を満たす$(a,b),D_1,D_2$を取り
 				\begin{align}
 					\Omega_3 &\coloneqq (D_1 \cup D_2) \cap [s,t] \cap [a,b], \\
-					\Omega_1 &\coloneqq D_1 \cup D_3,
+					\Omega_1 &\coloneqq D_1 \cup \Omega_3,
 						\quad \Omega_1^< \coloneqq \Omega_1 \cap [0,a],
 						\quad \Omega_1^> \coloneqq \Omega_1 \cap [b,T], \\
-					\Omega_2 &\coloneqq D_2 \cup D_3,
+					\Omega_2 &\coloneqq D_2 \cup \Omega_3,
 						\quad \Omega_2^< \coloneqq \Omega_2 \cap [0,s],
 						\quad \Omega_2^> \coloneqq \Omega_2 \cap [t,T]
 				\end{align}
