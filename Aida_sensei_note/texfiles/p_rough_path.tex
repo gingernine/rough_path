@@ -506,7 +506,7 @@
 			に対して次の積分が$V^{\otimes k+1}$で確定する:
 			\begin{align}
 				\int_s^t Y_{s,u} \otimes d x_u
-				\coloneqq \lim_{|D| \to 0} \sum_{D} Y_{s,t_{i-1}} \otimes_{k,k+1} X^1_{t_{i-1},t_i}
+				\coloneqq \lim_{|D| \to 0} \sum_{D} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}
 				\label{eq:def_integration_of_continuous_mapping_by_X_1}
 			\end{align}
 		\end{lem}
@@ -517,10 +517,10 @@
 		を任意に取り，共通細分を$D''=\{s=w_0 < \cdots < w_r = t\}$と表して
 		\begin{align}
 			\begin{cases}
-				\tilde{Y}_{s,w_k} \coloneqq Y_{s,u_i}, & (u_i \leq w_k \leq u_{i+1}), \\
-				\hat{Y}_{s,w_k} \coloneqq Y_{s,v_j}, & (v_j \leq w_k \leq v_{j+1}),
+				\tilde{Y}_{s,w_\ell} \coloneqq Y_{s,u_i}, & (u_i \leq w_\ell \leq u_{i+1}), \\
+				\hat{Y}_{s,w_\ell} \coloneqq Y_{s,v_j}, & (v_j \leq w_\ell \leq v_{j+1}),
 			\end{cases}
-			\quad (k=0,1,\cdots,r)
+			\quad (\ell=0,1,\cdots,r)
 		\end{align}
 		で$\tilde{Y},\hat{Y}$を定めれば，
 		定理\ref{thm:property_of_the_completion_of_the_projective_norm}より
@@ -528,21 +528,21 @@
 			&\compcrossnorm{ \sum_D Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i} - 
 				\sum_{D'} Y_{s,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j}}{k+1} \\
 			&\quad\leq \compcrossnorm{ \sum_D Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i} - 
-				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1}
+				\sum_{D''} Y_{s,w_{\ell-1}} \otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell}}{k+1}
 				+ \compcrossnorm{ \sum_{D'} Y_{s,v_{j-1}} \otimes_{k,k+1} X^1_{v_{j-1},v_j} - 
-				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} \\
-			&\quad= \compcrossnorm{ \sum_{D''} \tilde{Y}_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k} - 
-				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} 
-				+ \compcrossnorm{ \sum_{D''} \hat{Y}_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k} - 
-				\sum_{D''} Y_{s,w_{k-1}} \otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} \\
-			&\quad= \compcrossnorm{ \sum_{D''} \left(\tilde{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}} \right)
-		 		\otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1}
-				+ \compcrossnorm{ \sum_{D''} \left( \hat{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}} \right)
-				\otimes_{k,k+1} X^1_{w_{k-1},w_k}}{k+1} \\
-			&\quad\leq \sum_{D''} \compcrossnorm{\tilde{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k} \compcrossnorm{X^1_{w_{k-1},w_k}}{1}
-				+ \sum_{D''} \compcrossnorm{\hat{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k} \compcrossnorm{X^1_{w_{k-1},w_k}}{1} \\
-			&\quad\leq \max{k}{\compcrossnorm{\tilde{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k}} 
-				\Norm{X^1}{1,[s,t]} + \max{k}{\compcrossnorm{\hat{Y}_{s,w_{k-1}} - Y_{s,w_{k-1}}}{k}} \Norm{X^1}{1,[s,t]}
+				\sum_{D''} Y_{s,w_{\ell-1}} \otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell}}{k+1} \\
+			&\quad= \compcrossnorm{ \sum_{D''} \tilde{Y}_{s,w_{\ell-1}} \otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell} - 
+				\sum_{D''} Y_{s,w_{\ell-1}} \otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell}}{k+1} 
+				+ \compcrossnorm{ \sum_{D''} \hat{Y}_{s,w_{\ell-1}} \otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell} - 
+				\sum_{D''} Y_{s,w_{\ell-1}} \otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell}}{k+1} \\
+			&\quad= \compcrossnorm{ \sum_{D''} \left(\tilde{Y}_{s,w_{\ell-1}} - Y_{s,w_{\ell-1}} \right)
+		 		\otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell}}{k+1}
+				+ \compcrossnorm{ \sum_{D''} \left( \hat{Y}_{s,w_{\ell-1}} - Y_{s,w_{\ell-1}} \right)
+				\otimes_{k,k+1} X^1_{w_{\ell-1},w_\ell}}{k+1} \\
+			&\quad\leq \sum_{D''} \compcrossnorm{\tilde{Y}_{s,w_{\ell-1}} - Y_{s,w_{\ell-1}}}{k} \compcrossnorm{X^1_{w_{\ell-1},w_\ell}}{1}
+				+ \sum_{D''} \compcrossnorm{\hat{Y}_{s,w_{\ell-1}} - Y_{s,w_{\ell-1}}}{k} \compcrossnorm{X^1_{w_{\ell-1},w_\ell}}{1} \\
+			&\quad\leq \max{k}{\compcrossnorm{\tilde{Y}_{s,w_{\ell-1}} - Y_{s,w_{\ell-1}}}{k}} 
+				\Norm{X^1}{1,[s,t]} + \max{k}{\compcrossnorm{\hat{Y}_{s,w_{\ell-1}} - Y_{s,w_{\ell-1}}}{k}} \Norm{X^1}{1,[s,t]}
 		\end{align}
 		が成立する．いま，$[s,t] \ni u \longmapsto Y_{s,u}$は一様連続であるから，
 		$|D|,|D'|\longrightarrow 0$として右辺は0に収束する．
