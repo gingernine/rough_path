@@ -506,7 +506,8 @@
 			に対して次の積分が$V^{\otimes k+1}$で確定する:
 			\begin{align}
 				\int_s^t Y_{s,u} \otimes d x_u
-				\coloneqq \lim_{|D| \to 0} \sum_{D} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}
+				\coloneqq \lim_{|D| \to 0} \sum_{D} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i},
+				\quad (D \in \delta[s,t]).
 				\label{eq:def_integration_of_continuous_mapping_by_X_1}
 			\end{align}
 		\end{lem}
@@ -716,6 +717,7 @@
 	
 	\begin{screen}
 		\begin{thm}[逐次積分により定まる乗法的汎関数]
+		\label{thm:signature_of_path_multiplicative}
 			任意の$n \geq 1$に対し，$S(x)_{[s,t]}$の最初の
 			$n+1$個\footnotemark
 			の元の族を$S_n(x)_{[s,t]} = (X^0_{s,t},X^1_{s,t},\cdots,X^n_{s,t}),\ 
@@ -726,12 +728,71 @@
 	
 	\begin{prf}
 		補題\refeq{lem:signature_of_path}より
-		$S_n(x) \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$が従うから，以下では
+		$S_n(x) \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$であるから，以下では
 		任意の$k \geq 0$と$0 \leq s \leq u \leq t \leq T$に対して
 		\begin{align}
 			X^k_{s,t} = \sum_{j=0}^k X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}.
+			\label{eq:thm_signature_of_path_multiplicative_1}
 		\end{align}
-		が成り立つことを示す．
+		が成り立つことを数学的帰納法により示す．
+		\begin{description}
+			\item[第一段]$k=1$の場合，$X^1_{s,t} = x_t - x_s,\ (0 \leq \forall s \leq \forall t \leq T)$より
+				\begin{align}
+					\sum_{j=0}^1 X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}
+					= X^0_{s,u} \otimes_{0,1} X^1_{u,t}
+					+ X^1_{s,u} \otimes_{1,1} X^0_{u,t}
+					= X^1_{u,t} + X^1_{s,u}
+					= X^1_{s,t}
+				\end{align}
+				となる．
+				
+			\item[第二段]
+				$k=m-1\ (m \geq 2)$まで式(\refeq{eq:thm_signature_of_path_multiplicative_1})
+				が満たされると仮定するとき，任意の$D \in \delta[u,t]$に対して
+				\begin{align}
+					\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i}
+					= \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\}
+					\label{eq:thm_signature_of_path_multiplicative_2}
+				\end{align}
+				が成り立つことを次段で示す．実際これが示されれば，$D' \in \delta[s,u]$として
+				\begin{align}
+					\compcrossnorm{X^m_{s,t} - \sum_{j=0}^m X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m}
+					&\leq \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
+						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{s,u}}{m}
+						+ \compcrossnorm{\sum_{D} X^{m-1}_{u,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{u,t}}{m} \\
+						&\quad+ \compcrossnorm{\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i} - 
+						\sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m} \\
+					&= \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
+						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{s,u}}{m}
+						+ \compcrossnorm{\sum_{D} X^{m-1}_{u,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{u,t}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\} 
+						- \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m} \\
+					&\leq \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
+						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{s,u}}{m}
+						+ \compcrossnorm{\sum_{D} X^{m-1}_{u,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{u,t}}{m} \\
+						&\quad+  \sum_{j=1}^{m-1} \compcrossnorm{X^j_{s,u}}{j} 
+						\compcrossnorm{\left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\} - X^{m-j}_{u,t}}{m-j} \\
+					&\longrightarrow 0 \quad (|D'|,|D| \longrightarrow 0)
+				\end{align}
+				が従い，$k=m$について(\refeq{eq:thm_signature_of_path_multiplicative_1})が得られる．
+				
+			\item[第三段]
+				式(\refeq{eq:thm_signature_of_path_multiplicative_2})を示す．仮定より
+				$k=m-1$ならば(\refeq{eq:thm_signature_of_path_multiplicative_2})は満たされているから
+				\begin{align}
+					\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i}
+					&= \sum_D \Biggl( \sum_{j=0}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \Biggr) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_D \Biggl( \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \Biggr) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_D \sum_{j=1}^{m-1} \left( X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_{j=1}^{m-1} \sum_D X^j_{s,u} \otimes_{j,m-j} \left( X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right) \\
+					&= \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\}
+				\end{align}
+				が成立する．
+				\QED
+		\end{description}
 	\end{prf}
 	
 	\begin{screen}
