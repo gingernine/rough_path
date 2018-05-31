@@ -203,37 +203,23 @@
 	\begin{align}
 		c = a \otimes b
 	\end{align}
-	と書けば，次の二つの主張により$T(V)$は$\otimes$を乗法として代数となる．
+	と書けば，以下の主張により$T(V)$は$\otimes$を乗法として代数となる．
 	
 	\begin{screen}
-		\begin{thm}[$\otimes$は$T(V)$の乗法となる]\label{thm:otimes_is_a_multiplication}
-			$\otimes$は$T(V)$において結合則を満たす双線型写像である．
-		\end{thm}
+		\begin{lem}\label{lem:associative_law}
+			任意の$a,b,c \in T(V)$及び$0 \leq r \leq j \leq k$に対して
+			\begin{align}
+				\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
+				= a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
+				\label{eq:thm_otimes_is_a_multiplication_1}
+			\end{align}
+			が成立する．
+		\end{lem}
 	\end{screen}
 	
-	\begin{prf} $\otimes$の双線型性は各$\otimes_{j,k}$の双線型性より従う．
-		以下，$\otimes$の結合性を示す．
+	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段]
-				任意の$a,b,c \in T(V)$及び$0 \leq r \leq j \leq k$に対して
-				\begin{align}
-					\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
-					= a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
-					\label{eq:thm_otimes_is_a_multiplication_1}
-				\end{align}
-				が成立すれば$\otimes$は結合的である．実際，上式が満たされていれば次が従う:
-				\begin{align}
-					&((a \otimes b) \otimes c)_k
-					= \sum_{j=0}^k (a \otimes b)_j \otimes_{j,k} c_{k-j} \\
-					&= \sum_{j=0}^k \sum_{r=0}^j \left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
-					= \sum_{j=0}^k \sum_{r=0}^j a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
-					= \sum_{r=0}^k \sum_{j=r}^k a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) \\
-					&= \sum_{r=0}^k a_r \otimes_{r,k} (b \otimes c)_{k-r} \\
-					&= (a \otimes (b \otimes c))_k,
-					\quad (\forall k = 0,1,2,\cdots).
-				\end{align}
-			
-			\item[第二段]
 				$a_r \in J_r V^{\otimes_a r},\ b_{j-r} \in J_{j-r} V^{\otimes_a j-r},
 				\ c_{k-j} \in J_{k-j} V^{\otimes_a k-j}$として
 				(\refeq{eq:thm_otimes_is_a_multiplication_1})を示す．
@@ -261,7 +247,7 @@
 				\end{align}
 				が成立し，$J_k$の単射性から(\refeq{eq:thm_otimes_is_a_multiplication_1})が得られる．
 			
-			\item[第三段]
+			\item[第二段]
 				一般に$a_r \in V^{\otimes r},\ b_{j-r} \in V^{\otimes j-r},
 				\ c_{k-j} \in V^{\otimes k-j}$の場合，
 				\begin{align}
@@ -296,6 +282,29 @@
 				が従い(\refeq{eq:thm_otimes_is_a_multiplication_1})が出る．
 				\QED
 		\end{description}	
+	\end{prf}
+	
+	\begin{screen}
+		\begin{thm}[$\otimes$は$T(V)$の乗法となる]\label{thm:otimes_is_a_multiplication}
+			$\otimes$は$T(V)$において結合則を満たす双線型写像である．
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		$\otimes$の双線型性は各$\otimes_{j,k}$の双線型性より従う．
+		また任意の$a,b,c \in T(V)$に対し，補題\ref{lem:associative_law}より
+		\begin{align}
+			&((a \otimes b) \otimes c)_k
+			= \sum_{j=0}^k (a \otimes b)_j \otimes_{j,k} c_{k-j} \\
+			&= \sum_{j=0}^k \sum_{r=0}^j \left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
+			= \sum_{j=0}^k \sum_{r=0}^j a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
+			= \sum_{r=0}^k \sum_{j=r}^k a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right) \\
+			&= \sum_{r=0}^k a_r \otimes_{r,k} (b \otimes c)_{k-r} \\
+			&= (a \otimes (b \otimes c))_k,
+			\quad (\forall k = 0,1,2,\cdots).
+		\end{align}
+		が成立する．
+		\QED
 	\end{prf}
 	
 	\begin{screen}
@@ -506,7 +515,8 @@
 			に対して次の積分が$V^{\otimes k+1}$で確定する:
 			\begin{align}
 				\int_s^t Y_{s,u} \otimes d x_u
-				\coloneqq \lim_{|D| \to 0} \sum_{D} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i}
+				\coloneqq \lim_{|D| \to 0} \sum_{D} Y_{s,u_{i-1}} \otimes_{k,k+1} X^1_{u_{i-1},u_i},
+				\quad (D \in \delta[s,t]).
 				\label{eq:def_integration_of_continuous_mapping_by_X_1}
 			\end{align}
 		\end{lem}
@@ -716,6 +726,7 @@
 	
 	\begin{screen}
 		\begin{thm}[逐次積分により定まる乗法的汎関数]
+		\label{thm:signature_of_path_multiplicative}
 			任意の$n \geq 1$に対し，$S(x)_{[s,t]}$の最初の
 			$n+1$個\footnotemark
 			の元の族を$S_n(x)_{[s,t]} = (X^0_{s,t},X^1_{s,t},\cdots,X^n_{s,t}),\ 
@@ -726,12 +737,72 @@
 	
 	\begin{prf}
 		補題\refeq{lem:signature_of_path}より
-		$S_n(x) \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$が従うから，以下では
+		$S_n(x) \in C_0 \left(\Delta_T,T^{(n)}(V) \right)$であるから，以下では
 		任意の$k \geq 0$と$0 \leq s \leq u \leq t \leq T$に対して
 		\begin{align}
 			X^k_{s,t} = \sum_{j=0}^k X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}.
+			\label{eq:thm_signature_of_path_multiplicative_1}
 		\end{align}
-		が成り立つことを示す．
+		が成り立つことを数学的帰納法により示す．
+		\begin{description}
+			\item[第一段]$k=1$の場合，$X^1_{s,t} = x_t - x_s,\ (0 \leq \forall s \leq \forall t \leq T)$より
+				\begin{align}
+					\sum_{j=0}^1 X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}
+					= X^0_{s,u} \otimes_{0,1} X^1_{u,t}
+					+ X^1_{s,u} \otimes_{1,1} X^0_{u,t}
+					= X^1_{u,t} + X^1_{s,u}
+					= X^1_{s,t}
+				\end{align}
+				となる．
+				
+			\item[第二段]
+				$k=m-1\ (m \geq 2)$まで式(\refeq{eq:thm_signature_of_path_multiplicative_1})
+				が満たされると仮定するとき，任意の$D \in \delta[u,t]$に対して
+				\begin{align}
+					\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i}
+					= \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\}
+					\label{eq:thm_signature_of_path_multiplicative_2}
+				\end{align}
+				が成り立つことを次段で示す．実際これが示されれば，$D' \in \delta[s,u]$として
+				\begin{align}
+					\compcrossnorm{X^m_{s,t} - \sum_{j=0}^m X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m}
+					&\leq \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
+						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{s,u}}{m}
+						+ \compcrossnorm{\sum_{D} X^{m-1}_{u,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{u,t}}{m} \\
+						&\quad+ \compcrossnorm{\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i} - 
+						\sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m} \\
+					&= \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
+						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{s,u}}{m}
+						+ \compcrossnorm{\sum_{D} X^{m-1}_{u,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{u,t}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\} 
+						- \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m} \\
+					&\leq \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
+						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
+						&\quad+ \compcrossnorm{\sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{s,u}}{m}
+						+ \compcrossnorm{\sum_{D} X^{m-1}_{u,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{u,t}}{m} \\
+						&\quad+  \sum_{j=1}^{m-1} \compcrossnorm{X^j_{s,u}}{j} 
+						\compcrossnorm{\left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\} - X^{m-j}_{u,t}}{m-j} \\
+					&\longrightarrow 0 \quad (|D'|,|D| \longrightarrow 0)
+				\end{align}
+				が従い，$k=m$について(\refeq{eq:thm_signature_of_path_multiplicative_1})が得られる．
+				
+			\item[第三段]
+				式(\refeq{eq:thm_signature_of_path_multiplicative_2})を示す．仮定より
+				$k=m-1$に対して(\refeq{eq:thm_signature_of_path_multiplicative_2})は満たされているから，
+				補題\ref{lem:associative_law}と併せれば
+				\begin{align}
+					\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i}
+					&= \sum_D \Biggl( \sum_{j=0}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \Biggr) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_D \Biggl( \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \Biggr) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_D \sum_{j=1}^{m-1} \left( X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_{j=1}^{m-1} \sum_D X^j_{s,u} \otimes_{j,m-j} \left( X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right) \\
+					&= \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\}
+				\end{align}
+				が成立する．
+				\QED
+		\end{description}
 	\end{prf}
 	
 	\begin{screen}
@@ -790,7 +861,7 @@
 			$X^i,\ i=1,\cdots,n$の連続性より
 			$X \in C_{0,p} \left(\Delta_T,T^{([p])}(V) \right)$となる．
 		
-		\item[第二段] $X$が Chen's identity を満たすことを示す．
+			\item[第二段] $X$が Chen's identity を満たすことを示す．
 			これが示されれば，前段の結果と
 			定理\ref{thm:fin_p_var_and_fin_ttl_p_var_is_equiv_for_multiplicative}
 			より$X$は有限$p$-変動となり$X \in \Omega_p(V)$が従う．各$1 \leq i \leq [p]$に対して
@@ -830,5 +901,11 @@
 			(\refeq{eq:thm_p_rough_path_complete_dist_2})より
 			$d_p(X^{(k)},X) \longrightarrow 0\ (k \longrightarrow \infty)$が成り立ち定理の主張が得られる．
 			\QED
-	\end{description}
-\end{prf}
+		\end{description}
+	\end{prf}
+	
+	\begin{screen}
+		\begin{dfn}[スムースラフパス]
+			
+		\end{dfn}
+	\end{screen}
