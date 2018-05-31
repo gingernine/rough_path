@@ -207,7 +207,9 @@
 	
 	\begin{screen}
 		\begin{lem}\label{lem:associative_law}
-			任意の$a,b,c \in T(V)$及び$0 \leq r \leq j \leq k$に対して
+			任意の$0 \leq r \leq j \leq k,\ (r,j,k \in \N)$と
+			任意の$a_r \in V^{\otimes r}, b_{j-r} \in V^{\otimes j-r},
+			c_{k-j} \in V^{\otimes k-j}$に対して
 			\begin{align}
 				\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
 				= a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
@@ -226,9 +228,9 @@
 				この場合，(\refeq{bilinear_map_on_algebraic_Banach_tensor_products})の対応関係により
 				\begin{align}
 					\left( a_r \otimes_{r,j} b_{j-r} \right) \otimes_{j,k} c_{k-j}
-					&= J_k F_{j,k}^{-1}\left( F_{r,j}^{-1} \left( J_r^{-1}a_r \otimes_a J_{j-r}^{-1} b_{j-r} \right) \otimes_a J_{k-j}^{-1} c_{k-j} \right), \\
+					&= J_k F_{j,k}^{-1}\left[ \left\{ F_{r,j}^{-1} \left( J_r^{-1}a_r \otimes_a J_{j-r}^{-1} b_{j-r} \right) \right\} \otimes_a J_{k-j}^{-1} c_{k-j} \right], \\
 					a_r \otimes_{r,k} \left( b_{j-r} \otimes_{j-r,k-r} c_{k-j} \right)
-					&= J_k F_{r,k}^{-1}\left( J_r^{-1}a_r \otimes_a F_{j-r,k-j}^{-1} \left( J_{j-r}^{-1} b_{j-r} \otimes_a J_{k-j}^{-1} c_{k-j} \right) \right)
+					&= J_k F_{r,k}^{-1}\left[ J_r^{-1}a_r \otimes_a \left\{ F_{j-r,k-r}^{-1} \left( J_{j-r}^{-1} b_{j-r} \otimes_a J_{k-j}^{-1} c_{k-j} \right) \right\} \right]
 				\end{align}
 				となる．ここで
 				\begin{align}
@@ -238,12 +240,12 @@
 				\end{align}
 				と表現できるから
 				\begin{align}
-					&F_{j,k}^{-1}\left( F_{r,j}^{-1} \left( J_r^{-1}a_r \otimes_a J_{j-r}^{-1} b_{j-r} \right) \otimes_a J_{k-j}^{-1} c_{k-j} \right) \\
+					&F_{j,k}^{-1}\left[ \left\{ F_{r,j}^{-1} \left( J_r^{-1}a_r \otimes_a J_{j-r}^{-1} b_{j-r} \right) \right\} \otimes_a J_{k-j}^{-1} c_{k-j} \right] \\
 					&\qquad = \sum_{i_1=1}^{I_1}\sum_{i_2=1}^{I_2}\sum_{i_3=1}^{I_3} 
 						v_1^{i_1} \otimes_a \cdots \otimes_a v_r^{i_1}
 						\otimes_a v_{r+1}^{i_2} \otimes_a \cdots \otimes_a v_j^{i_2}
 						\otimes_a v_{j+1}^{i_3} \otimes_a \cdots \otimes_a v_k^{i_3} \\
-					&\qquad = 	F_{r,k}^{-1}\left( J_r^{-1}a_r \otimes_a F_{j-r,k-j}^{-1} \left( J_{j-r}^{-1} b_{j-r} \otimes_a J_{k-j}^{-1} c_{k-j} \right) \right)
+					&\qquad = 	F_{r,k}^{-1}\left[ J_r^{-1}a_r \otimes_a \left\{ F_{j-r,k-r}^{-1} \left( J_{j-r}^{-1} b_{j-r} \otimes_a J_{k-j}^{-1} c_{k-j} \right) \right\} \right]
 				\end{align}
 				が成立し，$J_k$の単射性から(\refeq{eq:thm_otimes_is_a_multiplication_1})が得られる．
 			
@@ -470,7 +472,7 @@
 	\begin{screen}
 		\begin{thm}\label{thm:fin_p_var_and_fin_ttl_p_var_is_equiv_for_multiplicative}
 			$n$次乗法的汎関数については
-			有限$p$-変動であることと有限総$p$-変動であることは同値である($p \geq 1$)．
+			有限$p$-変動であることと有限総$p$-変動であることは同値である．
 		\end{thm}
 	\end{screen}
 	
@@ -717,9 +719,11 @@
 			\begin{align}
 				V^{\otimes i+1} \ni X^{i+1}_{s,t} \coloneqq \int_s^t X^i_{s,u} \otimes dx_u,
 				\quad (\forall (s,t) \in \Delta_T,\ i=1,2,\cdots)
+				\label{eq:def_signature_of_path}
 			\end{align}
 			ここで
-			$S(x)_{[s,t]} \coloneqq (1,X^1_{s,t},X^2_{s,t},\cdots)$
+			$S(x):\Delta_T \ni (s,t) \longmapsto 
+			(1,X^1_{s,t},X^2_{s,t},\cdots) \eqqcolon S(x)_{[s,t]}$
 			とおき，特に$S(x)_{[0,T]}$をパス$x$のシグネチャー(signature of path $x$)と呼ぶ．
 		\end{dfn}
 	\end{screen}
@@ -743,9 +747,10 @@
 			X^k_{s,t} = \sum_{j=0}^k X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}.
 			\label{eq:thm_signature_of_path_multiplicative_1}
 		\end{align}
-		が成り立つことを数学的帰納法により示す．
+		が成り立つことを数学的帰納法で示す．$k=0$ならシグネチャーの定義より両辺1であるから
+		(\refeq{eq:thm_signature_of_path_multiplicative_1})は満たされる．
 		\begin{description}
-			\item[第一段]$k=1$の場合，$X^1_{s,t} = x_t - x_s,\ (0 \leq \forall s \leq \forall t \leq T)$より
+			\item[第一段]$k=1$の場合，$X^1_{s,t} = x_t - x_s,\ (\forall (s,t) \in \Delta_T)$より
 				\begin{align}
 					\sum_{j=0}^1 X^j_{s,u} \otimes_{j,k} X^{k-j}_{u,t}
 					= X^0_{s,u} \otimes_{0,1} X^1_{u,t}
@@ -757,20 +762,20 @@
 				
 			\item[第二段]
 				$k=m-1\ (m \geq 2)$まで式(\refeq{eq:thm_signature_of_path_multiplicative_1})
-				が満たされると仮定するとき，任意の$D \in \delta[u,t]$に対して
+				が満たされていると仮定するとき，任意の$D \in \delta[u,t]$に対して
 				\begin{align}
-					\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i}
+					\sum_D \left\{ X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right\} \otimes_{m-1,m} X^1_{u_{i-1},u_i}
 					= \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\}
 					\label{eq:thm_signature_of_path_multiplicative_2}
 				\end{align}
-				が成り立つことを次段で示す．実際これが示されれば，$D' \in \delta[s,u]$として
+				となることを次段で示す．実際これが示されれば，$D' \in \delta[s,u]$に対し
 				\begin{align}
 					\compcrossnorm{X^m_{s,t} - \sum_{j=0}^m X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m}
 					&\leq \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
 						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
 						&\quad+ \compcrossnorm{\sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{s,u}}{m}
 						+ \compcrossnorm{\sum_{D} X^{m-1}_{u,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - X^m_{u,t}}{m} \\
-						&\quad+ \compcrossnorm{\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i} - 
+						&\quad+ \compcrossnorm{\sum_D \left\{ X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right\} \otimes_{m-1,m} X^1_{u_{i-1},u_i} - 
 						\sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} X^{m-j}_{u,t}}{m} \\
 					&= \compcrossnorm{X^m_{s,t} - \sum_{D'} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i} 
 						- \sum_{D} X^{m-1}_{s,u_{i-1}} \otimes_{m-1,m} X^1_{u_{i-1},u_i}}{m} \\
@@ -786,18 +791,18 @@
 						\compcrossnorm{\left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\} - X^{m-j}_{u,t}}{m-j} \\
 					&\longrightarrow 0 \quad (|D'|,|D| \longrightarrow 0)
 				\end{align}
-				が従い，$k=m$について(\refeq{eq:thm_signature_of_path_multiplicative_1})が得られる．
+				が従い，$k=m$の場合も(\refeq{eq:thm_signature_of_path_multiplicative_1})が成り立つ．
 				
 			\item[第三段]
 				式(\refeq{eq:thm_signature_of_path_multiplicative_2})を示す．仮定より
-				$k=m-1$に対して(\refeq{eq:thm_signature_of_path_multiplicative_2})は満たされているから，
+				$k=m-1$のとき(\refeq{eq:thm_signature_of_path_multiplicative_1})は満たされているから，
 				補題\ref{lem:associative_law}と併せれば
 				\begin{align}
-					\sum_D \left( X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i}
-					&= \sum_D \Biggl( \sum_{j=0}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \Biggr) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
-					&= \sum_D \Biggl( \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \Biggr) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
-					&= \sum_D \sum_{j=1}^{m-1} \left( X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \right) \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
-					&= \sum_{j=1}^{m-1} \sum_D X^j_{s,u} \otimes_{j,m-j} \left( X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right) \\
+					\sum_D \left\{ X^{m-1}_{s,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right\} \otimes_{m-1,m} X^1_{u_{i-1},u_i}
+					&= \sum_D \left\{ \sum_{j=0}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} - X^{m-1}_{u,u_{i-1}} \right\} \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_D \left\{ \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \right\} \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_D \sum_{j=1}^{m-1} \left\{ X^j_{s,u} \otimes_{j,m-1} X^{m-1-j}_{u,u_{i-1}} \right\} \otimes_{m-1,m} X^1_{u_{i-1},u_i} \\
+					&= \sum_{j=1}^{m-1} \sum_D X^j_{s,u} \otimes_{j,m-j} \left\{ X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\} \\
 					&= \sum_{j=1}^{m-1} X^j_{s,u} \otimes_{j,m} \left\{ \sum_D X^{m-1-j}_{u,u_{i-1}} \otimes_{m-1-j,m-j} X^1_{u_{i-1},u_i} \right\}
 				\end{align}
 				が成立する．
@@ -824,6 +829,8 @@
 			\begin{align}
 				d_p(X,Y) \coloneqq \max{1 \leq i \leq [p]}{\Norm{X^i - Y^i}{p/i}}.
 			\end{align}
+			ただし$X_{s,t} = (X_{s,t}^0,X_{s,t}^1,\cdots,X_{s,t}^{[p]}),\ ((s,t) \in \Delta_T)$に対して
+			$X^i:\Delta_T \ni (s,t) \longmapsto X^i_{s,t} \in V^{\otimes i},\ (1 \leq i \leq [p])$である．
 		\end{thm}
 	\end{screen}
 	
@@ -832,10 +839,11 @@
 	
 	\begin{prf}完備性を示す．
 		\begin{description}
-			\item[第一段] 極限を構成する．いま，
-			任意の$X = (X^0,X^1,\cdots,X^{[p]}) \in \Omega_p(V)$に対して
+			\item[第一段] 極限を構成する．任意の$Y \in \Omega_p(V)$に対して，
+			定理\ref{thm:fin_p_var_and_fin_ttl_p_var_is_equiv_for_multiplicative}より
+			$Y$は有限総$p$-変動であり
 			\begin{align}
-				X^i \in B_{p/i,T}\left( V^{\otimes i} \right),\footnotemark
+				Y^i \in B_{p/i,T}\left( V^{\otimes i} \right),\footnotemark
 				\quad (\forall i=1,\cdots,[p]) 
 			\end{align}
 			\footnotetext{
@@ -843,47 +851,42 @@
 				(p. \pageref{def:Banach_space_of_continuous_mapping_on_V})
 				の(\refeq{def:Banach_space_of_continuous_mapping_on_V})．
 			}
-			が満たされるから，定理\ref{thm:B_p_T_Banach_space_2}より$\Omega_p(V)$の任意のCauchy列
-			$\left( X^{(k)} = (X^{(k),0},\cdots,X^{(k),[p]}) \right)_{k=1}^{\infty}$
+			となるから，任意のCauchy列$\left\{ X^{(k)} \right\}_{k=1}^\infty \subset \Omega_p(V)$
 			に対して
 			\begin{align}
 				\Norm{X^{(k),i} - X^i}{p/i} \longrightarrow 0
 				\quad (k \longrightarrow \infty,\ \forall i=1,\cdots,[p])
 				\label{eq:thm_p_rough_path_complete_dist_2}
 			\end{align}
-			を満たす$X^i \in B_{p/i,T}\left( V^{\otimes i} \right)$が存在する．
+			を満たす$X^i \in B_{p/i,T}\left( V^{\otimes i} \right)$が存在する
+			(定理\ref{thm:B_p_T_Banach_space_2})．
 			ここで$X:\Delta_T \longrightarrow T^{([p])}(V)$を
 			\begin{align}
 				X_{s,t} \coloneqq (1,X^1_{s,t},\cdots,X^n_{s,t}),
 				\quad (\forall (s,t) \in \Delta_T)
 			\end{align}
-			により定めれば，(\refeq{eq:thm_p_rough_path_complete_dist_2})及び
+			により定めれば，
 			$X^i,\ i=1,\cdots,n$の連続性より
-			$X \in C_{0,p} \left(\Delta_T,T^{([p])}(V) \right)$となる．
+			$X \in C_0 \left(\Delta_T,T^{([p])}(V) \right)$が従う．
 		
 			\item[第二段] $X$が Chen's identity を満たすことを示す．
 			これが示されれば，前段の結果と
 			定理\ref{thm:fin_p_var_and_fin_ttl_p_var_is_equiv_for_multiplicative}
-			より$X$は有限$p$-変動となり$X \in \Omega_p(V)$が従う．各$1 \leq i \leq [p]$に対して
+			より$X$は有限$p$-変動となり$X \in \Omega_p(V)$が従う．任意の$1 \leq i \leq [p]$
+			と$0 \leq s \leq u \leq t \leq T$に対して
 			次が成立すればよい:
 			\begin{align}
-				X^i_{s,t} = \sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t},
-				\quad (\forall 0 \leq s \leq u \leq t \leq T).
+				X^i_{s,t} = \sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t}.
 				\label{eq:thm_p_rough_path_complete_dist_1}
 			\end{align}
 			実際，(\refeq{eq:thm_p_rough_path_complete_dist_2})より
 			\begin{align}
 				\compcrossnorm{X^{(k),i}_{s,t} - X^i_{s,t}}{i}
 				\leq \Norm{X^{(k),i} - X^i}{p/i} \longrightarrow 0,
-				\quad (k \longrightarrow \infty,\ \forall 0 \leq s \leq t \leq T)
+				\quad (k \longrightarrow \infty,\ \forall (s,t) \in \Delta_T,\ 
+				\forall i = 1,\cdots,[p])
 			\end{align}
-			が成り立ち，かつ定理\ref{thm:property_of_the_completion_of_the_projective_norm}より
-			\begin{align}
-				\compcrossnorm{X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t}}{i}
-				= \compcrossnorm{X^j_{s,u}}{j} \compcrossnorm{X^{i-j}_{u,t}}{i-j},
-				\quad (\forall 0 \leq j \leq i)
-			\end{align}
-			が満たされるから，任意の$0 \leq s \leq t \leq T$に対して
+			が成り立つから，任意の$0 \leq s \leq u \leq t \leq T$に対して
 			\begin{align}
 				\compcrossnorm{X^i_{s,t} - \sum_{j=0}^i X^j_{s,u} \otimes_{j,i} X^{i-j}_{u,t}}{i}
 				&\leq \compcrossnorm{X^i_{s,t} - X^{(k),i}_{s,t}}{i}
@@ -904,8 +907,25 @@
 		\end{description}
 	\end{prf}
 	
+	有界変動かつ連続な$x:[0,T] \longrightarrow V$で定める$S(x)$は，
+	任意の$p \geq 1$に対して$S_{[p]}(x) \in \Omega_p(V)$を満たす．実際，
+	定理\ref{thm:signature_of_path_multiplicative}より$S_{[p]}(x)$は$[p]$次乗法的であり，
+	また定理\ref{lem:signature_of_path}と
+	定理\ref{thm:p_variation_monotonously_decreasing_2}より
+	\begin{align}
+		\Norm{X^i}{p/i} \leq \Norm{X^i}{1} < \infty,
+		\quad (\forall i = 1,\cdots,[p])
+	\end{align}
+	が満たされる．乗法的汎関数に対して有限総$p$-変動と有限$p$-変動は同値になるから
+	$S_{[p]}(x) \in \Omega_p(V)$が従う．
+	
 	\begin{screen}
 		\begin{dfn}[スムースラフパス]
-			
+			$p \geq 1$とする．
+			このとき有界変動かつ連続な$x:[0,T] \longrightarrow V$で定める$S(x)$は
+			$S_{[p]}(x) \in \Omega_p(V)$を満たす．
+			この$S_{[p]}(x)$をスムースラフパス(smooth rough path)と呼び，
+			スムースラフパス全体の$d_p$による位相での閉包を$G\Omega_p(V)$と書き，
+			その元を$p$-ジオメトリックラフパス($p$-geometric rough path)と呼ぶ．
 		\end{dfn}
 	\end{screen}
