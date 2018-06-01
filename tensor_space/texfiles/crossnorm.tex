@@ -85,42 +85,43 @@
 				$v = 0$なら任意の$x_1^* \otimes \cdots \otimes x_n^*$について
 				$x_1^* \otimes \cdots \otimes x_n^* (v) = 0$
 				が成り立ち$\epsilon(v) = 0$が出る．
-				逆に$v \neq 0$とするとき，定理\ref{thm:tensor_product_is_bilinear}より
+				逆に$v \neq 0$とするとき，$X_i$の基底
+				$\left\{u^i_{\lambda_i}\right\}_{\lambda_i \in \Lambda_i},\ (i=1,\cdots,n)$
+				を用いて
 				\begin{align}
-					v = \sum_{j=1}^{m} x^j_1 \otimes \cdots \otimes x^j_n,
-					\quad (x^j_i \in X_i,\ j=1,\cdots,m,\ i=1,\cdots,n)
+					v = \sum_{j=1}^{m} c_j u^1_{\lambda^j_1} \otimes \cdots \otimes u^n_{\lambda^j_n},
+					\quad (c_j \neq 0,\ j=1,\cdots,m)
 				\end{align}
-				と表現できるが，定理\ref{thm:when_tensor_product_zero}より
-				$x^1_i \neq 0\ (i=1,\cdots,n)$と仮定できる．
-				$x^1_1$について，
-				もし全ての$2 \leq j \leq m$に対し$x^j_1 = x^1_1$が満たされているなら，
+				と表現できる．
+				$u^1_{\lambda^1_1}$について，
+				もし全ての$2 \leq j \leq m$に対し$u^1_{\lambda^j_1} = u^1_{\lambda^1_1}$が満たされているなら，
 				$\hat{x}_1^* \in X_1^*$を
 				\begin{align}
-					\inprod<x^1_1, \hat{x}_1^*> = \Norm{x^1_1}{X_1},
+					\inprod<u^1_{\lambda^1_1}, \hat{x}_1^*> = \Norm{u^1_{\lambda^1_1}}{X_1},
 					\quad \Norm{\hat{x}_1^*}{X^*_1} = 1
 				\end{align}
-				を満たすように選ぶ(Hahn-Banachの定理)．$x^j_1 \neq x^1_1$を満たす$j$がある場合，
+				を満たすように選ぶ(Hahn-Banachの定理)．$u^1_{\lambda^j_1} \neq u^1_{\lambda^1_1}$を満たす$j$がある場合，
 				\begin{align}
-					L_1 \coloneqq \Span{\Set{x^j_1}{2 \leq j \leq m,\ x^1_1 \neq x^j_1}}
+					L_1 \coloneqq \Span{\Set{u^1_{\lambda^j_1}}{2 \leq j \leq m,\ u^1_{\lambda^j_1} \neq u^1_{\lambda^1_1}}}
 				\end{align}
-				により閉部分空間を定めれば$x^1_1$と$L_1$との距離$d_1$は正であり，Hahn-Banachの定理より
+				により閉部分空間を定めれば$u^1_{\lambda^1_1}$と$L_1$との距離$d_1$は正であり，Hahn-Banachの定理より
 				\begin{align}
 					\inprod<x_1,\hat{x}_1^*> = 0\ (\forall x_1 \in L_1),
-					\quad \inprod<x^1_1,\hat{x}_1^*> = d_1 > 0,
+					\quad \inprod<u^1_{\lambda^1_1},\hat{x}_1^*> = d_1 > 0,
 					\quad \Norm{\hat{x}_1^*}{X_1^*} = 1
 				\end{align}
 				を満たす$\hat{x}_1^* \in X_1^*$を取ることができる．
 				同様に$\hat{x}_i^* \in X_i^*\ (i=2,\cdots,n)$を選べば
 				\begin{align}
-					\hat{x}_1^* \otimes \cdots \otimes \hat{x}_n^*(x^j_1 \otimes \cdots \otimes x^j_n) =
+					\hat{x}_1^* \otimes \cdots \otimes \hat{x}_n^* \left(u^1_{\lambda^j_1} \otimes \cdots \otimes u^n_{\lambda^j_n} \right) =
 					\begin{cases}
-						\hat{x}_1^* \otimes \cdots \otimes \hat{x}_n^*(x^1_1 \otimes \cdots \otimes x^1_n), & (x^j_i = x^1_i,\ i=1,\cdots,n), \\
+						\hat{x}_1^* \otimes \cdots \otimes \hat{x}_n^* \left( u^1_{\lambda^1_1} \otimes \cdots \otimes u^n_{\lambda^1_n} \right), & \left(u^i_{\lambda^j_i} = u^i_{\lambda^1_i},\ i=1,\cdots,n \right), \\
 						0, & (\mbox{o.w.}),
 					\end{cases}
 				\end{align}
 				$(j=2,\cdots,m)$が満たされるから
 				\begin{align}
-					0 < \hat{x}_1^* \otimes \cdots \otimes \hat{x}_n^*(x^1_1 \otimes \cdots \otimes x^1_n) 
+					0 < |c_1| \hat{x}_1^* \otimes \cdots \otimes \hat{x}_n^* \left( u^1_{\lambda^1_1} \otimes \cdots \otimes u^n_{\lambda^1_n} \right)
 					\leq \left| \hat{x}_1^* \otimes \cdots \otimes \hat{x}_n^* (v) \right|
 					\leq \epsilon(v)
 					\label{eq:thm_injective_norm_is_the_minimum_cross_norm_1}
