@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  11 JUN 2018 09:08
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  26 JUN 2018 11:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -590,44 +590,44 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (./texfiles/proof_of_continuity_theorem.tex [5] [6] [7] [8] [9] [10] [11]
 Excluding 'comment' comment. [12] [13] [14] [15] [16] [17] [18])
 (./texfiles/p_rough_path.tex [19] [20] [21] [22] [23] [24] [25] [26] [27]
-[28] [29] [30])
-Underfull \hbox (badness 10000) in paragraph at lines 932--143
+[28] [29] [30]) (./texfiles/continuity_theorem_2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 932--1
 
  []
 
-[31]
+[31] [32]) [33]
 付録A
-(./texfiles/multilinear_mapping.tex [32
+(./texfiles/multilinear_mapping.tex [34
 
-] [33] [34] [35])
+] [35] [36] [37])
 (./texfiles/completion_of_normed_space.tex <xymatrix 3x2 223> <xymatrix 3x2
-223> [36] [37]) (./texfiles/tensor_product_multiple.tex [38] [39] <xymatrix
-3x2 200> <xymatrix 3x2 200> [40] [41] [42] [43] [44] <xymatrix 3x2 158>
+223> [38] [39]) (./texfiles/tensor_product_multiple.tex [40] [41] <xymatrix
+3x2 200> <xymatrix 3x2 200> [42] [43] [44] [45] [46] <xymatrix 3x2 158>
 <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158>
-<xymatrix 3x2 158> [45] <xymatrix 3x2 158> <xymatrix 3x2 158>)
-(./texfiles/crossnorm.tex [46] [47] [48] [49] [50] [51] [52])
-(./texfiles/tensor_product_hilbert.tex [53] [54])
-Underfull \hbox (badness 10000) in paragraph at lines 190--164
+<xymatrix 3x2 158> [47] <xymatrix 3x2 158> <xymatrix 3x2 158>)
+(./texfiles/crossnorm.tex [48] [49] [50] [51] [52] [53] [54])
+(./texfiles/tensor_product_hilbert.tex [55] [56])
+Underfull \hbox (badness 10000) in paragraph at lines 190--165
 
  []
 
-[55] [56]
-Underfull \hbox (badness 2538) in paragraph at lines 172--173
+[57] [58]
+Underfull \hbox (badness 2538) in paragraph at lines 173--174
 []\OT1/txr/m/n/10 mathoverFlow, avail-able from https://mathoverflow.net/questi
 ons/277070/tensor-product-space-with-projective-
  []
 
 No file Aida_sensei_note.ind.
-[57
+[59
 
 ] (./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
- 4711 strings out of 493621
- 61980 string characters out of 6150087
- 159076 words of memory out of 5000000
- 8179 multiletter control sequences out of 15000+600000
+ 4718 strings out of 493621
+ 62334 string characters out of 6150087
+ 159104 words of memory out of 5000000
+ 8183 multiletter control sequences out of 15000+600000
  39809 words of font info for 147 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 28i,24n,26p,316b,757s stack positions out of 5000i,500n,10000p,500000b,80000s
+ 28i,24n,26p,317b,757s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (59 pages, 415944 bytes).
+Output written on Aida_sensei_note.dvi (61 pages, 430872 bytes).

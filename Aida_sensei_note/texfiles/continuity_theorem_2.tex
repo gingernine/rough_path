@@ -1,0 +1,92 @@
+\section{2018/06/15 課題}
+	$x \in C^1([0,T] \longrightarrow \R),\ f \in C^\infty(\R \longrightarrow \R)$
+	及び連続なパス$\bar{x}:[0,T] \longrightarrow \R$に対し，Riemann-Stieltjes積分を
+	\begin{align}
+		I_{s,t}(\bar{x}) \coloneqq \int_s^t f(\bar{x}_u)\ dx_u,
+		\quad (\forall [s,t] \subset [0,T])
+	\end{align}
+	とおく．このとき，任意の$n \geq 1$に対して
+	\begin{align}
+		I_{s,t}(\bar{x}) 
+		&= \int_s^t f(\bar{x}_u) - f(\bar{x}_s) + f(\bar{x}_s)\ dx_u \\
+		&= f(\bar{x}_s) X^1_{s,t} + \int_s^t \int_0^1 f^{(1)}(\bar{x}_s + \theta_1(\bar{x}_u - \bar{x}_s))(\bar{x}_u - \bar{x}_s)\ d\theta_1\ dx_u \\
+		&= f(\bar{x}_s) X^1_{s,t} + f^{(1)}(\bar{x}_s) X^2_{s,t}
+			+ \int_s^t \int_0^1 \left\{f^{(1)}(\bar{x}_s + \theta_1(\bar{x}_u - \bar{x}_s)) - f^{(1)}(\bar{x}_s) \right\}(\bar{x}_u - \bar{x}_s)\ d\theta_1\ dx_u \\
+		&= f(\bar{x}_s) X^1_{s,t} + f^{(1)}(\bar{x}_s) X^2_{s,t}
+			+ \int_s^t \int_0^1 \int_0^{\theta_1} f^{(2)}(\bar{x}_s + \theta_2(\bar{x}_u - \bar{x}_s))(\bar{x}_u - \bar{x}_s)^2\ d\theta_2\ d\theta_1\ dx_u \\
+		&= f(\bar{x}_s) X^1_{s,t} + f^{(1)}(\bar{x}_s) X^2_{s,t} + \frac{1}{2} f^{(2)}(\bar{x}_s) X^3_{s,t} \\
+			&\quad + \int_s^t \int_0^1 \int_0^{\theta_1} \left\{ f^{(2)}(\bar{x}_s + \theta_2(\bar{x}_u - \bar{x}_s)) - f^{(2)}(\bar{x}_s) \right\}(\bar{x}_u - \bar{x}_s)^2\ d\theta_2\ d\theta_1\ dx_u \\
+		&=\cdots \\
+		&= f(\bar{x}_s) X^1_{s,t} + f^{(1)}(\bar{x}_s) X^2_{s,t} + \frac{1}{2} f^{(2)}(\bar{x}_s) X^3_{s,t} + \cdots + \frac{1}{(n-1)!} f^{(n-1)}(\bar{x}_s) X^n_{s,t} \\
+			&\quad + \int_s^t \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_s + \theta_n(\bar{x}_u - \bar{x}_s))(\bar{x}_u - \bar{x}_s)^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u
+	\end{align}
+	が成立する．ここで
+	\begin{align}
+		J^n_{s,t}(x) &\coloneqq f(\bar{x}_s) X^1_{s,t} + f^{(1)}(\bar{x}_s) X^2_{s,t} + \frac{1}{2} f^{(2)}(\bar{x}_s) X^3_{s,t} + \cdots + \frac{1}{(n-1)!} f^{(n-1)}(\bar{x}_s) X^n_{s,t} \\
+		&= \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{x}_s) X^j_{s,t}
+	\end{align}
+	とおく．
+	
+	\begin{screen}
+		\begin{thm}
+			$[s,t] \subset [0,T],\ x \in C^1([0,T] \longrightarrow \R),\ f \in C^\infty(\R \longrightarrow \R),
+			\ n \geq 1$と連続なパス$\bar{x}:[0,T] \longrightarrow \R$に対し
+			\begin{align}
+				J^n_{s,t}(\bar{x},D) \coloneqq \sum_D J^n_{t_{i-1},t_i}(\bar{x}),
+				\quad (D \in \delta[s,t])
+			\end{align}
+			とおけば次が成立する:
+			\begin{align}
+				I_{s,t}(\bar{x}) = \lim_{|D| \to 0} J^n_{s,t}(\bar{x},D).
+				\label{eq:thm_approximation_of_RS_integral_by_high_order_derivatives_1}
+			\end{align}
+		\end{thm}
+	\end{screen}
+	
+	\begin{prf}
+		任意の$D \in \delta[s,t]$に対して$I_{s,t}(\bar{x}) = \sum_D I_{t_{i-1},t_i}(\bar{x})$であるから，
+		\begin{align}
+			\sum_D \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u
+			\longrightarrow 0,
+			\quad (|D| \longrightarrow 0)
+			\label{eq:thm_approximation_of_RS_integral_by_high_order_derivatives_2}
+		\end{align}
+		となることを示せば(\refeq{eq:thm_approximation_of_RS_integral_by_high_order_derivatives_1})が従う．実際これが示されれば
+		\begin{align}
+			\left| I_{s,t}(\bar{x}) - J^n_{s,t}(\bar{x},D) \right|
+			&\leq \left| I_{s,t}(\bar{x}) - \sum_D I_{t_{i-1},t_i}(\bar{x}) \right|
+				+ \left|  \sum_D I_{t_{i-1},t_i}(\bar{x}) -  \sum_D J^n_{t_{i-1},t_i}(\bar{x}) \right| \\
+			&= \left| \sum_D \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u \right| \\
+			&\longrightarrow 0
+			\quad (|D| \longrightarrow 0)
+		\end{align}
+		がでる．(\refeq{eq:thm_approximation_of_RS_integral_by_high_order_derivatives_2})を示す．
+		$\bar{x}$の連続性より
+		\begin{align}
+			\Set{\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}})}{u \in [t_{i-1},t_i],\ t_{i-1},t_i \in D,\ 0 \leq \theta_n \leq 1,\ D \in \delta[s,t]} \subset K
+		\end{align}
+		を満たすコンパクト集合$K \subset \R$が存在するから，
+		\begin{align}
+			M \coloneqq \sup{x \in K}{\left| f^{(n)}(x) \right|}
+		\end{align}
+		とおけば
+		\begin{align}
+			&\left| \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u \right| \\
+			&\qquad \leq \frac{1}{n!} M \int_{t_{i-1}}^{t_i} \left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^n |\dot{x}_u|\ du \\
+			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} \int_{t_{i-1}}^{t_i} \left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^n\ du　\\
+			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} \sup{\substack{t_{i-1} \leq u \leq t_i \\ t_{i-1},t_i \in D}}{\left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|} \int_{t_{i-1}}^{t_i} \left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^{n-1}\ du
+		\end{align}
+		が成立する．補題\ref{lem:signature_of_path}より
+		\begin{align}
+			v \coloneqq \sup{D \in \delta[s,t]}{\sum_D \int_{t_{i-1}}^{t_i} \left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^{n-1}\ du} < \infty
+		\end{align}
+		が満たされ，$\bar{x}$の一様連続性より
+		\begin{align}
+			&\left| \sum_D \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u \right| \\
+			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} v \sup{\substack{t_{i-1} \leq u \leq t_i \\ t_{i-1},t_i \in D}}{\left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|}
+			\longrightarrow 0
+			\quad (|D| \longrightarrow 0)
+		\end{align}
+		となる．
+		\QED
+	\end{prf}
