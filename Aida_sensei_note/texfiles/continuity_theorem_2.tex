@@ -90,7 +90,7 @@
 				\begin{align}
 					\omega(\alpha,\beta) &\coloneqq
 					\Norm{\bar{X}^1}{p,[\alpha,\beta]}^p + \Norm{\bar{Y}^1}{p,[\alpha,\beta]}^p + \Norm{Y^1}{p,[\alpha,\beta]}^p + \Norm{Y^2}{p/2,[\alpha,\beta]}^{p/2} \\
-					&\quad + \epsilon^{-p} \Norm{\bar{X}^1 - \bar{Y}^1}{p,[\alpha,\beta]}^p + \epsilon^{-p/2} \Norm{X^2 - Y^2}{p/2,[\alpha,\beta]}^{p/2}
+					&\quad + \epsilon^{-p} \Norm{\bar{X}^1 - \bar{Y}^1}{p,[\alpha,\beta]}^p + \epsilon^{-p} \Norm{X^1 - Y^1}{p,[\alpha,\beta]}^p + \epsilon^{-p/2} \Norm{X^2 - Y^2}{p/2,[\alpha,\beta]}^{p/2}
 				\end{align}
 				で定める．
 				
@@ -135,7 +135,7 @@
 				が成り立つから，
 				\begin{align}
 					&\left| \left\{ J^2_{s,t}(x,\bar{x},D_{-k}) - J^2_{s,t}(x,\bar{x},D_{-k-1}) \right\} - \left\{ J^2_{s,t}(y,\bar{y},D_{-k}) - J^2_{s,t}(y,\bar{y},D_{-k-1}) \right\} \right| \\
-					&\quad \leq M \left| \bar{X}^1_{t_{k-1},t_k} \right|^2 \left| X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right| \\
+					&\leq M \left| \bar{X}^1_{t_{k-1},t_k} \right|^2 \left| X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right| \\
 						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} \right| \left|\bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k}\right| \left| Y^1_{t_k,t_{k+1}} \right| \\
 						&\quad + M \left| \bar{X}^1_{0,t_{k-1}} - \bar{Y}^1_{0,t_{k-1}} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
 						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
@@ -143,9 +143,34 @@
 						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| X^2_{t_k,t_{k+1}} - Y^2_{t_k,t_{k+1}} \right| \\
 						&\quad + M \left| \bar{X}^1_{0,t_{k-1}} - \bar{Y}^1_{0,t_{k-1}} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
 						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right|
+						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
+					&\leq \epsilon M \left[ 5 + 2\omega(0,t_{k-1})^{1/p} + 2\omega(t_{k-1},t_k)^{1/p} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p}
 				\end{align}
+				となる．
 				
+			\item[第四段]
+				\begin{align}
+					&\left| J^2_{s,t}(x,\bar{x}) - J^2_{s,t}(y,\bar{y}) \right| \\
+					&\leq \left| f(\bar{x}_s) X^1_{s,t} - f(\bar{y}_s) Y^1_{s,t} \right| + \left| f^{(1)}(\bar{x}_s) X^2_{s,t} - f^{(1)}(\bar{y}_s) Y^2_{s,t} \right| \\
+					&\leq \left| f(\bar{x}_s) X^1_{s,t} - f(\bar{x}_s) Y^1_{s,t} \right| + \left| f(\bar{x}_s) Y^1_{s,t} - f(\bar{y}_s) Y^1_{s,t} \right| \\
+						&\quad + \left| f^{(1)}(\bar{x}_s) X^2_{s,t} - f^{(1)}(\bar{x}_s) Y^2_{s,t} \right| + \left| f^{(1)}(\bar{x}_s) Y^2_{s,t} - f^{(1)}(\bar{y}_s) Y^2_{s,t} \right| \\
+					&\leq M \left| X^1_{s,t} - Y^1_{s,t} \right| + M \left| \bar{X}^1_{0,s} - \bar{Y}^1_{0,s} \right| \left| Y^1_{s,t} \right|
+						+ M \left| X^2_{s,t} - Y^2_{s,t} \right| + M \left| \bar{X}^1_{0,s} - \bar{Y}^1_{0,s} \right| \left| Y^2_{s,t} \right| \\
+					&\leq \epsilon M \left[ \omega(0,T)^{1/p} + 2\omega(0,T)^{2/p} + \omega(0,T)^{3/p} \right]
+				\end{align}
+				が成り立つ．
+				
+			\item[第五段]
+				任意の$D \in \delta[s,t]$に対し
+				\begin{align}
+					\left| J^2_{s,t}(x,\bar{x},D) - J^2_{s,t}(y,\bar{y},D) \right| \leq \epsilon C
+				\end{align}
+				が成り立つから，$|D| \longrightarrow 0$として
+				\begin{align}
+					\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C
+				\end{align}
+				が成り立つ．
+				\QED
 		\end{description}
 	\end{prf}
 	
