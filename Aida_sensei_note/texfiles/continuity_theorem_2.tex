@@ -102,5 +102,11 @@
 				&\quad + f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) X^2_{t_k,t_{k+1}}
 					+ \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}})X^3_{t_{k-1},t_k} + \frac{1}{2!} f^{(2)}(\bar{x}_{t_k})X^3_{t_k,t_{k+1}} - \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}})X^3_{t_{k-1},t_{k+1}} \\
 				&\quad + \sum_{j=3}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
+			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
+				&\quad + \int_0^1 \left\{ f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) - f^{(2)}(\bar{x}_{t_{k-1}}) \right\}(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})\ d\theta\ X^2_{t_k,t_{k+1}} \\
+				&\quad + \frac{1}{2!}\left\{ f^{(2)}(\bar{x}_{t_k}) - f^{(2)}(\bar{x}_{t_{k-1}}) \right\} X^3_{t_k,t_{k+1}}
+					- \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2X^1_{t_k,t_{k+1}} \\
+				&\quad + \sum_{j=3}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
+			&= 
 		\end{align}
 	\end{prf}
