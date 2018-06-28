@@ -235,10 +235,9 @@
 				&\quad + \frac{1}{4!} f^{(5)}(\bar{x}_{t_{k-1}})(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) X^5_{t_k,t_{k+1}}
 					+ \frac{1}{5!} f^{(5)}(\bar{x}_{t_{k-1}})X^6_{t_{k-1},t_k} + \frac{1}{5!} f^{(5)}(\bar{x}_{t_k})X^6_{t_k,t_{k+1}} - \frac{1}{5!} f^{(5)}(\bar{x}_{t_{k-1}})X^6_{t_{k-1},t_{k+1}} \\
 				&\quad + \sum_{j=7}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \sum_{j=0}^{n-2} \Biggl\{ \frac{1}{j!} \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^{j+1}_{t_k,t_{k+1}} \Biggr. \\
-				&\qquad - \Biggl. \frac{1}{j!} f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} X^{i+1}_{t_k,t_{k+1}} \Biggr\} \\
-				&\quad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}} \\
-				&\qquad - \frac{1}{(n-1)!} f^{(n-1)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{n-3} \binom{n-1}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{n-1-i} X^{i+1}_{t_k,t_{k+1}}
+			&= \sum_{j=0}^{n-2} \left\{ \frac{1}{j!} \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^{j+1}_{t_k,t_{k+1}} \right\} \\
+				&\qquad - \sum_{j=0}^{n-1} \left\{ \frac{1}{j!} f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} X^{i+1}_{t_k,t_{k+1}} \right\} \\
+				&\qquad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}} \\
 		\end{align}
 	\end{prf}
 	より
@@ -267,21 +266,24 @@
 			+ \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right| \right. \\
 			&\qquad \left. + \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right|
 			+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right| \right) \\
-		&\quad + \sum_{j=0}^{n-1} \frac{1}{j!} M \sum_{i=0}^{j-2} \binom{j}{i} \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|^{j-i} \left|X^{i+1}_{t_k,t_{k+1}} - Y^{i+1}_{t_k,t_{k+1}}\right| \right.
+			&\quad + \sum_{j=0}^{n-1} \frac{1}{j!} M \sum_{i=0}^{j-2} \binom{j}{i} \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|^{j-i} \left|X^{i+1}_{t_k,t_{k+1}} - Y^{i+1}_{t_k,t_{k+1}}\right| \right.
 			+ \sum_{\ell=0}^{j-i-2} \left|\bar{X}^1_{t_{k-1},t_k}\right|^{j-i-1-\ell} \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^\ell \left|Y^{i+1}_{t_k,t_{k+1}}\right| \\
 			&\qquad \left. + \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right| \left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^{j-i-1} \left|Y^{i+1}_{t_k,t_{k+1}}\right|
 			+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^{j-i-1} \left|Y^{i+1}_{t_k,t_{k+1}}\right| \right) \\
-		&\quad + \frac{1}{(n-1)!}M \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|\left|X^n_{t_k,t_{k+1}} - Y^n_{t_k,t_{k+1}}\right|
+			&\quad + \frac{1}{(n-1)!}M \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|\left|X^n_{t_k,t_{k+1}} - Y^n_{t_k,t_{k+1}}\right|
 			+ \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right| \right. \\
 			&\qquad \left. + \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right|
 			+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right| \right) \\
 		&\leq \epsilon M \sum_{j=0}^{n-2} \frac{1}{j!} \left\{ 3 \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} 
 			+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} \right. \\ 
 			&\qquad \left. + \omega(t_k,t_{k+1})^{1/p} \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} \right\} \\
-		&\quad + \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j-i+1) \omega(t_{k-1},t_k)^{(j-i)/p} \omega(t_k,t_{k+1})^{(i+1)/p} 
+			&\quad + \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j-i+1) \omega(t_{k-1},t_k)^{(j-i)/p} \omega(t_k,t_{k+1})^{(i+1)/p} 
 			+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{(j-i)/p} \omega(t_k,t_{k+1})^{(i+1)/p} \right\} \\
-		&\quad + \epsilon M \frac{1}{(n-1)!} \left\{ 2 \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} 
+			&\quad + \epsilon M \frac{1}{(n-1)!} \left\{ 2 \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} 
 			+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} \right. \\ 
 			&\qquad \left. + \omega(t_k,t_{k+1})^{1/p} \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} \right\} \\
+		&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/p} 
+			+ \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j+1) + \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+1)/p} \\
+		&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p}  
 	\end{align}
 	
