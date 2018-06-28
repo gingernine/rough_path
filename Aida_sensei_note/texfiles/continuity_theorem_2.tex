@@ -284,6 +284,37 @@
 			&\qquad \left. + \omega(t_k,t_{k+1})^{1/p} \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} \right\} \\
 		&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/p} 
 			+ \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j+1) + \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+1)/p} \\
-		&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p}  
+		&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p} \\
+			&\quad + \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} 2^j \left\{ (j+1) + \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+1)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p} \\
+		&\leq \epsilon M \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(0,T)^{3/(n+1)} \left\{ \sum_{j=0}^{n-1} \frac{1}{j!} \left[ \omega(0,T)^{1/(n+1)} \right]^j \right\} \left( \frac{2\omega(s,t)}{N-k-1} \right)^{(n+1)/p} \\
+			&\quad + \epsilon M 2 \omega(0,T)^{2/(n+1)} \left\{ \sum_{j=1}^{n-1} \frac{1}{(j-1)!} 2^{j-1} \left[ \omega(0,T)^{1/(n+1)} \right]^{j-1} \right\} \left( \frac{2\omega(s,t)}{N-k-1} \right)^{(n+1)/p} \\
+			&\quad + \epsilon M \left\{ 1 + \omega(0,T)^{1/p} \right\} \omega(0,T)^{1/(n+1)} \left\{ \sum_{j=0}^{n-1} \frac{1}{j!} 2^j \left[ \omega(0,T)^{1/(n+1)} \right]^j \right\} \left( \frac{2\omega(s,t)}{N-k-1} \right)^{(n+1)/p} \\
+		&\leq \epsilon M \left[ \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(0,T)^{3/(n+1)} e^{\omega(0,T)^{1/(n+1)}}
+			+ 2 \omega(0,T)^{2/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right. \\
+			&\quad + \left. \left\{ 1 + \omega(0,T)^{1/p} \right\} \omega(0,T)^{1/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{(n+1)/p}
 	\end{align}
-	
+	となる．一方で
+	\begin{align}
+		\left\{ J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right\}
+		&= \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{x}_s) X^j_{s,t}
+			- \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{y}_s) Y^j_{s,t} \\
+		&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_s) \left( X^j_{s,t} - Y^j_{s,t} \right) + \left( f^{(j-1)}(\bar{x}_s) - f^{(j-1)}(\bar{y}_s) \right) Y^j_{s,t} \right\} \\
+		&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_s) \left( X^j_{s,t} - Y^j_{s,t} \right) + \int_0^1 f^{(j-1)}(\bar{y}_s + \theta(\bar{x}_s - \bar{y}_s)\ d\theta \left( \bar{X}^1_{0,s} - \bar{Y}^1_{0,s} \right) Y^j_{s,t} \right\}
+	\end{align}
+	が成り立つから
+	\begin{align}
+		\left| J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right|
+		\leq \sum_{j=1}^n \frac{1}{(j-1)!} \epsilon M \left\{ \omega(s,t)^{j/p} + \omega(0,s)^{1/p} \omega(s,t)^{j/p} \right\}
+		\leq \epsilon M \left( e^{\omega(s,t)^{1/p}} + \omega(0,s)^{1/p} e^{\omega(s,t)^{1/p}} \right)
+	\end{align}
+	が成り立つ．従って
+	\begin{align}
+		\left| J^n_{s,t}(x,\bar{x},D) - J^n_{s,t}(y,\bar{y},D) \right|
+		\leq \epsilon C
+	\end{align}
+	が成立し，$|D| \longrightarrow 0$として
+	\begin{align}
+		\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C
+	\end{align}
+	が出る．
+	\QED
