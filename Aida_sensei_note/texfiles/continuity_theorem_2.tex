@@ -5,7 +5,12 @@
 		I_{s,t}(x,\bar{x}) \coloneqq \int_s^t f(\bar{x}_u)\ dx_u,
 		\quad (\forall [s,t] \subset [0,T])
 	\end{align}
-	とおく．このとき，任意の$n \geq 1$に対して
+	とおく．また，任意の$[s,t] \subset [0,T]$に対して次の逐次積分を定める:
+	\begin{align}
+		X^k_{s,t} \coloneqq \int_s^t (\bar{x}_u-\bar{x}_s)^{k-1}\ dx_u,
+		\quad (k=1,2,3,\cdots).
+	\end{align}
+	このとき任意の$n \geq 1$に対して
 	\begin{align}
 		I_{s,t}(x,\bar{x}) 
 		&= \int_s^t f(\bar{x}_u) - f(\bar{x}_s) + f(\bar{x}_s)\ dx_u \\
@@ -25,7 +30,7 @@
 		J^n_{s,t}(x,\bar{x}) &\coloneqq f(\bar{x}_s) X^1_{s,t} + f^{(1)}(\bar{x}_s) X^2_{s,t} + \frac{1}{2} f^{(2)}(\bar{x}_s) X^3_{s,t} + \cdots + \frac{1}{(n-1)!} f^{(n-1)}(\bar{x}_s) X^n_{s,t} \\
 		&= \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{x}_s) X^j_{s,t}
 	\end{align}
-	とおく．
+	とおけば次の主張を得る．
 	
 	\begin{screen}
 		\begin{thm}\label{thm:approximation_of_RS_integral_by_high_order_derivatives}
@@ -60,7 +65,7 @@
 			&\longrightarrow 0
 			\quad (|D| \longrightarrow 0)
 		\end{align}
-		がでる．(\refeq{eq:thm_approximation_of_RS_integral_by_high_order_derivatives_2})を示す．
+		が従う．(\refeq{eq:thm_approximation_of_RS_integral_by_high_order_derivatives_2})を示す．
 		$K \coloneqq \sup{u \in [s,t]}{|\bar{x}_u|}$として
 		\begin{align}
 			M \coloneqq \sup{x \in [-3K,3K]}{\left| f^{(n)}(x) \right|} < \infty
@@ -85,28 +90,30 @@
 	\end{prf}
 	
 	\begin{screen}
-		\begin{thm}[連続性定理の拡張]
-			$n \geq 1$，$n \leq p < n+1$とする．また$\bar{x}_0 = \bar{y}_0$を満たし$p$変動が有限値である
-			連続パス$\bar{x},\bar{y}:[0,T] \longrightarrow \R$，
-			$x,y \in C^1([0,T] \longrightarrow \R)$，$f \in C^\infty_b(\R \longrightarrow \R)$\footnotemark
-			及び$0 < \epsilon ,R < \infty$を任意に取り，
+		\begin{thm}[連続性定理拡張]
+			$n \geq 1,\ n \leq p < n+1,\ f \in C^\infty_b(\R \longrightarrow \R)$\footnotemark とする．
+			また連続なパス$\bar{x},\bar{y}:[0,T] \longrightarrow \R$と
+			$x,y \in C^1([0,T] \longrightarrow \R)$に対し
 			\begin{align}
 				X^k_{s,t} &\coloneqq \int_s^t (\bar{x}_u - \bar{x}_s)^{k-1}\ dx_u,
 				\quad Y^k_{s,t} \coloneqq \int_s^t (\bar{y}_u - \bar{y}_s)^{k-1}\ dy_u,
 				\quad k=1,2,\cdots,n, \\
 				\bar{X}^1_{s,t} &\coloneqq \bar{x}_t - \bar{x}_s,
-				\quad \bar{Y}^1_{s,t} \coloneqq \bar{y}_t - \bar{y}_s
+				\quad \bar{Y}^1_{s,t} \coloneqq \bar{y}_t - \bar{y}_s,
+				\quad (0 \leq s \leq t \leq T)
 			\end{align}
-			とおく．このとき
+			とおく．任意に$0 < \epsilon, R < \infty$を取るとき，
+			$\bar{x}_0 = \bar{y}_0$かつ
 			\begin{align}
 				\Norm{\bar{X}^1}{p},\ \Norm{\bar{Y}^1}{p},\ \Norm{Y^j}{p/j} &\leq R,
 				\quad j=1,2,\cdots,n, \\
 				\Norm{\bar{X}^1 - \bar{Y}^1}{p},\ \Norm{X^j - Y^j}{p/j} &\leq \epsilon,
 				\quad j=1,2,\cdots,n
 			\end{align}
-			なら，或る定数$C = C(n,p,R,f)$が存在して，任意の$[s,t] \subset [0,T]$に対して次を満たす:
+			ならば或る定数$C = C(n,p,R,f)$が存在して次を満たす:
 			\begin{align}
-				\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C.
+				\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C,
+				\quad (\forall [s,t] \subset [0,T]).
 			\end{align}
 		\end{thm}
 	\end{screen}
