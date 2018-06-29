@@ -46,8 +46,8 @@
 	\begin{prf}
 		任意の$D \in \delta[s,t]$に対して$I_{s,t}(x,\bar{x}) = \sum_D I_{t_{i-1},t_i}(x,\bar{x})$であるから，
 		\begin{align}
-			\sum_D \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u
-			\longrightarrow 0,
+			&\sum_D \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u \\
+			&\qquad \longrightarrow 0,
 			\quad (|D| \longrightarrow 0)
 			\label{eq:thm_approximation_of_RS_integral_by_high_order_derivatives_2}
 		\end{align}
@@ -84,6 +84,207 @@
 		\QED
 	\end{prf}
 	
+	\begin{screen}
+		\begin{thm}[連続性定理の拡張]
+			$n \geq 1$，$n \leq p < n+1$とする．また$\bar{x}_0 = \bar{y}_0$を満たし$p$変動が有界である
+			連続パス$\bar{x},\bar{y}:[0,T] \longrightarrow \R$，
+			$x,y \in C^1([0,T] \longrightarrow \R)$，$f \in C^\infty_b(\R \longrightarrow \R)$\footnotemark
+			及び$0 < \epsilon ,R < \infty$を任意に取り，
+			\begin{align}
+				X^k_{s,t} &\coloneqq \int_s^t (\bar{x}_u - \bar{x}_s)^{k-1}\ dx_u,
+				\quad Y^k_{s,t} \coloneqq \int_s^t (\bar{y}_u - \bar{y}_s)^{k-1}\ dy_u,
+				\quad k=1,2,\cdots,n, \\
+				\bar{X}^1_{s,t} &\coloneqq \bar{x}_t - \bar{x}_s,
+				\quad \bar{Y}^1_{s,t} \coloneqq \bar{y}_t - \bar{y}_s
+			\end{align}
+			とおく．このとき
+			\begin{align}
+				\Norm{\bar{X}^1}{p},\ \Norm{\bar{Y}^1}{p},\ \Norm{Y^j}{p/j} &\leq R,
+				\quad j=1,2,\cdots,n, \\
+				\Norm{\bar{X}^1 - \bar{Y}^1}{p},\ \Norm{X^j - Y^j}{p/j} &\leq \epsilon,
+				\quad j=1,2,\cdots,n
+			\end{align}
+			なら，或る定数$C = C(n,p,R,f)$が存在して，任意の$[s,t] \subset [0,T]$に対して次を満たす:
+			\begin{align}
+				\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C.
+			\end{align}
+		\end{thm}
+	\end{screen}
+	\footnotetext{
+		$f$の任意の階数の導関数$f^{(j)}$が有界である．
+	}
+	\begin{prf}\mbox{}
+		\begin{description}
+			\item[第一段]
+				写像$\omega:\Delta_T \longrightarrow [0,\infty)$を
+				\begin{align}
+					\omega(\alpha,\beta) &\coloneqq 
+					\Norm{\bar{X}^1}{p,[\alpha,\beta]}^p + \Norm{\bar{Y}^1}{p,[\alpha,\beta]}^p
+					+ \sum_{j=1}^n \Norm{Y^j}{p/j,[\alpha,\beta]}^{p/j} \\
+					&\quad + \epsilon^{-p} \Norm{\bar{X}^1 - \bar{Y}^1}{p,[\alpha,\beta]}^{p} 
+					+ \sum_{j=1}^{n} \epsilon^{-p/j} \Norm{X^j - Y^j}{p/j,[\alpha,\beta]}^{p/j}
+				\end{align}
+				により定めれば，補題\ref{lem:signature_of_path}より
+				$X^j,Y^j\ (j=1,\cdots,n)$は連続かつ有界変動であるから
+				$p/j$変動は有界である．そして定理\ref{thm:control_function_defined_by_p_variation}により
+				$\omega$はコントロール関数となる．また仮定より
+				\begin{align}
+					\omega(0,T) &\leq 2R^p + \sum_{j=1}^n R^{p/j} + n + 1 \\
+					&\eqqcolon C_R
+				\end{align}
+				が満たされる．
+				
+			\item[第二段]
+				任意に分割$D = \{s=t_0 < \cdots < t_N=t\} \in \delta[s,t]\ (N \geq 2)$を取れば，
+				\begin{align}
+					\omega\left( t_{(0)}-1,t_{(0)}+1 \right) \leq \frac{2\omega(s,t)}{N-1}
+				\end{align}
+				を満たす$t_{(0)}$が存在する．
+				$D_{-0} \coloneqq D,\ D_{-1} \coloneqq D \backslash \{t_{(0)}\}$と定めれば，
+				$N \geq 3$ならば$D_{-1}$についても
+				\begin{align}
+					\omega\left( t_{(1)}-1,t_{(1)}+1 \right) \leq \frac{2\omega(s,t)}{N-2}
+				\end{align}
+				を満たす$t_{(1)}$が存在するから，
+				$D_{-2} \coloneqq D_{-1} \backslash \{t_{(1)}\}$と定める．この操作を繰り返せば
+				\begin{align}
+					\omega\left( t_{(k)}-1,t_{(k)}+1 \right) \leq \frac{2\omega(s,t)}{N-k-1}
+					\leq \frac{2\omega(0,T)}{N-k-1}
+				\end{align}
+				を満たすような$t_{(k)}, D_{-k}\ (k=0,1,\cdots,N-1)$が得られ，
+				\begin{align}
+					J^n_{s,t}(x,\bar{x},D) - J^n_{s,t}(y,\bar{y},D)
+					&= \sum_{k=0}^{N-2} \left[ \left\{ J^n_{s,t}(x,\bar{x},D_{-k}) 
+						- J^n_{s,t}(x,\bar{x},D_{-k-1}) \right\} - 
+						\left\{ J^n_{s,t}(y,\bar{y},D_{-k}) 
+						- J^n_{s,t}(y,\bar{y},D_{-k-1}) \right\} \right] \\
+					&\quad + \left\{ J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right\}
+					\label{eq:thm_continuity_theorem_expansion_1}
+				\end{align}
+				とできる．定理\ref{thm:approximation_of_RS_integral_by_high_order_derivatives}より
+				(\refeq{eq:thm_continuity_theorem_expansion_1})左辺は
+				$|D| \longrightarrow 0$として$I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y})$に収束するから，
+				\begin{align}
+					|(\refeq{eq:thm_continuity_theorem_expansion_1})右辺| \leq \epsilon C
+				\end{align}
+				を満たす或る定数$C=C(n,p,R,f)$が存在することを示せば定理の主張を得る．
+				
+			\item[第三段]
+				(\refeq{eq:thm_continuity_theorem_expansion_1})の級数項について，
+				$t_{(k)}$を$t_k$と書き直せば
+				\begin{align}
+					J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})
+					&= \sum_{j=0}^{n-2} \left\{ \frac{1}{j!} \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^{j+1}_{t_k,t_{k+1}} \right\} \\
+				&\qquad - \sum_{j=0}^{n-1} \left\{ \frac{1}{j!} f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} X^{i+1}_{t_k,t_{k+1}} \right\} \\
+				&\qquad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}} 
+				\end{align}
+				が成り立ち
+				\begin{align}
+					&\left\{J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})\right\} - \left\{J^n_{s,t}(y,\bar{y},D_{-k}) - J^n_{s,t}(y,\bar{y},D_{-k-1})\right\} \\
+					&= \sum_{j=0}^{n-2} \frac{1}{j!} \left\{ \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 \left( X^{j+1}_{t_k,t_{k+1}} - Y^{j+1}_{t_k,t_{k+1}} \right) \right. \\
+							&\qquad + \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) Y^{j+1}_{t_k,t_{k+1}} \\
+							&\qquad + \int_0^1 \int_0^\theta \left\{ f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) - f^{(j+2)}(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k}-\bar{y}_{t_{k-1}})) \right\}\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \bar{Y}^1_{t_{k-1},t_k} Y^{j+1}_{t_k,t_{k+1}} \\
+							&\qquad + \left. \int_0^1 \int_0^\theta f^{(j+2)}(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k}-\bar{y}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \bar{Y}^1_{t_{k-1},t_k} Y^{j+1}_{t_k,t_{k+1}} \right\} \\
+						&\quad - \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} \left( X^{i+1}_{t_k,t_{k+1}} - Y^{i+1}_{t_k,t_{k+1}} \right) \right. \\
+							&\qquad + f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i-1} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) Y^{i+1}_{t_k,t_{k+1}} \\
+							&\qquad + f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i-2} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \bar{Y}^1_{t_{k-1},t_k} Y^{i+1}_{t_k,t_{k+1}} \\
+							&\qquad \cdots \\
+							&\qquad + f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \bar{X}^1_{t_{k-1},t_k} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \left( \bar{Y}^1_{t_{k-1},t_k} \right)^{j-i-2} Y^{i+1}_{t_k,t_{k+1}} \\
+							&\qquad + \left\{ f^{(j)}(\bar{x}_{t_{k-1}}) - f^{(j)}(\bar{y}_{t_{k-1}}) \right\} \sum_{i=0}^{j-2} \binom{j}{i} \bar{X}^1_{t_{k-1},t_k} \left( \bar{Y}^1_{t_{k-1},t_k} \right)^{j-i-1} Y^{i+1}_{t_k,t_{k+1}} \\
+							&\qquad + \left. f^{(j)}(\bar{y}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \left( \bar{Y}^1_{t_{k-1},t_k} \right)^{j-i-1} Y^{i+1}_{t_k,t_{k+1}} \right\} \\
+						&\quad + \frac{1}{(n-1)!} \left\{ \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left( X^{n}_{t_k,t_{k+1}} - Y^{n}_{t_k,t_{k+1}} \right) \right. \\
+							&\qquad + \int_0^1 \left\{ f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) - f^{(n)}(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k}-\bar{y}_{t_{k-1}})) \right\} d\theta\ \bar{X}^1_{t_{k-1},t_k} Y^{n}_{t_k,t_{k+1}} \\
+							&\qquad + \left. \int_0^1 f^{(n)}(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k}-\bar{y}_{t_{k-1}}))\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) Y^{n}_{t_k,t_{k+1}} \right\}
+				\end{align}
+				とできる．従って，いま
+				\begin{align}
+					M \coloneqq \sum_{j=0}^{n+1}\sup{x \in \R}{\left| f^{(j)}(x) \right|}
+				\end{align}
+				とおけば
+				\begin{align}
+					&\left| \left\{J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})\right\} - \left\{J^n_{s,t}(y,\bar{y},D_{-k}) - J^n_{s,t}(y,\bar{y},D_{-k-1})\right\} \right| \\
+					&\leq \sum_{j=0}^{n-2} \frac{1}{j!}M \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|^2\left|X^{j+1}_{t_k,t_{k+1}} - Y^{j+1}_{t_k,t_{k+1}}\right|
+						+ \left|\bar{X}^1_{t_{k-1},t_k}\right| \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right| \left|Y^{j+1}_{t_k,t_{k+1}}\right|
+						+ \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right| \right. \\
+						&\qquad \left. + \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right|
+						+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right| \right) \\
+						&\quad + \sum_{j=0}^{n-1} \frac{1}{j!} M \sum_{i=0}^{j-2} \binom{j}{i} \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|^{j-i} \left|X^{i+1}_{t_k,t_{k+1}} - Y^{i+1}_{t_k,t_{k+1}}\right| \right.
+						+ \sum_{\ell=0}^{j-i-2} \left|\bar{X}^1_{t_{k-1},t_k}\right|^{j-i-1-\ell} \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^\ell \left|Y^{i+1}_{t_k,t_{k+1}}\right| \\
+						&\qquad \left. + \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right| \left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^{j-i-1} \left|Y^{i+1}_{t_k,t_{k+1}}\right|
+						+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^{j-i-1} \left|Y^{i+1}_{t_k,t_{k+1}}\right| \right) \\
+						&\quad + \frac{1}{(n-1)!}M \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|\left|X^n_{t_k,t_{k+1}} - Y^n_{t_k,t_{k+1}}\right|
+						+ \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right| \right. \\
+						&\qquad \left. + \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right|
+						+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right| \right) \\
+					&\leq \epsilon M \sum_{j=0}^{n-2} \frac{1}{j!} \left\{ 3 \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} 
+						+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} \right. \\ 
+						&\qquad \left. + \omega(t_k,t_{k+1})^{1/p} \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} \right\} \\
+						&\quad + \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j-i+1) \omega(t_{k-1},t_k)^{(j-i)/p} \omega(t_k,t_{k+1})^{(i+1)/p} 
+						+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{(j-i)/p} \omega(t_k,t_{k+1})^{(i+1)/p} \right\} \\
+						&\quad + \epsilon M \frac{1}{(n-1)!} \left\{ 2 \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} 
+						+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} \right. \\ 
+						&\qquad \left. + \omega(t_k,t_{k+1})^{1/p} \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} \right\} \\
+					&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/p} 
+						+ \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j+1) + \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+1)/p} \\
+					&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p} \\
+						&\quad + \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} 2^j \left\{ (j+1) + \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+1)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p} \\
+					&\leq \epsilon M \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(0,T)^{3/(n+1)} \left\{ \sum_{j=0}^{n-1} \frac{1}{j!} \left[ \omega(0,T)^{1/(n+1)} \right]^j \right\} \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p} \\
+						&\quad + \epsilon M 2 \omega(0,T)^{2/(n+1)} \left\{ \sum_{j=1}^{n-1} \frac{1}{(j-1)!} 2^{j-1} \left[ \omega(0,T)^{1/(n+1)} \right]^{j-1} \right\} \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p} \\
+						&\quad + \epsilon M \left\{ 1 + \omega(0,T)^{1/p} \right\} \omega(0,T)^{1/(n+1)} \left\{ \sum_{j=0}^{n-1} \frac{1}{j!} 2^j \left[ \omega(0,T)^{1/(n+1)} \right]^j \right\} \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p} \\
+					&\leq \epsilon M \left[ \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(0,T)^{3/(n+1)} e^{\omega(0,T)^{1/(n+1)}}
+						+ 2 \omega(0,T)^{2/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right. \\
+						&\quad + \left. \left\{ 1 + \omega(0,T)^{1/p} \right\} \omega(0,T)^{1/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right] \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p}
+				\end{align}
+				となる．ここで$\omega(0,T) \leq C_R$を用いて
+				\begin{align}
+					C_1 &\coloneqq M \left[ 
+						\left\{ 3 + 2 C_R^{1/p} \right\} C_R^{3/(n+1)} e^{C_R^{1/(n+1)}} \right.\\
+						&\qquad + 2C_R^{2/(n+1)} e^{2 C_R^{1/(n+1)}} \\
+						&\qquad + \left. \left\{ 1 + C_R^{1/p} \right\} C_R^{1/(n+1)} e^{2 C_R^{1/(n+1)}} \right] \left( 2C_R \right)^{(n+1)/p}
+				\end{align}
+				とおけば
+				\begin{align}
+					&\sum_{k=0}^{N-2} \left| \left\{J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})\right\} - \left\{J^n_{s,t}(y,\bar{y},D_{-k}) - J^n_{s,t}(y,\bar{y},D_{-k-1})\right\} \right| \\
+					&\qquad \leq \epsilon C_1 \sum_{k=0}^{N-2} \left( \frac{1}{N-k-1} \right)^{(n+1)/p}
+					\leq \epsilon C_1 \zeta\left( \frac{n+1}{p} \right)
+				\end{align}
+				が成立する．いま$p < n+1$より$\zeta((n+1)/p) < \infty$が満たされている．
+				
+			\item[第四段]
+				(\refeq{eq:thm_continuity_theorem_expansion_1})の最終項について，
+				\begin{align}
+					\left\{ J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right\}
+					&= \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{x}_s) X^j_{s,t}
+						- \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{y}_s) Y^j_{s,t} \\
+					&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_s) \left( X^j_{s,t} - Y^j_{s,t} \right) + \left( f^{(j-1)}(\bar{x}_s) - f^{(j-1)}(\bar{y}_s) \right) Y^j_{s,t} \right\} \\
+					&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_s) \left( X^j_{s,t} - Y^j_{s,t} \right) + \int_0^1 f^{(j-1)}(\bar{y}_s + \theta(\bar{x}_s - \bar{y}_s)\ d\theta \left( \bar{X}^1_{0,s} - \bar{Y}^1_{0,s} \right) Y^j_{s,t} \right\}
+				\end{align}
+				が成り立つから
+				\begin{align}
+					\left| J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right|
+					&\leq \sum_{j=1}^n \frac{1}{(j-1)!} \epsilon M \left\{ \omega(s,t)^{j/p} + \omega(0,s)^{1/p} \omega(s,t)^{j/p} \right\} \\
+					&\leq \epsilon M \left( e^{\omega(s,t)^{1/p}} + \omega(0,s)^{1/p} e^{\omega(s,t)^{1/p}} \right) \\
+					&\leq \epsilon M \left( e^{C_R^{1/p}} + C_R^{1/p} e^{C_R^{1/p}} \right)
+				\end{align}
+				となる．ここで
+				\begin{align}
+					C \coloneqq C_1 \zeta\left( \frac{n+1}{p} \right) + M \left( e^{C_R^{1/p}} + C_R^{1/p} e^{C_R^{1/p}} \right)
+				\end{align}
+				と定めれば\
+				\begin{align}
+					\left| J^n_{s,t}(x,\bar{x},D) - J^n_{s,t}(y,\bar{y},D) \right|
+					\leq \epsilon C
+				\end{align}
+				が従い，$|D| \longrightarrow 0$として
+				\begin{align}
+					\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C
+				\end{align}
+				得られる．
+				\QED
+		\end{description}
+	\end{prf}
+	
+	\begin{comment}
 	\begin{prf}\mbox{}
 		\begin{description}
 			\item[第一段] コントロール関数$\omega:\Delta_T \longrightarrow [0,\infty)$を
@@ -174,170 +375,6 @@
 		\end{description}
 	\end{prf}
 	
-	\begin{screen}
-		
-	\end{screen}
-	
-	\begin{prf}\mbox{}
-		\begin{description}
-			\item[第一段]
-				写像$\omega:\Delta_T \longrightarrow [0,\infty)$を
-				\begin{align}
-					\omega(\alpha,\beta) &\coloneqq 
-					\Norm{\bar{X}^1}{p,[\alpha,\beta]}^p + \Norm{\bar{Y}^1}{p,[\alpha,\beta]}^p
-					+ \Norm{Y^1}{p,[\alpha,\beta]}^p + \Norm{Y^2}{p/2,[\alpha,\beta]}^{p/2} \\
-					&\quad + \epsilon^{-p} \Norm{\bar{X}^1 - \bar{Y}^1}{p,[\alpha,\beta]}^{p} 
-					+ \sum_{j=1}^{n} \epsilon^{-p/j} \Norm{X^j - Y^j}{p/j,[\alpha,\beta]}^{p/j}
-				\end{align}
-				により定めれば，$\omega$はコントロール関数となる．
-				
-			\item[第二段]
-				任意に分割$D = \{s=t_0 < \cdots < t_N=t\} \in \delta[s,t]\ (N \geq 2)$を取れば，
-				\begin{align}
-					\omega\left( t_{(0)}-1,t_{(0)}+1 \right) \leq \frac{2\omega(s,t)}{N-1}
-				\end{align}
-				を満たす$t_{(0)}$が存在する．
-				$D_{-0} \coloneqq D,\ D_{-1} \coloneqq D \backslash \{t_{(0)}\}$と定めれば，
-				$N \geq 3$ならば$D_{-1}$についても
-				\begin{align}
-					\omega\left( t_{(1)}-1,t_{(1)}+1 \right) \leq \frac{2\omega(s,t)}{N-2}
-				\end{align}
-				を満たす$t_{(1)}$が存在するから，
-				$D_{-2} \coloneqq D_{-1} \backslash \{t_{(1)}\}$と定める．この操作を繰り返せば
-				\begin{align}
-					\omega\left( t_{(k)}-1,t_{(k)}+1 \right) \leq \frac{2\omega(s,t)}{N-k-1}
-					\leq \frac{2\omega(0,T)}{N-k-1}
-				\end{align}
-				を満たすような$t_{(k)}, D_{-k}\ (k=0,1,\cdots,N-1)$が得られ，
-				\begin{align}
-					J^n_{s,t}(x,\bar{x},D) - J^n_{s,t}(y,\bar{y},D)
-					&= \sum_{k=0}^{N-2} \left[ \left\{ J^n_{s,t}(x,\bar{x},D_{-k}) 
-						- J^n_{s,t}(x,\bar{x},D_{-k-1}) \right\} - 
-						\left\{ J^n_{s,t}(y,\bar{y},D_{-k}) 
-						- J^n_{s,t}(y,\bar{y},D_{-k-1}) \right\} \right] \\
-					&\quad + \left\{ J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right\}
-					\label{eq:thm_continuity_theorem_expansion_1}
-				\end{align}
-				とできる．定理\ref{thm:approximation_of_RS_integral_by_high_order_derivatives}より
-				(\refeq{eq:thm_continuity_theorem_expansion_1})左辺は
-				$|D| \longrightarrow 0$として$I_{s,t}(x,\bar{x})$に収束するから，
-				\begin{align}
-					|(\refeq{eq:thm_continuity_theorem_expansion_1})右辺| \leq \epsilon C
-				\end{align}
-				を満たす$D$に依らない定数$C$が存在することを示せば定理の主張を得る．
-				
-			\item[第三段]
-				(\refeq{eq:thm_continuity_theorem_expansion_1})の級数項について，
-				$t_{(k)}$を$t_k$と書き直せば
-				\begin{align}
-					J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})
-					&= \sum_{j=0}^{n-2} \left\{ \frac{1}{j!} \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^{j+1}_{t_k,t_{k+1}} \right\} \\
-				&\qquad - \sum_{j=0}^{n-1} \left\{ \frac{1}{j!} f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} X^{i+1}_{t_k,t_{k+1}} \right\} \\
-				&\qquad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}} 
-				\end{align}
-				が成り立ち
-				\begin{align}
-					&\left\{J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})\right\} - \left\{J^n_{s,t}(y,\bar{y},D_{-k}) - J^n_{s,t}(y,\bar{y},D_{-k-1})\right\} \\
-					&= \sum_{j=0}^{n-2} \frac{1}{j!} \left\{ \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 \left( X^{j+1}_{t_k,t_{k+1}} - Y^{j+1}_{t_k,t_{k+1}} \right) \right. \\
-							&\qquad + \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) Y^{j+1}_{t_k,t_{k+1}} \\
-							&\qquad + \int_0^1 \int_0^\theta \left\{ f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) - f^{(j+2)}(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k}-\bar{y}_{t_{k-1}})) \right\}\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \bar{Y}^1_{t_{k-1},t_k} Y^{j+1}_{t_k,t_{k+1}} \\
-							&\qquad + \left. \int_0^1 \int_0^\theta f^{(j+2)}(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k}-\bar{y}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \bar{Y}^1_{t_{k-1},t_k} Y^{j+1}_{t_k,t_{k+1}} \right\} \\
-						&\quad - \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} \left( X^{i+1}_{t_k,t_{k+1}} - Y^{i+1}_{t_k,t_{k+1}} \right) \right. \\
-							&\qquad + f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i-1} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) Y^{i+1}_{t_k,t_{k+1}} \\
-							&\qquad + f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i-2} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \bar{Y}^1_{t_{k-1},t_k} Y^{i+1}_{t_k,t_{k+1}} \\
-							&\qquad \cdots \\
-							&\qquad + f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \bar{X}^1_{t_{k-1},t_k} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \left( \bar{Y}^1_{t_{k-1},t_k} \right)^{j-i-2} Y^{i+1}_{t_k,t_{k+1}} \\
-							&\qquad + \left\{ f^{(j)}(\bar{x}_{t_{k-1}}) - f^{(j)}(\bar{y}_{t_{k-1}}) \right\} \sum_{i=0}^{j-2} \binom{j}{i} \bar{X}^1_{t_{k-1},t_k} \left( \bar{Y}^1_{t_{k-1},t_k} \right)^{j-i-1} Y^{i+1}_{t_k,t_{k+1}} \\
-							&\qquad + \left. f^{(j)}(\bar{y}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \left( \bar{Y}^1_{t_{k-1},t_k} \right)^{j-i-1} Y^{i+1}_{t_k,t_{k+1}} \right\} \\
-						&\quad + \frac{1}{(n-1)!} \left\{ \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left( X^{n}_{t_k,t_{k+1}} - Y^{n}_{t_k,t_{k+1}} \right) \right. \\
-							&\qquad + \int_0^1 \left\{ f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) - f^{(n)}(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k}-\bar{y}_{t_{k-1}})) \right\} d\theta\ \bar{X}^1_{t_{k-1},t_k} Y^{n}_{t_k,t_{k+1}} \\
-							&\qquad + \left. \int_0^1 f^{(n)}(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k}-\bar{y}_{t_{k-1}}))\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) Y^{n}_{t_k,t_{k+1}} \right\}
-				\end{align}
-				とできる．従って，いま
-				\begin{align}
-					M \coloneqq \sum_{j=0}^{n+1}\sup{x \in \R}{|f^{(j)}(x)|}
-				\end{align}
-				とおけば
-				\begin{align}
-					&\left| \left\{J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})\right\} - \left\{J^n_{s,t}(y,\bar{y},D_{-k}) - J^n_{s,t}(y,\bar{y},D_{-k-1})\right\} \right| \\
-					&\leq \sum_{j=0}^{n-2} \frac{1}{j!}M \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|^2\left|X^{j+1}_{t_k,t_{k+1}} - Y^{j+1}_{t_k,t_{k+1}}\right|
-						+ \left|\bar{X}^1_{t_{k-1},t_k}\right| \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right| \left|Y^{j+1}_{t_k,t_{k+1}}\right|
-						+ \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right| \right. \\
-						&\qquad \left. + \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right|
-						+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^{j+1}_{t_k,t_{k+1}}\right| \right) \\
-						&\quad + \sum_{j=0}^{n-1} \frac{1}{j!} M \sum_{i=0}^{j-2} \binom{j}{i} \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|^{j-i} \left|X^{i+1}_{t_k,t_{k+1}} - Y^{i+1}_{t_k,t_{k+1}}\right| \right.
-						+ \sum_{\ell=0}^{j-i-2} \left|\bar{X}^1_{t_{k-1},t_k}\right|^{j-i-1-\ell} \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^\ell \left|Y^{i+1}_{t_k,t_{k+1}}\right| \\
-						&\qquad \left. + \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right| \left|\bar{X}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^{j-i-1} \left|Y^{i+1}_{t_k,t_{k+1}}\right|
-						+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{Y}^1_{t_{k-1},t_k}\right|^{j-i-1} \left|Y^{i+1}_{t_k,t_{k+1}}\right| \right) \\
-						&\quad + \frac{1}{(n-1)!}M \left( \left|\bar{X}^1_{t_{k-1},t_k}\right|\left|X^n_{t_k,t_{k+1}} - Y^n_{t_k,t_{k+1}}\right|
-						+ \left|\bar{X}^1_{0,t_{k-1}}-\bar{Y}^1_{0,t_{k-1}}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right| \right. \\
-						&\qquad \left. + \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|\bar{X}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right|
-						+ \left|\bar{X}^1_{t_{k-1},t_k}-\bar{Y}^1_{t_{k-1},t_k}\right|\left|Y^n_{t_k,t_{k+1}}\right| \right) \\
-					&\leq \epsilon M \sum_{j=0}^{n-2} \frac{1}{j!} \left\{ 3 \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} 
-						+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} \right. \\ 
-						&\qquad \left. + \omega(t_k,t_{k+1})^{1/p} \omega(t_{k-1},t_k)^{2/p} \omega(t_k,t_{k+1})^{(j+1)/p} \right\} \\
-						&\quad + \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j-i+1) \omega(t_{k-1},t_k)^{(j-i)/p} \omega(t_k,t_{k+1})^{(i+1)/p} 
-						+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{(j-i)/p} \omega(t_k,t_{k+1})^{(i+1)/p} \right\} \\
-						&\quad + \epsilon M \frac{1}{(n-1)!} \left\{ 2 \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} 
-						+ \omega(0,t_{k-1})^{1/p} \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} \right. \\ 
-						&\qquad \left. + \omega(t_k,t_{k+1})^{1/p} \omega(t_{k-1},t_k)^{1/p} \omega(t_k,t_{k+1})^{n/p} \right\} \\
-					&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/p} 
-						+ \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \sum_{i=0}^{j-2} \binom{j}{i} \left\{ (j+1) + \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+1)/p} \\
-					&\leq \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+3)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p} \\
-						&\quad + \epsilon M \sum_{j=0}^{n-1} \frac{1}{j!} 2^j \left\{ (j+1) + \omega(0,T)^{1/p} \right\} \omega(t_{k-1},t_{k+1})^{(j+1)/(n+1)} \omega(t_{k-1},t_{k+1})^{(n+1)/p} \\
-					&\leq \epsilon M \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(0,T)^{3/(n+1)} \left\{ \sum_{j=0}^{n-1} \frac{1}{j!} \left[ \omega(0,T)^{1/(n+1)} \right]^j \right\} \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p} \\
-						&\quad + \epsilon M 2 \omega(0,T)^{2/(n+1)} \left\{ \sum_{j=1}^{n-1} \frac{1}{(j-1)!} 2^{j-1} \left[ \omega(0,T)^{1/(n+1)} \right]^{j-1} \right\} \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p} \\
-						&\quad + \epsilon M \left\{ 1 + \omega(0,T)^{1/p} \right\} \omega(0,T)^{1/(n+1)} \left\{ \sum_{j=0}^{n-1} \frac{1}{j!} 2^j \left[ \omega(0,T)^{1/(n+1)} \right]^j \right\} \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p} \\
-					&\leq \epsilon M \left[ \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(0,T)^{3/(n+1)} e^{\omega(0,T)^{1/(n+1)}}
-						+ 2 \omega(0,T)^{2/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right. \\
-						&\quad + \left. \left\{ 1 + \omega(0,T)^{1/p} \right\} \omega(0,T)^{1/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right] \left( \frac{2\omega(0,T)}{N-k-1} \right)^{(n+1)/p}
-				\end{align}
-				となる．ここで
-				\begin{align}
-					C_1 &\coloneqq M \left[ \left\{ 3 + 2 \omega(0,T)^{1/p} \right\} \omega(0,T)^{3/(n+1)} e^{\omega(0,T)^{1/(n+1)}}
-						+ 2 \omega(0,T)^{2/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right. \\
-						&\quad + \left. \left\{ 1 + \omega(0,T)^{1/p} \right\} \omega(0,T)^{1/(n+1)} e^{2 \omega(0,T)^{1/(n+1)}} \right] \left( 2\omega(0,T) \right)^{(n+1)/p}
-				\end{align}
-				とおけば
-				\begin{align}
-					&\sum_{k=0}^{N-2} \left| \left\{J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})\right\} - \left\{J^n_{s,t}(y,\bar{y},D_{-k}) - J^n_{s,t}(y,\bar{y},D_{-k-1})\right\} \right| \\
-					&\qquad \leq \epsilon C_1 \sum_{k=0}^{N-2} \left( \frac{1}{N-k-1} \right)^{(n+1)/p}
-					\leq \epsilon C_1 \zeta\left( \frac{n+1}{p} \right)
-				\end{align}
-				が成立する．
-				
-			\item[第四段]
-				(\refeq{eq:thm_continuity_theorem_expansion_1})の最終項について，
-				\begin{align}
-					\left\{ J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right\}
-					&= \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{x}_s) X^j_{s,t}
-						- \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{y}_s) Y^j_{s,t} \\
-					&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_s) \left( X^j_{s,t} - Y^j_{s,t} \right) + \left( f^{(j-1)}(\bar{x}_s) - f^{(j-1)}(\bar{y}_s) \right) Y^j_{s,t} \right\} \\
-					&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_s) \left( X^j_{s,t} - Y^j_{s,t} \right) + \int_0^1 f^{(j-1)}(\bar{y}_s + \theta(\bar{x}_s - \bar{y}_s)\ d\theta \left( \bar{X}^1_{0,s} - \bar{Y}^1_{0,s} \right) Y^j_{s,t} \right\}
-				\end{align}
-				が成り立つから
-				\begin{align}
-					\left| J^n_{s,t}(x,\bar{x}) - J^n_{s,t}(y,\bar{y}) \right|
-					&\leq \sum_{j=1}^n \frac{1}{(j-1)!} \epsilon M \left\{ \omega(s,t)^{j/p} + \omega(0,s)^{1/p} \omega(s,t)^{j/p} \right\} \\
-					&\leq \epsilon M \left( e^{\omega(s,t)^{1/p}} + \omega(0,s)^{1/p} e^{\omega(s,t)^{1/p}} \right) \\
-					&\leq \epsilon M \left( e^{\omega(0,T)^{1/p}} + \omega(0,T)^{1/p} e^{\omega(0,T)^{1/p}} \right)
-				\end{align}
-				となる．ここで
-				\begin{align}
-					C \coloneqq C_1 \zeta\left( \frac{n+1}{p} \right) + M \left( e^{\omega(0,T)^{1/p}} + \omega(0,T)^{1/p} e^{\omega(0,T)^{1/p}} \right)
-				\end{align}
-				と定めれば\
-				\begin{align}
-					\left| J^n_{s,t}(x,\bar{x},D) - J^n_{s,t}(y,\bar{y},D) \right|
-					\leq \epsilon C
-				\end{align}
-				が従い，$|D| \longrightarrow 0$として
-				\begin{align}
-					\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C
-				\end{align}
-				得られる．
-				\QED
-		\end{description}
 		\begin{align}
 			&= f(\bar{x}_{t_{k-1}})X^1_{t_{k-1},t_k} + f(\bar{x}_{t_k})X^1_{t_k,t_{k+1}} - f(\bar{x}_{t_{k-1}})X^1_{t_{k-1},t_{k+1}} \\
 				&\quad + \sum_{j=2}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
@@ -402,5 +439,4 @@
 				&\qquad - \sum_{j=0}^{n-1} \left\{ \frac{1}{j!} f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} X^{i+1}_{t_k,t_{k+1}} \right\} \\
 				&\qquad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}} \\
 		\end{align}
-	\end{prf}
-	
+	\end{comment}
