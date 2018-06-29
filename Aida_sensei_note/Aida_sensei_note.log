@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  28 JUN 2018 22:47
+This is e-pTeX, Version 3.14159265-p3.8.0-180121-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.2.15)  29 JUN 2018 13:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -595,39 +595,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 932--1
 
  []
 
-[31] [32] [33] [34] [35] [36] [37] [38]) [39]
-付録A
-(./texfiles/multilinear_mapping.tex [40
+[31] [32] [33] [34]
+Underfull \hbox (badness 10000) detected at line 179
+[]$[]$[]
+ []
 
-] [41] [42] [43])
+[35] [36] [37] [38] [39] [40]) [41]
+付録A
+(./texfiles/multilinear_mapping.tex [42
+
+] [43] [44] [45])
 (./texfiles/completion_of_normed_space.tex <xymatrix 3x2 223> <xymatrix 3x2
-223> [44] [45]) (./texfiles/tensor_product_multiple.tex [46] [47] <xymatrix
-3x2 200> <xymatrix 3x2 200> [48] [49] [50] [51] [52] <xymatrix 3x2 158>
+223> [46] [47]) (./texfiles/tensor_product_multiple.tex [48] [49] <xymatrix
+3x2 200> <xymatrix 3x2 200> [50] [51] [52] [53] [54] <xymatrix 3x2 158>
 <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158> <xymatrix 3x2 158>
-<xymatrix 3x2 158> [53] <xymatrix 3x2 158> <xymatrix 3x2 158>)
-(./texfiles/crossnorm.tex [54] [55] [56] [57] [58] [59] [60])
-(./texfiles/tensor_product_hilbert.tex [61] [62])
+<xymatrix 3x2 158> [55] <xymatrix 3x2 158> <xymatrix 3x2 158>)
+(./texfiles/crossnorm.tex [56] [57] [58] [59] [60] [61] [62])
+(./texfiles/tensor_product_hilbert.tex [63] [64])
 Underfull \hbox (badness 10000) in paragraph at lines 190--165
 
  []
 
-[63] [64]
+[65] [66]
 Underfull \hbox (badness 2538) in paragraph at lines 173--174
 []\OT1/txr/m/n/10 mathoverFlow, avail-able from https://mathoverflow.net/questi
 ons/277070/tensor-product-space-with-projective-
  []
 
 No file Aida_sensei_note.ind.
-[65
+[67
 
 ] (./Aida_sensei_note.aux) ) 
 Here is how much of TeX's memory you used:
- 4718 strings out of 493621
- 62334 string characters out of 6150087
- 215117 words of memory out of 5000000
- 8183 multiletter control sequences out of 15000+600000
+ 4721 strings out of 493621
+ 62475 string characters out of 6150087
+ 200375 words of memory out of 5000000
+ 8186 multiletter control sequences out of 15000+600000
  39809 words of font info for 147 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 28i,24n,26p,338b,757s stack positions out of 5000i,500n,10000p,500000b,80000s
+ 28i,24n,26p,341b,757s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on Aida_sensei_note.dvi (67 pages, 511628 bytes).
+Output written on Aida_sensei_note.dvi (69 pages, 521188 bytes).
