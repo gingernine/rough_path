@@ -133,7 +133,7 @@
 				\end{align}
 				により定めれば，補題\ref{lem:signature_of_path}より
 				$X^j,Y^j\ (j=1,\cdots,n)$は連続かつ有界変動であるから
-				$p/j$変動は有界である．そして定理\ref{thm:control_function_defined_by_p_variation}により
+				$p/j$変動は有限である．そして定理\ref{thm:control_function_defined_by_p_variation}により
 				$\omega$はコントロール関数となる．また仮定より
 				\begin{align}
 					\omega(0,T) &\leq 2R^p + \sum_{j=1}^n R^{p/j} + n + 1 \\
@@ -146,7 +146,7 @@
 				\begin{align}
 					\omega\left( t_{(0)}-1,t_{(0)}+1 \right) \leq \frac{2\omega(s,t)}{N-1}
 				\end{align}
-				を満たす$t_{(0)}$が存在する．
+				を満たす$t_{(0)}$が存在する(補題\ref{lem:control_function_min})．
 				$D_{-0} \coloneqq D,\ D_{-1} \coloneqq D \backslash \{t_{(0)}\}$と定めれば，
 				$N \geq 3$ならば$D_{-1}$についても
 				\begin{align}
@@ -183,9 +183,10 @@
 					J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})
 					&= \sum_{j=0}^{n-2} \left\{ \frac{1}{j!} \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^{j+1}_{t_k,t_{k+1}} \right\} \\
 				&\qquad - \sum_{j=0}^{n-1} \left\{ \frac{1}{j!} f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} X^{i+1}_{t_k,t_{k+1}} \right\} \\
-				&\qquad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}} 
+				&\qquad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}}
+				\label{eq:thm_continuity_theorem_expansion_2}
 				\end{align}
-				が成り立ち
+				が成り立ち(後述)
 				\begin{align}
 					&\left\{J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})\right\} - \left\{J^n_{s,t}(y,\bar{y},D_{-k}) - J^n_{s,t}(y,\bar{y},D_{-k-1})\right\} \\
 					&= \sum_{j=0}^{n-2} \frac{1}{j!} \left\{ \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 \left( X^{j+1}_{t_k,t_{k+1}} - Y^{j+1}_{t_k,t_{k+1}} \right) \right. \\
@@ -291,6 +292,19 @@
 		\end{description}
 	\end{prf}
 	
+	\begin{screen}
+		(\refeq{eq:thm_continuity_theorem_expansion_2})の証明．
+	\end{screen}
+	
+	\begin{prf}
+		数学的帰納法で証明する．
+		\begin{description}
+			\item[第一段]
+			\item[第二段]
+				
+		\end{description}
+	\end{prf}
+	
 	\begin{comment}
 	\begin{prf}\mbox{}
 		\begin{description}
@@ -317,7 +331,7 @@
 				\begin{align}
 					J^2_{s,t}(x,\bar{x},D_{-k}) - J^2_{s,t}(x,\bar{x},D_{-k-1})
 					&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left(\bar{X}^1_{t_{k-1},t_k}\right)^2 X^1_{t_k,t_{k+1}} \\
-					&\quad + \int_0^1 f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^2_{t_k,t_{k+1}} 
+					&\quad + \int_0^1 f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^2_{t_k,t_{k+1}}
 				\end{align}
 				より
 				\begin{align}

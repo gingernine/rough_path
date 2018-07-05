@@ -519,7 +519,8 @@
 	
 	\begin{screen}
 		\begin{lem}\label{lem:control_function_min}
-			$\omega$を$\Delta_T$上のcontrol functionとする．
+			$\omega:\Delta_T \longrightarrow [0,\infty)$を優加法的関数とする
+			(証明に連続性は使わないからコントロール関数である必要はない)．
 			$D = \{s = t_0 < t_1 < \cdots < t_N= t\}$について，$N \geq 2$の場合
 			或る$1 \leq i \leq N-1$が存在して次を満たす:
 			\begin{align}
@@ -531,7 +532,16 @@
 	\end{screen}
 	
 	\begin{prf}
-		(会田先生のテキスト．)
+		$\omega(t_{i-1},t_{i+1}) = \min{1 \leq j \leq N-1}{\omega(t_{j-1},t_{j+1})}$
+		を満たす$i$に対し
+		\begin{align}
+			(N-1) \omega(t_{i-1},t_{i+1})
+			\leq \sum_{j=1}^{N-1} \omega(t_{j-1},t_{j+1})
+			= \sum_{\substack{0 \leq 2j-1, \\ 2j+1 \leq N-1}} \omega(t_{2j-1},t_{2j+1}) 
+				+ \sum_{\substack{0 \leq 2j, \\ 2j+2 \leq N-1}} \omega(t_{2j},t_{2j+2})
+			\leq 2\omega(s,t)
+		\end{align}
+		が成立する．
 		\QED
 	\end{prf}
 
