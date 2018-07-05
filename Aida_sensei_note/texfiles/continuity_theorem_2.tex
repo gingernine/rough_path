@@ -75,13 +75,12 @@
 			&\left| \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u \right| \\
 			&\qquad \leq \frac{1}{n!} M \int_{t_{i-1}}^{t_i} \left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^n |\dot{x}_u|\ du \\
 			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} \int_{t_{i-1}}^{t_i} \left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^n\ du　\\
-			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} \sup{\substack{t_{i-1} \leq u \leq t_i \\ t_{i-1},t_i \in D}}{\left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|} \int_{t_{i-1}}^{t_i} \left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^{n-1}\ du \\
-			&\qquad \leq \left\{ \frac{1}{n!} M \Norm{x}{C^1} (2K)^{n-1} \sup{\substack{t_{i-1} \leq u \leq t_i \\ t_{i-1},t_i \in D}}{\left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|} \right\} (t_i - t_{i-1})
+			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} \sup{\substack{t_{i-1} \leq u \leq t_i \\ t_{i-1},t_i \in D}}{\left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^n} (t_i - t_{i-1})
 		\end{align}
 		が成立し，$\bar{x}$の一様連続性より
 		\begin{align}
 			&\left| \sum_D \int_{t_{i-1}}^{t_i} \int_0^1 \int_0^{\theta_1} \cdots \int_0^{\theta_{n-1}} f^{(n)}(\bar{x}_{t_{i-1}} + \theta_n(\bar{x}_u - \bar{x}_{t_{i-1}}))(\bar{x}_u - \bar{x}_{t_{i-1}})^n\ d\theta_n\cdots d\theta_2\ d\theta_1\ dx_u \right| \\
-			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} (t-s) \sup{\substack{t_{i-1} \leq u \leq t_i \\ t_{i-1},t_i \in D}}{\left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|}
+			&\qquad \leq \frac{1}{n!} M \Norm{x}{C^1} (t-s) \sup{\substack{t_{i-1} \leq u \leq t_i \\ t_{i-1},t_i \in D}}{\left| \bar{x}_u - \bar{x}_{t_{i-1}} \right|^n}
 			\longrightarrow 0
 			\quad (|D| \longrightarrow 0)
 		\end{align}
@@ -105,14 +104,14 @@
 			とおく．任意に$0 < \epsilon, R < \infty$を取るとき，
 			$\bar{x}_0 = \bar{y}_0$かつ
 			\begin{align}
-				\Norm{\bar{X}^1}{p},\ \Norm{\bar{Y}^1}{p},\ \Norm{Y^j}{p/j} &\leq R,
-				\quad j=1,2,\cdots,n, \\
-				\Norm{\bar{X}^1 - \bar{Y}^1}{p},\ \Norm{X^j - Y^j}{p/j} &\leq \epsilon,
-				\quad j=1,2,\cdots,n
+				\Norm{\bar{X}^1}{p},\ \Norm{\bar{Y}^1}{p},\ \Norm{Y^j}{p/j} \leq R,
+				\quad j=1,2,\cdots,n,
 			\end{align}
 			ならば或る定数$C = C(n,p,R,f)$が存在して次を満たす:
 			\begin{align}
-				\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C,
+				&\Norm{\bar{X}^1 - \bar{Y}^1}{p},\ \Norm{X^j - Y^j}{p/j} \leq \epsilon,
+				\quad j=1,2,\cdots,n, \\
+				\Rightarrow&\quad \left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C,
 				\quad (\forall [s,t] \subset [0,T]).
 			\end{align}
 		\end{thm}
@@ -144,21 +143,21 @@
 			\item[第二段]
 				任意に分割$D = \{s=t_0 < \cdots < t_N=t\} \in \delta[s,t]\ (N \geq 2)$を取れば，
 				\begin{align}
-					\omega\left( t_{(0)}-1,t_{(0)}+1 \right) \leq \frac{2\omega(s,t)}{N-1}
+					\omega\left( t_{i_0-1},t_{i_0+1} \right) \leq \frac{2\omega(s,t)}{N-1}
 				\end{align}
-				を満たす$t_{(0)}$が存在する(補題\ref{lem:control_function_min})．
-				$D_{-0} \coloneqq D,\ D_{-1} \coloneqq D \backslash \{t_{(0)}\}$と定めれば，
+				を満たす$t_{i_0}$が存在する(補題\ref{lem:control_function_min})．
+				$D_{-0} \coloneqq D,\ D_{-1} \coloneqq D \backslash \{t_{i_0}\}$と定めれば，
 				$N \geq 3$ならば$D_{-1}$についても
 				\begin{align}
-					\omega\left( t_{(1)}-1,t_{(1)}+1 \right) \leq \frac{2\omega(s,t)}{N-2}
+					\omega\left( t_{i_1-1},t_{i_1+1} \right) \leq \frac{2\omega(s,t)}{N-2}
 				\end{align}
-				を満たす$t_{(1)}$が存在するから，
-				$D_{-2} \coloneqq D_{-1} \backslash \{t_{(1)}\}$と定める．この操作を繰り返せば
+				を満たす$t_{i_1}$が存在するから，
+				$D_{-2} \coloneqq D_{-1} \backslash \{t_{i_1}\}$と定める．この操作を繰り返せば
 				\begin{align}
-					\omega\left( t_{(k)}-1,t_{(k)}+1 \right) \leq \frac{2\omega(s,t)}{N-k-1}
+					\omega\left( t_{i_k-1},t_{i_k+1} \right) \leq \frac{2\omega(s,t)}{N-k-1}
 					\leq \frac{2\omega(0,T)}{N-k-1}
 				\end{align}
-				を満たすような$t_{(k)}, D_{-k}\ (k=0,1,\cdots,N-1)$が得られ，
+				を満たすような$t_{i_k}, D_{-k}\ (k=0,1,\cdots,N-1)$が得られ，
 				\begin{align}
 					J^n_{s,t}(x,\bar{x},D) - J^n_{s,t}(y,\bar{y},D)
 					&= \sum_{k=0}^{N-2} \left[ \left\{ J^n_{s,t}(x,\bar{x},D_{-k}) 
@@ -178,7 +177,7 @@
 				
 			\item[第三段]
 				(\refeq{eq:thm_continuity_theorem_expansion_1})の級数項について，
-				$t_{(k)}$を$t_k$と書き直せば
+				$t_{i_k}$を$t_k$と書き直せば
 				\begin{align}
 					J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})
 					&= \sum_{j=0}^{n-2} \left\{ \frac{1}{j!} \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^{j+1}_{t_k,t_{k+1}} \right\} \\
@@ -297,167 +296,45 @@
 	\end{screen}
 	
 	\begin{prf}
-		数学的帰納法で証明する．
-		\begin{description}
-			\item[第一段]
-			\item[第二段]
-				
-		\end{description}
-	\end{prf}
-	
-	\begin{comment}
-	\begin{prf}\mbox{}
-		\begin{description}
-			\item[第一段] コントロール関数$\omega:\Delta_T \longrightarrow [0,\infty)$を
-				\begin{align}
-					\omega(\alpha,\beta) &\coloneqq
-					\Norm{\bar{X}^1}{p,[\alpha,\beta]}^p + \Norm{\bar{Y}^1}{p,[\alpha,\beta]}^p + \Norm{Y^1}{p,[\alpha,\beta]}^p + \Norm{Y^2}{p/2,[\alpha,\beta]}^{p/2} \\
-					&\quad + \epsilon^{-p} \Norm{\bar{X}^1 - \bar{Y}^1}{p,[\alpha,\beta]}^p + \epsilon^{-p} \Norm{X^1 - Y^1}{p,[\alpha,\beta]}^p + \epsilon^{-p/2} \Norm{X^2 - Y^2}{p/2,[\alpha,\beta]}^{p/2}
-				\end{align}
-				で定める．
-				
-			\item[第二段]
-				細分$D = \{s=t_0,t_1,\cdots,t_N=t\} \in \delta[s,t]$に対し$D_{-k}\ (k=0,1,\cdots,N-1)$を構成する．
-				このとき
-				\begin{align}
-					J^2_{s,t}(x,\bar{x},D) - J^2_{s,t}(y,\bar{y},D)
-					&= \sum_{k=0}^{N-2} \left( \left\{ J^2_{s,t}(x,\bar{x},D_{-k}) - J^2_{s,t}(x,\bar{x},D_{-k-1}) \right\}
-						- \left\{ J^2_{s,t}(y,\bar{y},D_{-k}) - J^2_{s,t}(y,\bar{y},D_{-k-1}) \right\} \right) \\
-					&\quad + J^2_{s,t}(x,\bar{x}) - J^2_{s,t}(y,\bar{y})
-				\end{align}
-				と書ける．
-				
-			\item[第三段] 各$k$について，
-				\begin{align}
-					J^2_{s,t}(x,\bar{x},D_{-k}) - J^2_{s,t}(x,\bar{x},D_{-k-1})
-					&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left(\bar{X}^1_{t_{k-1},t_k}\right)^2 X^1_{t_k,t_{k+1}} \\
-					&\quad + \int_0^1 f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^2_{t_k,t_{k+1}}
-				\end{align}
-				より
-				\begin{align}
-					&\left\{ J^2_{s,t}(x,\bar{x},D_{-k}) - J^2_{s,t}(x,\bar{x},D_{-k-1}) \right\}
-					- \left\{ J^2_{s,t}(y,\bar{y},D_{-k}) - J^2_{s,t}(y,\bar{y},D_{-k-1}) \right\} \\
-					&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left(\bar{X}^1_{t_{k-1},t_k}\right)^2 \left( X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right) \\
-						&\quad + \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left(\bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k}\right) Y^1_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 \int_0^{\theta} \left\{ f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})) -f^{(2)}(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k} - \bar{y}_{t_{k-1}})) \right\} dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \bar{Y}^1_{t_{k-1},t_k} Y^1_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 \int_0^{\theta} f^{(2)}(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k} - \bar{y}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \bar{Y}^1_{t_{k-1},t_k} Y^1_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left( X^2_{t_k,t_{k+1}} - Y^2_{t_k,t_{k+1}} \right) \\
-						&\quad + \int_0^1 \left\{ f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})) - f^{(2)}(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k} - \bar{y}_{t_{k-1}})) \right\}\ d\theta\ \bar{X}^1_{t_{k-1},t_k} Y^2_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 f^{(2)}(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k} - \bar{y}_{t_{k-1}}))\ d\theta\ \left(\bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k}\right) Y^2_{t_k,t_{k+1}} \\
-					&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left(\bar{X}^1_{t_{k-1},t_k}\right)^2 \left( X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right) \\
-						&\quad + \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left(\bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k}\right) Y^1_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 \int_0^{\theta} \int_0^1 f^{(3)} \left(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k} - \bar{y}_{t_{k-1}}) + u\left[ \bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}) - \bar{y}_{t_{k-1}} - r(\bar{y}_{t_k} - \bar{y}_{t_{k-1}})\right] \right) \\
-							&\qquad \qquad \qquad \left\{ \left( \bar{X}^1_{0,t_{k-1}} - \bar{Y}^1_{0,t_{k-1}} \right) + r\left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \right\}\ du\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \bar{Y}^1_{t_{k-1},t_k} Y^1_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 \int_0^{\theta} f^{(2)}(\bar{y}_{t_{k-1}} + r(\bar{y}_{t_k} - \bar{y}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \bar{Y}^1_{t_{k-1},t_k} Y^1_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} \left( X^2_{t_k,t_{k+1}} - Y^2_{t_k,t_{k+1}} \right) \\
-						&\quad + \int_0^1 \int_0^1 f^{(3)} \left(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k} - \bar{y}_{t_{k-1}}) + r\left[ \bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}) - \bar{y}_{t_{k-1}} - \theta(\bar{y}_{t_k} - \bar{y}_{t_{k-1}})\right] \right) \\
-							&\qquad \qquad \qquad \left\{ \left( \bar{X}^1_{0,t_{k-1}} - \bar{Y}^1_{0,t_{k-1}} \right) + \theta\left( \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right) \right\}\ dr\ d\theta\ \bar{X}^1_{t_{k-1},t_k} Y^2_{t_k,t_{k+1}} \\
-						&\quad + \int_0^1 f^{(2)}(\bar{y}_{t_{k-1}} + \theta(\bar{y}_{t_k} - \bar{y}_{t_{k-1}}))\ d\theta\ \left(\bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k}\right) Y^2_{t_k,t_{k+1}}
-				\end{align}
-				が成り立つから，
-				\begin{align}
-					&\left| \left\{ J^2_{s,t}(x,\bar{x},D_{-k}) - J^2_{s,t}(x,\bar{x},D_{-k-1}) \right\} - \left\{ J^2_{s,t}(y,\bar{y},D_{-k}) - J^2_{s,t}(y,\bar{y},D_{-k-1}) \right\} \right| \\
-					&\leq M \left| \bar{X}^1_{t_{k-1},t_k} \right|^2 \left| X^1_{t_k,t_{k+1}} - Y^1_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} \right| \left|\bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k}\right| \left| Y^1_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{0,t_{k-1}} - \bar{Y}^1_{0,t_{k-1}} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^1_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| X^2_{t_k,t_{k+1}} - Y^2_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{0,t_{k-1}} - \bar{Y}^1_{0,t_{k-1}} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| \bar{X}^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
-						&\quad + M \left| \bar{X}^1_{t_{k-1},t_k} - \bar{Y}^1_{t_{k-1},t_k} \right| \left| Y^2_{t_k,t_{k+1}} \right| \\
-					&\leq \epsilon M \left[ 5 + 2\omega(0,t_{k-1})^{1/p} + 2\omega(t_{k-1},t_k)^{1/p} \right] \left( \frac{2\omega(s,t)}{N-k-1} \right)^{3/p}
-				\end{align}
-				となる．
-				
-			\item[第四段]
-				\begin{align}
-					&\left| J^2_{s,t}(x,\bar{x}) - J^2_{s,t}(y,\bar{y}) \right| \\
-					&\leq \left| f(\bar{x}_s) X^1_{s,t} - f(\bar{y}_s) Y^1_{s,t} \right| + \left| f^{(1)}(\bar{x}_s) X^2_{s,t} - f^{(1)}(\bar{y}_s) Y^2_{s,t} \right| \\
-					&\leq \left| f(\bar{x}_s) X^1_{s,t} - f(\bar{x}_s) Y^1_{s,t} \right| + \left| f(\bar{x}_s) Y^1_{s,t} - f(\bar{y}_s) Y^1_{s,t} \right| \\
-						&\quad + \left| f^{(1)}(\bar{x}_s) X^2_{s,t} - f^{(1)}(\bar{x}_s) Y^2_{s,t} \right| + \left| f^{(1)}(\bar{x}_s) Y^2_{s,t} - f^{(1)}(\bar{y}_s) Y^2_{s,t} \right| \\
-					&\leq M \left| X^1_{s,t} - Y^1_{s,t} \right| + M \left| \bar{X}^1_{0,s} - \bar{Y}^1_{0,s} \right| \left| Y^1_{s,t} \right|
-						+ M \left| X^2_{s,t} - Y^2_{s,t} \right| + M \left| \bar{X}^1_{0,s} - \bar{Y}^1_{0,s} \right| \left| Y^2_{s,t} \right| \\
-					&\leq \epsilon M \left[ \omega(0,T)^{1/p} + 2\omega(0,T)^{2/p} + \omega(0,T)^{3/p} \right]
-				\end{align}
-				が成り立つ．
-				
-			\item[第五段]
-				任意の$D \in \delta[s,t]$に対し
-				\begin{align}
-					\left| J^2_{s,t}(x,\bar{x},D) - J^2_{s,t}(y,\bar{y},D) \right| \leq \epsilon C
-				\end{align}
-				が成り立つから，$|D| \longrightarrow 0$として
-				\begin{align}
-					\left| I_{s,t}(x,\bar{x}) - I_{s,t}(y,\bar{y}) \right| \leq \epsilon C
-				\end{align}
-				が成り立つ．
-				\QED
-		\end{description}
-	\end{prf}
-	
+		先ず
 		\begin{align}
-			&= f(\bar{x}_{t_{k-1}})X^1_{t_{k-1},t_k} + f(\bar{x}_{t_k})X^1_{t_k,t_{k+1}} - f(\bar{x}_{t_{k-1}})X^1_{t_{k-1},t_{k+1}} \\
-				&\quad + \sum_{j=2}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \left\{ f(\bar{x}_{t_k}) - f(\bar{x}_{t_{k-1}}) \right\} X^1_{t_k,t_{k+1}} \\
-				&\quad + \sum_{j=2}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \left\{ f^{(1)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})) - f^{(1)}(\bar{x}_{t_{k-1}})\right\}(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + f^{(1)}(\bar{x}_{t_{k-1}})(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})X^1_{t_k,t_{k+1}}
-					+ f^{(1)}(\bar{x}_{t_{k-1}})X^2_{t_{k-1},t_k} + f^{(1)}(\bar{x}_{t_k})X^2_{t_k,t_{k+1}} - f^{(1)}(\bar{x}_{t_{k-1}})X^2_{t_{k-1},t_{k+1}} \\
-				&\quad + \sum_{j=3}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + \left\{ f^{(1)}(\bar{x}_{t_k}) - f^{(1)}(\bar{x}_{t_{k-1}}) \right\} X^2_{t_k,t_{k+1}} \\
-				&\quad + \sum_{j=3}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + \int_0^1 \left\{ f^{(2)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) - f^{(2)}(\bar{x}_{t_{k-1}}) \right\}(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})\ d\theta\ X^2_{t_k,t_{k+1}} \\
-				&\quad + f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) X^2_{t_k,t_{k+1}}
-					+ \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}})X^3_{t_{k-1},t_k} + \frac{1}{2!} f^{(2)}(\bar{x}_{t_k})X^3_{t_k,t_{k+1}} - \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}})X^3_{t_{k-1},t_{k+1}} \\
-				&\quad + \sum_{j=4}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + \int_0^1 \int_0^\theta f^{(3)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^2_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{2!}\left\{ f^{(2)}(\bar{x}_{t_k}) - f^{(2)}(\bar{x}_{t_{k-1}}) \right\} X^3_{t_k,t_{k+1}}
-					- \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2X^1_{t_k,t_{k+1}} \\
-				&\quad + \sum_{j=4}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + \int_0^1 \int_0^\theta f^{(3)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^2_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{2!} \int_0^1 \left\{ f^{(3)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) - f^{(3)}(\bar{x}_{t_{k-1}}) \right\}(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})\ d\theta\ X^3_{t_k,t_{k+1}}
-					- \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2X^1_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{2!} f^{(3)}(\bar{x}_{t_{k-1}})(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) X^3_{t_k,t_{k+1}}
-					+ \frac{1}{3!} f^{(3)}(\bar{x}_{t_{k-1}})X^4_{t_{k-1},t_k} + \frac{1}{3!} f^{(3)}(\bar{x}_{t_k})X^4_{t_k,t_{k+1}} - \frac{1}{3!} f^{(3)}(\bar{x}_{t_{k-1}})X^4_{t_{k-1},t_{k+1}} \\ 
-				&\quad + \sum_{j=5}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + \int_0^1 \int_0^\theta f^{(3)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^2_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{2!} \int_0^1 \int_0^\theta f^{(4)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^3_{t_k,t_{k+1}}
-					- \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2X^1_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{2!} f^{(3)}(\bar{x}_{t_{k-1}})(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) X^3_{t_k,t_{k+1}}
-					+ \frac{1}{3!} f^{(3)}(\bar{x}_{t_{k-1}})X^4_{t_{k-1},t_k} + \frac{1}{3!} f^{(3)}(\bar{x}_{t_k})X^4_{t_k,t_{k+1}} - \frac{1}{3!} f^{(3)}(\bar{x}_{t_{k-1}})X^4_{t_{k-1},t_{k+1}} \\ 
-				&\quad + \sum_{j=5}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + \int_0^1 \int_0^\theta f^{(3)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^2_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{2!} \int_0^1 \int_0^\theta f^{(4)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^3_{t_k,t_{k+1}}
-					- \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2X^1_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{3!} \int_0^1 \int_0^\theta f^{(5)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^4_{t_k,t_{k+1}} \\
-				&\qquad - \frac{1}{3!} f^{(3)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^3 X^1_{t_k,t_{k+1}}
-					- \frac{3}{3!} f^{(3)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2 X^2_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{3!} f^{(4)}(\bar{x}_{t_{k-1}})(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) X^4_{t_k,t_{k+1}}
-					+ \frac{1}{4!} f^{(4)}(\bar{x}_{t_{k-1}})X^5_{t_{k-1},t_k} + \frac{1}{4!} f^{(4)}(\bar{x}_{t_k})X^5_{t_k,t_{k+1}} - \frac{1}{4!} f^{(4)}(\bar{x}_{t_{k-1}})X^5_{t_{k-1},t_{k+1}} \\
-				&\quad + \sum_{j=6}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \int_0^1 \int_0^{\theta} f^{(2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k} - \bar{x}_{t_{k-1}}))(\bar{x}_{t_k} - \bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^1_{t_k,t_{k+1}} \\
-				&\quad + \int_0^1 \int_0^\theta f^{(3)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^2_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{2!} \int_0^1 \int_0^\theta f^{(4)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^3_{t_k,t_{k+1}}
-					- \frac{1}{2!} f^{(2)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2X^1_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{3!} \int_0^1 \int_0^\theta f^{(5)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^4_{t_k,t_{k+1}} \\
-				&\qquad - \frac{1}{3!} f^{(3)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^3 X^1_{t_k,t_{k+1}}
-					- \frac{3}{3!} f^{(3)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2 X^2_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{4!} \int_0^1 \int_0^\theta f^{(6)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}})) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2\ dr\ d\theta\ X^5_{t_k,t_{k+1}} \\
-				&\qquad - \frac{1}{4!} f^{(4)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^4 X^1_{t_k,t_{k+1}}
-					- \frac{4}{4!} f^{(4)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^3 X^2_{t_k,t_{k+1}}
-					- \frac{6}{4!} f^{(4)}(\bar{x}_{t_{k-1}}) (\bar{x}_{t_k}-\bar{x}_{t_{k-1}})^2 X^3_{t_k,t_{k+1}} \\
-				&\quad + \frac{1}{4!} f^{(5)}(\bar{x}_{t_{k-1}})(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) X^5_{t_k,t_{k+1}}
-					+ \frac{1}{5!} f^{(5)}(\bar{x}_{t_{k-1}})X^6_{t_{k-1},t_k} + \frac{1}{5!} f^{(5)}(\bar{x}_{t_k})X^6_{t_k,t_{k+1}} - \frac{1}{5!} f^{(5)}(\bar{x}_{t_{k-1}})X^6_{t_{k-1},t_{k+1}} \\
-				&\quad + \sum_{j=7}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k})X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}})X^j_{t_{k-1},t_{k+1}} \right\} \\
-			&= \sum_{j=0}^{n-2} \left\{ \frac{1}{j!} \int_0^1 \int_0^\theta f^{(j+2)}(\bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^{j+1}_{t_k,t_{k+1}} \right\} \\
-				&\qquad - \sum_{j=0}^{n-1} \left\{ \frac{1}{j!} f^{(j)}(\bar{x}_{t_{k-1}}) \sum_{i=0}^{j-2} \binom{j}{i} \left( \bar{X}^1_{t_{k-1},t_k} \right)^{j-i} X^{i+1}_{t_k,t_{k+1}} \right\} \\
-				&\qquad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}(\bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}))\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^{n}_{t_k,t_{k+1}} \\
+			J^n_{s,t}(x,\bar{x},D_{-k}) - J^n_{s,t}(x,\bar{x},D_{-k-1})
+			&= J^n_{t_{k-1},t_k}(x,\bar{x}) + J^n_{t_k,t_{k+1}}(x,\bar{x}) - J^n_{t_{k-1},t_{k+1}}(x,\bar{x}) \\
+			&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}}) X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k}) X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}}) X^j_{t_{k-1},t_{k+1}} \right\}
 		\end{align}
-	\end{comment}
+		となる．ここで$X^j_{t_{k-1},t_k},X^j_{t_{k-1},t_{k+1}}$の被積分関数$\left(\bar{x}_u-\bar{x}_{t_{k-1}}\right)^{j-1}$は
+		\begin{align}
+			\left(\bar{x}_u-\bar{x}_{t_{k-1}}\right)^{j-1}
+			= \sum_{i=0}^{j-1} \binom{j-1}{i} \left(\bar{x}_u-\bar{x}_{t_k}\right)^i \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i}
+		\end{align}
+		とできるから
+		\begin{align}
+			f^{(j-1)}(\bar{x}_{t_{k-1}}) X^j_{t_{k-1},t_k} -  f^{(j-1)}(\bar{x}_{t_{k-1}}) X^j_{t_{k-1},t_{k+1}}
+			= \sum_{i=0}^{j-1} \binom{j-1}{i} f^{(j-1)}(\bar{x}_{t_{k-1}}) X^{i+1}_{t_k,t_{k+1}} \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i}
+		\end{align}
+		が成り立ち
+		\begin{align}
+			&\sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_{k-1}}) X^j_{t_{k-1},t_k} + f^{(j-1)}(\bar{x}_{t_k}) X^j_{t_k,t_{k+1}} - f^{(j-1)}(\bar{x}_{t_{k-1}}) X^j_{t_{k-1},t_{k+1}} \right\} \\
+			&= \sum_{j=1}^n \frac{1}{(j-1)!} f^{(j-1)}(\bar{x}_{t_k}) X^j_{t_k,t_{k+1}}
+				- \sum_{j=1}^n \frac{1}{(j-1)!} \sum_{i=0}^{j-1} \binom{j-1}{i} f^{(j-1)}(\bar{x}_{t_{k-1}}) X^{i+1}_{t_k,t_{k+1}} \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i} \\
+			&= \sum_{j=1}^n \frac{1}{(j-1)!} \left\{ f^{(j-1)}(\bar{x}_{t_k}) - f^{(j-1)}(\bar{x}_{t_{k-1}}) \right\} X^j_{t_k,t_{k+1}}
+				- \sum_{j=2}^n \frac{1}{(j-1)!} \sum_{i=0}^{j-2} \binom{j-1}{i} f^{(j-1)}(\bar{x}_{t_{k-1}}) X^{i+1}_{t_k,t_{k+1}} \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i} \\
+			&= \sum_{j=1}^{n-1} \frac{1}{(j-1)!} \int_0^1 f^{(j)}\left( \bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right)\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^j_{t_k,t_{k+1}} \\
+				&\quad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}\left( \bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right)\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^n_{t_k,t_{k+1}}
+				- \sum_{j=2}^n \frac{1}{(j-1)!} \sum_{i=0}^{j-2} \binom{j-1}{i} f^{(j-1)}(\bar{x}_{t_{k-1}}) X^{i+1}_{t_k,t_{k+1}} \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i} \\
+			&= \sum_{j=1}^{n-1} \frac{1}{(j-1)!} \int_0^1 f^{(j)}\left( \bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right) - f^{(j)}\left( \bar{x}_{t_{k-1}} \right)\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^j_{t_k,t_{k+1}} \\
+				&\quad + \sum_{j=1}^{n-1} \frac{1}{(j-1)!} f^{(j)}\left( \bar{x}_{t_{k-1}} \right) \bar{X}^1_{t_{k-1},t_k} X^j_{t_k,t_{k+1}}
+				- \sum_{j=2}^n \frac{1}{(j-1)!} \sum_{i=0}^{j-2} \binom{j-1}{i} f^{(j-1)}(\bar{x}_{t_{k-1}}) X^{i+1}_{t_k,t_{k+1}} \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i} \\
+				&\quad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}\left( \bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right)\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^n_{t_k,t_{k+1}} \\
+			&= \sum_{j=1}^{n-1} \frac{1}{(j-1)!} \int_0^1 \int_0^\theta f^{(j+1)}\left( \bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right)\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^j_{t_k,t_{k+1}} \\
+				&\quad + \sum_{j=2}^{n} \frac{1}{(j-2)!} f^{(j-1)}\left( \bar{x}_{t_{k-1}} \right) \bar{X}^1_{t_{k-1},t_k} X^{j-1}_{t_k,t_{k+1}}
+				- \sum_{j=2}^n \frac{1}{(j-1)!} \sum_{i=0}^{j-2} \binom{j-1}{i} f^{(j-1)}(\bar{x}_{t_{k-1}}) X^{i+1}_{t_k,t_{k+1}} \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i} \\
+				&\quad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}\left( \bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right)\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^n_{t_k,t_{k+1}} \\
+			&= \sum_{j=1}^{n-1} \frac{1}{(j-1)!} \int_0^1 \int_0^\theta f^{(j+1)}\left( \bar{x}_{t_{k-1}} + r(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right)\ dr\ d\theta\ \left( \bar{X}^1_{t_{k-1},t_k} \right)^2 X^j_{t_k,t_{k+1}} \\
+				&\quad - \sum_{j=3}^n \frac{1}{(j-1)!} \sum_{i=0}^{j-3} \binom{j-1}{i} f^{(j-1)}(\bar{x}_{t_{k-1}}) X^{i+1}_{t_k,t_{k+1}} \left(\bar{X}_{t_{k-1},t_k}\right)^{j-1-i} \\
+				&\quad + \frac{1}{(n-1)!} \int_0^1 f^{(n)}\left( \bar{x}_{t_{k-1}} + \theta(\bar{x}_{t_k}-\bar{x}_{t_{k-1}}) \right)\ d\theta\ \bar{X}^1_{t_{k-1},t_k} X^n_{t_k,t_{k+1}} 
+		\end{align}
+		が得られる．
+		\QED
+	\end{prf}
+	
